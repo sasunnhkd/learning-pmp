@@ -1,0 +1,1004 @@
+{
+  "1": [
+    {
+      "q": "Which of the following BEST describes a project?",
+      "options": [
+        "Ongoing work that produces the same output repeatedly",
+        "A temporary endeavor undertaken to create a unique product or service",
+        "Any work assigned to a team",
+        "Work that requires a budget"
+      ],
+      "correct": 1,
+      "explain": "Projects are TEMPORARY (defined start/end) and produce UNIQUE outputs—this distinguishes them from operations."
+    },
+    {
+      "q": "What is 'progressive elaboration' in project management?",
+      "options": [
+        "Adding more team members as the project grows",
+        "Continuously refining and detailing project information as more becomes known",
+        "Increasing the project budget over time",
+        "Expanding the project scope deliberately"
+      ],
+      "correct": 1,
+      "explain": "Progressive elaboration means details emerge and become clearer as the project progresses—not all is known upfront."
+    },
+    {
+      "q": "Which is NOT a characteristic of a project?",
+      "options": [
+        "Temporary",
+        "Unique deliverable",
+        "Ongoing and repetitive",
+        "Progressive elaboration"
+      ],
+      "correct": 2,
+      "explain": "Ongoing and repetitive work describes OPERATIONS, not projects. Projects are temporary by definition."
+    }
+  ],
+  "2": [
+    {
+      "q": "What is the primary difference between a program and a portfolio?",
+      "options": [
+        "Programs are larger than portfolios",
+        "Programs contain related projects; portfolios contain projects/programs that may not be related but support strategy",
+        "Portfolios are temporary; programs are permanent",
+        "There is no difference"
+      ],
+      "correct": 1,
+      "explain": "Programs group RELATED projects for shared benefits. Portfolios group projects/programs aligned to STRATEGY but not necessarily related."
+    },
+    {
+      "q": "A company is running a digital transformation initiative containing 12 related projects. This is BEST described as a:",
+      "options": [
+        "Project",
+        "Program",
+        "Portfolio",
+        "Operation"
+      ],
+      "correct": 1,
+      "explain": "Related projects managed together for combined benefits = PROGRAM."
+    },
+    {
+      "q": "Who typically reports to a Portfolio Manager?",
+      "options": [
+        "Team members",
+        "Project Managers only",
+        "Program Managers and Project Managers",
+        "Stakeholders"
+      ],
+      "correct": 2,
+      "explain": "The hierarchy is Portfolio → Programs → Projects, so Program Managers and standalone PMs report to Portfolio Managers."
+    }
+  ],
+  "3": [
+    {
+      "q": "Which PMBOK 7 principle emphasizes acting ethically and with integrity?",
+      "options": [
+        "Leadership",
+        "Stewardship",
+        "Value",
+        "Quality"
+      ],
+      "correct": 1,
+      "explain": "Stewardship is the first principle—act responsibly, ethically, and with integrity."
+    },
+    {
+      "q": "'Recognize and respond to system interactions' refers to which principle?",
+      "options": [
+        "Tailoring",
+        "Complexity",
+        "Systems Thinking",
+        "Adaptability"
+      ],
+      "correct": 2,
+      "explain": "Systems Thinking is about understanding how parts of the project interact as a system."
+    },
+    {
+      "q": "Which leadership style does PMBOK 7 most strongly emphasize?",
+      "options": [
+        "Command-and-control",
+        "Servant leadership",
+        "Laissez-faire",
+        "Transactional"
+      ],
+      "correct": 1,
+      "explain": "Servant leadership—where the leader serves the team—is the dominant style emphasized in PMBOK 7."
+    }
+  ],
+  "4": [
+    {
+      "q": "The principle of TAILORING means:",
+      "options": [
+        "Customizing approach based on context, project, and environment",
+        "Following PMBOK exactly as written",
+        "Reducing project scope to fit budget",
+        "Adjusting team size to match work"
+      ],
+      "correct": 0,
+      "explain": "Tailoring is about adapting your approach—methods, processes, tools—to fit the specific context."
+    },
+    {
+      "q": "Which principle emphasizes 'embracing change to enable a better future state'?",
+      "options": [
+        "Risk",
+        "Adaptability & Resiliency",
+        "Change",
+        "Quality"
+      ],
+      "correct": 2,
+      "explain": "The Change principle is specifically about enabling change to achieve the envisioned future state."
+    },
+    {
+      "q": "How many principles are in PMBOK 7?",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "14"
+      ],
+      "correct": 2,
+      "explain": "PMBOK 7 has 12 principles and 8 performance domains—don't confuse the two."
+    }
+  ],
+  "5": [
+    {
+      "q": "How do PMBOK 7 Performance Domains differ from PMBOK 6 Knowledge Areas?",
+      "options": [
+        "They are the same",
+        "Performance Domains are sequential; Knowledge Areas were not",
+        "Performance Domains are interactive and outcome-focused; Knowledge Areas were process-focused",
+        "There are more Performance Domains"
+      ],
+      "correct": 2,
+      "explain": "Performance Domains are outcome-oriented and interactive—they all operate together."
+    },
+    {
+      "q": "Which is NOT a PMBOK 7 Performance Domain?",
+      "options": [
+        "Stakeholders",
+        "Team",
+        "Procurement",
+        "Uncertainty"
+      ],
+      "correct": 2,
+      "explain": "Procurement is a PMBOK 6 Knowledge Area, not a PMBOK 7 Performance Domain."
+    },
+    {
+      "q": "How many Performance Domains exist in PMBOK 7?",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "correct": 1,
+      "explain": "8 Performance Domains: Stakeholders, Team, Development Approach & Life Cycle, Planning, Project Work, Delivery, Measurement, Uncertainty."
+    }
+  ],
+  "6": [
+    {
+      "q": "Which approach is BEST for a project with stable, well-understood requirements?",
+      "options": [
+        "Adaptive (Agile)",
+        "Predictive (Waterfall)",
+        "Hybrid",
+        "All approaches work equally well"
+      ],
+      "correct": 1,
+      "explain": "Predictive works best when requirements are stable—you can plan everything upfront."
+    },
+    {
+      "q": "A project has rapidly evolving requirements and high stakeholder availability. The BEST approach is:",
+      "options": [
+        "Predictive",
+        "Adaptive",
+        "Sequential",
+        "Linear"
+      ],
+      "correct": 1,
+      "explain": "Adaptive (agile) thrives with evolving requirements and engaged stakeholders."
+    },
+    {
+      "q": "What characterizes a HYBRID approach?",
+      "options": [
+        "Pure agile only",
+        "Pure waterfall only",
+        "Combination of predictive and adaptive elements tailored to context",
+        "Random switching"
+      ],
+      "correct": 2,
+      "explain": "Hybrid intentionally blends predictive and adaptive elements to fit project context."
+    }
+  ],
+  "7": [
+    {
+      "q": "What is the core idea behind PMBOK 7's principle-based approach?",
+      "options": [
+        "Strict process compliance",
+        "Behaviors guide decisions when standards conflict",
+        "More documentation",
+        "Larger teams"
+      ],
+      "correct": 1,
+      "explain": "Principles are guiding behaviors—they help make decisions where rigid rules don't apply."
+    },
+    {
+      "q": "How many Performance Domains and Principles are in PMBOK 7?",
+      "options": [
+        "10 and 8",
+        "8 and 12",
+        "12 and 8",
+        "5 and 10"
+      ],
+      "correct": 1,
+      "explain": "8 Performance Domains and 12 Principles."
+    },
+    {
+      "q": "Performance Domains operate:",
+      "options": [
+        "Sequentially",
+        "Interactively, all at the same time",
+        "Only when needed",
+        "In random order"
+      ],
+      "correct": 1,
+      "explain": "Performance Domains are interactive—they all run simultaneously throughout the project."
+    }
+  ],
+  "8": [
+    {
+      "q": "When should stakeholder identification occur?",
+      "options": [
+        "Only at project start",
+        "Once during planning",
+        "Continuously throughout the project",
+        "Only when issues arise"
+      ],
+      "correct": 2,
+      "explain": "Stakeholder identification is CONTINUOUS—new stakeholders emerge and existing ones change."
+    },
+    {
+      "q": "The Stakeholder Register typically includes:",
+      "options": [
+        "Only stakeholder names",
+        "Names, roles, contact info, influence, interest, expectations",
+        "Only senior executives",
+        "Only the project sponsor"
+      ],
+      "correct": 1,
+      "explain": "The register is comprehensive—contact info, role, influence, interest, requirements, and engagement strategy."
+    },
+    {
+      "q": "A Power/Interest grid is used to:",
+      "options": [
+        "Calculate stakeholder budgets",
+        "Categorize stakeholders by their power and interest levels to plan engagement",
+        "Rank stakeholders by importance only",
+        "Replace the stakeholder register"
+      ],
+      "correct": 1,
+      "explain": "The Power/Interest grid plots stakeholders to determine engagement strategy."
+    }
+  ],
+  "9": [
+    {
+      "q": "The five engagement levels for stakeholders are:",
+      "options": [
+        "New, active, passive, retired, gone",
+        "Unaware, Resistant, Neutral, Supportive, Leading",
+        "Low, medium, high, very high, critical",
+        "Internal, external, customer, vendor, regulator"
+      ],
+      "correct": 1,
+      "explain": "PMBOK defines engagement levels as Unaware → Resistant → Neutral → Supportive → Leading."
+    },
+    {
+      "q": "A key stakeholder is currently RESISTANT. Your goal should be to:",
+      "options": [
+        "Avoid them",
+        "Replace them",
+        "Move them toward at least Neutral or Supportive through understanding their concerns",
+        "Report them to leadership"
+      ],
+      "correct": 2,
+      "explain": "Engage with resistant stakeholders to understand concerns and move them toward greater support."
+    },
+    {
+      "q": "What is in the Stakeholder Engagement Plan?",
+      "options": [
+        "Just contact information",
+        "Current vs desired engagement levels and strategies to bridge the gap",
+        "Only meeting schedules",
+        "Project budget allocations"
+      ],
+      "correct": 1,
+      "explain": "The plan documents current engagement, desired engagement, and strategies to move stakeholders."
+    }
+  ],
+  "10": [
+    {
+      "q": "Psychological safety in a team means:",
+      "options": [
+        "Physical workplace safety",
+        "Team members feel safe to speak up, take risks, and admit mistakes without fear",
+        "Locked filing cabinets",
+        "Background checks"
+      ],
+      "correct": 1,
+      "explain": "Psychological safety is the belief you won't be punished for speaking up—critical for high-performing teams."
+    },
+    {
+      "q": "In Tuckman's model, which stage involves conflict and differing opinions?",
+      "options": [
+        "Forming",
+        "Storming",
+        "Norming",
+        "Performing"
+      ],
+      "correct": 1,
+      "explain": "Storming is when team members express differences and conflict emerges—a normal stage."
+    },
+    {
+      "q": "A servant leader primarily:",
+      "options": [
+        "Commands the team",
+        "Removes obstacles and serves the team's needs",
+        "Avoids decision-making",
+        "Focuses on personal recognition"
+      ],
+      "correct": 1,
+      "explain": "Servant leadership inverts the pyramid—the leader serves the team."
+    }
+  ],
+  "11": [
+    {
+      "q": "Which leadership style is MOST aligned with PMBOK 7's emphasis?",
+      "options": [
+        "Authoritarian",
+        "Servant",
+        "Laissez-faire",
+        "Bureaucratic"
+      ],
+      "correct": 1,
+      "explain": "Servant leadership is most strongly emphasized in PMBOK 7."
+    },
+    {
+      "q": "Transactional leadership is BEST when:",
+      "options": [
+        "Tasks are clear and rewards/consequences motivate performance",
+        "Team is highly autonomous",
+        "Vision is needed",
+        "Team is in storming phase"
+      ],
+      "correct": 0,
+      "explain": "Transactional works for clear, structured tasks with explicit rewards/penalties."
+    },
+    {
+      "q": "Effective project managers:",
+      "options": [
+        "Stick to one leadership style always",
+        "Flex between styles based on team and situation",
+        "Avoid leadership entirely",
+        "Only use authoritarian style"
+      ],
+      "correct": 1,
+      "explain": "Situational leadership—adapting your style to the context—is the mark of an effective PM."
+    }
+  ],
+  "12": [
+    {
+      "q": "Which conflict resolution mode does PMBOK 7 generally favor?",
+      "options": [
+        "Avoiding",
+        "Competing",
+        "Collaborating",
+        "Accommodating"
+      ],
+      "correct": 2,
+      "explain": "Collaborating (win-win) is preferred—it produces the best long-term solution."
+    },
+    {
+      "q": "Compromising means:",
+      "options": [
+        "You completely yield",
+        "Both parties give a little to reach a middle ground",
+        "Win-win solution found together",
+        "Avoiding the issue"
+      ],
+      "correct": 1,
+      "explain": "Compromising = partial-win for both. Useful when time is tight, but not optimal."
+    },
+    {
+      "q": "Avoiding conflict is appropriate when:",
+      "options": [
+        "Always",
+        "The issue is low-stakes or needs cooling-off time",
+        "You want to be liked",
+        "Conflict is uncomfortable"
+      ],
+      "correct": 1,
+      "explain": "Avoiding can be valid for trivial issues or when emotions are too high."
+    }
+  ],
+  "13": [
+    {
+      "q": "Virtual teams require MORE of which than co-located teams?",
+      "options": [
+        "Less communication",
+        "Intentional structure and explicit norms",
+        "Fewer meetings",
+        "Less documentation"
+      ],
+      "correct": 1,
+      "explain": "Distance amplifies weaknesses—virtual teams need explicit norms and deliberate trust-building."
+    },
+    {
+      "q": "Which is a warning sign in a virtual team?",
+      "options": [
+        "Cameras on during meetings",
+        "Members consistently silent and dropping engagement",
+        "Use of async tools",
+        "Documented decisions"
+      ],
+      "correct": 1,
+      "explain": "Silence and disengagement are red flags—isolation can develop fast in virtual settings."
+    },
+    {
+      "q": "What's the BEST practice for time zone management?",
+      "options": [
+        "Always meet at HQ time",
+        "Rotate inconvenient meeting times to share the burden fairly",
+        "Avoid meetings entirely",
+        "Only meet once per quarter"
+      ],
+      "correct": 1,
+      "explain": "Fairness matters—rotating who has 'bad' meeting times distributes the burden equitably."
+    }
+  ],
+  "14": [
+    {
+      "q": "Why are stakeholder engagement and team management interconnected?",
+      "options": [
+        "They aren't connected",
+        "Your team is your most critical stakeholder group",
+        "Both require budgets",
+        "Both involve meetings"
+      ],
+      "correct": 1,
+      "explain": "The team is the most important stakeholder group—how you engage them affects everything."
+    },
+    {
+      "q": "When applying servant leadership to stakeholders, you focus on:",
+      "options": [
+        "Commanding their compliance",
+        "Understanding and serving their genuine needs while balancing project goals",
+        "Avoiding them",
+        "Reporting them"
+      ],
+      "correct": 1,
+      "explain": "Servant leadership extends beyond the team—understand stakeholder needs."
+    },
+    {
+      "q": "A team in 'Storming' phase has a stakeholder concern. The PM should:",
+      "options": [
+        "Ignore the team and address the stakeholder",
+        "Address both—use storming as opportunity for the team to learn collaborative problem-solving",
+        "Replace the team",
+        "Escalate immediately"
+      ],
+      "correct": 1,
+      "explain": "Storming is normal—use real situations as growth opportunities."
+    }
+  ],
+  "15": [
+    {
+      "q": "In agile projects, planning is typically:",
+      "options": [
+        "Done all at once at the start",
+        "Done continuously through rolling-wave planning",
+        "Avoided entirely",
+        "Only done by the PM"
+      ],
+      "correct": 1,
+      "explain": "Adaptive approaches use rolling-wave planning—plan near-term in detail."
+    },
+    {
+      "q": "Rolling-wave planning is:",
+      "options": [
+        "Planning everything upfront in detail",
+        "Planning near-term work in detail and future work at higher level",
+        "A type of risk",
+        "Stakeholder management technique"
+      ],
+      "correct": 1,
+      "explain": "Rolling-wave matches planning depth to certainty."
+    },
+    {
+      "q": "Planning depth should match:",
+      "options": [
+        "Project budget",
+        "Team size",
+        "Level of uncertainty—less detail for highly uncertain work",
+        "Stakeholder count"
+      ],
+      "correct": 2,
+      "explain": "High uncertainty = less detailed long-term plans (they'll change anyway)."
+    }
+  ],
+  "16": [
+    {
+      "q": "What is the WBS?",
+      "options": [
+        "Work Breakdown Structure—hierarchical decomposition of project work",
+        "Weekly Budget Spreadsheet",
+        "Workforce Bonus System",
+        "Web-Based System"
+      ],
+      "correct": 0,
+      "explain": "WBS is a deliverable-oriented hierarchical decomposition of the total project scope."
+    },
+    {
+      "q": "Scope creep is:",
+      "options": [
+        "Planned scope expansion",
+        "Uncontrolled changes or growth in scope without proper change control",
+        "A type of risk response",
+        "Stakeholder feedback"
+      ],
+      "correct": 1,
+      "explain": "Scope creep = uncontrolled expansion. Use formal change control to prevent it."
+    },
+    {
+      "q": "Gold plating refers to:",
+      "options": [
+        "Adding scope/features the customer didn't request",
+        "High-quality deliverables",
+        "Premium pricing",
+        "Executive dashboards"
+      ],
+      "correct": 0,
+      "explain": "Gold plating = team adds extras the customer didn't ask for. Always avoid."
+    }
+  ],
+  "17": [
+    {
+      "q": "The CRITICAL PATH is:",
+      "options": [
+        "The most important task",
+        "The longest path through the network—determines the minimum project duration",
+        "The path with the most resources",
+        "The shortest path"
+      ],
+      "correct": 1,
+      "explain": "Critical path = longest sequence of dependent activities."
+    },
+    {
+      "q": "FAST-TRACKING means:",
+      "options": [
+        "Adding more resources",
+        "Performing activities in parallel that were originally sequential",
+        "Reducing scope",
+        "Skipping quality checks"
+      ],
+      "correct": 1,
+      "explain": "Fast-tracking compresses schedule by parallelizing activities—adds risk."
+    },
+    {
+      "q": "CRASHING typically:",
+      "options": [
+        "Reduces scope",
+        "Adds resources to shorten duration, increasing cost",
+        "Cancels the project",
+        "Removes risks"
+      ],
+      "correct": 1,
+      "explain": "Crashing = trade cost for time. Add resources/overtime to shorten duration."
+    }
+  ],
+  "18": [
+    {
+      "q": "A ROM estimate has accuracy of approximately:",
+      "options": [
+        "±5%",
+        "±10%",
+        "-25% to +75%",
+        "±50%"
+      ],
+      "correct": 2,
+      "explain": "ROM (Rough Order of Magnitude) is early-stage estimating with -25% to +75% range."
+    },
+    {
+      "q": "Three-point estimating uses:",
+      "options": [
+        "Three different teams",
+        "Optimistic, pessimistic, and most-likely estimates combined",
+        "Three project phases",
+        "Three estimators"
+      ],
+      "correct": 1,
+      "explain": "Three-point (often PERT) combines O+P+ML to get expected value."
+    },
+    {
+      "q": "Bottom-up estimating is:",
+      "options": [
+        "Least accurate but fastest",
+        "Most accurate but most time-consuming—estimates each work package then aggregates",
+        "Random guess",
+        "Top-down approach"
+      ],
+      "correct": 1,
+      "explain": "Bottom-up estimates each component individually then sums—highest accuracy."
+    }
+  ],
+  "19": [
+    {
+      "q": "Quality Assurance (QA) focuses on:",
+      "options": [
+        "Inspecting finished products",
+        "Process improvement to prevent defects",
+        "Customer complaints",
+        "Sales metrics"
+      ],
+      "correct": 1,
+      "explain": "QA is process-focused and preventive. QC is product-focused."
+    },
+    {
+      "q": "Cost of Quality (COQ) includes:",
+      "options": [
+        "Only inspection costs",
+        "Conformance (prevention, appraisal) and non-conformance (failures) costs",
+        "Just rework costs",
+        "PM overhead"
+      ],
+      "correct": 1,
+      "explain": "COQ = all costs related to quality, both conformance and non-conformance."
+    },
+    {
+      "q": "Pareto principle in quality says:",
+      "options": [
+        "All defects are equal",
+        "80% of problems come from 20% of causes—focus on the vital few",
+        "Quality is free",
+        "Inspect everything"
+      ],
+      "correct": 1,
+      "explain": "Pareto (80/20) helps prioritize quality efforts."
+    }
+  ],
+  "20": [
+    {
+      "q": "Which is NOT a threat response strategy?",
+      "options": [
+        "Avoid",
+        "Mitigate",
+        "Exploit",
+        "Transfer"
+      ],
+      "correct": 2,
+      "explain": "EXPLOIT is for OPPORTUNITIES. Threat strategies: Avoid, Mitigate, Transfer, Accept, Escalate."
+    },
+    {
+      "q": "Buying insurance is an example of which risk response?",
+      "options": [
+        "Avoid",
+        "Mitigate",
+        "Transfer",
+        "Accept"
+      ],
+      "correct": 2,
+      "explain": "Insurance transfers financial risk to a third party—classic Transfer strategy."
+    },
+    {
+      "q": "Contingency reserves are for:",
+      "options": [
+        "Unknown unknowns",
+        "Known risks identified in the risk register",
+        "Profit margin",
+        "Bonuses"
+      ],
+      "correct": 1,
+      "explain": "Contingency = identified (known) risks. Management reserves = unknown unknowns."
+    }
+  ],
+  "21": [
+    {
+      "q": "If a project's critical path is delayed, the project end date will:",
+      "options": [
+        "Stay the same",
+        "Be delayed by the same amount unless action is taken",
+        "Speed up",
+        "Move earlier"
+      ],
+      "correct": 1,
+      "explain": "Critical path = zero float. Any delay delays project end."
+    },
+    {
+      "q": "Scope, schedule, and cost are interconnected because:",
+      "options": [
+        "They are independent",
+        "Changing one typically affects the others—the triple constraint",
+        "They share team members",
+        "Stakeholders care about each"
+      ],
+      "correct": 1,
+      "explain": "Triple constraint: scope, time, cost are interdependent."
+    },
+    {
+      "q": "Which estimating technique is MOST accurate but time-consuming?",
+      "options": [
+        "Analogous",
+        "Parametric",
+        "Bottom-up",
+        "Expert judgment"
+      ],
+      "correct": 2,
+      "explain": "Bottom-up estimates each work package—highest accuracy, highest effort."
+    }
+  ],
+  "22": [
+    {
+      "q": "A Requirements Traceability Matrix:",
+      "options": [
+        "Tracks team hours",
+        "Links requirements from origin through deliverables to ensure all are met",
+        "Manages communications",
+        "Calculates budget"
+      ],
+      "correct": 1,
+      "explain": "RTM ensures every requirement traces from source to delivery."
+    },
+    {
+      "q": "In agile, 'Definition of Done' means:",
+      "options": [
+        "The project is complete",
+        "Shared understanding of when a work item is truly complete",
+        "Personal task list",
+        "End of contract"
+      ],
+      "correct": 1,
+      "explain": "DoD is a team agreement on completion criteria for any work item."
+    },
+    {
+      "q": "Adaptive (agile) projects deliver value:",
+      "options": [
+        "Only at project end",
+        "Incrementally throughout the project",
+        "Never",
+        "Once a year"
+      ],
+      "correct": 1,
+      "explain": "Agile delivers working increments throughout—value realized continuously."
+    }
+  ],
+  "23": [
+    {
+      "q": "If CPI = 0.85, the project is:",
+      "options": [
+        "Under budget",
+        "Over budget (getting $0.85 of value for every $1 spent)",
+        "On budget",
+        "Not measurable"
+      ],
+      "correct": 1,
+      "explain": "CPI < 1 = over budget. CPI > 1 = under budget."
+    },
+    {
+      "q": "Schedule Variance (SV) = ?",
+      "options": [
+        "EV - PV",
+        "EV - AC",
+        "PV - AC",
+        "AC - EV"
+      ],
+      "correct": 0,
+      "explain": "SV = EV - PV. Positive = ahead, negative = behind."
+    },
+    {
+      "q": "If SPI = 1.10, the project is:",
+      "options": [
+        "10% behind schedule",
+        "10% ahead of schedule",
+        "On schedule",
+        "Cancelled"
+      ],
+      "correct": 1,
+      "explain": "SPI > 1 = ahead of schedule."
+    },
+    {
+      "q": "EAC = BAC / CPI calculates:",
+      "options": [
+        "Schedule variance",
+        "Estimate at Completion assuming current cost performance continues",
+        "Project budget at start",
+        "Team size needed"
+      ],
+      "correct": 1,
+      "explain": "This common EAC formula projects total cost if current CPI trend continues."
+    }
+  ],
+  "24": [
+    {
+      "q": "VUCA stands for:",
+      "options": [
+        "Value, Use, Cost, Acceptance",
+        "Volatility, Uncertainty, Complexity, Ambiguity",
+        "Variance, Utility, Capability, Action",
+        "Vendor, User, Customer, Auditor"
+      ],
+      "correct": 1,
+      "explain": "VUCA describes modern project environments."
+    },
+    {
+      "q": "Building resilience into a project means:",
+      "options": [
+        "Avoiding all risks",
+        "Designing the project to respond well to disruption",
+        "Adding more documentation",
+        "Hiring more people"
+      ],
+      "correct": 1,
+      "explain": "Resilience = ability to absorb shocks and adapt."
+    },
+    {
+      "q": "Ambiguity differs from risk in that:",
+      "options": [
+        "They're the same",
+        "Risk = identifiable uncertainty; Ambiguity = unclear what the questions even are",
+        "Ambiguity is always positive",
+        "Risk is positive only"
+      ],
+      "correct": 1,
+      "explain": "Risk = known uncertainty. Ambiguity = you don't know what to plan for."
+    }
+  ],
+  "25": [
+    {
+      "q": "Which is NOT a Scrum role?",
+      "options": [
+        "Product Owner",
+        "Scrum Master",
+        "Project Manager",
+        "Development Team"
+      ],
+      "correct": 2,
+      "explain": "Scrum has 3 roles: PO, SM, Dev Team. PM is NOT a Scrum role."
+    },
+    {
+      "q": "The Daily Scrum is primarily for:",
+      "options": [
+        "Status reporting to managers",
+        "Team to inspect progress and plan next 24 hours",
+        "Stakeholder updates",
+        "Performance reviews"
+      ],
+      "correct": 1,
+      "explain": "Daily Scrum is the team's planning meeting—not a status report. 15 min max."
+    },
+    {
+      "q": "Sprint Retrospective focuses on:",
+      "options": [
+        "What was built",
+        "How the team can improve their process",
+        "Stakeholder feedback",
+        "Sprint planning"
+      ],
+      "correct": 1,
+      "explain": "Retro = team improvement. Review = product."
+    },
+    {
+      "q": "The Product Backlog is owned by:",
+      "options": [
+        "Scrum Master",
+        "Development Team",
+        "Product Owner",
+        "Project Manager"
+      ],
+      "correct": 2,
+      "explain": "Product Owner owns and prioritizes the Product Backlog."
+    }
+  ],
+  "26": [
+    {
+      "q": "When is a HYBRID approach most appropriate?",
+      "options": [
+        "Never",
+        "When pure predictive or pure adaptive don't fit",
+        "Only for small projects",
+        "Only when team prefers it"
+      ],
+      "correct": 1,
+      "explain": "Hybrid suits contexts needing both predictive and adaptive elements."
+    },
+    {
+      "q": "A common hybrid pattern is:",
+      "options": [
+        "No structure at all",
+        "Predictive scope/budget with agile delivery",
+        "Random methodology switching",
+        "Always waterfall"
+      ],
+      "correct": 1,
+      "explain": "Common hybrid: lock budget/scope predictively, deliver iteratively with agile."
+    },
+    {
+      "q": "When tailoring an approach, the PRIMARY consideration is:",
+      "options": [
+        "Team preference",
+        "Project context (requirements stability, risk, regulations)",
+        "Budget only",
+        "PMI rules"
+      ],
+      "correct": 1,
+      "explain": "Tailoring is context-driven."
+    }
+  ],
+  "27": [
+    {
+      "q": "When two answers seem correct on the PMP exam, you should typically choose:",
+      "options": [
+        "The first one",
+        "The most proactive, collaborative, and stakeholder-focused option",
+        "The shortest answer",
+        "The longest answer"
+      ],
+      "correct": 1,
+      "explain": "PMI favors proactive, collaborative answers."
+    },
+    {
+      "q": "Approximate time per question on the PMP exam:",
+      "options": [
+        "30 seconds",
+        "75 seconds",
+        "3 minutes",
+        "5 minutes"
+      ],
+      "correct": 1,
+      "explain": "180 questions in 230 minutes ≈ 75 seconds per question."
+    },
+    {
+      "q": "The exam domain split is approximately:",
+      "options": [
+        "50% People, 42% Process, 8% Business",
+        "42% People, 50% Process, 8% Business Environment",
+        "33% each domain",
+        "100% Process"
+      ],
+      "correct": 1,
+      "explain": "People 42%, Process 50%, Business Environment 8%."
+    }
+  ],
+  "28": [
+    {
+      "q": "After completing study materials, the BEST next step is:",
+      "options": [
+        "Schedule the exam immediately without practice",
+        "Take 2-3 full-length practice exams and review weak areas",
+        "Wait a year",
+        "Skip practice exams"
+      ],
+      "correct": 1,
+      "explain": "Full-length practice exams build stamina and reveal weak areas."
+    },
+    {
+      "q": "Daily practice is valuable because:",
+      "options": [
+        "It's required",
+        "Spaced repetition cements knowledge for long-term retention",
+        "It looks good on resumes",
+        "Anthropic says so"
+      ],
+      "correct": 1,
+      "explain": "Spaced repetition is proven for retention."
+    },
+    {
+      "q": "The most important factor in PMP exam success is:",
+      "options": [
+        "Natural talent",
+        "Memorizing PMBOK word-for-word",
+        "Consistent preparation, applied scenario-based practice, and exam strategy",
+        "Lucky guesses"
+      ],
+      "correct": 2,
+      "explain": "Consistency + scenario practice + strategy = success."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+import { state, curriculum, esc } from '../state';
+import { icons } from '../icons';
+
+export function renderLesson(): string {
+  const lesson = curriculum.find(c => c.day === state.selectedDay);
+  if (!lesson) return '';
+  const prevScore = state.selectedDay !== null ? state.data.quizScores[state.selectedDay] : undefined;
+
+  return `
+    <button class="back-btn" onclick="navigate('dashboard')">← Dashboard</button>
+    <div style="margin-bottom:24px">
+      <div class="lesson-meta">
+        <div class="eyebrow-accent">Week ${lesson.week} · Day ${lesson.day}</div>
+        <div class="eyebrow">${esc(lesson.domain)}</div>
+      </div>
+      <h1 class="h1" style="font-size:2rem">${esc(lesson.title)}</h1>
+      <div class="divider"></div>
+    </div>
+
+    <div class="lesson-body">
+      <p class="lesson-text">${esc(lesson.lesson)}</p>
+      <div class="key-terms">
+        <div class="key-terms-label">Key Terms</div>
+        <div class="tags">${lesson.keyTerms.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+      </div>
+    </div>
+
+    ${prevScore ? `<div style="background:var(--accent-soft);border:1px solid #fcd34d;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;color:#78350f;border-radius:2px">Previous quiz: <strong>${prevScore.score}/${prevScore.total}</strong> (${Math.round(prevScore.score/prevScore.total*100)}%)</div>` : ''}
+
+    <button class="btn btn-dark" onclick="startQuiz(${state.selectedDay})">${icons.brain} ${prevScore ? 'Retake Practice Quiz' : 'Begin Practice Quiz'}</button>
+  `;
+}
