@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>PMP · 28-Day Path</title>
+<meta name="theme-color" content="#1c1917" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="PMP Path" />
+<meta name="description" content="28-Day PMP Certification Study Plan" />
+
+<!-- Inline manifest as data URI -->
+<link rel="manifest" href='data:application/manifest+json,{"name":"PMP 28-Day Path","short_name":"PMP Path","start_url":".","display":"standalone","background_color":"#fafaf9","theme_color":"#1c1917","orientation":"portrait","icons":[{"src":"data:image/svg%2Bxml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22%3E%3Crect width=%22192%22 height=%22192%22 fill=%22%231c1917%22 rx=%2232%22/%3E%3Ctext x=%2296%22 y=%22118%22 font-family=%22Georgia,serif%22 font-size=%2272%22 font-weight=%22bold%22 fill=%22%23d97706%22 text-anchor=%22middle%22%3EP%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml","purpose":"any maskable"},{"src":"data:image/svg%2Bxml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect width=%22512%22 height=%22512%22 fill=%22%231c1917%22 rx=%2288%22/%3E%3Ctext x=%22256%22 y=%22320%22 font-family=%22Georgia,serif%22 font-size=%22200%22 font-weight=%22bold%22 fill=%22%23d97706%22 text-anchor=%22middle%22%3EP%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}' />
+
+<!-- Apple touch icon -->
+<link rel="apple-touch-icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%231c1917" rx="32"/><text x="96" y="118" font-family="Georgia,serif" font-size="72" font-weight="bold" fill="%23d97706" text-anchor="middle">P</text></svg>' />
+
+<!-- Favicon -->
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%231c1917" rx="32"/><text x="96" y="118" font-family="Georgia,serif" font-size="72" font-weight="bold" fill="%23d97706" text-anchor="middle">P</text></svg>' />
+
+<style>
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+  --text: #1c1917;
+  --text-soft: #57534e;
+  --text-mute: #a8a29e;
+  --text-faint: #d6d3d1;
+  --accent: #92400e;
+  --accent-light: #fef3c7;
+  --accent-soft: #fffbeb;
+  --success: #047857;
+  --success-light: #d1fae5;
+  --error: #b91c1c;
+  --error-light: #fee2e2;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); min-height: 100vh; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; font-size: inherit; }
+.app { max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Typography */
+.eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mute); }
+.eyebrow-accent { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); }
+.h1 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.05; margin: 8px 0 0; font-weight: 400; }
+.h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.15; margin: 0; font-weight: 400; }
+.h3 { font-size: 1.25rem; line-height: 1.4; margin: 0; font-weight: 400; }
+.divider { width: 48px; height: 1px; background: var(--accent); margin-top: 16px; }
+.body { font-size: 1rem; line-height: 1.8; color: var(--text-soft); }
+.small { font-size: 0.875rem; color: var(--text-soft); }
+
+/* Header */
+.header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+.reset-btn { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute); display: flex; align-items: center; gap: 4px; padding: 8px; }
+.reset-btn:hover { color: var(--text); }
+
+/* Stats Grid */
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 32px; }
+@media (min-width: 600px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { background: var(--bg); padding: 20px; }
+.stat-icon { width: 18px; height: 18px; margin-bottom: 10px; color: var(--text-soft); }
+.stat-icon.flame { color: var(--accent); }
+.stat-value { font-size: 1.875rem; font-weight: 300; line-height: 1; }
+.stat-value-small { font-size: 1.125rem; color: var(--text-mute); }
+.stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute); margin-top: 6px; }
+
+/* Card */
+.card { background: var(--surface); border: 1px solid var(--border); padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.card-accent::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--accent), #b45309); }
+
+/* Today */
+.today-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+.today-meta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute); margin-top: 6px; }
+.studied-badge { color: var(--success); display: flex; align-items: center; gap: 6px; font-size: 0.875rem; flex-shrink: 0; }
+.lesson-preview { font-size: 0.95rem; line-height: 1.8; color: var(--text-soft); margin: 0 0 24px; }
+
+/* Buttons */
+.btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.2s; width: 100%; border-radius: 2px; }
+.btn-dark { background: var(--text); color: var(--bg); }
+.btn-dark:hover, .btn-dark:active { background: #292524; }
+.btn-dark:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-accent { background: var(--accent); color: var(--bg); }
+.btn-accent:hover, .btn-accent:active { background: #78350f; }
+.btn-group { display: flex; gap: 12px; flex-direction: column; }
+@media (min-width: 480px) { .btn-group { flex-direction: row; } .btn-group .btn { flex: 1; } }
+
+/* Progress */
+.progress-bar { width: 100%; height: 4px; background: #f5f5f4; border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(to right, var(--accent), #78350f); transition: width 0.8s ease; }
+.progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 20px; }
+.day-cell { aspect-ratio: 1; border: 1px solid var(--border); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-mute); }
+.day-cell.done { background: var(--success); border-color: var(--success); color: white; }
+.day-cell.today { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: bold; }
+
+/* Quote card */
+.quote-card { background: var(--text); color: #e7e5e4; padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.quote-eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #f59e0b; margin-bottom: 12px; }
+.quote-text { font-size: 1.125rem; font-style: italic; line-height: 1.6; margin: 0 0 12px; }
+.quote-sub { font-size: 0.875rem; color: #a8a29e; line-height: 1.7; }
+.sparkle { position: absolute; top: 16px; right: 16px; opacity: 0.3; width: 24px; height: 24px; }
+
+/* Nav button */
+.nav-btn { background: var(--surface); border: 1px solid var(--border); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left; transition: border-color 0.2s; }
+.nav-btn:hover { border-color: var(--border-strong); }
+.nav-btn-title { color: var(--text); margin-bottom: 4px; }
+
+/* Back button */
+.back-btn { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 24px; padding: 8px 0; }
+.back-btn:hover { color: var(--text); }
+
+/* Lesson view */
+.lesson-meta { display: flex; gap: 16px; align-items: baseline; margin-bottom: 12px; }
+.lesson-body { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-bottom: 20px; }
+.lesson-text { font-size: 1.05rem; line-height: 1.85; color: var(--text); margin: 0; }
+.key-terms { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+.key-terms-label { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { padding: 6px 12px; background: #f5f5f4; border: 1px solid var(--border); font-size: 0.85rem; color: var(--text-soft); }
+
+/* Quiz */
+.quiz-progress-top { width: 100%; height: 1px; background: var(--border); margin-bottom: 8px; }
+.quiz-progress-bar { height: 1px; background: var(--text); transition: width 0.3s; }
+.quiz-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.quiz-card { background: var(--surface); border: 1px solid var(--border); padding: 28px; margin-top: 24px; }
+.quiz-eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.question { font-size: 1.125rem; line-height: 1.6; margin: 0 0 28px; color: var(--text); }
+.options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.option { padding: 14px 16px; border: 1px solid var(--border); background: var(--surface); text-align: left; font-size: 0.95rem; color: var(--text); transition: all 0.15s; border-radius: 2px; }
+.option:hover:not(:disabled) { border-color: var(--text-mute); }
+.option.selected { border-color: var(--text); background: #f5f5f4; }
+.option.correct { border-color: var(--success); background: var(--success-light); }
+.option.wrong { border-color: var(--error); background: var(--error-light); }
+.option.faded { opacity: 0.4; }
+.option-letter { color: var(--text-mute); margin-right: 12px; }
+.explain { padding: 18px; border-left: 2px solid; margin-bottom: 20px; }
+.explain.right { border-color: var(--success); background: var(--success-light); }
+.explain.wrong { border-color: var(--error); background: var(--error-light); }
+.explain-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+.explain.right .explain-label { color: var(--success); }
+.explain.wrong .explain-label { color: var(--error); }
+.explain-text { font-size: 0.9rem; line-height: 1.7; color: var(--text-soft); }
+
+/* Quiz finish */
+.finish-icon { width: 48px; height: 48px; margin: 0 auto 16px; display: block; color: var(--accent); }
+.finish-score { font-size: 4rem; font-weight: 300; margin: 8px 0; }
+.finish-message { font-style: italic; color: var(--text-soft); text-align: center; line-height: 1.6; margin: 0; padding: 20px 0; border-top: 1px solid var(--border); }
+.answer-row { display: flex; align-items: center; gap: 12px; font-size: 0.875rem; color: var(--text-soft); padding: 6px 0; }
+.icon-sm { width: 16px; height: 16px; flex-shrink: 0; }
+.icon-success { color: var(--success); }
+.icon-error { color: var(--error); }
+
+/* All lessons */
+.week-section { margin-bottom: 40px; }
+.lesson-row { width: 100%; text-align: left; padding: 16px; border: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; gap: 14px; margin-bottom: 8px; transition: border-color 0.15s; border-radius: 2px; }
+.lesson-row:hover:not(:disabled) { border-color: var(--text-mute); }
+.lesson-row:disabled { opacity: 0.4; cursor: not-allowed; background: #f5f5f4; }
+.lesson-row.today { background: var(--accent-soft); border-color: #fcd34d; }
+.lesson-row.done { border-color: #a7f3d0; }
+.lesson-num { width: 32px; text-align: center; color: var(--text-mute); font-size: 0.875rem; flex-shrink: 0; }
+.lesson-info { flex: 1; min-width: 0; }
+.lesson-title { color: var(--text); margin-bottom: 4px; font-size: 0.95rem; }
+.lesson-domain { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute); }
+.lesson-score { font-size: 0.75rem; color: var(--text-mute); flex-shrink: 0; }
+.today-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
+
+/* Install banner */
+.install-banner { background: var(--accent-soft); border: 1px solid #fcd34d; padding: 14px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-radius: 2px; font-size: 0.875rem; }
+.install-banner button { background: var(--accent); color: white; padding: 8px 16px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; }
+.install-banner .close { background: none; color: var(--text-mute); padding: 4px 8px; }
+
+.footer { text-align: center; margin-top: 48px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-faint); }
+
+/* Icons (inline SVG) */
+.icon { width: 20px; height: 20px; stroke-width: 1.5; }
+</style>
+</head>
+<body>
+
+<div id="app" class="app"></div>
+
+<script>
+// ============= CURRICULUM =============
+const curriculum = [
+  { day: 1, week: 1, title: "What is a Project?", domain: "Foundations", lesson: "A project is a temporary endeavor undertaken to create a unique product, service, or result. Key characteristics: TEMPORARY (defined start/end), UNIQUE (one-of-a-kind output), and PROGRESSIVE ELABORATION (details emerge over time). Projects differ from operations, which are ongoing and repetitive. Examples: building a bridge, launching software, organizing an event. Understanding this foundational definition is critical—every PMP question assumes you know what makes work 'project work'.", keyTerms: ["Temporary", "Unique deliverable", "Progressive elaboration", "Operations vs Projects"] },
+  { day: 2, week: 1, title: "Project, Program, Portfolio", domain: "Foundations", lesson: "PROJECT: single temporary effort with specific output. PROGRAM: group of related projects managed together for benefits not available individually (e.g., a company's digital transformation program containing multiple projects). PORTFOLIO: collection of projects, programs, and operations grouped to achieve strategic objectives. They don't need to be related. Hierarchy: Portfolio → Programs → Projects. PMs report into Program Managers, who report into Portfolio Managers.", keyTerms: ["Program", "Portfolio", "Strategic alignment", "Benefits realization"] },
+  { day: 3, week: 1, title: "PMBOK 7 Principles (Part 1)", domain: "Foundations", lesson: "PMBOK 7 has 12 guiding principles. First 6: 1) STEWARDSHIP - act responsibly, ethically, with integrity. 2) TEAM - create a collaborative team environment. 3) STAKEHOLDERS - engage effectively. 4) VALUE - focus on delivering value. 5) SYSTEMS THINKING - recognize and respond to system interactions. 6) LEADERSHIP - demonstrate leadership behaviors. These aren't rules—they're behaviors that guide decisions when standards conflict.", keyTerms: ["Stewardship", "Systems thinking", "Servant leadership", "Value delivery"] },
+  { day: 4, week: 1, title: "PMBOK 7 Principles (Part 2)", domain: "Foundations", lesson: "Remaining 6 principles: 7) TAILORING - tailor based on context. 8) QUALITY - build quality into processes and deliverables. 9) COMPLEXITY - navigate complexity. 10) RISK - optimize risk responses. 11) ADAPTABILITY & RESILIENCY - embrace change. 12) CHANGE - enable change to achieve envisioned future state. Memory tip: these principles favor agility and adaptability over rigid process.", keyTerms: ["Tailoring", "Adaptability", "Resiliency", "Change management"] },
+  { day: 5, week: 1, title: "8 Performance Domains Overview", domain: "Foundations", lesson: "Performance Domains replaced Knowledge Areas in PMBOK 7. They are interactive areas of focus that work together: 1) Stakeholders 2) Team 3) Development Approach & Life Cycle 4) Planning 5) Project Work 6) Delivery 7) Measurement 8) Uncertainty. Unlike sequential processes, all 8 operate simultaneously. Each has a desired outcome.", keyTerms: ["Performance domains", "Interactive", "Outcome-focused", "Holistic"] },
+  { day: 6, week: 1, title: "Development Approaches", domain: "Foundations", lesson: "Three main approaches: PREDICTIVE (waterfall) - plan everything upfront, best for stable requirements. ADAPTIVE (agile) - iterative, embraces change, best for evolving requirements. HYBRID - combination, e.g., predictive scope with agile delivery. Choice depends on: requirements clarity, change frequency, risk level, stakeholder availability, and delivery cadence needs.", keyTerms: ["Predictive", "Adaptive", "Hybrid", "Iteration", "Increment"] },
+  { day: 7, week: 1, title: "Week 1 Review & Reflection", domain: "Foundations", lesson: "REVIEW DAY: You've covered project fundamentals, the project/program/portfolio hierarchy, all 12 PMBOK principles, the 8 performance domains, and development approaches. Today, focus on integration. Ask yourself: How do principles guide behavior across performance domains? How does development approach choice affect every other domain? Consistency matters more than speed.", keyTerms: ["Integration", "Review", "Reflection", "Consistency"] },
+  { day: 8, week: 2, title: "Stakeholder Identification", domain: "Stakeholders", lesson: "Stakeholders are anyone affected by, or who can affect, the project. Identify EARLY and CONTINUOUSLY—new stakeholders emerge throughout. Categories: internal/external, supportive/resistant, high/low influence, high/low interest. Use techniques like brainstorming, document analysis, expert judgment. The Stakeholder Register is your living document.", keyTerms: ["Stakeholder register", "Power/Interest grid", "Salience model", "Influence"] },
+  { day: 9, week: 2, title: "Stakeholder Engagement", domain: "Stakeholders", lesson: "Five engagement levels: UNAWARE, RESISTANT, NEUTRAL, SUPPORTIVE, LEADING. Goal: move each stakeholder toward the desired level. Strategies vary: resistant stakeholders need understanding their concerns; supportive ones need to stay informed. Stakeholder Engagement Plan defines: who, current vs desired engagement, communication needs.", keyTerms: ["Engagement levels", "Communication strategy", "Influence tactics", "Buy-in"] },
+  { day: 10, week: 2, title: "Building High-Performing Teams", domain: "Team", lesson: "High-performing teams share: clear vision, shared accountability, psychological safety, mutual trust, and continuous improvement mindset. PM's role: create the environment, not control the work. Use SERVANT LEADERSHIP—remove obstacles, provide resources, shield from distractions. Tuckman's stages (Forming, Storming, Norming, Performing, Adjourning) describe natural team evolution.", keyTerms: ["Servant leadership", "Psychological safety", "Tuckman model", "Empowerment"] },
+  { day: 11, week: 2, title: "Leadership Styles", domain: "Team", lesson: "Match style to situation: SERVANT - empower team (preferred in agile). TRANSFORMATIONAL - inspire vision. TRANSACTIONAL - clear rewards/consequences. LAISSEZ-FAIRE - hands-off (works for senior teams). CHARISMATIC - rally energy. INTERACTIONAL - blend styles. Effective PMs flex between styles. Exam tip: when in doubt on PMBOK 7 questions, lean toward servant/collaborative answers.", keyTerms: ["Servant", "Transformational", "Transactional", "Situational leadership"] },
+  { day: 12, week: 2, title: "Conflict Management", domain: "Team", lesson: "Conflict is inevitable—and often healthy. Thomas-Kilmann modes: COLLABORATING (win-win, preferred) - solve together. COMPROMISING - both give a little. ACCOMMODATING - you yield. COMPETING - assert position. AVOIDING - sidestep. PMBOK 7 favors COLLABORATING for most situations. Use COMPETING only when urgent/non-negotiable.", keyTerms: ["Collaborating", "Compromising", "Thomas-Kilmann", "Constructive conflict"] },
+  { day: 13, week: 2, title: "Virtual & Distributed Teams", domain: "Team", lesson: "Virtual teams need MORE intentionality, not less. Critical practices: explicit team charter (working hours, response times, communication norms), strong async communication discipline, deliberate trust-building (virtual coffees, watercooler channels), cultural awareness, and right-sized tooling. Watch for warning signs: silent members, dropping engagement, HQ-vs-remote cliques.", keyTerms: ["Virtual team", "Async communication", "Team charter", "Trust building"] },
+  { day: 14, week: 2, title: "Week 2 Review", domain: "Team", lesson: "REVIEW DAY: Stakeholder engagement and team dynamics are deeply connected—your team is your most important stakeholder group. Reflect: How does servant leadership change how you manage stakeholders? How does conflict management apply to stakeholders, not just team? Don't move on until you understand WHY each correct answer is correct.", keyTerms: ["Integration", "Stakeholder-team overlap", "Review", "Mastery"] },
+  { day: 15, week: 3, title: "Planning Performance Domain", domain: "Planning", lesson: "Planning is CONTINUOUS, not one-time. In predictive: detailed upfront. In adaptive: rolling-wave, just-in-time. Cover: scope, schedule, cost, resources, communications, risk, procurement, quality, change. Match planning depth to uncertainty—high uncertainty = less detailed long-term plans.", keyTerms: ["Rolling wave planning", "Progressive elaboration", "Plan tailoring", "Coordination"] },
+  { day: 16, week: 3, title: "Scope Management", domain: "Planning", lesson: "Scope = what's IN and OUT of the project. Two types: PRODUCT scope (features/functions of deliverable) and PROJECT scope (work to deliver it). Key tools: Scope Statement, WBS (Work Breakdown Structure—decomposing work into manageable chunks), WBS Dictionary. Scope Creep = uncontrolled changes. Gold Plating = adding unrequested features. Both bad.", keyTerms: ["WBS", "Scope creep", "Gold plating", "Scope baseline"] },
+  { day: 17, week: 3, title: "Schedule Management", domain: "Planning", lesson: "Schedule shows WHEN work happens. Process: define activities → sequence them → estimate durations → develop schedule. Key concepts: CRITICAL PATH (longest path, determines minimum duration), FLOAT/SLACK (how much you can delay without impacting end date), MILESTONES. Compression: CRASHING (add resources, costs more) and FAST-TRACKING (parallelize, adds risk).", keyTerms: ["Critical path", "Float", "Crashing", "Fast-tracking", "Milestones"] },
+  { day: 18, week: 3, title: "Cost Management", domain: "Planning", lesson: "Cost = budget for project. Estimate types: ROM (Rough Order of Magnitude, -25% to +75%), Budgetary (-10% to +25%), Definitive (-5% to +10%). Techniques: analogous (top-down, fast, less accurate), parametric (statistical model), bottom-up (most accurate), three-point (PERT: optimistic+pessimistic+most-likely). Cost Baseline = approved budget over time.", keyTerms: ["ROM estimate", "Bottom-up", "Three-point", "Cost baseline", "Contingency reserve"] },
+  { day: 19, week: 3, title: "Quality Management", domain: "Planning", lesson: "Quality = meeting requirements (not perfection). Two activities: QUALITY ASSURANCE (process-focused, prevent defects) and QUALITY CONTROL (product-focused, find defects). PREVENTION over INSPECTION—it's cheaper. Cost of Quality (COQ) = conformance + non-conformance costs. Tools: cause-and-effect (Ishikawa), Pareto (80/20), control charts, checklists.", keyTerms: ["QA vs QC", "Cost of Quality", "Prevention", "Pareto"] },
+  { day: 20, week: 3, title: "Risk Management", domain: "Planning", lesson: "Risk = uncertain event with positive (opportunity) or negative (threat) impact. Process: identify → analyze → plan responses → implement → monitor. THREAT responses: AVOID, MITIGATE, TRANSFER, ACCEPT, ESCALATE. OPPORTUNITY responses: EXPLOIT, ENHANCE, SHARE, ACCEPT, ESCALATE. Reserves: CONTINGENCY (known risks) vs MANAGEMENT (unknown unknowns).", keyTerms: ["Risk register", "Avoid/Mitigate/Transfer", "Contingency reserve", "Risk appetite"] },
+  { day: 21, week: 3, title: "Week 3 Review", domain: "Planning", lesson: "REVIEW DAY: Planning ties everything together. Today, integrate: how scope drives schedule, how schedule drives cost, how risks affect all three. Pay attention to time-pressured calculation questions—they appear on the exam. Review WBS, critical path, and three-point estimating until automatic.", keyTerms: ["Integration", "Triple constraint", "Calculations", "Mastery"] },
+  { day: 22, week: 4, title: "Delivery Performance Domain", domain: "Delivery", lesson: "Delivery = realizing the value the project was meant to produce. Focus: requirements management, scope acceptance, quality of deliverables, value realization. In predictive: deliver at end. In adaptive: deliver incrementally. Key artifacts: requirements traceability matrix, acceptance criteria, definition of done. Value > volume of features.", keyTerms: ["Requirements traceability", "Definition of done", "Acceptance criteria", "Value realization"] },
+  { day: 23, week: 4, title: "Measurement Domain & EVM", domain: "Measurement", lesson: "Earned Value Management (EVM) integrates scope, schedule, cost. Key formulas: PV (Planned Value), EV (Earned Value), AC (Actual Cost). Variances: CV = EV - AC, SV = EV - PV. Indices: CPI = EV/AC, SPI = EV/PV. CPI/SPI > 1 = good, < 1 = bad. EAC = BAC/CPI is most common forecast formula. Master these—they're guaranteed exam points.", keyTerms: ["EVM", "CPI", "SPI", "EAC", "Variance analysis"] },
+  { day: 24, week: 4, title: "Uncertainty Domain", domain: "Uncertainty", lesson: "Uncertainty includes risk, ambiguity, and complexity. AMBIGUITY = unclear requirements. COMPLEXITY = many interconnected parts. VOLATILITY = rapid change. Build resilience through: redundancy, diverse perspectives, iteration, reserves, scenario planning. PMBOK 7 emphasizes adaptability over prediction.", keyTerms: ["Ambiguity", "Complexity", "VUCA", "Resilience"] },
+  { day: 25, week: 4, title: "Agile Mindset & Frameworks", domain: "Agile", lesson: "Agile = mindset based on the Agile Manifesto's 4 values and 12 principles. Frameworks: SCRUM (most tested—roles: PO, SM, Dev Team; events: Sprint Planning, Daily, Review, Retro; artifacts: Product Backlog, Sprint Backlog, Increment). KANBAN (continuous flow, WIP limits). XP (engineering practices). Exam blends agile with predictive—~50% of questions are agile/hybrid.", keyTerms: ["Scrum", "Sprint", "Product backlog", "Daily standup", "Retrospective"] },
+  { day: 26, week: 4, title: "Hybrid Approaches", domain: "Agile", lesson: "Hybrid blends predictive and adaptive. Examples: predictive scope/budget with agile delivery; agile development with predictive deployment. Choose based on: regulatory requirements, stakeholder readiness, deliverable type, risk profile. There's no 'right' hybrid—tailor to context.", keyTerms: ["Hybrid", "Tailoring", "Stage gates", "Iterative delivery"] },
+  { day: 27, week: 4, title: "Exam Strategy & Mindset", domain: "Exam Prep", lesson: "PMP exam: 180 questions, 230 minutes, 3 domains (People 42%, Process 50%, Business 8%). Strategies: 1) Read the question last sentence first. 2) Eliminate clearly wrong answers. 3) When two answers seem right, pick the more PROACTIVE/COLLABORATIVE one. 4) Trust PMBOK 7 principles. 5) Manage time—~75 seconds per question. 6) Use the two 10-min breaks.", keyTerms: ["Exam strategy", "Time management", "Question analysis", "PMI-ism"] },
+  { day: 28, week: 4, title: "Final Review & Next Steps", domain: "Exam Prep", lesson: "CONGRATULATIONS on completing 28 days! Next steps: 1) Take 2-3 full-length practice exams. 2) Review weak domains. 3) Join a PMP study group. 4) Schedule your exam—commitment forces preparation. 5) Continue daily quizzes here for retention. The certification is achievable with consistent effort. You've built the routine; now finish strong.", keyTerms: ["Practice exams", "Weak areas", "Study groups", "Exam scheduling", "Persistence"] }
+];
+
+const questionBank = {
+  1: [{q:"Which of the following BEST describes a project?",options:["Ongoing work that produces the same output repeatedly","A temporary endeavor undertaken to create a unique product or service","Any work assigned to a team","Work that requires a budget"],correct:1,explain:"Projects are TEMPORARY (defined start/end) and produce UNIQUE outputs—this distinguishes them from operations."},{q:"What is 'progressive elaboration' in project management?",options:["Adding more team members as the project grows","Continuously refining and detailing project information as more becomes known","Increasing the project budget over time","Expanding the project scope deliberately"],correct:1,explain:"Progressive elaboration means details emerge and become clearer as the project progresses—not all is known upfront."},{q:"Which is NOT a characteristic of a project?",options:["Temporary","Unique deliverable","Ongoing and repetitive","Progressive elaboration"],correct:2,explain:"Ongoing and repetitive work describes OPERATIONS, not projects. Projects are temporary by definition."}],
+  2: [{q:"What is the primary difference between a program and a portfolio?",options:["Programs are larger than portfolios","Programs contain related projects; portfolios contain projects/programs that may not be related but support strategy","Portfolios are temporary; programs are permanent","There is no difference"],correct:1,explain:"Programs group RELATED projects for shared benefits. Portfolios group projects/programs aligned to STRATEGY but not necessarily related."},{q:"A company is running a digital transformation initiative containing 12 related projects. This is BEST described as a:",options:["Project","Program","Portfolio","Operation"],correct:1,explain:"Related projects managed together for combined benefits = PROGRAM."},{q:"Who typically reports to a Portfolio Manager?",options:["Team members","Project Managers only","Program Managers and Project Managers","Stakeholders"],correct:2,explain:"The hierarchy is Portfolio → Programs → Projects, so Program Managers and standalone PMs report to Portfolio Managers."}],
+  3: [{q:"Which PMBOK 7 principle emphasizes acting ethically and with integrity?",options:["Leadership","Stewardship","Value","Quality"],correct:1,explain:"Stewardship is the first principle—act responsibly, ethically, and with integrity."},{q:"'Recognize and respond to system interactions' refers to which principle?",options:["Tailoring","Complexity","Systems Thinking","Adaptability"],correct:2,explain:"Systems Thinking is about understanding how parts of the project interact as a system."},{q:"Which leadership style does PMBOK 7 most strongly emphasize?",options:["Command-and-control","Servant leadership","Laissez-faire","Transactional"],correct:1,explain:"Servant leadership—where the leader serves the team—is the dominant style emphasized in PMBOK 7."}],
+  4: [{q:"The principle of TAILORING means:",options:["Customizing approach based on context, project, and environment","Following PMBOK exactly as written","Reducing project scope to fit budget","Adjusting team size to match work"],correct:0,explain:"Tailoring is about adapting your approach—methods, processes, tools—to fit the specific context."},{q:"Which principle emphasizes 'embracing change to enable a better future state'?",options:["Risk","Adaptability & Resiliency","Change","Quality"],correct:2,explain:"The Change principle is specifically about enabling change to achieve the envisioned future state."},{q:"How many principles are in PMBOK 7?",options:["8","10","12","14"],correct:2,explain:"PMBOK 7 has 12 principles and 8 performance domains—don't confuse the two."}],
+  5: [{q:"How do PMBOK 7 Performance Domains differ from PMBOK 6 Knowledge Areas?",options:["They are the same","Performance Domains are sequential; Knowledge Areas were not","Performance Domains are interactive and outcome-focused; Knowledge Areas were process-focused","There are more Performance Domains"],correct:2,explain:"Performance Domains are outcome-oriented and interactive—they all operate together."},{q:"Which is NOT a PMBOK 7 Performance Domain?",options:["Stakeholders","Team","Procurement","Uncertainty"],correct:2,explain:"Procurement is a PMBOK 6 Knowledge Area, not a PMBOK 7 Performance Domain."},{q:"How many Performance Domains exist in PMBOK 7?",options:["6","8","10","12"],correct:1,explain:"8 Performance Domains: Stakeholders, Team, Development Approach & Life Cycle, Planning, Project Work, Delivery, Measurement, Uncertainty."}],
+  6: [{q:"Which approach is BEST for a project with stable, well-understood requirements?",options:["Adaptive (Agile)","Predictive (Waterfall)","Hybrid","All approaches work equally well"],correct:1,explain:"Predictive works best when requirements are stable—you can plan everything upfront."},{q:"A project has rapidly evolving requirements and high stakeholder availability. The BEST approach is:",options:["Predictive","Adaptive","Sequential","Linear"],correct:1,explain:"Adaptive (agile) thrives with evolving requirements and engaged stakeholders."},{q:"What characterizes a HYBRID approach?",options:["Pure agile only","Pure waterfall only","Combination of predictive and adaptive elements tailored to context","Random switching"],correct:2,explain:"Hybrid intentionally blends predictive and adaptive elements to fit project context."}],
+  7: [{q:"What is the core idea behind PMBOK 7's principle-based approach?",options:["Strict process compliance","Behaviors guide decisions when standards conflict","More documentation","Larger teams"],correct:1,explain:"Principles are guiding behaviors—they help make decisions where rigid rules don't apply."},{q:"How many Performance Domains and Principles are in PMBOK 7?",options:["10 and 8","8 and 12","12 and 8","5 and 10"],correct:1,explain:"8 Performance Domains and 12 Principles."},{q:"Performance Domains operate:",options:["Sequentially","Interactively, all at the same time","Only when needed","In random order"],correct:1,explain:"Performance Domains are interactive—they all run simultaneously throughout the project."}],
+  8: [{q:"When should stakeholder identification occur?",options:["Only at project start","Once during planning","Continuously throughout the project","Only when issues arise"],correct:2,explain:"Stakeholder identification is CONTINUOUS—new stakeholders emerge and existing ones change."},{q:"The Stakeholder Register typically includes:",options:["Only stakeholder names","Names, roles, contact info, influence, interest, expectations","Only senior executives","Only the project sponsor"],correct:1,explain:"The register is comprehensive—contact info, role, influence, interest, requirements, and engagement strategy."},{q:"A Power/Interest grid is used to:",options:["Calculate stakeholder budgets","Categorize stakeholders by their power and interest levels to plan engagement","Rank stakeholders by importance only","Replace the stakeholder register"],correct:1,explain:"The Power/Interest grid plots stakeholders to determine engagement strategy."}],
+  9: [{q:"The five engagement levels for stakeholders are:",options:["New, active, passive, retired, gone","Unaware, Resistant, Neutral, Supportive, Leading","Low, medium, high, very high, critical","Internal, external, customer, vendor, regulator"],correct:1,explain:"PMBOK defines engagement levels as Unaware → Resistant → Neutral → Supportive → Leading."},{q:"A key stakeholder is currently RESISTANT. Your goal should be to:",options:["Avoid them","Replace them","Move them toward at least Neutral or Supportive through understanding their concerns","Report them to leadership"],correct:2,explain:"Engage with resistant stakeholders to understand concerns and move them toward greater support."},{q:"What is in the Stakeholder Engagement Plan?",options:["Just contact information","Current vs desired engagement levels and strategies to bridge the gap","Only meeting schedules","Project budget allocations"],correct:1,explain:"The plan documents current engagement, desired engagement, and strategies to move stakeholders."}],
+  10: [{q:"Psychological safety in a team means:",options:["Physical workplace safety","Team members feel safe to speak up, take risks, and admit mistakes without fear","Locked filing cabinets","Background checks"],correct:1,explain:"Psychological safety is the belief you won't be punished for speaking up—critical for high-performing teams."},{q:"In Tuckman's model, which stage involves conflict and differing opinions?",options:["Forming","Storming","Norming","Performing"],correct:1,explain:"Storming is when team members express differences and conflict emerges—a normal stage."},{q:"A servant leader primarily:",options:["Commands the team","Removes obstacles and serves the team's needs","Avoids decision-making","Focuses on personal recognition"],correct:1,explain:"Servant leadership inverts the pyramid—the leader serves the team."}],
+  11: [{q:"Which leadership style is MOST aligned with PMBOK 7's emphasis?",options:["Authoritarian","Servant","Laissez-faire","Bureaucratic"],correct:1,explain:"Servant leadership is most strongly emphasized in PMBOK 7."},{q:"Transactional leadership is BEST when:",options:["Tasks are clear and rewards/consequences motivate performance","Team is highly autonomous","Vision is needed","Team is in storming phase"],correct:0,explain:"Transactional works for clear, structured tasks with explicit rewards/penalties."},{q:"Effective project managers:",options:["Stick to one leadership style always","Flex between styles based on team and situation","Avoid leadership entirely","Only use authoritarian style"],correct:1,explain:"Situational leadership—adapting your style to the context—is the mark of an effective PM."}],
+  12: [{q:"Which conflict resolution mode does PMBOK 7 generally favor?",options:["Avoiding","Competing","Collaborating","Accommodating"],correct:2,explain:"Collaborating (win-win) is preferred—it produces the best long-term solution."},{q:"Compromising means:",options:["You completely yield","Both parties give a little to reach a middle ground","Win-win solution found together","Avoiding the issue"],correct:1,explain:"Compromising = partial-win for both. Useful when time is tight, but not optimal."},{q:"Avoiding conflict is appropriate when:",options:["Always","The issue is low-stakes or needs cooling-off time","You want to be liked","Conflict is uncomfortable"],correct:1,explain:"Avoiding can be valid for trivial issues or when emotions are too high."}],
+  13: [{q:"Virtual teams require MORE of which than co-located teams?",options:["Less communication","Intentional structure and explicit norms","Fewer meetings","Less documentation"],correct:1,explain:"Distance amplifies weaknesses—virtual teams need explicit norms and deliberate trust-building."},{q:"Which is a warning sign in a virtual team?",options:["Cameras on during meetings","Members consistently silent and dropping engagement","Use of async tools","Documented decisions"],correct:1,explain:"Silence and disengagement are red flags—isolation can develop fast in virtual settings."},{q:"What's the BEST practice for time zone management?",options:["Always meet at HQ time","Rotate inconvenient meeting times to share the burden fairly","Avoid meetings entirely","Only meet once per quarter"],correct:1,explain:"Fairness matters—rotating who has 'bad' meeting times distributes the burden equitably."}],
+  14: [{q:"Why are stakeholder engagement and team management interconnected?",options:["They aren't connected","Your team is your most critical stakeholder group","Both require budgets","Both involve meetings"],correct:1,explain:"The team is the most important stakeholder group—how you engage them affects everything."},{q:"When applying servant leadership to stakeholders, you focus on:",options:["Commanding their compliance","Understanding and serving their genuine needs while balancing project goals","Avoiding them","Reporting them"],correct:1,explain:"Servant leadership extends beyond the team—understand stakeholder needs."},{q:"A team in 'Storming' phase has a stakeholder concern. The PM should:",options:["Ignore the team and address the stakeholder","Address both—use storming as opportunity for the team to learn collaborative problem-solving","Replace the team","Escalate immediately"],correct:1,explain:"Storming is normal—use real situations as growth opportunities."}],
+  15: [{q:"In agile projects, planning is typically:",options:["Done all at once at the start","Done continuously through rolling-wave planning","Avoided entirely","Only done by the PM"],correct:1,explain:"Adaptive approaches use rolling-wave planning—plan near-term in detail."},{q:"Rolling-wave planning is:",options:["Planning everything upfront in detail","Planning near-term work in detail and future work at higher level","A type of risk","Stakeholder management technique"],correct:1,explain:"Rolling-wave matches planning depth to certainty."},{q:"Planning depth should match:",options:["Project budget","Team size","Level of uncertainty—less detail for highly uncertain work","Stakeholder count"],correct:2,explain:"High uncertainty = less detailed long-term plans (they'll change anyway)."}],
+  16: [{q:"What is the WBS?",options:["Work Breakdown Structure—hierarchical decomposition of project work","Weekly Budget Spreadsheet","Workforce Bonus System","Web-Based System"],correct:0,explain:"WBS is a deliverable-oriented hierarchical decomposition of the total project scope."},{q:"Scope creep is:",options:["Planned scope expansion","Uncontrolled changes or growth in scope without proper change control","A type of risk response","Stakeholder feedback"],correct:1,explain:"Scope creep = uncontrolled expansion. Use formal change control to prevent it."},{q:"Gold plating refers to:",options:["Adding scope/features the customer didn't request","High-quality deliverables","Premium pricing","Executive dashboards"],correct:0,explain:"Gold plating = team adds extras the customer didn't ask for. Always avoid."}],
+  17: [{q:"The CRITICAL PATH is:",options:["The most important task","The longest path through the network—determines the minimum project duration","The path with the most resources","The shortest path"],correct:1,explain:"Critical path = longest sequence of dependent activities."},{q:"FAST-TRACKING means:",options:["Adding more resources","Performing activities in parallel that were originally sequential","Reducing scope","Skipping quality checks"],correct:1,explain:"Fast-tracking compresses schedule by parallelizing activities—adds risk."},{q:"CRASHING typically:",options:["Reduces scope","Adds resources to shorten duration, increasing cost","Cancels the project","Removes risks"],correct:1,explain:"Crashing = trade cost for time. Add resources/overtime to shorten duration."}],
+  18: [{q:"A ROM estimate has accuracy of approximately:",options:["±5%","±10%","-25% to +75%","±50%"],correct:2,explain:"ROM (Rough Order of Magnitude) is early-stage estimating with -25% to +75% range."},{q:"Three-point estimating uses:",options:["Three different teams","Optimistic, pessimistic, and most-likely estimates combined","Three project phases","Three estimators"],correct:1,explain:"Three-point (often PERT) combines O+P+ML to get expected value."},{q:"Bottom-up estimating is:",options:["Least accurate but fastest","Most accurate but most time-consuming—estimates each work package then aggregates","Random guess","Top-down approach"],correct:1,explain:"Bottom-up estimates each component individually then sums—highest accuracy."}],
+  19: [{q:"Quality Assurance (QA) focuses on:",options:["Inspecting finished products","Process improvement to prevent defects","Customer complaints","Sales metrics"],correct:1,explain:"QA is process-focused and preventive. QC is product-focused."},{q:"Cost of Quality (COQ) includes:",options:["Only inspection costs","Conformance (prevention, appraisal) and non-conformance (failures) costs","Just rework costs","PM overhead"],correct:1,explain:"COQ = all costs related to quality, both conformance and non-conformance."},{q:"Pareto principle in quality says:",options:["All defects are equal","80% of problems come from 20% of causes—focus on the vital few","Quality is free","Inspect everything"],correct:1,explain:"Pareto (80/20) helps prioritize quality efforts."}],
+  20: [{q:"Which is NOT a threat response strategy?",options:["Avoid","Mitigate","Exploit","Transfer"],correct:2,explain:"EXPLOIT is for OPPORTUNITIES. Threat strategies: Avoid, Mitigate, Transfer, Accept, Escalate."},{q:"Buying insurance is an example of which risk response?",options:["Avoid","Mitigate","Transfer","Accept"],correct:2,explain:"Insurance transfers financial risk to a third party—classic Transfer strategy."},{q:"Contingency reserves are for:",options:["Unknown unknowns","Known risks identified in the risk register","Profit margin","Bonuses"],correct:1,explain:"Contingency = identified (known) risks. Management reserves = unknown unknowns."}],
+  21: [{q:"If a project's critical path is delayed, the project end date will:",options:["Stay the same","Be delayed by the same amount unless action is taken","Speed up","Move earlier"],correct:1,explain:"Critical path = zero float. Any delay delays project end."},{q:"Scope, schedule, and cost are interconnected because:",options:["They are independent","Changing one typically affects the others—the triple constraint","They share team members","Stakeholders care about each"],correct:1,explain:"Triple constraint: scope, time, cost are interdependent."},{q:"Which estimating technique is MOST accurate but time-consuming?",options:["Analogous","Parametric","Bottom-up","Expert judgment"],correct:2,explain:"Bottom-up estimates each work package—highest accuracy, highest effort."}],
+  22: [{q:"A Requirements Traceability Matrix:",options:["Tracks team hours","Links requirements from origin through deliverables to ensure all are met","Manages communications","Calculates budget"],correct:1,explain:"RTM ensures every requirement traces from source to delivery."},{q:"In agile, 'Definition of Done' means:",options:["The project is complete","Shared understanding of when a work item is truly complete","Personal task list","End of contract"],correct:1,explain:"DoD is a team agreement on completion criteria for any work item."},{q:"Adaptive (agile) projects deliver value:",options:["Only at project end","Incrementally throughout the project","Never","Once a year"],correct:1,explain:"Agile delivers working increments throughout—value realized continuously."}],
+  23: [{q:"If CPI = 0.85, the project is:",options:["Under budget","Over budget (getting $0.85 of value for every $1 spent)","On budget","Not measurable"],correct:1,explain:"CPI < 1 = over budget. CPI > 1 = under budget."},{q:"Schedule Variance (SV) = ?",options:["EV - PV","EV - AC","PV - AC","AC - EV"],correct:0,explain:"SV = EV - PV. Positive = ahead, negative = behind."},{q:"If SPI = 1.10, the project is:",options:["10% behind schedule","10% ahead of schedule","On schedule","Cancelled"],correct:1,explain:"SPI > 1 = ahead of schedule."},{q:"EAC = BAC / CPI calculates:",options:["Schedule variance","Estimate at Completion assuming current cost performance continues","Project budget at start","Team size needed"],correct:1,explain:"This common EAC formula projects total cost if current CPI trend continues."}],
+  24: [{q:"VUCA stands for:",options:["Value, Use, Cost, Acceptance","Volatility, Uncertainty, Complexity, Ambiguity","Variance, Utility, Capability, Action","Vendor, User, Customer, Auditor"],correct:1,explain:"VUCA describes modern project environments."},{q:"Building resilience into a project means:",options:["Avoiding all risks","Designing the project to respond well to disruption","Adding more documentation","Hiring more people"],correct:1,explain:"Resilience = ability to absorb shocks and adapt."},{q:"Ambiguity differs from risk in that:",options:["They're the same","Risk = identifiable uncertainty; Ambiguity = unclear what the questions even are","Ambiguity is always positive","Risk is positive only"],correct:1,explain:"Risk = known uncertainty. Ambiguity = you don't know what to plan for."}],
+  25: [{q:"Which is NOT a Scrum role?",options:["Product Owner","Scrum Master","Project Manager","Development Team"],correct:2,explain:"Scrum has 3 roles: PO, SM, Dev Team. PM is NOT a Scrum role."},{q:"The Daily Scrum is primarily for:",options:["Status reporting to managers","Team to inspect progress and plan next 24 hours","Stakeholder updates","Performance reviews"],correct:1,explain:"Daily Scrum is the team's planning meeting—not a status report. 15 min max."},{q:"Sprint Retrospective focuses on:",options:["What was built","How the team can improve their process","Stakeholder feedback","Sprint planning"],correct:1,explain:"Retro = team improvement. Review = product."},{q:"The Product Backlog is owned by:",options:["Scrum Master","Development Team","Product Owner","Project Manager"],correct:2,explain:"Product Owner owns and prioritizes the Product Backlog."}],
+  26: [{q:"When is a HYBRID approach most appropriate?",options:["Never","When pure predictive or pure adaptive don't fit","Only for small projects","Only when team prefers it"],correct:1,explain:"Hybrid suits contexts needing both predictive and adaptive elements."},{q:"A common hybrid pattern is:",options:["No structure at all","Predictive scope/budget with agile delivery","Random methodology switching","Always waterfall"],correct:1,explain:"Common hybrid: lock budget/scope predictively, deliver iteratively with agile."},{q:"When tailoring an approach, the PRIMARY consideration is:",options:["Team preference","Project context (requirements stability, risk, regulations)","Budget only","PMI rules"],correct:1,explain:"Tailoring is context-driven."}],
+  27: [{q:"When two answers seem correct on the PMP exam, you should typically choose:",options:["The first one","The most proactive, collaborative, and stakeholder-focused option","The shortest answer","The longest answer"],correct:1,explain:"PMI favors proactive, collaborative answers."},{q:"Approximate time per question on the PMP exam:",options:["30 seconds","75 seconds","3 minutes","5 minutes"],correct:1,explain:"180 questions in 230 minutes ≈ 75 seconds per question."},{q:"The exam domain split is approximately:",options:["50% People, 42% Process, 8% Business","42% People, 50% Process, 8% Business Environment","33% each domain","100% Process"],correct:1,explain:"People 42%, Process 50%, Business Environment 8%."}],
+  28: [{q:"After completing study materials, the BEST next step is:",options:["Schedule the exam immediately without practice","Take 2-3 full-length practice exams and review weak areas","Wait a year","Skip practice exams"],correct:1,explain:"Full-length practice exams build stamina and reveal weak areas."},{q:"Daily practice is valuable because:",options:["It's required","Spaced repetition cements knowledge for long-term retention","It looks good on resumes","Anthropic says so"],correct:1,explain:"Spaced repetition is proven for retention."},{q:"The most important factor in PMP exam success is:",options:["Natural talent","Memorizing PMBOK word-for-word","Consistent preparation, applied scenario-based practice, and exam strategy","Lucky guesses"],correct:2,explain:"Consistency + scenario practice + strategy = success."}]
+};
+
+// ============= ICONS (inline SVG strings) =============
+const icons = {
+  flame: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+  book: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  target: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  award: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>',
+  check: '<svg class="icon-sm icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  x: '<svg class="icon-sm icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
+  reset: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>',
+  trophy: '<svg class="finish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+  brain: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>',
+  chevron: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  lock: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  arrowRight: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  sparkle: '<svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>',
+  checkCircle: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+};
+
+// ============= STATE =============
+const STORAGE_KEY = 'pmp_data_v1';
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return null;
+}
+
+function saveData(d) {
+  state.data = d;
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch (e) {}
+}
+
+const state = {
+  view: 'dashboard',
+  selectedDay: null,
+  quiz: null,
+  data: loadData() || {
+    streak: 0, lastStudyDate: null, completedDays: [], quizScores: {}, totalCorrect: 0, totalAnswered: 0, startDate: new Date().toISOString()
+  },
+  deferredPrompt: null,
+  showInstall: false
+};
+
+if (!loadData()) saveData(state.data);
+
+const today = () => new Date().toDateString();
+const yesterday = () => new Date(Date.now() - 86400000).toDateString();
+
+function getCurrentDay() {
+  if (!state.data.startDate) return 1;
+  const diff = Math.floor((new Date() - new Date(state.data.startDate)) / 86400000) + 1;
+  return Math.min(Math.max(diff, 1), 28);
+}
+
+// ============= ACTIONS =============
+function completeLesson(day) {
+  const d = state.data;
+  const newCompleted = d.completedDays.includes(day) ? d.completedDays : [...d.completedDays, day];
+  let newStreak = d.streak;
+  if (d.lastStudyDate !== today()) {
+    if (d.lastStudyDate === yesterday() || d.streak === 0) {
+      newStreak = d.streak + 1;
+    } else {
+      newStreak = 1;
+    }
+  }
+  saveData({ ...d, completedDays: newCompleted, lastStudyDate: today(), streak: newStreak });
+}
+
+function startQuiz(day) {
+  const questions = questionBank[day] || questionBank[1];
+  state.quiz = { day, questions, idx: 0, answers: [], selected: null, showExplain: false, finished: false };
+  state.view = 'quiz';
+  render();
+}
+
+function selectOption(i) {
+  if (state.quiz.showExplain) return;
+  state.quiz.selected = i;
+  render();
+}
+
+function submitAnswer() {
+  if (state.quiz.selected === null) return;
+  state.quiz.showExplain = true;
+  render();
+}
+
+function nextQuestion() {
+  const q = state.quiz.questions[state.quiz.idx];
+  const correct = state.quiz.selected === q.correct;
+  state.quiz.answers.push({ selected: state.quiz.selected, correct });
+  if (state.quiz.idx + 1 >= state.quiz.questions.length) {
+    const correctCount = state.quiz.answers.filter(a => a.correct).length;
+    const d = state.data;
+    const newScores = { ...d.quizScores, [state.quiz.day]: { score: correctCount, total: state.quiz.questions.length, date: today() } };
+    saveData({ ...d, quizScores: newScores, totalCorrect: d.totalCorrect + correctCount, totalAnswered: d.totalAnswered + state.quiz.questions.length });
+    completeLesson(state.quiz.day);
+    state.quiz.finished = true;
+  } else {
+    state.quiz.idx++;
+    state.quiz.selected = null;
+    state.quiz.showExplain = false;
+  }
+  render();
+}
+
+function navigate(view, day) {
+  state.view = view;
+  if (day !== undefined) state.selectedDay = day;
+  if (view === 'dashboard') state.quiz = null;
+  window.scrollTo(0, 0);
+  render();
+}
+
+function resetProgress() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  saveData({ streak: 0, lastStudyDate: null, completedDays: [], quizScores: {}, totalCorrect: 0, totalAnswered: 0, startDate: new Date().toISOString() });
+  navigate('dashboard');
+}
+
+function installApp() {
+  if (state.deferredPrompt) {
+    state.deferredPrompt.prompt();
+    state.deferredPrompt.userChoice.then(() => {
+      state.deferredPrompt = null;
+      state.showInstall = false;
+      render();
+    });
+  } else {
+    alert('To install:\n\niOS: Tap Share → "Add to Home Screen"\nAndroid: Tap menu (⋮) → "Install app" or "Add to Home screen"');
+  }
+}
+
+function dismissInstall() {
+  state.showInstall = false;
+  try { localStorage.setItem('pmp_install_dismissed', '1'); } catch(e) {}
+  render();
+}
+
+// ============= ESCAPE =============
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ============= RENDERS =============
+function renderInstallBanner() {
+  if (!state.showInstall) return '';
+  return `<div class="install-banner">
+    <div>📱 Install to your home screen for app-like experience</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button onclick="installApp()">Install</button>
+      <button class="close" onclick="dismissInstall()">×</button>
+    </div>
+  </div>`;
+}
+
+function renderDashboard() {
+  const d = state.data;
+  const currentDay = getCurrentDay();
+  const todays = curriculum.find(c => c.day === currentDay);
+  const studiedToday = d.lastStudyDate === today();
+  const overallProgress = (d.completedDays.length / 28) * 100;
+  const accuracy = d.totalAnswered > 0 ? Math.round((d.totalCorrect / d.totalAnswered) * 100) : 0;
+
+  return `
+    ${renderInstallBanner()}
+    <div class="header">
+      <div>
+        <div class="eyebrow-accent">PMP Certification</div>
+        <h1 class="h1">The 28-Day Path</h1>
+        <div class="divider"></div>
+      </div>
+      <button class="reset-btn" onclick="resetProgress()">${icons.reset} Reset</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-icon flame">${icons.flame}</div>
+        <div class="stat-value">${d.streak}</div>
+        <div class="stat-label">Day Streak</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">${icons.book}</div>
+        <div class="stat-value">${d.completedDays.length}<span class="stat-value-small">/28</span></div>
+        <div class="stat-label">Days Done</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">${icons.target}</div>
+        <div class="stat-value">${accuracy}<span class="stat-value-small">%</span></div>
+        <div class="stat-label">Accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">${icons.award}</div>
+        <div class="stat-value">${d.totalAnswered}</div>
+        <div class="stat-label">Questions</div>
+      </div>
+    </div>
+
+    ${todays ? `
+    <div class="card card-accent">
+      <div class="today-header">
+        <div>
+          <div class="eyebrow-accent">Today · Day ${todays.day}</div>
+          <h2 class="h2" style="margin-top:6px">${esc(todays.title)}</h2>
+          <div class="today-meta">${esc(todays.domain)}</div>
+        </div>
+        ${studiedToday ? `<div class="studied-badge">${icons.checkCircle} Studied</div>` : ''}
+      </div>
+      <p class="lesson-preview">${esc(todays.lesson.substring(0, 200))}...</p>
+      <div class="btn-group">
+        <button class="btn btn-dark" onclick="navigate('lesson', ${currentDay})">${icons.book} Read Lesson</button>
+        <button class="btn btn-accent" onclick="startQuiz(${currentDay})">${icons.brain} Quick Quiz</button>
+      </div>
+    </div>
+    ` : ''}
+
+    <div class="card">
+      <div class="progress-header">
+        <div class="eyebrow">Overall Progress</div>
+        <div class="small">${Math.round(overallProgress)}% complete</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${overallProgress}%"></div></div>
+      <div class="day-grid">
+        ${curriculum.map(c => {
+          const done = d.completedDays.includes(c.day);
+          const isToday = c.day === currentDay;
+          return `<div class="day-cell ${done ? 'done' : isToday ? 'today' : ''}">${done ? '✓' : c.day}</div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <div class="quote-card">
+      ${icons.sparkle}
+      <div class="quote-eyebrow">The Daily Practice</div>
+      <p class="quote-text">"Small habits, repeated, become extraordinary results."</p>
+      <div class="quote-sub">Each day: 10 minutes lesson + 5 minutes quiz. That's it. Your streak is the best predictor of your success—keep it alive.</div>
+    </div>
+
+    <button class="nav-btn" onclick="navigate('all')">
+      <div>
+        <div class="nav-btn-title">View Full Curriculum</div>
+        <div class="eyebrow">All 28 days · 4 weeks</div>
+      </div>
+      ${icons.chevron}
+    </button>
+
+    <div class="footer">PMBOK 7 · Project Management Institute</div>
+  `;
+}
+
+function renderLesson() {
+  const lesson = curriculum.find(c => c.day === state.selectedDay);
+  if (!lesson) return '';
+  const prevScore = state.data.quizScores[state.selectedDay];
+
+  return `
+    <button class="back-btn" onclick="navigate('dashboard')">← Dashboard</button>
+    <div style="margin-bottom:24px">
+      <div class="lesson-meta">
+        <div class="eyebrow-accent">Week ${lesson.week} · Day ${lesson.day}</div>
+        <div class="eyebrow">${esc(lesson.domain)}</div>
+      </div>
+      <h1 class="h1" style="font-size:2rem">${esc(lesson.title)}</h1>
+      <div class="divider"></div>
+    </div>
+
+    <div class="lesson-body">
+      <p class="lesson-text">${esc(lesson.lesson)}</p>
+      <div class="key-terms">
+        <div class="key-terms-label">Key Terms</div>
+        <div class="tags">${lesson.keyTerms.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+      </div>
+    </div>
+
+    ${prevScore ? `<div style="background:var(--accent-soft);border:1px solid #fcd34d;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;color:#78350f;border-radius:2px">Previous quiz: <strong>${prevScore.score}/${prevScore.total}</strong> (${Math.round(prevScore.score/prevScore.total*100)}%)</div>` : ''}
+
+    <button class="btn btn-dark" onclick="startQuiz(${state.selectedDay})">${icons.brain} ${prevScore ? 'Retake Practice Quiz' : 'Begin Practice Quiz'}</button>
+  `;
+}
+
+function renderQuiz() {
+  const q = state.quiz;
+  if (q.finished) {
+    const correct = q.answers.filter(a => a.correct).length;
+    const total = q.questions.length;
+    const pct = Math.round((correct/total)*100);
+    const msg = pct >= 80 ? "Excellent work. You're building strong knowledge—momentum matters." : pct >= 60 ? "Solid effort. Review the missed concepts and revisit tomorrow." : "Don't be discouraged. Re-read the lesson and try again. Mastery comes from repetition.";
+
+    return `
+      <div class="card" style="text-align:center;margin-top:40px">
+        ${icons.trophy}
+        <div class="eyebrow" style="margin-bottom:8px">Day ${q.day} Complete</div>
+        <div class="finish-score">${pct}%</div>
+        <div class="small" style="margin-bottom:8px">${correct} of ${total} correct</div>
+        <p class="finish-message">${msg}</p>
+        <div style="text-align:left;margin:16px 0">
+          ${q.answers.map((a, i) => `<div class="answer-row">${a.correct ? icons.check : icons.x}<span>Question ${i+1}</span></div>`).join('')}
+        </div>
+        <button class="btn btn-dark" onclick="navigate('dashboard')">Return to Dashboard</button>
+      </div>
+    `;
+  }
+
+  const current = q.questions[q.idx];
+  const progress = ((q.idx + (q.showExplain ? 1 : 0)) / q.questions.length) * 100;
+  const isCorrect = q.selected === current.correct;
+
+  return `
+    <div class="quiz-header">
+      <button class="back-btn" style="margin:0" onclick="if(confirm('Exit quiz? Progress lost.')){navigate('dashboard')}">← Exit</button>
+      <div class="eyebrow">Question ${q.idx + 1} of ${q.questions.length}</div>
+    </div>
+    <div class="quiz-progress-top"><div class="quiz-progress-bar" style="width:${progress}%"></div></div>
+
+    <div class="quiz-card">
+      <div class="quiz-eyebrow">Day ${q.day} · Practice</div>
+      <h2 class="question">${esc(current.q)}</h2>
+      <div class="options">
+        ${current.options.map((opt, i) => {
+          let cls = 'option';
+          if (q.showExplain) {
+            if (i === current.correct) cls += ' correct';
+            else if (i === q.selected) cls += ' wrong';
+            else cls += ' faded';
+          } else if (q.selected === i) cls += ' selected';
+          return `<button class="${cls}" onclick="selectOption(${i})" ${q.showExplain ? 'disabled' : ''}>
+            <span class="option-letter">${String.fromCharCode(65+i)}.</span>${esc(opt)}
+          </button>`;
+        }).join('')}
+      </div>
+
+      ${q.showExplain ? `
+        <div class="explain ${isCorrect ? 'right' : 'wrong'}">
+          <div class="explain-label">${isCorrect ? 'Correct' : 'Not Quite'}</div>
+          <div class="explain-text">${esc(current.explain)}</div>
+        </div>
+        <button class="btn btn-dark" onclick="nextQuestion()">${q.idx + 1 >= q.questions.length ? 'Finish' : 'Next Question'} ${icons.arrowRight}</button>
+      ` : `
+        <button class="btn btn-dark" onclick="submitAnswer()" ${q.selected === null ? 'disabled' : ''}>Submit Answer</button>
+      `}
+    </div>
+  `;
+}
+
+function renderAll() {
+  const currentDay = getCurrentDay();
+  return `
+    <button class="back-btn" onclick="navigate('dashboard')">← Dashboard</button>
+    <h1 class="h1" style="font-size:2rem">The 28-Day Curriculum</h1>
+    <div class="divider" style="margin-bottom:32px"></div>
+
+    ${[1,2,3,4].map(w => `
+      <div class="week-section">
+        <div class="eyebrow-accent" style="margin-bottom:12px">Week ${w}</div>
+        ${curriculum.filter(c => c.week === w).map(lesson => {
+          const completed = state.data.completedDays.includes(lesson.day);
+          const locked = lesson.day > currentDay;
+          const isToday = lesson.day === currentDay;
+          const score = state.data.quizScores[lesson.day];
+          const cls = ['lesson-row'];
+          if (isToday) cls.push('today');
+          else if (completed) cls.push('done');
+
+          return `<button class="${cls.join(' ')}" ${locked ? 'disabled' : `onclick="navigate('lesson', ${lesson.day})"`}>
+            <div class="lesson-num">${locked ? icons.lock : completed ? '<span style="color:var(--success)">✓</span>' : lesson.day}</div>
+            <div class="lesson-info">
+              <div class="lesson-title">${esc(lesson.title)}</div>
+              <div class="lesson-domain">${esc(lesson.domain)}</div>
+            </div>
+            ${score ? `<div class="lesson-score">${score.score}/${score.total}</div>` : ''}
+            ${isToday ? `<div class="today-tag">Today</div>` : ''}
+            ${!locked ? icons.chevron : ''}
+          </button>`;
+        }).join('')}
+      </div>
+    `).join('')}
+  `;
+}
+
+function render() {
+  const app = document.getElementById('app');
+  let html = '';
+  if (state.view === 'dashboard') html = renderDashboard();
+  else if (state.view === 'lesson') html = renderLesson();
+  else if (state.view === 'quiz') html = renderQuiz();
+  else if (state.view === 'all') html = renderAll();
+  app.innerHTML = html;
+}
+
+// ============= PWA INSTALL =============
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  state.deferredPrompt = e;
+  try {
+    if (!localStorage.getItem('pmp_install_dismissed')) {
+      state.showInstall = true;
+      render();
+    }
+  } catch(e) {}
+});
+
+// Register inline service worker for offline support
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'pmp-v1';
+    self.addEventListener('install', e => { self.skipWaiting(); });
+    self.addEventListener('activate', e => { e.waitUntil(clients.claim()); });
+    self.addEventListener('fetch', e => {
+      e.respondWith(
+        caches.open(CACHE).then(cache =>
+          cache.match(e.request).then(r => r || fetch(e.request).then(resp => {
+            if (resp.ok && e.request.url.startsWith(self.location.origin)) {
+              cache.put(e.request, resp.clone());
+            }
+            return resp;
+          }).catch(() => cache.match('/')))
+        )
+      );
+    });
+  `;
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+
+// Initial render
+render();
+</script>
+</body>
+</html>
