@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>PMP Mindset Trainer</title>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --b-font:'Outfit',system-ui,sans-serif; --d-font:'Fraunces',Georgia,serif; }
+  html,body{ -webkit-tap-highlight-color:transparent; overscroll-behavior-y:contain; }
+  body{ font-family:var(--b-font); font-weight:300; padding-bottom:env(safe-area-inset-bottom); }
+  h1,h2,h3,.display{ font-family:var(--d-font); font-weight:400; }
+  .app-bg{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, oklch(var(--p)/0.12), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, oklch(var(--s)/0.10), transparent 55%),
+      oklch(var(--b2));
+    min-height:100dvh;
+  }
+  .glass{ background:oklch(var(--b1)/0.78); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+  .no-select{ -webkit-user-select:none; user-select:none; }
+  .card-3d{ transition:transform .5s cubic-bezier(.2,.8,.2,1); transform-style:preserve-3d; }
+  .flip .card-3d{ transform:rotateY(180deg); }
+  .face{ backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .face-back{ transform:rotateY(180deg); }
+  .fade-in{ animation:fadeIn .35s ease both; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+  .pop{ animation:pop .3s cubic-bezier(.2,1.4,.4,1) both; }
+  @keyframes pop{ from{transform:scale(.96); opacity:0;} to{transform:scale(1); opacity:1;} }
+  .bottom-nav{ padding-bottom:env(safe-area-inset-bottom); }
+  details > summary{ list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker{ display:none; }
+  details[open] .chev{ transform:rotate(90deg); }
+  .chev{ transition:transform .25s ease; }
+  .scroll-area{ -webkit-overflow-scrolling:touch; }
+  .study-track{ scrollbar-width:none; }
+  .study-track::-webkit-scrollbar{ display:none; }
+  .study-slide{ min-width:100%; box-sizing:border-box; }
+  .ring-accent{ box-shadow:0 0 0 3px oklch(var(--p)/0.25); }
+  ::selection{ background:oklch(var(--p)/0.25); }
+</style>
+</head>
+<body class="app-bg text-base-content">
+
+<!-- Header -->
+<header class="glass sticky top-0 z-30 border-b border-base-300/60" style="padding-top:env(safe-area-inset-top)">
+  <div class="max-w-3xl mx-auto px-4 py-3 flex items-center gap-3">
+    <div class="w-10 h-10 rounded-2xl bg-primary text-primary-content grid place-items-center font-normal display text-lg shadow-md">P</div>
+    <div class="flex-1 min-w-0">
+      <h1 class="text-xl leading-none font-normal">PMP Mindset Trainer</h1>
+      <p class="text-xs opacity-60 mt-0.5">Think the PMI way · scenario-based practice</p>
+    </div>
+    <div class="text-right">
+      <div id="streakBadge" class="badge badge-primary badge-sm font-light gap-1">Streak <span id="streakNum">0</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 pt-4 pb-28">
+
+  <!-- ============ HOME / STUDY ============ -->
+  <section id="view-study" class="view">
+    <div class="hero rounded-3xl bg-primary text-primary-content overflow-hidden mb-5 shadow-lg relative">
+      <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 20% 20%, white 1px, transparent 1px); background-size:22px 22px"></div>
+      <div class="hero-content text-left py-7 px-6 relative">
+        <div>
+          <p class="uppercase tracking-widest text-xs opacity-80 mb-1">The golden rule</p>
+          <h2 class="display text-2xl font-normal leading-tight">Never take a shortcut.<br>Follow the process.</h2>
+          <p class="text-sm opacity-90 mt-3 max-w-md">In real life you fix it fast. In the exam you <b>assess → plan → analyze → act</b>. The answer is almost always the proactive, collaborative, by-the-book one.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mb-6 no-select">
+      <button onclick="go('flash')" class="btn btn-outline h-auto py-4 flex-col gap-1 rounded-2xl">
+        <span class="text-sm font-light">Flashcards</span>
+      </button>
+      <button onclick="go('quiz')" class="btn btn-outline h-auto py-4 flex-col gap-1 rounded-2xl">
+        <span class="text-sm font-light">Quiz</span>
+      </button>
+      <button onclick="go('cheat')" class="btn btn-outline h-auto py-4 flex-col gap-1 rounded-2xl">
+        <span class="text-sm font-light">Cheat sheet</span>
+      </button>
+    </div>
+
+    <h3 class="display text-lg font-normal mb-3 px-1">Study by section</h3>
+    <div id="studyList" class="space-y-3"></div>
+  </section>
+
+  <!-- ============ FLASHCARDS ============ -->
+  <section id="view-flash" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="display text-2xl font-normal">Flashcards</h2>
+        <p class="text-xs opacity-60" id="flashTopicLabel">All topics</p>
+      </div>
+      <select id="flashTopic" class="select select-bordered select-sm rounded-xl max-w-[45%]" onchange="buildFlash()"></select>
+    </div>
+
+    <div class="flex items-center gap-2 mb-3">
+      <progress id="flashProg" class="progress progress-primary flex-1 h-2" value="0" max="100"></progress>
+      <span id="flashCount" class="text-xs font-light tabular-nums opacity-70">0/0</span>
+    </div>
+
+    <div id="flashStage" class="relative no-select" style="perspective:1600px">
+      <div id="flashCard" class="card-3d relative w-full" style="min-height:60dvh">
+        <div class="face absolute inset-0 rounded-3xl glass border border-base-300 shadow-xl p-6 flex flex-col">
+          <span class="badge badge-ghost badge-sm self-start mb-3" id="flashCat">Topic</span>
+          <div class="flex-1 grid place-items-center text-center">
+            <p id="flashFront" class="display text-xl font-light leading-snug"></p>
+          </div>
+          <p class="text-center text-xs opacity-50 mt-4">tap to reveal</p>
+        </div>
+        <div class="face face-back absolute inset-0 rounded-3xl bg-primary text-primary-content shadow-xl p-6 flex flex-col overflow-auto scroll-area">
+          <span class="badge badge-sm self-start mb-3 bg-primary-content/20 border-0 text-primary-content">answer</span>
+          <div class="flex-1 grid place-items-center text-center">
+            <p id="flashBack" class="text-base leading-relaxed"></p>
+          </div>
+          <p class="text-center text-xs opacity-70 mt-4">tap to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-5 no-select">
+      <button onclick="flashNav(-1)" class="btn btn-ghost rounded-2xl">Prev</button>
+      <button onclick="flipCard()" class="btn btn-primary rounded-2xl">Flip</button>
+      <button onclick="flashNav(1)" class="btn btn-ghost rounded-2xl">Next</button>
+    </div>
+    <p class="text-center text-xs opacity-50 mt-3">tip: swipe left / right to move between cards</p>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section id="view-quiz" class="view hidden">
+    <div id="quizStart">
+      <h2 class="display text-2xl font-normal mb-1">Scenario Quiz</h2>
+      <p class="text-sm opacity-70 mb-5">Answer the way a PMI-minded PM would. Each question explains the reasoning.</p>
+      <div class="card glass border border-base-300 rounded-3xl shadow-lg">
+        <div class="card-body gap-4">
+          <div>
+            <label class="text-sm font-light">Topic</label>
+            <select id="quizTopic" class="select select-bordered w-full rounded-xl mt-1"></select>
+          </div>
+          <div>
+            <label class="text-sm font-light">Number of questions</label>
+            <div class="join w-full mt-1" id="quizLenJoin"></div>
+          </div>
+          <button onclick="startQuiz()" class="btn btn-primary btn-lg rounded-2xl mt-2">Start quiz</button>
+        </div>
+      </div>
+      <div id="bestScoreWrap" class="text-center text-sm opacity-60 mt-4 hidden">Best score: <b id="bestScore"></b></div>
+    </div>
+
+    <div id="quizPlay" class="hidden">
+      <div class="flex items-center gap-2 mb-4">
+        <progress id="quizProg" class="progress progress-primary flex-1 h-2" value="0" max="100"></progress>
+        <span id="quizCount" class="text-xs font-light tabular-nums opacity-70">1/10</span>
+      </div>
+      <span id="quizCat" class="badge badge-ghost badge-sm mb-3"></span>
+      <p id="quizQ" class="text-lg font-light leading-snug mb-5 display"></p>
+      <div id="quizOpts" class="space-y-3"></div>
+      <div id="quizExplain" class="hidden mt-5 fade-in">
+        <div class="alert rounded-2xl items-start" id="quizExplainBox">
+          <div>
+            <h4 class="font-normal" id="quizExplainTitle"></h4>
+            <p class="text-sm" id="quizExplainText"></p>
+          </div>
+        </div>
+        <button onclick="nextQuiz()" class="btn btn-primary btn-block btn-lg rounded-2xl mt-4" id="quizNextBtn">Next</button>
+      </div>
+    </div>
+
+    <div id="quizResult" class="hidden text-center pop">
+      <p class="uppercase tracking-widest text-xs opacity-60 mt-4 mb-2">Quiz complete</p>
+      <h2 class="display text-3xl font-normal" id="resultScore">0/0</h2>
+      <p class="opacity-70 mt-1" id="resultMsg"></p>
+      <div class="radial-progress text-primary my-6 mx-auto" id="resultRadial" style="--value:0; --size:8rem; --thickness:0.8rem"></div>
+      <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto">
+        <button onclick="startQuiz()" class="btn btn-primary rounded-2xl">Retry</button>
+        <button onclick="go('quiz')" class="btn btn-outline rounded-2xl">Change topic</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section id="view-cheat" class="view hidden">
+    <h2 class="display text-2xl font-normal mb-1">Exam cheat sheet</h2>
+    <p class="text-sm opacity-70 mb-5">High-yield triggers and "answer-eliminating" cues.</p>
+    <div id="cheatList" class="space-y-3"></div>
+  </section>
+
+</main>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav glass fixed bottom-0 inset-x-0 z-30 border-t border-base-300/60">
+  <div class="max-w-3xl mx-auto grid grid-cols-4">
+    <button data-nav="study" onclick="go('study')" class="navbtn py-3.5 flex flex-col items-center gap-0.5 text-sm font-light">
+      Study</button>
+    <button data-nav="flash" onclick="go('flash')" class="navbtn py-3.5 flex flex-col items-center gap-0.5 text-sm font-light">
+      Cards</button>
+    <button data-nav="quiz" onclick="go('quiz')" class="navbtn py-3.5 flex flex-col items-center gap-0.5 text-sm font-light">
+      Quiz</button>
+    <button data-nav="cheat" onclick="go('cheat')" class="navbtn py-3.5 flex flex-col items-center gap-0.5 text-sm font-light">
+      Cheat</button>
+  </div>
+</nav>
+
+<script>
+/* ============================ DATA ============================ */
+const STUDY = [
+  { id:'role', title:"Project Manager's Role", groups:[
+    { label:"Servant leadership", points:[
+      "Be proactive, a servant leader, and a good steward — always.",
+      "Don't hand out solutions — work WITH the team so they reach one. Shield them from interruptions.",
+      "The team self-organizes and self-assigns work (Tuckman stages for development).",
+      "Be a central figure with good ethics, not a dictator."
+    ]},
+    { label:"Handling the team", points:[
+      "Team demotivated? Find out WHY, then act on their personal motivations.",
+      "Coach members through issues — never leave them to fend for themselves.",
+      "Provide a safe space for disagreement; never punish a difference of opinion.",
+      "PM does NOT hire, fire, or replace resources — coach instead.",
+      "PM manages conflicts and makes the customer's success the primary goal."
+    ]},
+    { label:"Process & ownership", points:[
+      "Never bypass steps / process / documentation to speed up delivery or closure.",
+      "Never ask someone else to do your work, and never pass the problem along.",
+      "Limit work-in-progress with Kanban; review methods via retrospectives; use feedback loops."
+    ]},
+    { label:"Communication", points:[
+      "Favor direct, face-to-face interaction; go virtual only when geographically dispersed. Prefer co-location for osmotic communication.",
+      "Radiate information through big visible charts (Scrum/Kanban board, burn-up/down). Prefer simple tools (whiteboard).",
+      "Re-communicate the project vision often; define what success and failure look like."
+    ]}
+  ]},
+  { id:'mindset', title:"Mindset for Answering Questions", groups:[
+    { label:"Core principles", points:[
+      "Everything you need is IN the question — never assume extra facts.",
+      "Think it through BEFORE acting — unless there's a dire safety / mandatory-regulation consequence.",
+      "Never act without first creating (or reviewing) a plan.",
+      "ITTO keywords — Planning: Plan/Estimate/Define · Executing: Manage/Conduct/Implement · M&C: Monitor/Control/Validate."
+    ]},
+    { label:"The 7-step approach", points:[
+      "1 Assess → 2 Review plan → 3 Analyze (with team) → 4 Update docs → 5 Communicate → 6 Act → 7 Continuously review.",
+      "'Do First / Do Next' → assess & review, do NOT act yet. 'Asked for action' → act, don't analyze.",
+      "'Should have / would have helped' → look for reactive prevention (better planning, risk analysis, detailed estimation)."
+    ]},
+    { label:"Cue words & don'ts", points:[
+      "MAY/MIGHT/COULD = RISK → risk register & risk management plan. WILL/SHOULD/HAS = ISSUE → issue log & resolution.",
+      "Generally DON'T: remove a team member/vendor, escalate to sponsor/PMO/PO, or ask for a budget increase (unless huge impact on viability).",
+      "Too many wish-list items, limited resources → go MVP. Demonstrating value → prototype."
+    ]},
+    { label:"Safety & regulation", points:[
+      "Emergency → stop work & start change control; rumor/potential → review with legal/governance then route to change control.",
+      "New law introduced → update the risk register first."
+    ]}
+  ]},
+  { id:'tips', title:"Exam Tips", groups:[
+    { label:"Usually wrong", points:[
+      "Options with absolutes (must / only / all / every / 100% / none / immediately / bypass).",
+      "Extreme actions (terminate contracts, fire/hire mid-project, stop payment, close project for inconvenience, refuse the customer, run to the sponsor)."
+    ]},
+    { label:"Usually right", points:[
+      "Options showing inclusiveness, collaboration, and decisiveness.",
+      "Cue words: may/might/could → risk register. will/would/has → issue log."
+    ]}
+  ]},
+  { id:'change', title:"Change Management", groups:[
+    { label:"The constraint", points:[
+      "Triple Constraint: Scope + Time + Cost = Quality. Changing one affects the others.",
+      "For ANY scope change, assess impact on schedule, cost, quality, resources, comms, risk, procurement, and stakeholders."
+    ]},
+    { label:"The process", points:[
+      "Change flow: assess & evaluate impact → formal change control → approval. Never implement a change yourself, never without approval.",
+      "PICC = Perform Integrated Change Control. Sponsor is the final approver. After decision: update change log (and execute if approved)."
+    ]}
+  ]},
+  { id:'scope', title:"Scope & Requirements", groups:[
+    { label:"Scope statement", points:[
+      "Team develops the scope baseline after input from customer & stakeholders.",
+      "Scope Statement (3 parts): project & product scope description, deliverables, assumptions & constraints.",
+      "Detailed Scope Statement: product scope description, deliverables, acceptance criteria, exclusions.",
+      "Customers approve PRODUCT scope (requirements), not project scope (how you'll deliver)."
+    ]},
+    { label:"Acceptance & changes", points:[
+      "Validate Scope = acceptance (customer signs off). Control Quality = correctness (QA testing). Quality before validation.",
+      "Missed scope that may cause rejection → submit a change request. Prevent scope creep → formal approved change request.",
+      "Prototype = best for a demo when most requirements are known."
+    ]},
+    { label:"WBS & tools", points:[
+      "WBS is built by the team but communicates to all stakeholders — most valuable output is team buy-in; prevents work falling through the cracks and gold-plating. Control Accounts sit above Work Packages.",
+      "Context diagram (during Collect Requirements) shows how people/systems interact with the product."
+    ]},
+    { label:"Agile backlog", points:[
+      "Only the Product Owner prioritizes the backlog. If they won't, train them on the benefit — never prioritize yourself. PO has final authority to maximize product value."
+    ]}
+  ]},
+  { id:'schedule', title:"Schedule", groups:[
+    { label:"Estimating", points:[
+      "Estimate ranges: definitive ±5-10%, budgetary ±15-25%, order-of-magnitude ±50%.",
+      "Monte Carlo = what-if analysis; only as good as its inputs.",
+      "Rolling wave planning (progressive elaboration): leave un-decomposable tasks high-level."
+    ]},
+    { label:"Network & float", points:[
+      "Milestones = duration 0; introduced in charter, formally set in Define Activities.",
+      "Float = LS−ES = LF−EF. Free Float = ES(next) − EF(current) − 1. Forward pass = earliest; backward pass = latest.",
+      "Can't publish the schedule until resource availability is confirmed."
+    ]},
+    { label:"Performance (EVM)", points:[
+      "Negative variance = behind/over (bad). SPI = schedule, CPI = cost; >1 good, <1 bad (treat 1 as 100%)."
+    ]}
+  ]},
+  { id:'cost', title:"Cost", groups:[
+    { label:"Budgeting", points:[
+      "Charter gives a budget RANGE (analogous / parametric). If asked for a precise budget pre-planning → tell them to wait.",
+      "Analogous = top-down, high-level comparison (no detailed historical breakdown).",
+      "Project setup costs = fixed costs (not overhead)."
+    ]},
+    { label:"Baselines & metrics", points:[
+      "Determine Budget output = Cost Baseline (≠ Project Budget); uses the resource calendar.",
+      "S-curve shows cost baseline, remaining budget, and time.",
+      "CPI uses ACTUAL costs; CPI 0.5 = 50¢ value per $1. Value analysis = same scope at least cost.",
+      "Identified risks are both input and output of Estimate Costs."
+    ]}
+  ]},
+  { id:'quality', title:"Quality", groups:[
+    { label:"Principles", points:[
+      "Define quality requirements early; check often. Emphasis on PREVENTION over inspection (cheaper).",
+      "Quality = degree the project meets requirements (customer expectations). Customers are best to check deliverables.",
+      "Quality policy = org-wide intent; quality management plan = how it's implemented on the project.",
+      "PM is ultimately responsible for quality. No quality baseline exists (only scope/schedule/cost)."
+    ]},
+    { label:"Cost of quality", points:[
+      "Cost of Quality = Conformance (Appraisal + Prevention) + Non-conformance (Internal + External failure)."
+    ]},
+    { label:"Plan vs do", points:[
+      "Plan quality → design tests/checklists; actual tests/checklists built in Manage Quality.",
+      "Checklist = verify procedure steps. Check-sheet = tabulate results (find error concentration).",
+      "Quality audit confirms policy/CR implementation & finds gaps but NOT root cause — Process analysis finds root cause."
+    ]},
+    { label:"Tools & measures", points:[
+      "Specification limits = customer's; Control limits = QA's (usually narrower). Accuracy = close to target; Precision = clustered together.",
+      "Sigma: 1σ=68%, 2σ=95%, 3σ=99.7%. DOE finds impactful variables; DfX optimizes a chosen variable (cost/reliability/safety).",
+      "Scatter diagram = relationship between 2 variables; affinity diagram = grouping.",
+      "Common cause = normal variation; special cause = defect needing investigation."
+    ]}
+  ]},
+  { id:'resources', title:"Resources", groups:[
+    { label:"Acquiring", points:[
+      "PM negotiates with the Functional Manager for resource conflicts (PMO not involved in staffing). Check FM availability before the PMO.",
+      "Release Criteria = timing + method of releasing team members.",
+      "Member lacks a skill → training. Org new to agile → show benefits via workshops/training."
+    ]},
+    { label:"Estimating", points:[
+      "Team are the SMEs → best for estimating and breaking down work. Bottom-up = most accurate but more effort."
+    ]},
+    { label:"Documents & power", points:[
+      "Resource Mgmt Plan: when resources join/leave + comms; splits into Team Mgmt Plan & Physical Resource Mgmt Plan.",
+      "RBS = hierarchy of resources; Resource Calendar = working days (Acquire Resources); Resource Histogram = usage per period (discuss with FM); RAM = WHO does each activity.",
+      "Control Resources = physical; Manage Team = people/performance.",
+      "Reward & expert power are best; expert is your go-to in a weak matrix."
+    ]},
+    { label:"Conflict resolution", points:[
+      "Understand the SOURCE of a conflict first. Sources (high→low): Schedules, Priorities, Manpower, Technical, Procedures, Personality, Costs.",
+      "Preference order: Confrontation → Compromise → Smoothing → Forcing → Withdrawal. Team fighting → ground rules then team-building. Don't delay.",
+      "Tacit knowledge (experience/emotion) needs trust; explicit = facts/lessons learned."
+    ]}
+  ]},
+  { id:'comms', title:"Communication", groups:[
+    { label:"Plan first", points:[
+      "Analyze stakeholder comms needs first (what, how often, what method, who delivers). Tailor and ensure understanding.",
+      "Use emotional intelligence to read self and others. Emphasize comms at integration points."
+    ]},
+    { label:"Choosing the channel", points:[
+      "Informal verbal/F2F = best for poor performance & disputes. F2F critical even in negotiations (contracts still formally written).",
+      "Complex problems / culture differences / remote → extensive WRITTEN formal communication so all get the same info.",
+      "Push (blog/email — sent regardless of interest) vs Pull (recipient retrieves)."
+    ]},
+    { label:"Skills", points:[
+      "5 C's: correct grammar, concise, clear purpose, coherent, controlling flow of words/ideas.",
+      "People nodding but silent → Active Listening. Hard to grasp stakeholder concerns → train in cultural & active listening.",
+      "Knowledge mgmt tools connect people, not just store docs."
+    ]}
+  ]},
+  { id:'stakeholder', title:"Stakeholder", groups:[
+    { label:"Foundations", points:[
+      "Do a communication-style assessment BEFORE the stakeholder engagement assessment (esp. unsupportive ones).",
+      "PM and stakeholder define the stakeholder's role collaboratively — PM doesn't order them.",
+      "PM Plan's 4 areas for managing stakeholders: communications, risk, change, stakeholder engagement.",
+      "Issue log + change log build day-to-day trust. Issue log is key for monitoring engagement.",
+      "External risk-owner stakeholders → influence is most important for engagement."
+    ]},
+    { label:"Handling complaints", points:[
+      "Complaint about missed/incorrect item → revisit agreed criteria & walk them through it.",
+      "Won't accept deliverables → review scope mgmt plan, understand expectations, engage frequently, develop DoD.",
+      "Complaint about comms/status → review comms/engagement plan, find what they need."
+    ]},
+    { label:"Requests & changes", points:[
+      "Wants status → invite to sprint reviews. Wants a plan change → submit a change request.",
+      "Stakeholder leaves/replaced → update Stakeholder Register then Engagement Plan.",
+      "Don't know agile → coach/train and advocate the benefits. Functional managers are often-forgotten stakeholders."
+    ]}
+  ]},
+  { id:'risk', title:"Risk", groups:[
+    { label:"Identify", points:[
+      "Identify as much risk as early as possible; document all in the risk register with responses. Risk = agenda item at every meeting.",
+      "Negative risk = threat; positive risk = opportunity. Plan responses for both.",
+      "Techniques: doc review, prompt lists (PESTLE/TECOP/VUCA), brainstorming, root-cause/checklist/assumption analysis.",
+      "Risk types: Event, Variability (uncertain characteristics), Ambiguity (lack of knowledge), Emergent (unknown-unknowns)."
+    ]},
+    { label:"Respond", points:[
+      "Responses can be proactive too. Mitigate = reduce prob/impact. Accept (passive = deal with it if it occurs). Escalate = owner becomes the escalatee.",
+      "New risks found while planning responses = secondary risks — document, keep planning, don't jump back.",
+      "Outputs include risk triggers & contingency reserves. Influencing owners = Implement Risk Responses; reassessment & secondary-risk monitoring = Monitor Risks.",
+      "Unplanned risk not triggered → qualify it. Triggered → workaround."
+    ]},
+    { label:"Analyze", points:[
+      "Qualitative = prioritized list + watchlist (bubble chart: detectability/proximity/impact; tornado chart: sensitivity).",
+      "Quantitative = probability of meeting time & cost (NOT quality); numeric impact but not prioritized like qualitative.",
+      "Decision tree: square = decision, circle = chance event. Risk audit = anywhere in the process."
+    ]}
+  ]},
+  { id:'procurement', title:"Procurement", groups:[
+    { label:"Setup & planning", points:[
+      "Use a contract mutually beneficial to buyer & seller; PM's key role = protect the project's interests. Contracts have an intense approval process.",
+      "Plan Procurement includes make-or-buy, source selection criteria, bid docs. Conduct Procurements = run the RFP (contract types, independent estimates, advertising). Bidder conferences save time.",
+      "'Bid/tender/quotation' = price-based selection; 'proposal' = technical capability paramount."
+    ]},
+    { label:"Contract types", points:[
+      "CPFF audits all invoice costs; FF paid continuously; PO is a unilateral contract; T&M suits progressive scope elaboration.",
+      "Review CPIF & Point of Total Assumption. Control Procurements covers monitoring AND contract closure; uses Records Management System."
+    ]},
+    { label:"Disputes & issues", points:[
+      "Payment/contract issue with a vendor → ask them to check with the appropriate department. Delay/quality issue → meet & brainstorm with the team.",
+      "Disputes → claims administration → negotiate → arbitration → litigation (last). Constructive change = extra work without a formal order.",
+      "Signed side-note not in the contract → seller only owes what's in the contract. Missing pre-commencement items → default letter. T&C violation → breach notice."
+    ]}
+  ]},
+  { id:'integration', title:"Integration & Closing", groups:[
+    { label:"Integration", points:[
+      "PM's main job = integrator across components; don't over-focus on one area.",
+      "Overall guidance → PM Plan; high-level → Charter."
+    ]},
+    { label:"Starting closure", points:[
+      "Close Project/Phase starts after all work is verified, delivered, accepted; all issues closed. Sponsor signs off closure.",
+      "Need at closing: PM Plan, Charter (success criteria), Business Documents (business case + benefits mgmt plan).",
+      "Terminated projects STILL close formally. Update the lessons learned register throughout the project."
+    ]},
+    { label:"Closure sequence", points:[
+      "Confirm acceptance → transfer product → financial/legal/admin closure & liability → stakeholder feedback → final report → lessons learned → archive docs → release resources.",
+      "Phase end uses exit / phase-end criteria; you don't initiate a new project there.",
+      "NOT part of closing: performance measures (M&C), Validate Scope (Control Scope), contract closure (Control Procurements) — though scope validation can occur at closure via tailoring."
+    ]}
+  ]},
+];
+
+const FLASH = [
+  ['Role',"Team is demotivated. What does a servant-leader PM do?","Find out WHY first, then act based on their personal motivations. Don't assume."],
+  ['Role',"A team member keeps breaking a rule. PM's move?","Remind the team about the ground rules — coach, don't punish."],
+  ['Role',"Can the PM fire or replace a struggling team member?","No. PM does not hire/fire/replace. Coach them through the problem."],
+  ['Role',"Best form of communication when the team is co-located?","Direct face-to-face; co-location enables osmotic communication."],
+  ['Role',"How should project information be shared with the team?","Radiate it through big visible charts — Scrum/Kanban board, burn-up/down. Prefer simple tools (whiteboard)."],
+  ['Mindset',"Where is the info needed to answer an exam question?","Always inside the question itself — never assume anything extra."],
+  ['Mindset',"Default action sequence for a PMP scenario?","Assess → Review plan → Analyze → Update docs → Communicate → Act → Continuously review."],
+  ['Mindset',"'What should you do FIRST/NEXT?'","Don't act yet — assess, review, or analyze first."],
+  ['Mindset',"'May / might / could' in a question signals…","A RISK → check the Risk Register & Risk Management Plan."],
+  ['Mindset',"'Will / has / should' (event happened) signals…","An ISSUE → Issue Log, and it needs a resolution."],
+  ['Mindset',"When is acting-before-thinking acceptable?","Only for dire consequences: health/safety or mandatory regulations."],
+  ['Tips',"Why distrust options with 'must / only / always / 100%'?","Absolutes are almost always wrong in PMP answers."],
+  ['Tips',"What kind of answer is usually correct?","One showing inclusiveness, collaboration, and decisiveness."],
+  ['Change',"What is the Triple Constraint equation?","Scope + Time + Cost = Quality. Change one, the others move."],
+  ['Change',"A change request arrives. First step?","Assess & evaluate its impact, then run it through formal change control — never implement it yourself."],
+  ['Change',"Who gives final approval on a change?","The sponsor (via Perform Integrated Change Control)."],
+  ['Scope',"Validate Scope vs Control Quality?","Validate Scope = customer ACCEPTANCE. Control Quality = correctness (QA testing). Quality comes first."],
+  ['Scope',"Who approves product scope vs project scope?","Customer approves PRODUCT scope (their requirements), not project scope."],
+  ['Scope',"Most valuable result of building a WBS?","Team buy-in (it's built by the team)."],
+  ['Scope',"Agile: who prioritizes the product backlog?","Only the Product Owner. If they refuse, train them — never do it yourself."],
+  ['Schedule',"SPI/CPI: is 0.9 good or bad?","Bad. Treat 1 as 100% baseline — below 1 is behind/over, above 1 is good."],
+  ['Schedule',"What is a milestone's duration?","Zero. Introduced in the charter, formally set in Define Activities."],
+  ['Schedule',"Can you publish the schedule anytime?","No — not until resource availability is confirmed."],
+  ['Cost',"Stakeholder wants an exact budget before planning. Response?","Tell them to wait until planning is done (charter only gives a range)."],
+  ['Cost',"What does CPI use, and what does 0.5 mean?","Actual costs; 0.5 = only 50¢ of value per $1 spent."],
+  ['Cost',"Output of Determine Budget?","Cost Baseline (different from the Project Budget)."],
+  ['Quality',"Prevention or inspection — which does PMI favor?","Prevention; quality costs more to fix later."],
+  ['Quality',"Is there a quality baseline?","No — only scope, schedule, and cost baselines exist."],
+  ['Quality',"Audit finds gaps but not the cause. What finds root cause?","Process analysis (done after the quality audit)."],
+  ['Quality',"Special cause vs common cause in a control chart?","Common = normal variation; special = a defect needing investigation."],
+  ['Resources',"Who handles resource conflicts — PMO or FM?","The Functional Manager. PMO isn't involved in staffing."],
+  ['Resources',"Preferred order of conflict resolution?","Confrontation → Compromise → Smoothing → Forcing → Withdrawal."],
+  ['Resources',"Who are the best estimators of work?","The project team — they're the subject-matter experts."],
+  ['Resources',"Best power types for a PM?","Reward and expert power (expert especially in a weak matrix)."],
+  ['Comms',"Best channel for poor performance / disputes?","Informal verbal, face-to-face."],
+  ['Comms',"Channel for complex problems or remote/cultural differences?","Extensive formal WRITTEN communication so everyone gets the same info."],
+  ['Comms',"People nod but stay silent — what skill is needed?","Active listening."],
+  ['Stakeholder',"Stakeholder won't accept deliverables. First move?","Review the scope mgmt plan & understand their expectations; develop a Definition of Done."],
+  ['Stakeholder',"Stakeholder wants to change a plan component (predictive). Action?","Have them submit a change request."],
+  ['Stakeholder',"Often-forgotten stakeholders?","Functional managers."],
+  ['Risk',"How early should risks be identified?","As early and as much as possible — risk is an agenda item at every meeting."],
+  ['Risk',"New risk found while planning responses. Do you stop?","No — it's a secondary risk. Document it and keep planning."],
+  ['Risk',"Unplanned risk: not triggered vs triggered?","Not triggered → qualify it. Triggered → use a workaround."],
+  ['Risk',"Decision tree: square vs circle?","Square = a decision; circle = a chance event."],
+  ['Procurement',"Disputes escalation order?","Claims administration → negotiate → arbitration → litigation (last resort)."],
+  ['Procurement',"'Proposal' vs 'bid/quotation' — what's the difference?","Proposal = technical capability matters; bid/quotation = price-based selection."],
+  ['Procurement',"Vendor sends a higher invoice than agreed. Action?","Issue a breach-of-contract notice (then talk to them)."],
+  ['Integration',"Who signs off on project closure?","The sponsor — after all work is verified, delivered, and accepted."],
+  ['Integration',"Does a terminated project still need closing?","Yes — formally, through Close Project or Phase."],
+  ['Integration',"When is the lessons learned register updated?","Throughout the entire project, so it transfers to future projects."],
+];
+
+const QUIZ = [
+  ['Mindset',"Your team's velocity has dropped sharply over two sprints. What should you do FIRST?",
+    ["Reassign the slowest members to other teams","Meet the team to understand the root cause of the slowdown","Escalate the performance issue to the sponsor","Add more people to the next sprint"],
+    1,"'First' means assess before acting. Understand the root cause with the team — never remove people or escalate prematurely."],
+  ['Mindset',"A requirement might be affected by a regulation that may change next year. How do you treat this?",
+    ["Log it as an issue and resolve it now","Treat it as a risk and update the risk register","Stop the project immediately","Submit a change request"],
+    1,"'Might/may' = a risk. It hasn't happened, so update the risk register & risk management plan rather than the issue log."],
+  ['Role',"A team member tells you they feel unmotivated. What's the best response?",
+    ["Offer a bonus to boost morale","Replace them to protect the schedule","Find out what personally motivates them and act on it","Tell them to focus on the deadline"],
+    2,"Servant leaders investigate the personal cause of demotivation and respond to it; they don't bribe, replace, or pressure."],
+  ['Change',"A stakeholder asks you to add a feature mid-project. What do you do?",
+    ["Add it quickly since it's small","Refuse — the scope is locked","Assess the impact, then run it through the formal change control process","Ask the sponsor to approve it directly"],
+    2,"Never implement changes yourself or refuse outright. Assess impact on all constraints, then go through integrated change control."],
+  ['Scope',"The customer says a finished deliverable doesn't meet their needs, but it passed QA testing. What process matters here?",
+    ["Control Quality","Validate Scope","Define Scope","Control Procurements"],
+    1,"QA (Control Quality) checks correctness; the customer's acceptance is Validate Scope. Acceptance is the issue here."],
+  ['Scope',"In an agile project the Product Owner refuses to prioritize the backlog, calling everything valuable. You should…",
+    ["Prioritize the backlog yourself","Train the PO on the benefits of prioritization","Escalate to the sponsor","Build all features at once"],
+    1,"Only the PO prioritizes. If they won't, coach/train them on the benefit — never take over the role."],
+  ['Schedule',"A stakeholder asks for the exact project budget before planning is complete. What do you tell them?",
+    ["Give the charter's range as the final number","Ask them to wait until planning is finished","Provide a definitive ±5% estimate now","Escalate the request to finance"],
+    1,"The charter offers only a range. A precise budget comes after planning, so ask them to wait."],
+  ['Quality',"During production you find scattered defects with no clear pattern. Which tool helps locate where errors concentrate?",
+    ["Scatter diagram","Check-sheet","Decision tree","Tornado chart"],
+    1,"A check-sheet tabulates results to reveal error concentration so you can prioritize a response."],
+  ['Quality',"A control chart shows one data point far outside the limits. This is a…",
+    ["Common cause — ignore it","Special cause — investigate it","Specification limit breach","Precision error"],
+    1,"A point requiring investigation is a special cause (a defect), unlike common-cause normal variation."],
+  ['Resources',"Two team members are in conflict over schedules. What's the preferred first approach?",
+    ["Withdrawal until tempers cool","Forcing a decision as PM","Confrontation/problem-solving to address the source","Escalate to the functional manager"],
+    2,"Confrontation (problem-solving) is the most preferred technique; understand the source first. Escalation is a last resort."],
+  ['Resources',"You need more skilled hands but the PMO has no spare staff. Who do you approach?",
+    ["The sponsor for new hires","The functional manager about availability","HR to recruit externally","The customer to extend the deadline"],
+    1,"Check the functional manager's availability before the PMO; the PM negotiates resources with the FM."],
+  ['Comms',"A remote, multicultural team keeps misunderstanding instructions on a complex task. Best communication choice?",
+    ["A quick phone call","Informal chat messages","Formal written communication so all receive the same info","A single recorded video"],
+    2,"Complex problems plus cultural/remote differences call for extensive formal written communication."],
+  ['Stakeholder',"A stakeholder complains they aren't getting useful status updates. What do you do?",
+    ["Send more frequent reports immediately","Review the communications/engagement plan to learn what they need","Invite them to manage the project","Escalate to the sponsor"],
+    1,"Go back to the comms/stakeholder engagement plan and find out what they actually need before acting."],
+  ['Risk',"While planning responses for a known risk, the team identifies a brand-new risk. You should…",
+    ["Stop and re-run Identify Risks immediately","Ignore it until monitoring","Document it as a secondary risk and keep planning","Escalate it to the sponsor"],
+    2,"Newly found risks during response planning are secondary risks — document them and continue planning."],
+  ['Risk',"An identified-but-unplanned risk has just been triggered. What's your response?",
+    ["Qualify the risk","Implement a workaround","Add it to the watchlist","Run quantitative analysis"],
+    1,"A triggered, unplanned risk needs a workaround. Qualifying applies only when it hasn't triggered."],
+  ['Procurement',"A vendor invoices for far more than the contract states. What's the appropriate action?",
+    ["Stop all payments permanently","Terminate the contract","Issue a breach-of-contract notice, then discuss","Pay it to keep the relationship"],
+    2,"A T&C violation like over-invoicing warrants a breach notice, followed by discussion — not termination or stopping payment."],
+  ['Procurement',"Seller selection will hinge on technical approach rather than price. Which document term applies?",
+    ["Bid","Quotation","Tender","Proposal"],
+    3,"'Proposal' is used when technical capability/approach is paramount; bid/tender/quotation are price-based."],
+  ['Integration',"A project is being terminated early. What must still happen?",
+    ["Nothing — just release the team","Formally close it via Close Project or Phase","Skip lessons learned since it failed","Return the budget to finance only"],
+    1,"Even terminated projects are formally closed through Close Project or Phase, including lessons learned."],
+  ['Integration',"Who provides the final sign-off on project closure?",
+    ["The project manager","The PMO","The sponsor","The functional manager"],
+    2,"The sponsor signs off on closure, after all work is verified, delivered, and accepted."],
+  ['Mindset',"A question says a safety hazard has emerged that endangers workers right now. What do you do?",
+    ["Assess the impact and review the plan first","Stop work immediately and start change control","Log it as a risk for later","Ask the sponsor for guidance"],
+    1,"Dire safety consequences are the exception to 'think first' — stop work and begin the change control process."],
+];
+
+const CHEAT = [
+  { t:"Cue words → artifact", items:[
+    "MAY / MIGHT / COULD → Risk Register + Risk Management Plan",
+    "WILL / SHOULD / HAS happened → Issue Log + resolution",
+    "Fix the issue → an action · Escalate issue → Comms Management Plan"
+  ]},
+  { t:"Question stems → behavior", items:[
+    "Do FIRST / NEXT → assess/review, do NOT act yet",
+    "Asked for ACTION → act, don't analyze",
+    "'Should/would have helped' → reactive prevention (better planning/estimation)",
+    "Resolve the problem → find root cause first (team for technical, FM/sponsor for budget/resource)"
+  ]},
+  { t:"Usually WRONG options", items:[
+    "Absolutes: must, only, all, every, 100%, none, immediately, bypass",
+    "Extremes: terminate contract, fire/hire mid-project, stop payment, close project for inconvenience, refuse the customer",
+    "Jumping to sponsor/PMO/PO with a problem, asking for budget increase"
+  ]},
+  { t:"Usually RIGHT options", items:[
+    "Inclusive, collaborative, decisive",
+    "Assess → plan → analyze with team → act → review",
+    "Servant leadership: coach, facilitate, shield the team"
+  ]},
+  { t:"Validate Scope vs Control Quality", items:[
+    "Control Quality = correctness (QA testing)",
+    "Validate Scope = customer acceptance",
+    "Quality happens before validation"
+  ]},
+  { t:"EVM quick read", items:[
+    "SPI = schedule, CPI = cost; treat 1 = 100%",
+    ">1 good, <1 bad; negative variance = behind/over",
+    "CPI uses actual costs; 0.5 = 50¢ value per $1"
+  ]},
+  { t:"Safety / regulation", items:[
+    "Emergency/mandatory → STOP work, start change control",
+    "Rumor/potential → review with legal/governance, route to change control",
+    "New law introduced → update the risk register first"
+  ]},
+  { t:"Closure sequence", items:[
+    "Acceptance → transfer product → financial/legal/admin closure → feedback → final report → lessons learned → archive → release resources",
+    "Sponsor signs off; terminated projects still close formally"
+  ]},
+];
+
+/* ============================ STATE ============================ */
+const LS = {
+  get k(){ return 'pmp_state_v1'; },
+  load(){ try{ return JSON.parse(localStorage.getItem(this.k))||{}; }catch{ return {}; } },
+  save(o){ try{ localStorage.setItem(this.k, JSON.stringify(o)); }catch{} }
+};
+let state = LS.load();
+if(!state.best) state.best = {};
+// streak (visits on distinct days)
+(function(){
+  const today = new Date().toISOString().slice(0,10);
+  if(state.lastDay !== today){
+    const yest = new Date(Date.now()-864e5).toISOString().slice(0,10);
+    state.streak = (state.lastDay===yest) ? (state.streak||0)+1 : 1;
+    state.lastDay = today;
+    LS.save(state);
+  }
+})();
+document.getElementById('streakNum').textContent = state.streak||1;
+
+/* ============================ NAV ============================ */
+const views = ['study','flash','quiz','cheat'];
+function go(v){
+  views.forEach(x=>document.getElementById('view-'+x).classList.toggle('hidden', x!==v));
+  document.querySelectorAll('.navbtn').forEach(b=>{
+    const on = b.dataset.nav===v;
+    b.classList.toggle('text-primary', on);
+    b.classList.toggle('opacity-50', !on);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(v==='quiz') resetQuizToStart();
+}
+
+/* ============================ STUDY ============================ */
+function renderStudy(){
+  const wrap = document.getElementById('studyList');
+  wrap.innerHTML = STUDY.map((s,i)=>{
+    const total = s.groups.reduce((n,g)=>n+g.points.length,0);
+    const slides = s.groups.map((g,gi)=>`
+      <div class="study-slide shrink-0 w-full snap-center px-4 pb-4 pt-1">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge badge-primary badge-sm font-light">${gi+1}/${s.groups.length}</span>
+          <span class="font-normal text-sm display">${g.label}</span>
+        </div>
+        <ul class="space-y-2.5">
+          ${g.points.map(p=>`<li class="flex gap-2.5 text-sm leading-relaxed"><span class="text-primary mt-0.5 shrink-0 font-normal">-</span><span>${p}</span></li>`).join('')}
+        </ul>
+      </div>`).join('');
+    const dots = s.groups.map((g,gi)=>`<button class="study-dot w-2 h-2 rounded-full bg-base-content/25 transition-all" data-sec="${i}" data-gi="${gi}" aria-label="${g.label}"></button>`).join('');
+    return `
+    <details class="group rounded-3xl glass border border-base-300 shadow-sm overflow-hidden" ${i===0?'open':''}>
+      <summary class="flex items-center gap-3 p-4 active:bg-base-200/60">
+        <span class="flex-1 font-light display text-base">${s.title}</span>
+        <span class="badge badge-ghost badge-sm">${s.groups.length} cards</span>
+        <svg class="chev w-4 h-4 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="study-track flex overflow-x-auto snap-x snap-mandatory scroll-area scroll-smooth" data-sec="${i}">
+        ${slides}
+      </div>
+      <div class="flex items-center justify-center gap-1.5 pb-4 -mt-1">${dots}</div>
+    </details>`;
+  }).join('');
+
+  // dot click -> scroll to slide
+  wrap.querySelectorAll('.study-dot').forEach(d=>{
+    d.addEventListener('click',e=>{
+      e.preventDefault();
+      const sec=+d.dataset.sec, gi=+d.dataset.gi;
+      const track=wrap.querySelector(`.study-track[data-sec="${sec}"]`);
+      track.scrollTo({left: gi*track.clientWidth, behavior:'smooth'});
+    });
+  });
+  // update active dot on scroll
+  wrap.querySelectorAll('.study-track').forEach(track=>{
+    const sync=()=>{
+      const idx=Math.round(track.scrollLeft/track.clientWidth);
+      wrap.querySelectorAll(`.study-dot[data-sec="${track.dataset.sec}"]`).forEach((dot,di)=>{
+        const on=di===idx;
+        dot.classList.toggle('bg-primary',on);
+        dot.classList.toggle('w-5',on);
+        dot.classList.toggle('bg-base-content/25',!on);
+        dot.classList.toggle('w-2',!on);
+      });
+    };
+    track.addEventListener('scroll',()=>{ clearTimeout(track._t); track._t=setTimeout(sync,60); });
+    // initial active state when opened
+    setTimeout(sync,50);
+    const det=track.closest('details');
+    if(det) det.addEventListener('toggle',()=>{ if(det.open) setTimeout(sync,30); });
+  });
+}
+
+/* ============================ FLASHCARDS ============================ */
+let flashSet=[], flashIdx=0, flashFlipped=false;
+function initFlashTopics(){
+  const topics = ['All', ...[...new Set(FLASH.map(f=>f[0]))]];
+  document.getElementById('flashTopic').innerHTML = topics.map(t=>`<option value="${t}">${t}</option>`).join('');
+}
+function buildFlash(){
+  const t = document.getElementById('flashTopic').value || 'All';
+  flashSet = (t==='All'?FLASH:FLASH.filter(f=>f[0]===t)).slice();
+  // light shuffle
+  for(let i=flashSet.length-1;i>0;i--){ const j=Math.random()*(i+1)|0; [flashSet[i],flashSet[j]]=[flashSet[j],flashSet[i]]; }
+  flashIdx=0; renderFlash();
+  document.getElementById('flashTopicLabel').textContent = t==='All'?'All topics':t;
+}
+function renderFlash(){
+  if(!flashSet.length) return;
+  const c = flashSet[flashIdx];
+  flashFlipped=false;
+  document.getElementById('flashStage').classList.remove('flip');
+  document.getElementById('flashCat').textContent = c[0];
+  document.getElementById('flashFront').textContent = c[1];
+  document.getElementById('flashBack').textContent = c[2];
+  document.getElementById('flashCount').textContent = `${flashIdx+1}/${flashSet.length}`;
+  document.getElementById('flashProg').value = (flashIdx+1)/flashSet.length*100;
+  document.getElementById('flashCard').classList.remove('fade-in'); void document.getElementById('flashCard').offsetWidth;
+  document.getElementById('flashCard').classList.add('fade-in');
+}
+function flipCard(){ flashFlipped=!flashFlipped; document.getElementById('flashStage').classList.toggle('flip',flashFlipped); }
+function flashNav(d){ flashIdx=(flashIdx+d+flashSet.length)%flashSet.length; renderFlash(); }
+document.getElementById('flashStage').addEventListener('click', flipCard);
+// swipe
+(function(){
+  const el=document.getElementById('flashStage'); let x0=null;
+  el.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  el.addEventListener('touchend',e=>{ if(x0===null)return; const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>55){ flashNav(dx<0?1:-1); } x0=null; });
+})();
+
+/* ============================ QUIZ ============================ */
+let quizSet=[], qIdx=0, qScore=0, qTopic='All', qLen=10, qAnswered=false;
+function initQuizControls(){
+  const topics=['All', ...[...new Set(QUIZ.map(q=>q[0]))]];
+  document.getElementById('quizTopic').innerHTML = topics.map(t=>`<option value="${t}">${t}</option>`).join('');
+  const join=document.getElementById('quizLenJoin');
+  [5,10,15,'All'].forEach(n=>{
+    const b=document.createElement('button');
+    b.className='btn join-item flex-1 '+(n===10?'btn-primary':'btn-outline');
+    b.textContent=n; b.onclick=()=>{ qLen=n; [...join.children].forEach(c=>{c.classList.remove('btn-primary');c.classList.add('btn-outline');}); b.classList.add('btn-primary'); b.classList.remove('btn-outline'); };
+    join.appendChild(b);
+  });
+}
+function resetQuizToStart(){
+  document.getElementById('quizStart').classList.remove('hidden');
+  document.getElementById('quizPlay').classList.add('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+  const t=document.getElementById('quizTopic').value;
+  const best=state.best[t+'_'+qLen];
+  const wrap=document.getElementById('bestScoreWrap');
+  if(best!==undefined){ wrap.classList.remove('hidden'); document.getElementById('bestScore').textContent=best+'%'; }
+  else wrap.classList.add('hidden');
+}
+function startQuiz(){
+  qTopic=document.getElementById('quizTopic').value;
+  let pool=(qTopic==='All'?QUIZ:QUIZ.filter(q=>q[0]===qTopic)).slice();
+  for(let i=pool.length-1;i>0;i--){ const j=Math.random()*(i+1)|0; [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  const n = qLen==='All'?pool.length:Math.min(qLen,pool.length);
+  quizSet=pool.slice(0,n); qIdx=0; qScore=0;
+  document.getElementById('quizStart').classList.add('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizPlay').classList.remove('hidden');
+  renderQuiz();
+}
+function renderQuiz(){
+  qAnswered=false;
+  const q=quizSet[qIdx];
+  document.getElementById('quizCount').textContent=`${qIdx+1}/${quizSet.length}`;
+  document.getElementById('quizProg').value=(qIdx+1)/quizSet.length*100;
+  document.getElementById('quizCat').textContent=q[0];
+  document.getElementById('quizQ').textContent=q[1];
+  document.getElementById('quizExplain').classList.add('hidden');
+  const opts=document.getElementById('quizOpts');
+  opts.innerHTML='';
+  q[2].forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='btn btn-outline btn-block justify-start text-left h-auto py-3 rounded-2xl normal-case font-light leading-snug whitespace-normal';
+    b.innerHTML=`<span class="badge badge-ghost shrink-0 mr-1">${'ABCD'[i]}</span><span class="flex-1">${opt}</span>`;
+    b.onclick=()=>answerQuiz(i,b);
+    opts.appendChild(b);
+  });
+  document.getElementById('quizQ').classList.remove('fade-in'); void document.getElementById('quizQ').offsetWidth;
+  document.getElementById('quizQ').classList.add('fade-in');
+}
+function answerQuiz(i,btn){
+  if(qAnswered) return; qAnswered=true;
+  const q=quizSet[qIdx]; const correct=q[3];
+  const btns=[...document.getElementById('quizOpts').children];
+  btns.forEach((b,idx)=>{
+    b.disabled=true; b.classList.remove('btn-outline');
+    if(idx===correct){ b.classList.add('btn-success'); }
+    else if(idx===i){ b.classList.add('btn-error'); }
+    else b.classList.add('btn-ghost','opacity-60');
+  });
+  const right = i===correct;
+  if(right) qScore++;
+  const box=document.getElementById('quizExplainBox');
+  box.className='alert rounded-2xl items-start '+(right?'alert-success':'alert-warning');
+  document.getElementById('quizExplainTitle').textContent = right?'Correct — PMI mindset':'The PMI answer is '+'ABCD'[correct];
+  document.getElementById('quizExplainText').textContent = q[4];
+  document.getElementById('quizExplain').classList.remove('hidden');
+  document.getElementById('quizNextBtn').textContent = (qIdx===quizSet.length-1)?'See results':'Next';
+  document.getElementById('quizExplain').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function nextQuiz(){
+  if(qIdx<quizSet.length-1){ qIdx++; renderQuiz(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else showResult();
+}
+function showResult(){
+  document.getElementById('quizPlay').classList.add('hidden');
+  const r=document.getElementById('quizResult'); r.classList.remove('hidden');
+  const pct=Math.round(qScore/quizSet.length*100);
+  document.getElementById('resultScore').textContent=`${qScore}/${quizSet.length}`;
+  const radial=document.getElementById('resultRadial');
+  radial.style.setProperty('--value',pct); radial.textContent=pct+'%';
+  let msg='Keep practicing — review the cheat sheet.';
+  if(pct>=90){ msg='Outstanding. You think like a PMP.'; }
+  else if(pct>=70){ msg='Solid work — almost there.'; }
+  else if(pct>=50){ msg='Good progress. Revisit the tricky topics.'; }
+  document.getElementById('resultMsg').textContent=msg;
+  const key=qTopic+'_'+qLen;
+  if(state.best[key]===undefined||pct>state.best[key]){ state.best[key]=pct; LS.save(state); }
+}
+
+/* ============================ CHEAT ============================ */
+function renderCheat(){
+  document.getElementById('cheatList').innerHTML = CHEAT.map(c=>`
+    <div class="card glass border border-base-300 rounded-3xl shadow-sm">
+      <div class="card-body p-4 gap-2">
+        <h3 class="display font-normal text-base text-primary">${c.t}</h3>
+        <ul class="space-y-1.5">
+          ${c.items.map(i=>`<li class="flex gap-2 text-sm leading-relaxed"><span class="text-secondary font-normal">-</span><span>${i}</span></li>`).join('')}
+        </ul>
+      </div>
+    </div>`).join('');
+}
+
+/* ============================ INIT ============================ */
+renderStudy();
+initFlashTopics(); buildFlash();
+initQuizControls(); resetQuizToStart();
+renderCheat();
+go('study');
+</script>
+</body>
+</html>
