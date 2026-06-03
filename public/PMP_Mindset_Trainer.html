@@ -622,6 +622,7 @@ const LS = {
 };
 let state = LS.load();
 if(!state.best) state.best = {};
+if(!state.studyRead) state.studyRead = {};
 // streak (visits on distinct days)
 (function(){
   const today = new Date().toISOString().slice(0,10);
@@ -648,10 +649,40 @@ function go(v){
 }
 
 /* ============================ STUDY ============================ */
+const studyKey=(secId,gi)=>secId+':'+gi;
+const isStudyRead=(secId,gi)=>!!state.studyRead[studyKey(secId,gi)];
+function toggleStudyRead(secId,gi){
+  const k=studyKey(secId,gi);
+  const now=!state.studyRead[k];
+  if(now) state.studyRead[k]=true; else delete state.studyRead[k];
+  LS.save(state);
+  return now;
+}
+const READ_CHECK='<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+function paintReadBtn(btn){
+  const read=isStudyRead(STUDY[+btn.dataset.sec].id,+btn.dataset.gi);
+  btn.classList.toggle('btn-success',read);
+  btn.classList.toggle('btn-outline',!read);
+  btn.classList.toggle('btn-primary',!read);
+  btn.innerHTML=READ_CHECK+(read?'Read · tap to undo':'Mark as read');
+}
+// repaint buttons, progress badges and dots from saved read-state
+function applyStudyRead(){
+  const wrap=document.getElementById('studyList');
+  wrap.querySelectorAll('.study-read-btn').forEach(paintReadBtn);
+  wrap.querySelectorAll('.study-progress').forEach(b=>{
+    const s=STUDY[+b.dataset.sec], total=s.groups.length;
+    const read=s.groups.reduce((n,g,gi)=>n+(isStudyRead(s.id,gi)?1:0),0);
+    b.textContent=`${read}/${total} read`;
+    b.classList.toggle('badge-success',read===total);
+    b.classList.toggle('badge-ghost',read!==total);
+  });
+  wrap.querySelectorAll('.study-track').forEach(t=>t._sync&&t._sync());
+}
+
 function renderStudy(){
   const wrap = document.getElementById('studyList');
   wrap.innerHTML = STUDY.map((s,i)=>{
-    const total = s.groups.reduce((n,g)=>n+g.points.length,0);
     const slides = s.groups.map((g,gi)=>`
       <div class="study-slide shrink-0 w-full snap-center px-4 pb-4 pt-1">
         <div class="flex items-center gap-2 mb-3">
@@ -661,13 +692,14 @@ function renderStudy(){
         <ul class="space-y-2.5">
           ${g.points.map(p=>`<li class="flex gap-2.5 text-sm leading-relaxed"><span class="text-primary mt-0.5 shrink-0 font-normal">-</span><span>${p}</span></li>`).join('')}
         </ul>
+        <button class="study-read-btn btn btn-sm rounded-xl mt-4 gap-1.5 btn-outline btn-primary" data-sec="${i}" data-gi="${gi}"></button>
       </div>`).join('');
     const dots = s.groups.map((g,gi)=>`<button class="study-dot w-2 h-2 rounded-full bg-base-content/25 transition-all" data-sec="${i}" data-gi="${gi}" aria-label="${g.label}"></button>`).join('');
     return `
     <details class="group rounded-3xl glass border border-base-300 shadow-sm overflow-hidden" ${i===0?'open':''}>
       <summary class="flex items-center gap-3 p-4 active:bg-base-200/60">
         <span class="flex-1 font-light display text-base">${s.title}</span>
-        <span class="badge badge-ghost badge-sm">${s.groups.length} cards</span>
+        <span class="study-progress badge badge-ghost badge-sm" data-sec="${i}">0/${s.groups.length} read</span>
         <svg class="chev w-4 h-4 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
       </summary>
       <div class="study-track flex overflow-x-auto snap-x snap-mandatory scroll-area scroll-smooth" data-sec="${i}">
@@ -686,24 +718,42 @@ function renderStudy(){
       track.scrollTo({left: gi*track.clientWidth, behavior:'smooth'});
     });
   });
-  // update active dot on scroll
+  // "Mark as read" -> save, repaint, and glide to the next card so progress feels guided
+  wrap.querySelectorAll('.study-read-btn').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      const sec=+btn.dataset.sec, gi=+btn.dataset.gi;
+      const nowRead=toggleStudyRead(STUDY[sec].id, gi);
+      applyStudyRead();
+      if(nowRead && gi < STUDY[sec].groups.length-1){
+        const track=wrap.querySelector(`.study-track[data-sec="${sec}"]`);
+        track.scrollTo({left:(gi+1)*track.clientWidth, behavior:'smooth'});
+      }
+    });
+  });
+  // update active dot on scroll (also reflects read cards)
   wrap.querySelectorAll('.study-track').forEach(track=>{
     const sync=()=>{
       const idx=Math.round(track.scrollLeft/track.clientWidth);
+      const secId=STUDY[+track.dataset.sec].id;
       wrap.querySelectorAll(`.study-dot[data-sec="${track.dataset.sec}"]`).forEach((dot,di)=>{
-        const on=di===idx;
+        const on=di===idx, read=isStudyRead(secId,di);
         dot.classList.toggle('bg-primary',on);
         dot.classList.toggle('w-5',on);
-        dot.classList.toggle('bg-base-content/25',!on);
+        dot.classList.toggle('bg-primary/40',!on && read);
+        dot.classList.toggle('bg-base-content/25',!on && !read);
         dot.classList.toggle('w-2',!on);
       });
     };
+    track._sync=sync;
     track.addEventListener('scroll',()=>{ clearTimeout(track._t); track._t=setTimeout(sync,60); });
     // initial active state when opened
     setTimeout(sync,50);
     const det=track.closest('details');
     if(det) det.addEventListener('toggle',()=>{ if(det.open) setTimeout(sync,30); });
   });
+
+  applyStudyRead();
 }
 
 /* ============================ FLASHCARDS ============================ */
