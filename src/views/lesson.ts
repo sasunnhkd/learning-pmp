@@ -25,7 +25,7 @@ export function renderLesson(): string {
       </div>
     </div>
 
-    ${prevScore ? `<div style="background:var(--accent-soft);border:1px solid #fcd34d;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;color:#78350f;border-radius:2px">Previous quiz: <strong>${prevScore.score}/${prevScore.total}</strong> (${Math.round(prevScore.score/prevScore.total*100)}%)</div>` : ''}
+    ${prevScore ? `<div class="prev-score">Previous quiz: <strong>${prevScore.score}/${prevScore.total}</strong> (${Math.round(prevScore.score/prevScore.total*100)}%)</div>` : ''}
 
     <button class="btn btn-dark" onclick="startQuiz(${state.selectedDay})">${icons.brain} ${prevScore ? 'Retake Practice Quiz' : 'Begin Practice Quiz'}</button>
   `;

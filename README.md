@@ -20,7 +20,15 @@ A static PWA for PMP exam study, built with Vite and TypeScript and with no runt
 
 1. Bump `version` in `package.json` and `package-lock.json` (`npm version <x.y.z> --no-git-tag-version`). The build stamps it into `dist/index.html` as `<meta name="app-version">` (see `vite.config.ts`).
 2. Bump `CACHE` in `public/sw.js`. The service worker serves cache-first, so installed clients never see new files otherwise.
-3. Run `npm run typecheck && npm run build`, then deploy `dist/`.
+3. Run `npm run typecheck && npm test && npm run build`, then deploy `dist/`. `npm test` needs Node 22.6 or later (`--experimental-strip-types`). CI runs Node 20, so it skips the tests.
+
+## UI and design system
+
+- **Tokens:** all colours live in `:root` at the top of `src/styles.css`, and dark mode redefines the same tokens under `prefers-color-scheme`. Don't hard-code hex values in CSS or in inline `style=` in `src/views/*`, because they won't switch in dark mode. Add a token instead. The one allowed exception is the decorative sparkle stroke (`#f59e0b`) in `src/icons.ts`, which always sits on the ink card. Every text/background pair is at least 4.5:1 (WCAG AA). `--text-mute` is the lightest text colour allowed, and no label goes below 12px.
+- **Fonts:** Fraunces (headings and numbers) and Outfit (body) are self-hosted in `src/assets/fonts/` (latin subset, variable weight 400–600, SIL OFL 1.1 licences next to the files). They are loaded from Google's own servers but bundled with the app because `public/sw.js` only caches same-origin files, so CDN fonts would be missing offline. To swap a font, replace the woff2 file and its `@font-face` rule in `styles.css`.
+- **Zoom:** `index.html` must not set `user-scalable=no` or `maximum-scale`. Buttons use `touch-action: manipulation` so double-tap doesn't zoom. The Mindset Trainer page still blocks zoom; that is left for the trainer merge.
+- **Quiz results review:** `src/review.ts` `buildReview()` turns `QuizState.questions` and `answers` into rows (your answer, the right answer, the explanation). `renderReview()` in `src/views/quiz.ts` renders them. Keep `review.ts` free of runtime imports so `tests/review.test.ts` can run it under plain Node.
+- **Design preview:** mockups for later phases (status report, Gantt schedule, structured lessons, desktop layout) are in `../design-preview/`, outside this repo.
 
 ## Dependency pins
 
