@@ -82,7 +82,8 @@ export function renderDashboard(): string {
         ${curriculum.map(c => {
           const done = d.completedDays.includes(c.day);
           const isToday = c.day === currentDay;
-          return `<div class="day-cell ${done ? 'done' : isToday ? 'today' : ''}">${done ? '✓' : c.day}</div>`;
+          // Every cell opens its lesson, including days after today (reading ahead is allowed).
+          return `<button class="day-cell ${done ? 'done' : isToday ? 'today' : ''}" onclick="navigate('lesson', ${c.day})" aria-label="Day ${c.day}${done ? ', completed' : isToday ? ', today' : ''}">${done ? '✓' : c.day}</button>`;
         }).join('')}
       </div>
     </div>

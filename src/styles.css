@@ -146,7 +146,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .progress-fill { height: 100%; background: var(--success); border-radius: 3px; transition: width .8s ease; }
 .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 .day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 18px; }
-.day-cell { aspect-ratio: 1; border-radius: 7px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; color: var(--text-mute); font-variant-numeric: lining-nums tabular-nums; }
+.day-cell { width: 100%; aspect-ratio: 1; border-radius: 7px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; color: var(--text-mute); font-variant-numeric: lining-nums tabular-nums; }
 .day-cell.done { background: var(--success); color: var(--surface); }
 .day-cell.today { background: var(--surface); outline: 2px solid var(--primary); outline-offset: -2px; color: var(--primary); }
 
@@ -228,7 +228,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .week-section { margin-bottom: 32px; }
 .lesson-row { width: 100%; text-align: left; padding: 14px; min-height: 64px; border: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; gap: 14px; margin-bottom: 8px; transition: border-color .15s; border-radius: var(--radius-sm); color: var(--text-mute); }
 .lesson-row:hover:not(:disabled) { border-color: var(--border-strong); }
-.lesson-row:disabled { opacity: .55; cursor: not-allowed; background: var(--surface-2); }
 .lesson-row.today { background: var(--accent-bg); border-color: var(--accent-border); }
 .lesson-row.done { border-color: var(--success-border); }
 .lesson-num { width: 32px; text-align: center; color: var(--text-mute); font-size: .875rem; font-weight: 600; flex-shrink: 0; font-variant-numeric: lining-nums tabular-nums; }

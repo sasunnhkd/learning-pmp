@@ -16,6 +16,14 @@ A static PWA for PMP exam study, built with Vite and TypeScript and with no runt
 | Trainer scenario quiz | `QUIZ` | `[topic, stem, [4 options], correctIndex, explanation]`. The topic dropdown is built from the distinct topics, so reuse existing topic labels exactly as spelled. Entries 21–200 come from a third-party PMP exam question deck; their topic tags were assigned by hand. |
 | Trainer cheat sheet | `CHEAT` | `{t, items[]}` |
 
+## Daily pacing (no locked lessons)
+
+The 28 days are a suggested pace, not a gate. Learners can open any lesson and quiz at any time, including days after today.
+
+- **"Today"** is `getCurrentDay()` in `src/state.ts`: days since `startDate`, clamped to 1–28. It only picks the dashboard's Today card and the "Today" highlight in the day grid and curriculum list. It never blocks anything.
+- **Entry points:** every row in `renderAll()` (`src/views/all.ts`) and every `.day-cell` button in the dashboard day grid (`renderDashboard()` in `src/views/dashboard.ts`) calls `navigate('lesson', day)`. `renderLesson()` (`src/views/lesson.ts`) and `startQuiz()` (`src/actions.ts`) have no day check of their own, so if a lock is ever wanted again it belongs in those two functions.
+- **Streak:** `completeLesson()` in `src/actions.ts` adds at most 1 to the streak per calendar date (`lastStudyDate === today()` leaves it unchanged). Doing several lessons in one day marks each one done but does not inflate the streak.
+
 ## Shipping a change
 
 1. Bump `version` in `package.json` and `package-lock.json` (`npm version <x.y.z> --no-git-tag-version`). The build stamps it into `dist/index.html` as `<meta name="app-version">` (see `vite.config.ts`).
