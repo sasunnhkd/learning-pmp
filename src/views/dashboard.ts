@@ -1,5 +1,6 @@
 import { state, curriculum, getCurrentDay, today, esc } from '../state';
 import { icons } from '../icons';
+import { previewText } from '../lessonFormat';
 
 function renderInstallBanner(): string {
   if (!state.showInstall) return '';
@@ -64,7 +65,7 @@ export function renderDashboard(): string {
         </div>
         ${studiedToday ? `<div class="studied-badge">${icons.checkCircle} Studied</div>` : ''}
       </div>
-      <p class="lesson-preview">${esc(todays.lesson.substring(0, 200))}...</p>
+      <p class="lesson-preview">${esc(previewText(todays.lesson, 200))}</p>
       <div class="btn-group">
         <button class="btn btn-dark" onclick="navigate('lesson', ${currentDay})">${icons.book} Read Lesson</button>
         <button class="btn btn-accent" onclick="startQuiz(${currentDay})">${icons.brain} Quick Quiz</button>

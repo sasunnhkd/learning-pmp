@@ -1,5 +1,6 @@
 import { state, curriculum, esc } from '../state';
 import { icons } from '../icons';
+import { formatLesson } from '../lessonFormat';
 
 export function renderLesson(): string {
   const lesson = curriculum.find(c => c.day === state.selectedDay);
@@ -18,7 +19,7 @@ export function renderLesson(): string {
     </div>
 
     <div class="lesson-body">
-      <p class="lesson-text">${esc(lesson.lesson)}</p>
+      <div class="lesson-text">${formatLesson(lesson.lesson)}</div>
       <div class="key-terms">
         <div class="key-terms-label">Key Terms</div>
         <div class="tags">${lesson.keyTerms.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>

@@ -169,7 +169,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Lesson view */
 .lesson-meta { display: flex; gap: 16px; align-items: baseline; margin-bottom: 10px; flex-wrap: wrap; }
 .lesson-body { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 18px; box-shadow: var(--shadow); }
-.lesson-text { font-size: 1.0625rem; line-height: 1.8; color: var(--text); margin: 0; }
+/* Lesson body: HTML from src/lessonFormat.ts formatLesson() (markup is documented there and in README). */
+.lesson-text { font-size: 1.0625rem; line-height: 1.7; color: var(--text); }
+.lesson-text > * { margin: 0; }
+.lesson-text > * + * { margin-top: 14px; }
+.lesson-text > p:first-child { font-family: var(--font-display); font-size: 1.2rem; line-height: 1.5; }
+.lesson-text strong { font-weight: 600; }
+.lesson-text > h4 { margin-top: 24px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lesson-text > h4:first-child { margin-top: 0; }
+.lesson-text > h4 + * { margin-top: 8px; }
+.lesson-text ul, .lesson-text ol { padding: 0; list-style: none; display: grid; gap: 8px; }
+.lesson-text ul li { position: relative; padding-left: 20px; }
+.lesson-text ul li::before { content: ''; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.lesson-text ol { counter-reset: step; }
+.lesson-text ol li { counter-increment: step; position: relative; padding-left: 36px; min-height: 26px; }
+.lesson-text ol li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 7px; background: var(--accent-bg); color: var(--accent); font-family: var(--font-display); font-weight: 600; font-size: .85rem; display: grid; place-items: center; }
+.lesson-text code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: .92em; background: var(--surface-2); padding: 2px 6px; border-radius: 6px; white-space: nowrap; }
+.lesson-text > blockquote { margin-top: 18px; padding: 12px 16px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 .key-terms { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
 .key-terms-label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 12px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
