@@ -28,7 +28,7 @@ The 28 days are a suggested pace, not a gate. Learners can open any lesson and q
 
 1. Bump `version` in `package.json` and `package-lock.json` (`npm version <x.y.z> --no-git-tag-version`). The build stamps it into `dist/index.html` as `<meta name="app-version">` (see `vite.config.ts`).
 2. Bump `CACHE` in `public/sw.js`. The service worker serves cache-first, so installed clients never see new files otherwise.
-3. Run `npm run typecheck && npm test && npm run build`, then deploy `dist/`. `npm test` needs Node 22.6 or later (`--experimental-strip-types`). CI runs Node 20, so it skips the tests.
+3. Run `npm run typecheck && npm test && npm run build`, then deploy `dist/`. `npm test` needs Node 22.6 or later (`--experimental-strip-types`). Pushing to `main` runs `.github/workflows/deploy.yml` on Node 24: `npm ci`, typecheck, tests and build, then the GitHub Pages deploy. If any step fails, nothing is deployed and the live site stays as it was.
 
 ## UI and design system
 
@@ -41,6 +41,14 @@ The 28 days are a suggested pace, not a gate. Learners can open any lesson and q
 ## Dependency pins
 
 `package.json` → `overrides` pins nanoid, postcss and source-map-js to reviewed versions that fix the advisories listed in its `"//"` note. Remove the pins when upgrading past vite 5.
+
+GitHub Actions in `.github/workflows/deploy.yml` are pinned to full commit SHAs, with the release tag in a trailing comment, because a tag can be moved to different code. All of them must run on Node 24; GitHub deprecated Node 20 action runtimes in September 2025. To update one:
+1. Read its release notes for breaking changes. For example, `upload-pages-artifact` v4+ leaves out dotfiles unless `include-hidden-files: true` is set.
+2. Get the tag's commit with `gh api repos/actions/<name>/commits/<tag> --jq .sha`.
+3. Check that the commit is on the action's own history with `gh api repos/actions/<name>/compare/<sha>...main --jq .status`, which should print `ahead` or `identical`.
+4. Replace both the SHA and the comment.
+
+The deploy job does not cache npm dependencies (`package-manager-cache: false`), and checkout does not keep the token (`persist-credentials: false`).
 
 ## Content sources (as of October 2026)
 
