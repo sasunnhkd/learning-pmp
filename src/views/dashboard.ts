@@ -102,6 +102,6 @@ export function renderDashboard(): string {
       ${icons.chevron}
     </button>
 
-    <div class="footer">PMBOK 7 · Project Management Institute</div>
+    <div class="footer">PMBOK 8 · PMP Exam Content Outline (July 2026) · Project Management Institute</div>
   `;
 }

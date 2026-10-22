@@ -1,15 +1,15 @@
 {
   "1": [
     {
-      "q": "Which of the following BEST describes a project?",
+      "q": "Which of the following BEST describes a project (PMBOK 8)?",
       "options": [
         "Ongoing work that produces the same output repeatedly",
-        "A temporary endeavor undertaken to create a unique product or service",
+        "A temporary initiative in a unique context undertaken to create value",
         "Any work assigned to a team",
         "Work that requires a budget"
       ],
       "correct": 1,
-      "explain": "Projects are TEMPORARY (defined start/end) and produce UNIQUE outputs—this distinguishes them from operations."
+      "explain": "PMBOK 8 defines a project as temporary, set in a unique context, and undertaken to create VALUE. Ongoing, repetitive work is operations."
     },
     {
       "q": "What is 'progressive elaboration' in project management?",
@@ -71,107 +71,107 @@
   ],
   "3": [
     {
-      "q": "Which PMBOK 7 principle emphasizes acting ethically and with integrity?",
+      "q": "How many principles does the PMBOK Guide 8th Edition contain?",
       "options": [
-        "Leadership",
-        "Stewardship",
-        "Value",
-        "Quality"
+        "4",
+        "6",
+        "8",
+        "12"
       ],
       "correct": 1,
-      "explain": "Stewardship is the first principle—act responsibly, ethically, and with integrity."
+      "explain": "PMBOK 8 consolidates the 7th edition's 12 principles into six."
     },
     {
-      "q": "'Recognize and respond to system interactions' refers to which principle?",
+      "q": "Before choosing a design, a PM checks how it will affect operations, support teams, and two other projects. Which PMBOK 8 principle is this?",
       "options": [
-        "Tailoring",
-        "Complexity",
-        "Systems Thinking",
-        "Adaptability"
+        "Focus on value",
+        "Adopt a holistic view",
+        "Embed quality into processes and deliverables",
+        "Build an empowered culture"
+      ],
+      "correct": 1,
+      "explain": "Looking at the project as part of a larger system is the holistic view."
+    },
+    {
+      "q": "A team reports 95% of tasks complete, but users see no benefit yet. Which principle should redirect the team?",
+      "options": [
+        "Embed quality into processes and deliverables",
+        "Be an accountable leader",
+        "Focus on value",
+        "Integrate sustainability within all project areas"
       ],
       "correct": 2,
-      "explain": "Systems Thinking is about understanding how parts of the project interact as a system."
-    },
-    {
-      "q": "Which leadership style does PMBOK 7 most strongly emphasize?",
-      "options": [
-        "Command-and-control",
-        "Servant leadership",
-        "Laissez-faire",
-        "Transactional"
-      ],
-      "correct": 1,
-      "explain": "Servant leadership—where the leader serves the team—is the dominant style emphasized in PMBOK 7."
+      "explain": "Activity completed is not value delivered. Focus on outcomes stakeholders care about."
     }
   ],
   "4": [
     {
-      "q": "The principle of TAILORING means:",
+      "q": "Which of these is one of the six PMBOK 8 principles?",
       "options": [
-        "Customizing approach based on context, project, and environment",
-        "Following PMBOK exactly as written",
-        "Reducing project scope to fit budget",
-        "Adjusting team size to match work"
+        "Tailor based on context",
+        "Integrate sustainability within all project areas",
+        "Optimize risk responses",
+        "Navigate complexity"
       ],
-      "correct": 0,
-      "explain": "Tailoring is about adapting your approach—methods, processes, tools—to fit the specific context."
+      "correct": 1,
+      "explain": "The other three were 7th-edition principles. PMBOK 8's six include integrating sustainability."
     },
     {
-      "q": "Which principle emphasizes 'embracing change to enable a better future state'?",
+      "q": "Under 'Build an empowered culture', the project manager should primarily:",
       "options": [
-        "Risk",
-        "Adaptability & Resiliency",
-        "Change",
-        "Quality"
+        "Assign every task individually to keep control",
+        "Create trust and psychological safety so the team can self-organize",
+        "Approve every team decision personally",
+        "Rotate team members often to prevent cliques"
       ],
-      "correct": 2,
-      "explain": "The Change principle is specifically about enabling change to achieve the envisioned future state."
+      "correct": 1,
+      "explain": "An empowered culture rests on trust, safety, and collaboration, not control."
     },
     {
-      "q": "How many principles are in PMBOK 7?",
+      "q": "A supplier's packaging process creates heavy waste that the client's community objects to. Which principle most directly applies?",
       "options": [
-        "8",
-        "10",
-        "12",
-        "14"
+        "Be an accountable leader",
+        "Focus on value",
+        "Integrate sustainability within all project areas",
+        "Embed quality into processes and deliverables"
       ],
       "correct": 2,
-      "explain": "PMBOK 7 has 12 principles and 8 performance domains—don't confuse the two."
+      "explain": "Environmental and social impact is the sustainability principle, and it applies to suppliers too."
     }
   ],
   "5": [
     {
-      "q": "How do PMBOK 7 Performance Domains differ from PMBOK 6 Knowledge Areas?",
+      "q": "Which is NOT one of PMBOK 8's seven performance domains?",
       "options": [
-        "They are the same",
-        "Performance Domains are sequential; Knowledge Areas were not",
-        "Performance Domains are interactive and outcome-focused; Knowledge Areas were process-focused",
-        "There are more Performance Domains"
+        "Governance",
+        "Finance",
+        "Delivery",
+        "Risk"
       ],
       "correct": 2,
-      "explain": "Performance Domains are outcome-oriented and interactive—they all operate together."
+      "explain": "Delivery was a PMBOK 7 domain. PMBOK 8's seven are Governance, Scope, Schedule, Finance, Stakeholders, Resources, and Risk."
     },
     {
-      "q": "Which is NOT a PMBOK 7 Performance Domain?",
+      "q": "PMBOK 8's five focus areas are:",
       "options": [
-        "Stakeholders",
-        "Team",
-        "Procurement",
-        "Uncertainty"
+        "Initiating, Planning, Executing, Monitoring and Controlling, Closing",
+        "Stakeholders, Team, Planning, Delivery, Measurement",
+        "Scope, Schedule, Cost, Quality, Risk",
+        "People, Process, Business Environment, Value, Governance"
       ],
-      "correct": 2,
-      "explain": "Procurement is a PMBOK 6 Knowledge Area, not a PMBOK 7 Performance Domain."
+      "correct": 0,
+      "explain": "The focus areas organize PMBOK 8's roughly 40 processes and mirror the familiar project stages."
     },
     {
-      "q": "How many Performance Domains exist in PMBOK 7?",
+      "q": "How many performance domains does PMBOK 8 define?",
       "options": [
-        "6",
+        "5",
+        "7",
         "8",
-        "10",
-        "12"
+        "10"
       ],
       "correct": 1,
-      "explain": "8 Performance Domains: Stakeholders, Team, Development Approach & Life Cycle, Planning, Project Work, Delivery, Measurement, Uncertainty."
+      "explain": "Seven: Governance, Scope, Schedule, Finance, Stakeholders, Resources, Risk. (PMBOK 7 had eight.)"
     }
   ],
   "6": [
@@ -211,7 +211,7 @@
   ],
   "7": [
     {
-      "q": "What is the core idea behind PMBOK 7's principle-based approach?",
+      "q": "What is the core idea behind PMBOK's principle-based approach?",
       "options": [
         "Strict process compliance",
         "Behaviors guide decisions when standards conflict",
@@ -222,15 +222,15 @@
       "explain": "Principles are guiding behaviors—they help make decisions where rigid rules don't apply."
     },
     {
-      "q": "How many Performance Domains and Principles are in PMBOK 7?",
+      "q": "How many performance domains and principles are in PMBOK 8?",
       "options": [
-        "10 and 8",
         "8 and 12",
-        "12 and 8",
-        "5 and 10"
+        "7 and 6",
+        "10 and 5",
+        "5 and 7"
       ],
       "correct": 1,
-      "explain": "8 Performance Domains and 12 Principles."
+      "explain": "PMBOK 8 has 7 performance domains and 6 principles (PMBOK 7 had 8 and 12)."
     },
     {
       "q": "Performance Domains operate:",
@@ -351,7 +351,7 @@
   ],
   "11": [
     {
-      "q": "Which leadership style is MOST aligned with PMBOK 7's emphasis?",
+      "q": "Which leadership style best fits PMI's emphasis on an empowered team?",
       "options": [
         "Authoritarian",
         "Servant",
@@ -359,7 +359,7 @@
         "Bureaucratic"
       ],
       "correct": 1,
-      "explain": "Servant leadership is most strongly emphasized in PMBOK 7."
+      "explain": "Servant leadership best supports an empowered, self-organizing team, which PMI emphasizes."
     },
     {
       "q": "Transactional leadership is BEST when:",
@@ -386,7 +386,7 @@
   ],
   "12": [
     {
-      "q": "Which conflict resolution mode does PMBOK 7 generally favor?",
+      "q": "Which conflict resolution mode does PMI generally favor?",
       "options": [
         "Avoiding",
         "Competing",
@@ -491,15 +491,15 @@
   ],
   "15": [
     {
-      "q": "In agile projects, planning is typically:",
+      "q": "Under the 2026 PMP outline, establishing project governance includes:",
       "options": [
-        "Done all at once at the start",
-        "Done continuously through rolling-wave planning",
-        "Avoided entirely",
-        "Only done by the PM"
+        "Only setting up the change control board",
+        "Defining structure, rules, reporting, success metrics, and escalation paths and thresholds",
+        "Assigning daily tasks to team members",
+        "Choosing the agile framework for each team"
       ],
       "correct": 1,
-      "explain": "Adaptive approaches use rolling-wave planning—plan near-term in detail."
+      "explain": "Governance covers the structure, rules, reporting, ethics, and policies, plus success metrics and escalation paths and thresholds."
     },
     {
       "q": "Rolling-wave planning is:",
@@ -618,15 +618,15 @@
       "explain": "Three-point (often PERT) combines O+P+ML to get expected value."
     },
     {
-      "q": "Bottom-up estimating is:",
+      "q": "Which reserve is meant for unknown-unknowns?",
       "options": [
-        "Least accurate but fastest",
-        "Most accurate but most time-consuming—estimates each work package then aggregates",
-        "Random guess",
-        "Top-down approach"
+        "Contingency reserve",
+        "Management reserve",
+        "Cost baseline",
+        "Total float"
       ],
       "correct": 1,
-      "explain": "Bottom-up estimates each component individually then sums—highest accuracy."
+      "explain": "Contingency reserve covers identified (known) risks. Management reserve, usually controlled through governance, covers unforeseen events."
     }
   ],
   "19": [
@@ -758,15 +758,15 @@
       "explain": "DoD is a team agreement on completion criteria for any work item."
     },
     {
-      "q": "Adaptive (agile) projects deliver value:",
+      "q": "Which activity belongs to the 2026 outline's value-based delivery task?",
       "options": [
-        "Only at project end",
-        "Incrementally throughout the project",
-        "Never",
-        "Once a year"
+        "Maximizing the number of features delivered",
+        "Verifying a measurement system is in place to track benefits",
+        "Fixing scope early so value is predictable",
+        "Collecting stakeholder feedback only at final acceptance"
       ],
       "correct": 1,
-      "explain": "Agile delivers working increments throughout—value realized continuously."
+      "explain": "Value-based delivery includes tracking benefits, prioritizing by value and feedback, and delivering incrementally."
     }
   ],
   "23": [
@@ -817,50 +817,50 @@
   ],
   "24": [
     {
-      "q": "VUCA stands for:",
+      "q": "What share of the July 2026 PMP exam covers the Business Environment domain?",
       "options": [
-        "Value, Use, Cost, Acceptance",
-        "Volatility, Uncertainty, Complexity, Ambiguity",
-        "Variance, Utility, Capability, Action",
-        "Vendor, User, Customer, Auditor"
+        "8%",
+        "26%",
+        "41%",
+        "50%"
       ],
       "correct": 1,
-      "explain": "VUCA describes modern project environments."
+      "explain": "People 33%, Process 41%, Business Environment 26% (up from 8% on the previous outline)."
     },
     {
-      "q": "Building resilience into a project means:",
+      "q": "A data-privacy regulation affecting your product takes effect in six months. What should the project manager do?",
       "options": [
-        "Avoiding all risks",
-        "Designing the project to respond well to disruption",
-        "Adding more documentation",
-        "Hiring more people"
+        "Wait until the regulation takes effect",
+        "Assess the impact and reprioritize scope or backlog to comply",
+        "Stop the project until legal signs off",
+        "Leave it entirely to the legal department"
       ],
       "correct": 1,
-      "explain": "Resilience = ability to absorb shocks and adapt."
+      "explain": "Evaluating external changes means assessing impact early and reprioritizing scope or backlog."
     },
     {
-      "q": "Ambiguity differs from risk in that:",
+      "q": "Which activity is part of managing compliance in the 2026 outline?",
       "options": [
-        "They're the same",
-        "Risk = identifiable uncertainty; Ambiguity = unclear what the questions even are",
-        "Ambiguity is always positive",
-        "Risk is positive only"
+        "Measuring the extent to which the project is in compliance",
+        "Skipping classification for low-risk rules",
+        "Covering health and safety only",
+        "Waiting for the next external audit"
       ],
-      "correct": 1,
-      "explain": "Risk = known uncertainty. Ambiguity = you don't know what to plan for."
+      "correct": 0,
+      "explain": "Compliance work includes confirming and classifying requirements, finding threats, and measuring the extent of compliance."
     }
   ],
   "25": [
     {
-      "q": "Which is NOT a Scrum role?",
+      "q": "Which is NOT a Scrum accountability (Scrum Guide 2020)?",
       "options": [
         "Product Owner",
         "Scrum Master",
         "Project Manager",
-        "Development Team"
+        "Developers"
       ],
       "correct": 2,
-      "explain": "Scrum has 3 roles: PO, SM, Dev Team. PM is NOT a Scrum role."
+      "explain": "Scrum's three accountabilities are Product Owner, Scrum Master, and Developers. Project Manager is not one of them."
     },
     {
       "q": "The Daily Scrum is primarily for:",
@@ -888,7 +888,7 @@
       "q": "The Product Backlog is owned by:",
       "options": [
         "Scrum Master",
-        "Development Team",
+        "Developers",
         "Product Owner",
         "Project Manager"
       ],
@@ -944,26 +944,26 @@
       "explain": "PMI favors proactive, collaborative answers."
     },
     {
-      "q": "Approximate time per question on the PMP exam:",
+      "q": "Approximate time per question on the July 2026 PMP exam:",
       "options": [
-        "30 seconds",
-        "75 seconds",
-        "3 minutes",
-        "5 minutes"
+        "45 seconds",
+        "60 seconds",
+        "80 seconds",
+        "120 seconds"
       ],
-      "correct": 1,
-      "explain": "180 questions in 230 minutes ≈ 75 seconds per question."
+      "correct": 2,
+      "explain": "240 minutes for 180 questions is about 80 seconds each. Budget extra time for the case-study set."
     },
     {
-      "q": "The exam domain split is approximately:",
+      "q": "The July 2026 exam domain split is:",
       "options": [
-        "50% People, 42% Process, 8% Business",
         "42% People, 50% Process, 8% Business Environment",
-        "33% each domain",
-        "100% Process"
+        "33% People, 41% Process, 26% Business Environment",
+        "50% People, 25% Process, 25% Business Environment",
+        "30% People, 30% Process, 40% Business Environment"
       ],
       "correct": 1,
-      "explain": "People 42%, Process 50%, Business Environment 8%."
+      "explain": "The July 2026 outline weights People 33%, Process 41%, and Business Environment 26%."
     }
   ],
   "28": [

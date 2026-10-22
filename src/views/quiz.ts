@@ -1,5 +1,20 @@
 import { state, esc } from '../state';
 import { icons } from '../icons';
+import { buildReview, optionLetter } from '../review';
+import type { QuizState } from '../types';
+
+// Wrong answers are expanded (yours vs right + explanation); correct ones stay one line.
+function renderReview(q: QuizState): string {
+  return buildReview(q.questions, q.answers).map(r => r.correct
+    ? `<div class="review-item"><div class="review-head">${icons.check}<span>${esc(r.question)}</span></div></div>`
+    : `<div class="review-item"><div class="review-head">${icons.x}<span>${esc(r.question)}</span></div>
+        <div class="review-body">
+          <div class="review-row"><span class="review-key">Yours</span><span class="review-yours">${r.yours ? `${r.yours.letter} · ${esc(r.yours.text)}` : 'No answer'}</span></div>
+          <div class="review-row"><span class="review-key">Right</span><span class="review-right">${r.right.letter} · ${esc(r.right.text)}</span></div>
+          <div>${esc(r.explain)}</div>
+        </div></div>`
+  ).join('');
+}
 
 export function renderQuiz(): string {
   const q = state.quiz;
@@ -22,8 +37,9 @@ export function renderQuiz(): string {
         <div class="finish-score">${pct}%</div>
         <div class="small" style="margin-bottom:8px">${correct} of ${total} correct</div>
         <p class="finish-message">${msg}</p>
-        <div style="text-align:left;margin:16px 0">
-          ${q.answers.map((a, i) => `<div class="answer-row">${a.correct ? icons.check : icons.x}<span>Question ${i+1}</span></div>`).join('')}
+        <div class="review">
+          <div class="review-label">Review your answers</div>
+          ${renderReview(q)}
         </div>
         <button class="btn btn-dark" onclick="navigate('dashboard')">Return to Dashboard</button>
       </div>
@@ -46,14 +62,16 @@ export function renderQuiz(): string {
       <h2 class="question">${esc(current.q)}</h2>
       <div class="options">
         ${current.options.map((opt, i) => {
+          // State is shown by text tag + letter badge, not colour alone.
           let cls = 'option';
+          let tag = '';
           if (q.showExplain) {
-            if (i === current.correct) cls += ' correct';
-            else if (i === q.selected) cls += ' wrong';
+            if (i === current.correct) { cls += ' correct'; tag = 'Correct'; }
+            else if (i === q.selected) { cls += ' wrong'; tag = 'Yours'; }
             else cls += ' faded';
           } else if (q.selected === i) cls += ' selected';
-          return `<button class="${cls}" onclick="selectOption(${i})" ${q.showExplain ? 'disabled' : ''}>
-            <span class="option-letter">${String.fromCharCode(65+i)}.</span>${esc(opt)}
+          return `<button class="${cls}" onclick="selectOption(${i})" ${q.showExplain ? 'disabled' : ''} aria-pressed="${q.selected === i}">
+            <span class="option-letter">${optionLetter(i)}</span><span class="option-text">${esc(opt)}</span>${tag ? `<span class="option-tag">${tag}</span>` : ''}
           </button>`;
         }).join('')}
       </div>

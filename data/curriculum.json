@@ -4,10 +4,11 @@
     "week": 1,
     "title": "What is a Project?",
     "domain": "Foundations",
-    "lesson": "A project is a temporary endeavor undertaken to create a unique product, service, or result. Key characteristics: TEMPORARY (defined start/end), UNIQUE (one-of-a-kind output), and PROGRESSIVE ELABORATION (details emerge over time). Projects differ from operations, which are ongoing and repetitive. Examples: building a bridge, launching software, organizing an event. Understanding this foundational definition is critical—every PMP question assumes you know what makes work 'project work'.",
+    "lesson": "PMBOK 8 (published November 2025) defines a project as 'a temporary initiative in a unique context undertaken to create value.' Key ideas: TEMPORARY (a beginning and an end, for the whole project or a phase), UNIQUE CONTEXT (distinct goals, conditions, approach, or stakeholders), and VALUE (the reason the project exists). PROGRESSIVE ELABORATION still applies: details emerge as you learn more. Operations are ongoing and repetitive; projects are not. PMI now frames SUCCESS as delivering value that was worth the effort and expense, not only hitting scope, schedule, and budget.",
     "keyTerms": [
       "Temporary",
-      "Unique deliverable",
+      "Unique context",
+      "Value",
       "Progressive elaboration",
       "Operations vs Projects"
     ]
@@ -28,40 +29,41 @@
   {
     "day": 3,
     "week": 1,
-    "title": "PMBOK 7 Principles (Part 1)",
+    "title": "PMBOK 8 Principles (Part 1)",
     "domain": "Foundations",
-    "lesson": "PMBOK 7 has 12 guiding principles. First 6: 1) STEWARDSHIP - act responsibly, ethically, with integrity. 2) TEAM - create a collaborative team environment. 3) STAKEHOLDERS - engage effectively. 4) VALUE - focus on delivering value. 5) SYSTEMS THINKING - recognize and respond to system interactions. 6) LEADERSHIP - demonstrate leadership behaviors. These aren't rules—they're behaviors that guide decisions when standards conflict.",
+    "lesson": "PMBOK 8 consolidates the 7th edition's 12 principles into SIX. Principles are behaviors that guide judgment, not rules. First three: 1) ADOPT A HOLISTIC VIEW - treat the project as part of a larger system; a decision ripples into operations, other projects, and the organization. 2) FOCUS ON VALUE - judge progress by outcomes stakeholders care about, not by activity completed. 3) EMBED QUALITY INTO PROCESSES AND DELIVERABLES - build quality in from the start instead of inspecting it in at the end.",
     "keyTerms": [
-      "Stewardship",
+      "Holistic view",
       "Systems thinking",
-      "Servant leadership",
-      "Value delivery"
+      "Focus on value",
+      "Embedded quality"
     ]
   },
   {
     "day": 4,
     "week": 1,
-    "title": "PMBOK 7 Principles (Part 2)",
+    "title": "PMBOK 8 Principles (Part 2)",
     "domain": "Foundations",
-    "lesson": "Remaining 6 principles: 7) TAILORING - tailor based on context. 8) QUALITY - build quality into processes and deliverables. 9) COMPLEXITY - navigate complexity. 10) RISK - optimize risk responses. 11) ADAPTABILITY & RESILIENCY - embrace change. 12) CHANGE - enable change to achieve envisioned future state. Memory tip: these principles favor agility and adaptability over rigid process.",
+    "lesson": "Remaining three: 4) BE AN ACCOUNTABLE LEADER - own decisions and results, act ethically, and lead by example. 5) INTEGRATE SUSTAINABILITY WITHIN ALL PROJECT AREAS - weigh environmental, social, and economic impacts in every decision, not as an afterthought. 6) BUILD AN EMPOWERED CULTURE - create trust, psychological safety, and collaboration so the team can self-organize. TAILORING is no longer one of the principles, but you still tailor your approach and artifacts to context. Exam angle: sustainability now appears explicitly in the PMP outline (planning information, quality, compliance, and risk).",
     "keyTerms": [
-      "Tailoring",
-      "Adaptability",
-      "Resiliency",
-      "Change management"
+      "Accountable leadership",
+      "Sustainability",
+      "Empowered culture",
+      "Tailoring"
     ]
   },
   {
     "day": 5,
     "week": 1,
-    "title": "8 Performance Domains Overview",
+    "title": "7 Performance Domains & 5 Focus Areas",
     "domain": "Foundations",
-    "lesson": "Performance Domains replaced Knowledge Areas in PMBOK 7. They are interactive areas of focus that work together: 1) Stakeholders 2) Team 3) Development Approach & Life Cycle 4) Planning 5) Project Work 6) Delivery 7) Measurement 8) Uncertainty. Unlike sequential processes, all 8 operate simultaneously. Each has a desired outcome.",
+    "lesson": "PMBOK 8 organizes practice into SEVEN performance domains: GOVERNANCE, SCOPE, SCHEDULE, FINANCE, STAKEHOLDERS, RESOURCES, and RISK. It also brings back process guidance: about 40 non-prescriptive processes arranged in FIVE FOCUS AREAS - Initiating, Planning, Executing, Monitoring and Controlling, and Closing. Domains interact; you work in several at once. Compared with PMBOK 7's eight domains, Planning, Project Work, Delivery, Measurement, Team, and Development Approach are no longer separate domains; their ideas are spread across the new seven, and uncertainty is handled within Risk.",
     "keyTerms": [
-      "Performance domains",
-      "Interactive",
-      "Outcome-focused",
-      "Holistic"
+      "Governance",
+      "Finance",
+      "Focus areas",
+      "40 processes",
+      "Interactive domains"
     ]
   },
   {
@@ -69,7 +71,7 @@
     "week": 1,
     "title": "Development Approaches",
     "domain": "Foundations",
-    "lesson": "Three main approaches: PREDICTIVE (waterfall) - plan everything upfront, best for stable requirements. ADAPTIVE (agile) - iterative, embraces change, best for evolving requirements. HYBRID - combination, e.g., predictive scope with agile delivery. Choice depends on: requirements clarity, change frequency, risk level, stakeholder availability, and delivery cadence needs.",
+    "lesson": "Three main approaches: PREDICTIVE (waterfall) - plan everything upfront, best for stable requirements. ADAPTIVE (agile) - iterative, embraces change, best for evolving requirements. HYBRID - combination, e.g., predictive scope with agile delivery. Choice depends on: requirements clarity, change frequency, risk level, stakeholder availability, and delivery cadence needs. The 2026 exam expects you to RECOMMEND an approach after assessing the project's needs, complexity, and size. About 40% of exam items are predictive and about 60% agile or hybrid.",
     "keyTerms": [
       "Predictive",
       "Adaptive",
@@ -83,7 +85,7 @@
     "week": 1,
     "title": "Week 1 Review & Reflection",
     "domain": "Foundations",
-    "lesson": "REVIEW DAY: You've covered project fundamentals, the project/program/portfolio hierarchy, all 12 PMBOK principles, the 8 performance domains, and development approaches. Today, focus on integration. Ask yourself: How do principles guide behavior across performance domains? How does development approach choice affect every other domain? Consistency matters more than speed.",
+    "lesson": "REVIEW DAY: You've covered the PMBOK 8 definition of a project, the project/program/portfolio hierarchy, the six principles, the seven performance domains and five focus areas, and development approaches. Today, connect them: How does 'focus on value' change what you measure? How does the chosen approach shape governance, schedule, and finance? Where would sustainability change a decision you'd make this week? Consistency matters more than speed.",
     "keyTerms": [
       "Integration",
       "Review",
@@ -96,7 +98,7 @@
     "week": 2,
     "title": "Stakeholder Identification",
     "domain": "Stakeholders",
-    "lesson": "Stakeholders are anyone affected by, or who can affect, the project. Identify EARLY and CONTINUOUSLY—new stakeholders emerge throughout. Categories: internal/external, supportive/resistant, high/low influence, high/low interest. Use techniques like brainstorming, document analysis, expert judgment. The Stakeholder Register is your living document.",
+    "lesson": "Stakeholders are anyone affected by, or who can affect, the project. Identify EARLY and CONTINUOUSLY—new stakeholders emerge throughout. Categories: internal/external, supportive/resistant, high/low influence, high/low interest. Use techniques like brainstorming, document analysis, expert judgment. The Stakeholder Register is your living document. On the 2026 exam, three People tasks live here: engage stakeholders, align their expectations, and manage internal and external customer expectations.",
     "keyTerms": [
       "Stakeholder register",
       "Power/Interest grid",
@@ -109,7 +111,7 @@
     "week": 2,
     "title": "Stakeholder Engagement",
     "domain": "Stakeholders",
-    "lesson": "Five engagement levels: UNAWARE, RESISTANT, NEUTRAL, SUPPORTIVE, LEADING. Goal: move each stakeholder toward the desired level. Strategies vary: resistant stakeholders need understanding their concerns; supportive ones need to stay informed. Stakeholder Engagement Plan defines: who, current vs desired engagement, communication needs.",
+    "lesson": "Five engagement levels: UNAWARE, RESISTANT, NEUTRAL, SUPPORTIVE, LEADING. Goal: move each stakeholder toward the desired level. Strategies vary: resistant stakeholders need understanding their concerns; supportive ones need to stay informed. Stakeholder Engagement Plan defines: who, current vs desired engagement, communication needs. Tailor communication to each stakeholder and build a feedback loop: 'plan and manage communication' is its own People task on the 2026 exam, including reports that match sponsor and governance needs.",
     "keyTerms": [
       "Engagement levels",
       "Communication strategy",
@@ -122,7 +124,7 @@
     "week": 2,
     "title": "Building High-Performing Teams",
     "domain": "Team",
-    "lesson": "High-performing teams share: clear vision, shared accountability, psychological safety, mutual trust, and continuous improvement mindset. PM's role: create the environment, not control the work. Use SERVANT LEADERSHIP—remove obstacles, provide resources, shield from distractions. Tuckman's stages (Forming, Storming, Norming, Performing, Adjourning) describe natural team evolution.",
+    "lesson": "High-performing teams share: clear vision, shared accountability, psychological safety, mutual trust, and continuous improvement mindset. PM's role: create the environment, not control the work. Use SERVANT LEADERSHIP—remove obstacles, provide resources, shield from distractions. Tuckman's stages (Forming, Storming, Norming, Performing, Adjourning) describe natural team evolution. PMBOK 8 captures this as the principle BUILD AN EMPOWERED CULTURE.",
     "keyTerms": [
       "Servant leadership",
       "Psychological safety",
@@ -135,7 +137,7 @@
     "week": 2,
     "title": "Leadership Styles",
     "domain": "Team",
-    "lesson": "Match style to situation: SERVANT - empower team (preferred in agile). TRANSFORMATIONAL - inspire vision. TRANSACTIONAL - clear rewards/consequences. LAISSEZ-FAIRE - hands-off (works for senior teams). CHARISMATIC - rally energy. INTERACTIONAL - blend styles. Effective PMs flex between styles. Exam tip: when in doubt on PMBOK 7 questions, lean toward servant/collaborative answers.",
+    "lesson": "Match style to situation: SERVANT - empower team (preferred in agile). TRANSFORMATIONAL - inspire vision. TRANSACTIONAL - clear rewards/consequences. LAISSEZ-FAIRE - hands-off (works for senior teams). CHARISMATIC - rally energy. INTERACTIONAL - blend styles. Effective PMs flex between styles. Exam tip: the 2026 outline asks you to DETERMINE an appropriate leadership style. Servant and collaborative answers are the usual default, but adapt to the team's maturity and the situation.",
     "keyTerms": [
       "Servant",
       "Transformational",
@@ -148,7 +150,7 @@
     "week": 2,
     "title": "Conflict Management",
     "domain": "Team",
-    "lesson": "Conflict is inevitable—and often healthy. Thomas-Kilmann modes: COLLABORATING (win-win, preferred) - solve together. COMPROMISING - both give a little. ACCOMMODATING - you yield. COMPETING - assert position. AVOIDING - sidestep. PMBOK 7 favors COLLABORATING for most situations. Use COMPETING only when urgent/non-negotiable.",
+    "lesson": "Conflict is inevitable—and often healthy. Thomas-Kilmann modes: COLLABORATING (win-win, preferred) - solve together. COMPROMISING - both give a little. ACCOMMODATING - you yield. COMPETING - assert position. AVOIDING - sidestep. PMI generally favors COLLABORATING (problem solving) for most situations. The 2026 outline also expects you to set ground rules with the team and address violations of them. Use COMPETING only when urgent/non-negotiable.",
     "keyTerms": [
       "Collaborating",
       "Compromising",
@@ -161,7 +163,7 @@
     "week": 2,
     "title": "Virtual & Distributed Teams",
     "domain": "Team",
-    "lesson": "Virtual teams need MORE intentionality, not less. Critical practices: explicit team charter (working hours, response times, communication norms), strong async communication discipline, deliberate trust-building (virtual coffees, watercooler channels), cultural awareness, and right-sized tooling. Watch for warning signs: silent members, dropping engagement, HQ-vs-remote cliques.",
+    "lesson": "Virtual teams need MORE intentionality, not less. Critical practices: explicit team charter (working hours, response times, communication norms), strong async communication discipline, deliberate trust-building (virtual coffees, watercooler channels), cultural awareness, and right-sized tooling. Watch for warning signs: silent members, dropping engagement, HQ-vs-remote cliques. Knowledge transfer is a People task on the 2026 exam: record decisions and know-how where everyone can find them.",
     "keyTerms": [
       "Virtual team",
       "Async communication",
@@ -185,14 +187,15 @@
   {
     "day": 15,
     "week": 3,
-    "title": "Planning Performance Domain",
-    "domain": "Planning",
-    "lesson": "Planning is CONTINUOUS, not one-time. In predictive: detailed upfront. In adaptive: rolling-wave, just-in-time. Cover: scope, schedule, cost, resources, communications, risk, procurement, quality, change. Match planning depth to uncertainty—high uncertainty = less detailed long-term plans.",
+    "title": "Governance & Integrated Planning",
+    "domain": "Governance",
+    "lesson": "GOVERNANCE is one of PMBOK 8's seven domains and a 2026 exam task: set up the structure, decision rights, rules, reporting, ethics, and policies (drawing on organizational process assets), define success metrics, and agree escalation paths and thresholds. Planning is no longer a separate domain; it is CONTINUOUS and happens in every domain. Create and maintain an INTEGRATED plan, check consolidated plans for dependencies, gaps, and continued business value, and match planning depth to uncertainty: detailed upfront in predictive work, rolling-wave and just-in-time in adaptive work.",
     "keyTerms": [
-      "Rolling wave planning",
-      "Progressive elaboration",
-      "Plan tailoring",
-      "Coordination"
+      "Governance",
+      "Escalation thresholds",
+      "Success metrics",
+      "Integrated plan",
+      "Rolling wave planning"
     ]
   },
   {
@@ -200,7 +203,7 @@
     "week": 3,
     "title": "Scope Management",
     "domain": "Planning",
-    "lesson": "Scope = what's IN and OUT of the project. Two types: PRODUCT scope (features/functions of deliverable) and PROJECT scope (work to deliver it). Key tools: Scope Statement, WBS (Work Breakdown Structure—decomposing work into manageable chunks), WBS Dictionary. Scope Creep = uncontrolled changes. Gold Plating = adding unrequested features. Both bad.",
+    "lesson": "Scope = what's IN and OUT of the project. Two types: PRODUCT scope (features/functions of deliverable) and PROJECT scope (work to deliver it). Key tools: Scope Statement, WBS (Work Breakdown Structure—decomposing work into manageable chunks), WBS Dictionary. Scope Creep = uncontrolled changes. Gold Plating = adding unrequested features. Both bad. 2026 exam: define scope, get stakeholder agreement on it, and break it down (WBS or backlog).",
     "keyTerms": [
       "WBS",
       "Scope creep",
@@ -213,7 +216,7 @@
     "week": 3,
     "title": "Schedule Management",
     "domain": "Planning",
-    "lesson": "Schedule shows WHEN work happens. Process: define activities → sequence them → estimate durations → develop schedule. Key concepts: CRITICAL PATH (longest path, determines minimum duration), FLOAT/SLACK (how much you can delay without impacting end date), MILESTONES. Compression: CRASHING (add resources, costs more) and FAST-TRACKING (parallelize, adds risk).",
+    "lesson": "Schedule shows WHEN work happens. Process: define activities → sequence them → estimate durations → develop schedule. Key concepts: CRITICAL PATH (longest path, determines minimum duration), FLOAT/SLACK (how much you can delay without impacting end date), MILESTONES. Compression: CRASHING (add resources, costs more) and FAST-TRACKING (parallelize, adds risk). In adaptive work, estimate with story points and velocity. Always coordinate your schedule with other projects and operations.",
     "keyTerms": [
       "Critical path",
       "Float",
@@ -225,15 +228,15 @@
   {
     "day": 18,
     "week": 3,
-    "title": "Cost Management",
-    "domain": "Planning",
-    "lesson": "Cost = budget for project. Estimate types: ROM (Rough Order of Magnitude, -25% to +75%), Budgetary (-10% to +25%), Definitive (-5% to +10%). Techniques: analogous (top-down, fast, less accurate), parametric (statistical model), bottom-up (most accurate), three-point (PERT: optimistic+pessimistic+most-likely). Cost Baseline = approved budget over time.",
+    "title": "Finance Management",
+    "domain": "Finance",
+    "lesson": "PMBOK 8 widens Cost into a FINANCE domain, and the 2026 outline's finance task covers: analyzing financial needs, quantifying risk and contingency allocations, planning spend tracking and financial reporting, anticipating funding challenges, monitoring variances through governance, and managing reserves. Estimate types: ROM (-25% to +75%), Budgetary (-10% to +25%), Definitive (-5% to +10%). Techniques: analogous (top-down, fast), parametric (statistical model), bottom-up (most accurate), three-point/PERT. The COST BASELINE is the approved, time-phased budget. CONTINGENCY reserve covers known risks; MANAGEMENT reserve covers unknown-unknowns.",
     "keyTerms": [
+      "Finance domain",
       "ROM estimate",
       "Bottom-up",
-      "Three-point",
       "Cost baseline",
-      "Contingency reserve"
+      "Reserves"
     ]
   },
   {
@@ -241,7 +244,7 @@
     "week": 3,
     "title": "Quality Management",
     "domain": "Planning",
-    "lesson": "Quality = meeting requirements (not perfection). Two activities: QUALITY ASSURANCE (process-focused, prevent defects) and QUALITY CONTROL (product-focused, find defects). PREVENTION over INSPECTION—it's cheaper. Cost of Quality (COQ) = conformance + non-conformance costs. Tools: cause-and-effect (Ishikawa), Pareto (80/20), control charts, checklists.",
+    "lesson": "Quality = meeting requirements (not perfection). Two activities: QUALITY ASSURANCE (process-focused, prevent defects) and QUALITY CONTROL (product-focused, find defects). PREVENTION over INSPECTION—it's cheaper. Cost of Quality (COQ) = conformance + non-conformance costs. Tools: cause-and-effect (Ishikawa), Pareto (80/20), control charts, checklists. PMBOK 8 makes this a principle: EMBED QUALITY. The 2026 outline's quality task also includes regulatory compliance, managing cost of quality AND sustainability, ongoing quality reviews, and continuous improvement.",
     "keyTerms": [
       "QA vs QC",
       "Cost of Quality",
@@ -254,7 +257,7 @@
     "week": 3,
     "title": "Risk Management",
     "domain": "Planning",
-    "lesson": "Risk = uncertain event with positive (opportunity) or negative (threat) impact. Process: identify → analyze → plan responses → implement → monitor. THREAT responses: AVOID, MITIGATE, TRANSFER, ACCEPT, ESCALATE. OPPORTUNITY responses: EXPLOIT, ENHANCE, SHARE, ACCEPT, ESCALATE. Reserves: CONTINGENCY (known risks) vs MANAGEMENT (unknown unknowns).",
+    "lesson": "Risk = uncertain event with positive (opportunity) or negative (threat) impact. Process: identify → analyze → plan responses → implement → monitor. THREAT responses: AVOID, MITIGATE, TRANSFER, ACCEPT, ESCALATE. OPPORTUNITY responses: EXPLOIT, ENHANCE, SHARE, ACCEPT, ESCALATE. Reserves: CONTINGENCY (known risks) vs MANAGEMENT (unknown unknowns). In PMBOK 8 the RISK domain also covers broader uncertainty. The 2026 outline calls out security and sustainability risks, and expects you to recognize when a RISK BECOMES AN ISSUE.",
     "keyTerms": [
       "Risk register",
       "Avoid/Mitigate/Transfer",
@@ -278,41 +281,43 @@
   {
     "day": 22,
     "week": 4,
-    "title": "Delivery Performance Domain",
-    "domain": "Delivery",
-    "lesson": "Delivery = realizing the value the project was meant to produce. Focus: requirements management, scope acceptance, quality of deliverables, value realization. In predictive: deliver at end. In adaptive: deliver incrementally. Key artifacts: requirements traceability matrix, acceptance criteria, definition of done. Value > volume of features.",
+    "title": "Value-Based Delivery",
+    "domain": "Process",
+    "lesson": "Delivery means realizing the VALUE the project was meant to produce. The 2026 outline's value task: identify value components with key stakeholders, prioritize work by value and feedback, look for ways to deliver incrementally, re-examine business value throughout, and make sure a measurement system tracks benefits. Predictive projects often deliver at the end; adaptive ones deliver in increments. Key artifacts: requirements traceability matrix, acceptance criteria, definition of done, MVP. Value beats volume of features.",
     "keyTerms": [
-      "Requirements traceability",
+      "Value components",
+      "Benefits measurement",
+      "Incremental delivery",
       "Definition of done",
-      "Acceptance criteria",
-      "Value realization"
+      "MVP"
     ]
   },
   {
     "day": 23,
     "week": 4,
-    "title": "Measurement Domain & EVM",
-    "domain": "Measurement",
-    "lesson": "Earned Value Management (EVM) integrates scope, schedule, cost. Key formulas: PV (Planned Value), EV (Earned Value), AC (Actual Cost). Variances: CV = EV - AC, SV = EV - PV. Indices: CPI = EV/AC, SPI = EV/PV. CPI/SPI > 1 = good, < 1 = bad. EAC = BAC/CPI is most common forecast formula. Master these—they're guaranteed exam points.",
+    "title": "Project Status, Metrics & EVM",
+    "domain": "Process",
+    "lesson": "Evaluating status is a 2026 exam task: develop metrics, tailor the artifacts you need (and retire unused ones), keep them accessible and current, and communicate status. EARNED VALUE MANAGEMENT integrates scope, schedule, and cost: PV (Planned Value), EV (Earned Value), AC (Actual Cost). CV = EV - AC, SV = EV - PV. CPI = EV/AC, SPI = EV/PV; above 1 is good, below 1 is bad. EAC = BAC/CPI is the most common forecast. Measure OUTCOMES, not just activity: a green status on work nobody has accepted is misleading.",
     "keyTerms": [
       "EVM",
       "CPI",
       "SPI",
       "EAC",
-      "Variance analysis"
+      "Artifact tailoring"
     ]
   },
   {
     "day": 24,
     "week": 4,
-    "title": "Uncertainty Domain",
-    "domain": "Uncertainty",
-    "lesson": "Uncertainty includes risk, ambiguity, and complexity. AMBIGUITY = unclear requirements. COMPLEXITY = many interconnected parts. VOLATILITY = rapid change. Build resilience through: redundancy, diverse perspectives, iteration, reserves, scenario planning. PMBOK 7 emphasizes adaptability over prediction.",
+    "title": "Business Environment & Compliance",
+    "domain": "Business Env",
+    "lesson": "Business Environment is 26% of the 2026 exam (it was 8%). Its tasks: define project GOVERNANCE; plan and manage COMPLIANCE (security, health and safety, sustainability, regulation: confirm and classify requirements, find threats, measure how compliant you are); manage CHANGES; remove IMPEDIMENTS and manage ISSUES; plan and manage RISK; drive CONTINUOUS IMPROVEMENT (use lessons learned, update OPAs); SUPPORT ORGANIZATIONAL CHANGE (assess culture and impact); and EVALUATE EXTERNAL CHANGES (regulation, technology, geopolitics, markets), then reprioritize scope or backlog. Ambiguity, complexity, and volatility show up here constantly.",
     "keyTerms": [
-      "Ambiguity",
-      "Complexity",
-      "VUCA",
-      "Resilience"
+      "Compliance",
+      "Organizational change",
+      "External environment",
+      "Continuous improvement",
+      "OPAs"
     ]
   },
   {
@@ -320,7 +325,7 @@
     "week": 4,
     "title": "Agile Mindset & Frameworks",
     "domain": "Agile",
-    "lesson": "Agile = mindset based on the Agile Manifesto's 4 values and 12 principles. Frameworks: SCRUM (most tested—roles: PO, SM, Dev Team; events: Sprint Planning, Daily, Review, Retro; artifacts: Product Backlog, Sprint Backlog, Increment). KANBAN (continuous flow, WIP limits). XP (engineering practices). Exam blends agile with predictive—~50% of questions are agile/hybrid.",
+    "lesson": "Agile = mindset based on the Agile Manifesto's 4 values and 12 principles. Frameworks: SCRUM (most tested—accountabilities: Product Owner, Scrum Master, Developers; events: Sprint Planning, Daily, Review, Retro; artifacts: Product Backlog, Sprint Backlog, Increment). KANBAN (continuous flow, WIP limits). XP (engineering practices). Exam blends agile with predictive: about 60% of questions are agile or hybrid.",
     "keyTerms": [
       "Scrum",
       "Sprint",
@@ -347,12 +352,13 @@
     "week": 4,
     "title": "Exam Strategy & Mindset",
     "domain": "Exam Prep",
-    "lesson": "PMP exam: 180 questions, 230 minutes, 3 domains (People 42%, Process 50%, Business 8%). Strategies: 1) Read the question last sentence first. 2) Eliminate clearly wrong answers. 3) When two answers seem right, pick the more PROACTIVE/COLLABORATIVE one. 4) Trust PMBOK 7 principles. 5) Manage time—~75 seconds per question. 6) Use the two 10-min breaks.",
+    "lesson": "The PMP exam was updated in July 2026: 180 questions (170 scored + 10 unscored pretest) in 240 minutes, about 80 seconds each. Domains: PEOPLE 33%, PROCESS 41%, BUSINESS ENVIRONMENT 26%. About 40% predictive and 60% agile or hybrid. A CASE-STUDY section (a scenario with charts and several questions) comes first, then a 10-minute break; a second break falls about halfway through the rest. You can't go back after a break. Item types include multiple choice and multiple response, matching, drag-and-drop, hotspots, pull-down lists, and NEW graphic-based items. AI and sustainability are now in scope. Tactics: read the last sentence first, eliminate extremes, and pick the proactive, collaborative, value-focused answer.",
     "keyTerms": [
-      "Exam strategy",
-      "Time management",
-      "Question analysis",
-      "PMI-ism"
+      "33/41/26",
+      "240 minutes",
+      "Case study",
+      "Graphic-based items",
+      "PMI mindset"
     ]
   },
   {
@@ -360,7 +366,7 @@
     "week": 4,
     "title": "Final Review & Next Steps",
     "domain": "Exam Prep",
-    "lesson": "CONGRATULATIONS on completing 28 days! Next steps: 1) Take 2-3 full-length practice exams. 2) Review weak domains. 3) Join a PMP study group. 4) Schedule your exam—commitment forces preparation. 5) Continue daily quizzes here for retention. The certification is achievable with consistent effort. You've built the routine; now finish strong.",
+    "lesson": "CONGRATULATIONS on completing 28 days! Next steps: 1) Take 2-3 full-length practice exams. 2) Review weak domains. 3) Join a PMP study group. 4) Schedule your exam—commitment forces preparation. 5) Continue daily quizzes here for retention. The certification is achievable with consistent effort. You've built the routine; now finish strong. Use practice exams built for the July 2026 outline: older banks over-weight Process and under-weight Business Environment, where change control, risk, impediments, and continuous improvement now sit.",
     "keyTerms": [
       "Practice exams",
       "Weak areas",
