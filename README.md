@@ -9,12 +9,31 @@ A static PWA for PMP exam study, built with Vite and TypeScript and with no runt
 
 | Content | File | Shape |
 |---|---|---|
-| Daily lessons | `data/curriculum.json` | 28 entries `{day, week, title, domain, lesson, keyTerms}`. Keep days 1–28 and weeks 1–4: `src/views/all.ts` and `getCurrentDay()` in `src/state.ts` depend on them. `lesson` is plain text, escaped on render, with CAPS for emphasis. |
+| Daily lessons | `data/curriculum.json` | 28 entries `{day, week, title, domain, lesson, keyTerms}`. Keep days 1–28 and weeks 1–4: `src/views/all.ts` and `getCurrentDay()` in `src/state.ts` depend on them. `lesson` uses the light markup in [Lesson markup](#lesson-markup) below; it is parsed by `formatLesson()` in `src/lessonFormat.ts` and rendered by `renderLesson()` in `src/views/lesson.ts`. |
 | Daily quizzes | `data/questions.json` | Keys `"1"`–`"28"`, each an array of `{q, options[4], correct (0–3), explain}`. The `as QuestionBank` cast means `tsc` does **not** check this shape. |
 | Trainer study notes | `STUDY` in the Trainer page | Section `id`s are keys in each user's saved "read" progress (`state.studyRead`), so never rename an existing id. Add new sections with new ids. |
 | Trainer flashcards | `FLASH` | `[topic, front, back]` |
 | Trainer scenario quiz | `QUIZ` | `[topic, stem, [4 options], correctIndex, explanation]`. The topic dropdown is built from the distinct topics, so reuse existing topic labels exactly as spelled. Entries 21–200 come from a third-party PMP exam question deck; their topic tags were assigned by hand. |
 | Trainer cheat sheet | `CHEAT` | `{t, items[]}` |
+
+## Lesson markup
+
+Each `lesson` string in `data/curriculum.json` is plain text plus a few markers, one construct per line (`\n` in JSON):
+
+| Write | Renders as |
+|---|---|
+| blank line | new paragraph (the first paragraph is styled as a larger lead) |
+| `## Key ideas` | small section label |
+| `- item` | bullet list |
+| `1. step` | numbered list (a list can start at another number, e.g. `4.`) |
+| `> text` | highlighted takeaway |
+| `**term**` | bold term, used for emphasis instead of ALL CAPS |
+| `` `CPI = EV/AC` `` | formula, shown verbatim |
+
+- **Safety:** `formatLesson()` HTML-escapes the text before it applies any markup, so lesson text can't inject tags. A lesson with no markers renders as one paragraph.
+- **Dashboard preview:** `previewText()` (same file) strips the markers and shortens at a word boundary; `renderDashboard()` uses it for the Today card.
+- **Checks:** `tests/lessonFormat.test.ts` tests the formatter and lints every lesson: balanced `**` and backticks, no more than one blank line in a row, and no ALL-CAPS emphasis. Acronyms such as PMBOK, CPI and WBS are allowed through the `ACRONYMS` list in that test; add a new acronym there if the lint flags a real one.
+- **Styling:** `.lesson-text` rules in `src/styles.css`.
 
 ## Daily pacing (no locked lessons)
 
