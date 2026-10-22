@@ -1,5 +1,5 @@
 // Bump when any shipped file changes: fetch is cache-first, so clients never see updates otherwise.
-const CACHE = 'pmp-v6';
+const CACHE = 'pmp-v7';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

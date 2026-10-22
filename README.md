@@ -38,6 +38,20 @@ The 28 days are a suggested pace, not a gate. Learners can open any lesson and q
 - **Quiz results review:** `src/review.ts` `buildReview()` turns `QuizState.questions` and `answers` into rows (your answer, the right answer, the explanation). `renderReview()` in `src/views/quiz.ts` renders them. Keep `review.ts` free of runtime imports so `tests/review.test.ts` can run it under plain Node.
 - **Design preview:** mockups for later phases (status report, Gantt schedule, structured lessons, desktop layout) are in `../design-preview/`, outside this repo.
 
+## Brand and app icon
+
+The logo is a typographic lockup: "pmp" in Fraunces (weight 900, SOFT 100, optical size 144) over a four-marker route (one marker per week, the last one amber for exam day) and the tagline "28-DAYS PATH" in Outfit 600. Everything is outlined to paths, so the SVGs need no fonts.
+
+| File | Use |
+|---|---|
+| `public/icon.svg` | Favicon and all manifest icons (`index.html`, `public/manifest.webmanifest`). Full-bleed ink with a cream "p" and the amber marker, so it survives the `maskable` crop. |
+| `public/apple-touch-icon.png` | iOS home-screen icon (180×180), since iOS ignores SVG there. Rasterised from `icon.svg` with `qlmanage -t -s 180 -o <dir> public/icon.svg` on macOS; regenerate it whenever `icon.svg` changes. |
+| `public/brand/pmp-path-logo.svg` | Lockup for light backgrounds (ink text, transparent). |
+| `public/brand/pmp-path-logo-dark.svg` | Lockup for dark backgrounds (cream text, transparent). |
+| `public/brand/pmp-path-logo-tile.svg` | Square ink tile with the full lockup (social, README, store listing). |
+
+To change the mark, edit `design-tools/compose.py` (layout, colours) or `design-tools/outline.py` (fonts, axes, text, tracking), re-run both as described in their headers, copy the output over the files above, and re-rasterise `apple-touch-icon.png`. The scripts need fonttools and the full Fraunces/Outfit variable TTFs from the Google Fonts repository; the bundled woff2 files only cover weights 400–600. The header `<h1>` in `src/views/dashboard.ts` does not use the logo yet.
+
 ## Dependency pins
 
 `package.json` → `overrides` pins nanoid, postcss and source-map-js to reviewed versions that fix the advisories listed in its `"//"` note. Remove the pins when upgrading past vite 5.
