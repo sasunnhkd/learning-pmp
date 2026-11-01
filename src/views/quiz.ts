@@ -1,7 +1,27 @@
 import { state, esc } from '../state';
 import { icons } from '../icons';
 import { buildReview, optionLetter } from '../review';
+import { TOPIC_BY_ID, DOMAIN_LABEL } from '../practice';
 import type { QuizState } from '../types';
+
+const topicLabel = (id: string | undefined) => (id && TOPIC_BY_ID.get(id)?.label) || 'Mixed';
+
+// Practice result: correct / answered per topic, in first-seen order.
+function renderTopicBreakdown(q: QuizState): string {
+  const rows = new Map<string, { right: number; total: number }>();
+  q.answers.forEach((a, i) => {
+    const r = rows.get(q.topics[i] ?? '') ?? { right: 0, total: 0 };
+    r.total++;
+    if (a.correct) r.right++;
+    rows.set(q.topics[i] ?? '', r);
+  });
+  return `<div class="result-topics">
+    <div class="review-label">By topic this session</div>
+    ${[...rows].map(([id, r]) => `<div class="rt-row"><span>${esc(topicLabel(id))}</span>${r.right === 0
+      ? `<span class="badge badge-warn">${r.right} / ${r.total}</span>`
+      : `<span>${r.right} / ${r.total}</span>`}</div>`).join('')}
+  </div>`;
+}
 
 // Wrong answers are expanded (yours vs right + explanation); correct ones stay one line.
 function renderReview(q: QuizState): string {
@@ -28,20 +48,27 @@ export function renderQuiz(): string {
       ? "Excellent work. You're building strong knowledge—momentum matters."
       : pct >= 60
         ? "Solid effort. Review the missed concepts and revisit tomorrow."
-        : "Don't be discouraged. Re-read the lesson and try again. Mastery comes from repetition.";
+        : q.kind === 'practice'
+          ? "Don't be discouraged. Read the explanations below, then use Retry my mistakes tomorrow."
+          : "Don't be discouraged. Re-read the lesson and try again. Mastery comes from repetition.";
 
+    const practice = q.kind === 'practice';
+    const modeLabel = q.practice?.mode === 'mistakes' ? 'Retry mistakes' : q.practice?.mode === 'topics' ? 'Chosen topics' : 'Exam mix';
     return `
       <div class="card" style="text-align:center;margin-top:40px">
         ${icons.trophy}
-        <div class="eyebrow" style="margin-bottom:8px">Day ${q.day} Complete</div>
+        <div class="eyebrow" style="margin-bottom:8px">${practice ? 'Daily Practice Complete' : `Day ${q.day} Complete`}</div>
         <div class="finish-score">${pct}%</div>
-        <div class="small" style="margin-bottom:8px">${correct} of ${total} correct</div>
+        <div class="small" style="margin-bottom:8px">${correct} of ${total} correct${practice ? ` · ${modeLabel}` : ''}</div>
         <p class="finish-message">${msg}</p>
+        ${practice ? renderTopicBreakdown(q) : ''}
         <div class="review">
           <div class="review-label">Review your answers</div>
           ${renderReview(q)}
         </div>
-        <button class="btn btn-dark" onclick="navigate('dashboard')">Return to Dashboard</button>
+        ${practice
+          ? `<div class="btn-group"><button class="btn btn-dark" onclick="navigate('stats')">See my stats</button><button class="btn btn-ghost" onclick="navigate('dashboard')">Return to Dashboard</button></div>`
+          : `<button class="btn btn-dark" onclick="navigate('dashboard')">Return to Dashboard</button>`}
       </div>
     `;
   }
@@ -52,13 +79,15 @@ export function renderQuiz(): string {
 
   return `
     <div class="quiz-header">
-      <button class="back-btn" style="margin:0" onclick="if(confirm('Exit quiz? Progress lost.')){navigate('dashboard')}">← Exit</button>
+      <button class="back-btn" style="margin:0" onclick="if(confirm('${q.kind === 'practice' ? 'Exit practice? Answers so far stay in your stats.' : 'Exit quiz? Your score for this day will not be saved.'}')){navigate('dashboard')}">← Exit</button>
       <div class="eyebrow">Question ${q.idx + 1} of ${q.questions.length}</div>
     </div>
     <div class="quiz-progress-top"><div class="quiz-progress-bar" style="width:${progress}%"></div></div>
 
     <div class="quiz-card">
-      <div class="quiz-eyebrow">Day ${q.day} · Practice</div>
+      ${q.kind === 'practice'
+        ? `<div class="quiz-eyebrow quiz-eyebrow-split"><span>Daily Practice · ${esc(topicLabel(q.topics[q.idx]))}</span><span>${esc(DOMAIN_LABEL[TOPIC_BY_ID.get(q.topics[q.idx] ?? '')?.domain ?? 'Process'])}</span></div>`
+        : `<div class="quiz-eyebrow">Day ${q.day} · Practice</div>`}
       <h2 class="question">${esc(current.q)}</h2>
       <div class="options">
         ${current.options.map((opt, i) => {

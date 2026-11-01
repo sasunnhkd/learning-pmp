@@ -1,13 +1,17 @@
 import curriculumData from '../data/curriculum.json';
 import questionsData from '../data/questions.json';
+import practiceBankData from '../data/practice-bank.json';
+import { buildPool, defaultPractice, type TrainerRow } from './practice';
 import type { AppData, AppState, Lesson, QuestionBank } from './types';
 
 export const curriculum = curriculumData as Lesson[];
 export const questionBank = questionsData as QuestionBank;
+// Day quizzes + the Mindset Trainer's QUIZ (copied by scripts/extract-trainer-quiz.mjs).
+export const practicePool = buildPool(questionBank, practiceBankData as TrainerRow[]);
 
 const STORAGE_KEY = 'pmp_data_v1';
 
-function defaultData(): AppData {
+export function defaultData(): AppData {
   return {
     streak: 0,
     lastStudyDate: null,
@@ -16,6 +20,7 @@ function defaultData(): AppData {
     totalCorrect: 0,
     totalAnswered: 0,
     startDate: new Date().toISOString(),
+    practice: defaultPractice(),
   };
 }
 
@@ -26,7 +31,11 @@ function persist(d: AppData): void {
 function loadOrInit(): AppData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as AppData;
+    // Spread over defaults so data saved by older versions (no `practice`) still loads.
+    if (raw) {
+      const saved = JSON.parse(raw) as Partial<AppData>;
+      return { ...defaultData(), ...saved, practice: { ...defaultPractice(), ...saved.practice } };
+    }
   } catch { /* ignore */ }
   const d = defaultData();
   persist(d);
@@ -37,6 +46,7 @@ export const state: AppState = {
   view: 'dashboard',
   selectedDay: null,
   quiz: null,
+  practicePick: { mode: 'mix', topics: [] },
   data: loadOrInit(),
   deferredPrompt: null,
   showInstall: false,
