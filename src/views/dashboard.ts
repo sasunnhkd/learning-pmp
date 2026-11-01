@@ -1,6 +1,38 @@
-import { state, curriculum, getCurrentDay, today, esc } from '../state';
+import { state, curriculum, getCurrentDay, today, esc, practicePool } from '../state';
 import { icons } from '../icons';
+import { computeStats, SESSION_SIZE } from '../practice';
 import { previewText } from '../lessonFormat';
+
+// Daily Practice entry (picker: views/practice.ts). Chips show the weakest topics, or the first
+// uncovered ones when nothing is weak yet.
+function renderPracticeCard(): string {
+  const p = state.data.practice;
+  const doneToday = p.lastDate === today();
+  const last = p.sessions[p.sessions.length - 1];
+  const topics = computeStats(practicePool, p).topics;
+  const weak = topics.filter(t => t.status === 'weak').sort((a, b) => a.accuracy! - b.accuracy!).slice(0, 2);
+  const chips = weak.length
+    ? weak.map(t => `<span class="badge badge-warn">${esc(t.label)} · ${Math.round(t.accuracy! * 100)}%</span>`)
+    : topics.filter(t => t.status === 'new').slice(0, 2).map(t => `<span class="badge badge-new">${esc(t.label)} · new</span>`);
+  return `
+    <div class="card card-accent">
+      <div class="today-header">
+        <div>
+          <div class="eyebrow-accent">Daily Practice · ${SESSION_SIZE} questions</div>
+          <h2 class="h2" style="margin-top:6px">Exam-style drill</h2>
+        </div>
+        ${doneToday && last
+          ? `<div class="studied-badge">${icons.checkCircle} ${last.score}/${last.total} today</div>`
+          : '<span class="badge badge-new">Not done today</span>'}
+      </div>
+      <p class="lesson-preview" style="margin-bottom:12px">Pick a topic or let the app mix questions like the real exam.${chips.length ? (weak.length ? ' Your weakest topics:' : ' Not covered yet:') : ''}</p>
+      ${chips.length ? `<div class="chips">${chips.join('')}</div>` : ''}
+      <div class="btn-group">
+        <button class="btn btn-accent" onclick="navigate('practice')">${icons.target} ${doneToday ? 'Practise again' : "Start today's practice"}</button>
+        <button class="btn btn-ghost" onclick="navigate('stats')">${icons.award} View my stats</button>
+      </div>
+    </div>`;
+}
 
 function renderInstallBanner(): string {
   if (!state.showInstall) return '';
@@ -73,6 +105,8 @@ export function renderDashboard(): string {
     </div>
     ` : ''}
 
+    ${renderPracticeCard()}
+
     <div class="card">
       <div class="progress-header">
         <div class="eyebrow">Overall Progress</div>
@@ -93,7 +127,7 @@ export function renderDashboard(): string {
       ${icons.sparkle}
       <div class="quote-eyebrow">The Daily Practice</div>
       <p class="quote-text">"Small habits, repeated, become extraordinary results."</p>
-      <div class="quote-sub">Each day: 10 minutes lesson + 5 minutes quiz. That's it. Your streak is the best predictor of your success—keep it alive.</div>
+      <div class="quote-sub">Each day: 10 minutes lesson + 5 minutes quiz, then a 10-question Daily Practice. That's it. Your streak is the best predictor of your success—keep it alive.</div>
     </div>
 
     <button class="nav-btn" onclick="navigate('all')">
