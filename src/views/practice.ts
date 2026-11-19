@@ -1,8 +1,11 @@
-import { state, practicePool, esc } from '../state';
+import { state, practicePool, esc, loadSavedMock, loadActivePractice } from '../state';
 import {
-  TOPICS, DOMAIN_LABEL, SESSION_SIZE, WEAK_ACCURACY, MIN_ATTEMPTS,
-  computeStats, selectSession, type Domain, type TopicStat,
+  TOPICS, DOMAIN_LABEL, SESSION_SIZE, WEAK_ACCURACY, MIN_ATTEMPTS, BAND_LABEL, BAND_FLOORS,
+  READINESS_MIN_SEEN, computeStats, computeReadiness, countByDomain, selectSession, splitMix,
+  type Domain, type TopicStat,
 } from '../practice';
+import { MOCK_LENGTHS, formatClock, remainingMs } from '../mock';
+import type { MockLength } from '../types';
 
 const DOMAINS = Object.keys(DOMAIN_LABEL) as Domain[];
 const pct = (x: number | null) => (x === null ? '—' : `${Math.round(x * 100)}%`);
@@ -13,12 +16,76 @@ function dot(status: TopicStat['status']): string {
   return '';
 }
 
-function modeOption(mode: 'mix' | 'mistakes' | 'topics', title: string, sub: string, disabled = false): string {
+function modeOption(mode: 'mix' | 'mistakes' | 'topics' | 'mock', title: string, sub: string, disabled = false): string {
   const on = state.practicePick.mode === mode;
   return `<button class="mix-option ${on ? 'selected' : ''}" onclick="setPracticeMode('${mode}')" role="radio" aria-checked="${on}" ${disabled ? 'disabled' : ''}>
     <span class="radio" aria-hidden="true"></span>
     <span><span class="mix-title">${title}</span><br><span class="mix-sub">${sub}</span></span>
   </button>`;
+}
+
+function renderResumeCard(): string {
+  const saved = loadSavedMock();
+  if (!saved) return '';
+  const len = MOCK_LENGTHS[saved.run.length];
+  return `<div class="card card-accent">
+    <div class="eyebrow-accent">Unfinished mock</div>
+    <p class="small" style="margin:6px 0 12px">${len.label}: question ${saved.idx + 1} of ${saved.ids.length} · ${formatClock(remainingMs(saved.run, Date.now()))} left. The clock is stopped.</p>
+    <div class="btn-group">
+      <button class="btn btn-dark" onclick="resumeSavedMock()">Resume mock</button>
+      <button class="btn btn-ghost" onclick="discardSavedMock()">Discard it</button>
+    </div>
+  </div>`;
+}
+
+function renderPracticeResume(): string {
+  const saved = loadActivePractice();
+  if (!saved) return state.data.activePractice
+    ? '<p class="small">Your previous practice can’t be resumed. Submitted answers are still in your stats.</p>'
+    : '';
+  return `<div class="card card-accent">
+    <div class="eyebrow-accent">Unfinished practice</div>
+    <p class="small" style="margin:6px 0 12px">Question ${saved.idx + 1} of ${saved.questions.length}</p>
+    <button class="btn btn-dark" onclick="resumeActivePractice()">Resume practice</button>
+  </div>`;
+}
+
+function lengthOption(len: MockLength): string {
+  const on = state.practicePick.mockLength === len;
+  const m = MOCK_LENGTHS[len];
+  const sub = len === 'full' ? `${m.minutes} minutes, like the real PMP exam` : `${m.minutes} minutes · same pace as the real exam`;
+  return `<button class="mix-option ${on ? 'selected' : ''}" onclick="setMockLength('${len}')" role="radio" aria-checked="${on}">
+    <span class="radio" aria-hidden="true"></span>
+    <span><span class="mix-title">${m.label} · ${m.size} questions</span><br><span class="mix-sub">${sub}</span></span>
+  </button>`;
+}
+
+// Mock setup: length, the real domain split (dry-run selection) and the rules.
+function renderMockSetup(): string {
+  const len = state.practicePick.mockLength;
+  const size = MOCK_LENGTHS[len].size;
+  const picked = selectSession(practicePool, state.data.practice, 'mock', [], Math.random, size);
+  const real = countByDomain(picked);
+  const want = splitMix(size);
+  const short = (Object.keys(want) as Domain[]).filter(d => real[d] < want[d]);
+  return `
+    <div class="eyebrow group-label">Length</div>
+    <div role="radiogroup" aria-label="Mock length">${lengthOption('mini')}${lengthOption('full')}</div>
+    <div class="card">
+      <div class="eyebrow">This mock</div>
+      <div class="mock-meta">
+        ${(Object.keys(real) as Domain[]).map(d => `<div><b>${real[d]}</b><span>${d === 'Business' ? 'Business' : DOMAIN_LABEL[d]}</span></div>`).join('')}
+      </div>
+      <p class="small" style="margin:8px 0 0">Split follows the exam outline: 33% People / 41% Process / 26% Business Environment. Includes choose-2 and ordering questions.</p>
+      ${short.length ? `<p class="warn-line">Not enough ${short.map(d => DOMAIN_LABEL[d]).join(' and ')} questions yet (${short.map(d => `${real[d]} of ${want[d]}`).join(', ')}), so the rest come from other domains.</p>` : ''}
+    </div>
+    <ul class="small mock-rules">
+      <li>No right or wrong is shown until you finish.</li>
+      <li>Pause any time; the clock stops.</li>
+      <li>If you leave or close the app, resume it here later.</li>
+      <li>When time runs out, unanswered questions count as wrong.</li>
+    </ul>
+    <div class="practice-start"><button class="btn btn-dark" onclick="startPractice('mock')" ${picked.length ? '' : 'disabled'}>Start ${picked.length}-question mock</button></div>`;
 }
 
 export function renderPracticePicker(): string {
@@ -27,7 +94,7 @@ export function renderPracticePicker(): string {
   const byId = new Map(stats.topics.map(t => [t.id as string, t]));
   const mistakes = stats.mistakes; // only questions still in the pool, same as selectSession('mistakes')
   // Dry-run the selection only to show the real count; startPractice() picks again.
-  const count = pick.mode === 'topics' && pick.topics.length === 0
+  const count = pick.mode === 'mock' || (pick.mode === 'topics' && pick.topics.length === 0)
     ? 0
     : selectSession(practicePool, state.data.practice, pick.mode, pick.topics).length;
   const label = count === 0
@@ -39,12 +106,17 @@ export function renderPracticePicker(): string {
     <div class="eyebrow-accent">Daily Practice</div>
     <h2 class="h2" style="margin:6px 0 16px">What do you want to practise?</h2>
 
+    ${renderPracticeResume()}
+    ${renderResumeCard()}
+
     <div role="radiogroup" aria-label="Practice type">
       ${modeOption('mix', 'Exam mix (no idea? pick this)', `${SESSION_SIZE} random questions weighted like the PMP exam: 3 People · 4 Process · 3 Business Environment. Unseen and missed questions come first.`)}
       ${modeOption('mistakes', 'Retry my mistakes', mistakes ? `Up to ${SESSION_SIZE} questions you last answered wrong · ${mistakes} waiting` : 'No missed questions yet', mistakes === 0)}
       ${modeOption('topics', 'Choose topics', 'Pick one or more below')}
+      ${modeOption('mock', 'Mock exam (timed)', 'Exam conditions: a clock, no answers shown until the end. Mini or full length.')}
     </div>
 
+    ${pick.mode === 'mock' ? renderMockSetup() : `
     ${DOMAINS.map(domain => `
       <div class="eyebrow group-label">${DOMAIN_LABEL[domain]}</div>
       <div class="topic-grid">
@@ -57,7 +129,7 @@ export function renderPracticePicker(): string {
       </div>`).join('')}
     <div class="legend-line"><span><span class="dot dot-new"></span>Not covered yet</span><span><span class="dot dot-weak"></span>Needs work (&lt;${Math.round(WEAK_ACCURACY * 100)}%)</span></div>
 
-    <div class="practice-start"><button class="btn btn-dark" onclick="startPractice()" ${count === 0 ? 'disabled' : ''}>${label}</button></div>
+    <div class="practice-start"><button class="btn btn-dark" onclick="startPractice()" ${count === 0 ? 'disabled' : ''}>${label}</button></div>`}
   `;
 }
 
@@ -75,6 +147,20 @@ function topicBar(t: TopicStat): string {
   </div>`;
 }
 
+// Readiness card: PMI's four report bands per domain, from computeReadiness() (src/practice.ts).
+function renderReadiness(): string {
+  const rows = computeReadiness(practicePool, state.data.practice);
+  const floors = BAND_FLOORS.map(([, f]) => Math.round(f * 100)); // 80, 70, 60, 0
+  return `<div class="card">
+    <div class="eyebrow">Exam readiness · our estimate</div>
+    ${rows.map(r => r.band
+      ? `<div class="band-row"><span class="band-name">${DOMAIN_LABEL[r.domain]}</span><span class="band band-${r.band}">${BAND_LABEL[r.band]}</span><span class="band-sub">${pct(r.share)} of your latest answers right · ${r.seen} questions seen</span></div>`
+      : `<div class="band-row"><span class="band-name">${DOMAIN_LABEL[r.domain]}</span><span class="band band-none">Not enough data</span><span class="band-sub">${r.seen} of ${READINESS_MIN_SEEN} questions needed</span></div>`).join('')}
+    <div class="readiness-scale" aria-label="Readiness thresholds" role="group"><div>Needs improvement<br>&lt;${floors[2]}%</div><div>Below<br>${floors[2]}–${floors[1]! - 1}%</div><div>Target<br>${floors[1]}–${floors[0]! - 1}%</div><div>Above<br>≥${floors[0]}%</div></div>
+    <p class="small" style="margin:10px 0 0">PMI reports these four bands but doesn't publish the cut-offs, so ours are a guide, not a prediction.</p>
+  </div>`;
+}
+
 export function renderPracticeStats(): string {
   const s = computeStats(practicePool, state.data.practice);
   const newTopics = s.topics.filter(t => t.status === 'new');
@@ -86,6 +172,8 @@ export function renderPracticeStats(): string {
     <button class="back-btn" onclick="navigate('dashboard')">← Back</button>
     <div class="eyebrow-accent">Progress</div>
     <h2 class="h2" style="margin:6px 0 16px">My practice stats</h2>
+
+    ${renderReadiness()}
 
     <div class="stats">
       <div class="stat"><div class="stat-value">${s.sessions}</div><div class="stat-label">Sessions</div></div>

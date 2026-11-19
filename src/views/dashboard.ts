@@ -105,6 +105,14 @@ export function renderDashboard(): string {
     </div>
     ` : ''}
 
+    <section class="card quest-entry">
+      <div class="eyebrow">New · PMP Quest</div>
+      <h2 class="h2">Your decisions. A project’s future.</h2>
+      <p class="body">Step into Project Phoenix. Examine the evidence, choose a delivery approach and learn from the consequences.</p>
+      <button class="btn btn-accent" onclick="navigate('quest')">Explore PMP Quest →</button>
+      <p class="small">Development preview · All 14 Phoenix missions playable</p>
+    </section>
+
     ${renderPracticeCard()}
 
     <div class="card">

@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  buildPool, computeStats, defaultPractice, finishSession, questionId, recordAnswer,
+  buildPool, computeStats, defaultPractice, finishSession, practiceItemSignature, questionId, recordAnswer,
   selectSession, topicStatus, DAY_TOPIC, EXAM_MIX, MAX_SESSIONS, SESSION_SIZE, TOPICS, TOPIC_BY_ID,
   type PracticeQuestion, type TrainerRow,
 } from '../src/practice.ts';
@@ -14,6 +14,14 @@ import { extractTrainerQuiz, renderBank, TRAINER_PATH, BANK_PATH } from '../scri
 const dayBank = JSON.parse(readFileSync(new URL('../data/questions.json', import.meta.url), 'utf8')) as QuestionBank;
 const trainer = JSON.parse(readFileSync(new URL('../data/practice-bank.json', import.meta.url), 'utf8')) as TrainerRow[];
 const pool = buildPool(dayBank, trainer);
+
+test('saved practice detects changed answer order and grading under the same question ID', () => {
+  const question = { q: 'Which?', options: ['First', 'Second'], correct: 0, explain: '' };
+  const signature = practiceItemSignature(question);
+  assert.equal(signature, practiceItemSignature({ ...question, explain: 'Updated wording' }));
+  assert.notEqual(signature, practiceItemSignature({ ...question, options: ['Second', 'First'], correct: 1 }));
+  assert.notEqual(signature, practiceItemSignature({ ...question, correct: 1 }));
+});
 
 // Deterministic RNG (mulberry32) so selection tests are repeatable.
 function rng(seed: number): () => number {

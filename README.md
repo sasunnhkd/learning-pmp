@@ -5,6 +5,16 @@ A static PWA for PMP exam study, built with Vite and TypeScript and with no runt
 - **28-day path** (`index.html` → `src/`): one lesson and one practice quiz per day, plus a 10-question **Daily Practice** with topic choice and progress stats.
 - **Mindset Trainer** (`public/PMP_Mindset_Trainer.html`): a standalone page with study notes, flashcards, a scenario quiz and a cheat sheet. Vite copies it into `dist/` as-is.
 
+## PMP Quest preview (v0.7.0)
+
+The dashboard's **Explore PMP Quest** opens a playable **14-mission Project Phoenix journey**, from The New Project Brief through Phoenix Retrospective. Each mission includes briefing, two evidence entries, a structured project decision, explained consequences, a mini-lesson, six original retrieval questions and a debrief (**84 practice items total**). Written reflections are optional everywhere. Stakeholder, schedule, risk, reporting, issue, budget, compliance and handover exercises use accessible selections rather than required prose or dragging.
+
+Complete each predecessor to unlock the next mission. Reopen a completed mission or notebook attempt to review it, or replay without overwriting earlier results. Launch Day offers full, phased and blocked readiness cases with separate evidence and mandatory release conditions. Saved progress from the original CH01-M01 preview remains compatible.
+
+All Phoenix content remains a development preview awaiting SME review. The chapter checkpoint, diagnostic and later chapters are still in development. See [Phoenix content and interaction contracts](docs/quest/PHOENIX.md), [implementation scope](docs/quest/IMPLEMENTATION.md), [roadmap](docs/quest/pmp_quest_roadmap.md) and [user stories](docs/quest/pmp_quest_user_stories.md).
+
+Source files live in `data/quest/source/`. Run `npm run quest:import` after changing them. `npm run quest:validate` checks source integrity and generated-catalog freshness before every production build. Runtime logic lives in `src/quest/engine.ts`; the retained M01 fixture is in `src/quest/fixture.ts`, the other 13 authored scenarios in `src/quest/content.ts`, and screens/styles in `src/quest/ui.ts` and `src/quest/quest.css`.
+
 ## Where content lives
 
 | Content | File | Shape |
