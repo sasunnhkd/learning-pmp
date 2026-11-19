@@ -1,14 +1,16 @@
 {
   "name": "learning-pmp",
   "private": true,
-  "version": "0.5.1",
+  "version": "0.7.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run quest:validate && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test 'tests/*.test.ts'"
+    "test": "node --experimental-strip-types --test 'tests/*.test.ts'",
+    "quest:import": "node scripts/import-quest.mjs --write",
+    "quest:validate": "node scripts/import-quest.mjs"
   },
   "devDependencies": {
     "typescript": "^5.5.4",

@@ -1,8 +1,9 @@
 import './styles.css';
-import { render } from './render';
-import { exposeActions } from './actions';
+import { exposeActions, initNavigation } from './actions';
 import { initPwa } from './pwa';
+import { initQuest } from './quest/ui';
 
 exposeActions();
+initQuest();
 initPwa();
-render();
+initNavigation();

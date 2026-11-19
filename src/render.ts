@@ -4,6 +4,7 @@ import { renderLesson } from './views/lesson';
 import { renderQuiz } from './views/quiz';
 import { renderAll } from './views/all';
 import { renderPracticePicker, renderPracticeStats } from './views/practice';
+import { renderQuest } from './quest/ui';
 
 export function render(): void {
   const app = document.getElementById('app');
@@ -15,5 +16,6 @@ export function render(): void {
   else if (state.view === 'all') html = renderAll();
   else if (state.view === 'practice') html = renderPracticePicker();
   else if (state.view === 'stats') html = renderPracticeStats();
+  else if (state.view === 'quest') html = renderQuest();
   app.innerHTML = html;
 }

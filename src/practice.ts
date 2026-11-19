@@ -1,10 +1,13 @@
 // Daily Practice: question pool, topic taxonomy, session selection and stats.
-// Pure data in, data out. Type-only imports keep it runnable under
+// Pure data in, data out. No DOM or JSON imports keep it runnable under
 // `node --experimental-strip-types` (tests/practice.test.ts), so the banks are passed in
-// as parameters instead of imported here (src/state.ts builds the pool).
+// as parameters instead of imported here (src/state.ts builds the pool). The only runtime
+// import is ./items.ts (also pure); it carries the .ts extension because Node needs it
+// (tsconfig allowImportingTsExtensions).
 import type {
   PracticeData, PracticeMode, PracticeSession, QuestionBank, QuizQuestion,
 } from './types';
+import { validateQuestion } from './items.ts';
 
 export type Domain = 'People' | 'Process' | 'Business';
 
@@ -67,8 +70,23 @@ export const DAY_TOPIC: Record<number, TopicId> = {
 };
 
 export const SESSION_SIZE = 10;
-// PMP Examination Content Outline (July 2026): People 33% / Process 41% / Business 26% of 10.
-export const EXAM_MIX: Record<Domain, number> = { People: 3, Process: 4, Business: 3 };
+// PMP Examination Content Outline (July 2026) domain weights.
+export const EXAM_WEIGHTS: Record<Domain, number> = { People: 0.33, Process: 0.41, Business: 0.26 };
+
+// Questions per domain for a session of `size`, by largest remainder so the parts always sum
+// to `size`: 10 → 3/4/3, 60 → 20/25/15, 180 → 59/74/47.
+export function splitMix(size: number): Record<Domain, number> {
+  const domains = Object.keys(EXAM_WEIGHTS) as Domain[];
+  const raw = domains.map(d => ({ d, x: EXAM_WEIGHTS[d] * size }));
+  const out = Object.fromEntries(raw.map(r => [r.d, Math.floor(r.x)])) as Record<Domain, number>;
+  let left = size - domains.reduce((n, d) => n + out[d], 0);
+  for (const r of [...raw].sort((a, b) => (b.x % 1) - (a.x % 1))) {
+    if (left-- <= 0) break;
+    out[r.d]++;
+  }
+  return out;
+}
+export const EXAM_MIX = splitMix(SESSION_SIZE);
 // "Needs work" = accuracy below WEAK_ACCURACY after at least MIN_ATTEMPTS answers in the topic.
 export const WEAK_ACCURACY = 0.7;
 export const MIN_ATTEMPTS = 3;
@@ -77,6 +95,8 @@ export const MAX_SESSIONS = 100;
 
 export type PracticeQuestion = QuizQuestion & { id: string; topic: TopicId };
 export type TrainerRow = QuizQuestion & { topic: string };
+// data/item-bank.json: multi-select and ordering items, tagged directly with a practice topic id.
+export type ItemRow = QuizQuestion & { topic: string };
 
 // Stable id from the question stem (FNV-1a 32-bit), so reordering a bank keeps saved stats.
 // Editing a stem gives it a new id: its old stats stay in storage but stop counting.
@@ -89,20 +109,34 @@ export function questionId(stem: string): string {
   return 'q' + (h >>> 0).toString(36);
 }
 
-export function buildPool(dayBank: QuestionBank, trainer: TrainerRow[]): PracticeQuestion[] {
+// Saved selections are option indices. Verify that they still refer to the same
+// choices and grading rules even when the stem (and therefore ID) is unchanged.
+export function practiceItemSignature(question: QuizQuestion): string {
+  return JSON.stringify([question.type ?? 'single', question.options, question.correct]);
+}
+
+// Throws on an unknown topic or a malformed question, so a bad bank fails the tests and the
+// build instead of breaking a quiz screen.
+export function buildPool(dayBank: QuestionBank, trainer: TrainerRow[], items: ItemRow[] = []): PracticeQuestion[] {
   const pool: PracticeQuestion[] = [];
   const seen = new Set<string>();
   const add = (q: QuizQuestion, topic: TopicId | undefined, where: string) => {
     if (!topic) throw new Error(`No practice topic for ${where}`);
+    const errs = validateQuestion(q);
+    if (errs.length) throw new Error(`${where}: ${errs.join('; ')}`);
     const id = questionId(q.q);
-    if (seen.has(id)) return; // same stem in both banks: keep the first copy
+    if (seen.has(id)) return; // same stem in two banks: keep the first copy
     seen.add(id);
-    pool.push({ q: q.q, options: q.options, correct: q.correct, explain: q.explain, id, topic });
+    // Copy field by field (no spread) so bank-only fields like `topic` labels don't leak in.
+    const copy: PracticeQuestion = { q: q.q, options: q.options, correct: q.correct, explain: q.explain, id, topic };
+    if (q.type) copy.type = q.type;
+    pool.push(copy);
   };
   for (const [day, qs] of Object.entries(dayBank)) {
     qs.forEach((q, i) => add(q, DAY_TOPIC[Number(day)], `day ${day} question ${i + 1}`));
   }
   trainer.forEach((r, i) => add(r, TRAINER_TOPIC[r.topic], `Trainer QUIZ entry ${i + 1} ("${r.topic}")`));
+  items.forEach((r, i) => add(r, TOPIC_BY_ID.get(r.topic)?.id, `item-bank entry ${i + 1} ("${r.topic}")`));
   return pool;
 }
 
@@ -134,39 +168,90 @@ function pickFrom(cands: PracticeQuestion[], n: number, stats: PracticeData['que
     .map(x => x.q);
 }
 
-// Up to SESSION_SIZE questions, in random order. Fewer when the chosen pool is smaller;
-// the caller shows the real count instead of padding.
+// Up to `size` questions (SESSION_SIZE unless a mock passes its length), in random order.
+// Fewer when the chosen pool is smaller; the caller shows the real count instead of padding.
+// 'mix' and 'mock' both use the exam split (splitMix); they differ only in size and in how the
+// quiz screen runs them.
 export function selectSession(
   pool: PracticeQuestion[],
   practice: PracticeData,
   mode: PracticeMode,
   topics: string[],
   rng: Rng = Math.random,
+  size: number = SESSION_SIZE,
 ): PracticeQuestion[] {
   const stats = practice.questions;
   if (mode === 'topics') {
     const want = new Set(topics);
-    return shuffle(pickFrom(pool.filter(q => want.has(q.topic)), SESSION_SIZE, stats, rng), rng);
+    return shuffle(pickFrom(pool.filter(q => want.has(q.topic)), size, stats, rng), rng);
   }
   if (mode === 'mistakes') {
     // Most recent mistakes first: they are the freshest gaps.
     const picked = pool
       .filter(q => stats[q.id] && !stats[q.id]!.lastCorrect)
       .sort((a, b) => stats[b.id]!.lastAt - stats[a.id]!.lastAt)
-      .slice(0, SESSION_SIZE);
+      .slice(0, size);
     return shuffle(picked, rng);
   }
   // Exam mix: fill each domain's quota, then top up from whatever is left if a domain ran short.
+  const quota = splitMix(size);
   const picked: PracticeQuestion[] = [];
-  for (const domain of Object.keys(EXAM_MIX) as Domain[]) {
+  for (const domain of Object.keys(quota) as Domain[]) {
     const inDomain = pool.filter(q => TOPIC_BY_ID.get(q.topic)!.domain === domain);
-    picked.push(...pickFrom(inDomain, EXAM_MIX[domain], stats, rng));
+    picked.push(...pickFrom(inDomain, quota[domain], stats, rng));
   }
-  if (picked.length < SESSION_SIZE) {
+  if (picked.length < size) {
     const taken = new Set(picked.map(q => q.id));
-    picked.push(...pickFrom(pool.filter(q => !taken.has(q.id)), SESSION_SIZE - picked.length, stats, rng));
+    picked.push(...pickFrom(pool.filter(q => !taken.has(q.id)), size - picked.length, stats, rng));
   }
   return shuffle(picked, rng);
+}
+
+export const domainOf = (topic: string): Domain => TOPIC_BY_ID.get(topic)?.domain ?? 'Process';
+
+// Questions per domain in a picked list (the mock setup card shows the real split).
+export function countByDomain(qs: { topic: string }[]): Record<Domain, number> {
+  const out: Record<Domain, number> = { People: 0, Process: 0, Business: 0 };
+  for (const q of qs) out[domainOf(q.topic)]++;
+  return out;
+}
+
+// ---- Readiness (our estimate on PMI's four report bands) ----
+// PMI names the bands but publishes no cut-offs, so these thresholds are ours.
+export type Band = 'above' | 'target' | 'below' | 'needs';
+export const BAND_LABEL: Record<Band, string> = {
+  above: 'Above Target', target: 'Target', below: 'Below Target', needs: 'Needs Improvement',
+};
+// Lower bound of each band, highest first. share >= 0.8 → above, >= 0.7 → target, >= 0.6 → below.
+export const BAND_FLOORS: [Band, number][] = [['above', 0.8], ['target', 0.7], ['below', 0.6], ['needs', 0]];
+// A domain gets no band until this many different questions in it have been answered.
+export const READINESS_MIN_SEEN = 20;
+
+export function bandFor(share: number): Band {
+  for (const [band, floor] of BAND_FLOORS) if (share >= floor) return band;
+  return 'needs';
+}
+
+export type DomainReadiness = { domain: Domain; seen: number; right: number; share: number | null; band: Band | null };
+
+// Per domain: of the questions answered at least once, the share whose LATEST answer was right.
+// Latest (not lifetime) so fixing a mistake counts. Questions no longer in the pool are ignored.
+export function computeReadiness(pool: PracticeQuestion[], practice: PracticeData): DomainReadiness[] {
+  const acc: Record<Domain, { seen: number; right: number }> = {
+    People: { seen: 0, right: 0 }, Process: { seen: 0, right: 0 }, Business: { seen: 0, right: 0 },
+  };
+  for (const q of pool) {
+    const s = practice.questions[q.id];
+    if (!s) continue;
+    const a = acc[domainOf(q.topic)];
+    a.seen++;
+    if (s.lastCorrect) a.right++;
+  }
+  return (Object.keys(DOMAIN_LABEL) as Domain[]).map(domain => {
+    const { seen, right } = acc[domain];
+    const share = seen > 0 ? right / seen : null;
+    return { domain, seen, right, share, band: share !== null && seen >= READINESS_MIN_SEEN ? bandFor(share) : null };
+  });
 }
 
 export function recordAnswer(practice: PracticeData, id: string, correct: boolean, now: number): PracticeData {
