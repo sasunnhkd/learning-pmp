@@ -9,7 +9,8 @@
       "Add more people to the next sprint"
     ],
     "correct": 1,
-    "explain": "'First' means assess before acting. Understand the root cause with the team — never remove people or escalate prematurely."
+    "explain": "The cause of the slowdown is not established. Discuss it with the team before choosing a response; if the cause and authorized remedy were already known, repeating assessment would not be necessary.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Mindset",
@@ -21,7 +22,8 @@
       "Submit a change request"
     ],
     "correct": 1,
-    "explain": "'Might/may' = a risk. It hasn't happened, so update the risk register & risk management plan rather than the issue log."
+    "explain": "The regulatory change and its effect remain uncertain, so record and assess the risk and monitor the proposal with appropriate experts. A known applicable obligation would instead require planned compliance action; verb choice alone does not determine classification.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Role",
@@ -33,11 +35,12 @@
       "Tell them to focus on the deadline"
     ],
     "correct": 2,
-    "explain": "Servant leaders investigate the personal cause of demotivation and respond to it; they don't bribe, replace, or pressure."
+    "explain": "Servant leaders investigate the personal cause of demotivation and respond to it; they don't bribe, replace, or pressure.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Change",
-    "q": "A stakeholder asks you to add a feature mid-project. What do you do?",
+    "q": "On a predictive project, a stakeholder requests a feature outside an approved scope baseline. What should you do?",
     "options": [
       "Add it quickly since it's small",
       "Refuse — the scope is locked",
@@ -45,11 +48,12 @@
       "Ask the sponsor to approve it directly"
     ],
     "correct": 2,
-    "explain": "Never implement changes yourself or refuse outright. Assess impact on all constraints, then go through integrated change control."
+    "explain": "Record the request, assess value and impacts, and use the designated change authority before changing the baseline. This scenario concerns controlled scope, not every local backlog-ordering decision.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Scope",
-    "q": "The customer says a finished deliverable doesn't meet their needs, but it passed QA testing. What process matters here?",
+    "q": "A customer disputes acceptance of a deliverable that passed quality-control testing. Which process obtains formal acceptance?",
     "options": [
       "Control Quality",
       "Validate Scope",
@@ -57,7 +61,8 @@
       "Control Procurements"
     ],
     "correct": 1,
-    "explain": "QA (Control Quality) checks correctness; the customer's acceptance is Validate Scope. Acceptance is the issue here."
+    "explain": "Control Quality checks deliverable correctness through inspection and testing; Validate Scope obtains formal acceptance. Quality assurance concerns confidence in the processes and is not another name for Control Quality.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Scope",
@@ -69,19 +74,21 @@
       "Build all features at once"
     ],
     "correct": 1,
-    "explain": "Only the PO prioritizes. If they won't, coach/train them on the benefit — never take over the role."
+    "explain": "Help the Product Owner understand and perform value-based ordering. The PO may delegate backlog-management work while retaining accountability; the PM should not unilaterally take over the PO’s decisions.",
+    "ecoTask": "PRO03"
   },
   {
-    "topic": "Schedule",
-    "q": "A stakeholder asks for the exact project budget before planning is complete. What do you tell them?",
+    "topic": "Cost",
+    "q": "A sponsor asks for a precise final budget while scope is still uncertain. What should you communicate?",
     "options": [
-      "Give the charter's range as the final number",
-      "Ask them to wait until planning is finished",
-      "Provide a definitive ±5% estimate now",
-      "Escalate the request to finance"
+      "Present the charter estimate as an exact final budget",
+      "Explain the current estimate, accuracy range, assumptions, and refinement plan",
+      "Invent a definitive estimate without more evidence",
+      "Refuse to share any financial information until planning ends"
     ],
     "correct": 1,
-    "explain": "The charter offers only a range. A precise budget comes after planning, so ask them to wait."
+    "explain": "Share useful estimates with explicit uncertainty and a refinement plan. Early planning does not justify unsupported precision, and it does not require withholding all budget information.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Quality",
@@ -93,11 +100,12 @@
       "Tornado chart"
     ],
     "correct": 1,
-    "explain": "A check-sheet tabulates results to reveal error concentration so you can prioritize a response."
+    "explain": "A check-sheet tabulates results to reveal error concentration so you can prioritize a response.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Quality",
-    "q": "A control chart shows one data point far outside the limits. This is a…",
+    "q": "A control-chart point lies outside the calculated control limits. What does it signal?",
     "options": [
       "Common cause — ignore it",
       "Special cause — investigate it",
@@ -105,11 +113,12 @@
       "Precision error"
     ],
     "correct": 1,
-    "explain": "A point requiring investigation is a special cause (a defect), unlike common-cause normal variation."
+    "explain": "This is a signal of special-cause variation requiring investigation. Control limits describe process behavior; specification limits describe requirements. The signal alone does not prove a defective output.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Resources",
-    "q": "Two team members are in conflict over schedules. What's the preferred first approach?",
+    "q": "Two team members disagree on schedules. Time allows a joint solution, and both are willing to work together. Which conflict approach fits?",
     "options": [
       "Withdrawal until tempers cool",
       "Forcing a decision as PM",
@@ -117,7 +126,8 @@
       "Escalate to the functional manager"
     ],
     "correct": 2,
-    "explain": "Confrontation (problem-solving) is the most preferred technique; understand the source first. Escalation is a last resort."
+    "explain": "Collaboration/problem-solving fits the stated willingness and time to find a durable solution. Other modes may be appropriate with different urgency, stakes, or authority.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Resources",
@@ -129,19 +139,21 @@
       "The customer to extend the deadline"
     ],
     "correct": 1,
-    "explain": "Check the functional manager's availability before the PMO; the PM negotiates resources with the FM."
+    "explain": "The PMO’s capacity has already been checked in this scenario. Coordinate with the functional manager about availability under the resource plan. PMOs can participate in staffing; there is no universal PMO-versus-functional-manager sequence.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Comms",
-    "q": "A remote, multicultural team keeps misunderstanding instructions on a complex task. Best communication choice?",
+    "q": "A distributed team misunderstands a complex task despite receiving identical written instructions. What communication approach is best?",
     "options": [
-      "A quick phone call",
-      "Informal chat messages",
-      "Formal written communication so all receive the same info",
-      "A single recorded video"
+      "Repeat the same instructions without feedback",
+      "Require one more formal document and assume it is understood",
+      "Combine accessible written references with an interactive clarification session",
+      "Exclude members who need clarification"
     ],
     "correct": 2,
-    "explain": "Complex problems plus cultural/remote differences call for extensive formal written communication."
+    "explain": "Written information gives a shared reference, while interactive clarification and feedback test understanding. Tailor language, accessibility, timing, and channel rather than assuming formal writing alone resolves cultural or technical complexity.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Stakeholder",
@@ -153,19 +165,21 @@
       "Escalate to the sponsor"
     ],
     "correct": 1,
-    "explain": "Go back to the comms/stakeholder engagement plan and find out what they actually need before acting."
+    "explain": "Go back to the comms/stakeholder engagement plan and find out what they actually need before acting.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Risk",
-    "q": "While planning responses for a known risk, the team identifies a brand-new risk. You should…",
+    "q": "A proposed response to a known risk could introduce a new supplier dependency. How should the team treat this newly created exposure?",
     "options": [
-      "Stop and re-run Identify Risks immediately",
-      "Ignore it until monitoring",
-      "Document it as a secondary risk and keep planning",
-      "Escalate it to the sponsor"
+      "Stop all risk planning indefinitely",
+      "Ignore it because the primary risk has a response",
+      "Record and assess it as a secondary risk caused by the response",
+      "Automatically transfer ownership to the sponsor"
     ],
     "correct": 2,
-    "explain": "Newly found risks during response planning are secondary risks — document them and continue planning."
+    "explain": "A secondary risk arises because of a risk response. Record and analyze this dependency and plan a proportionate response. An unrelated risk merely discovered during response planning would not automatically be secondary.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Risk",
@@ -177,19 +191,21 @@
       "Run quantitative analysis"
     ],
     "correct": 1,
-    "explain": "A triggered, unplanned risk needs a workaround. Qualifying applies only when it hasn't triggered."
+    "explain": "The event has occurred without a planned response, so manage the resulting issue and develop an appropriate authorized workaround. Assess impacts and required controls while responding; a risk trigger is not a reason to skip judgment or authority.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Procurement",
-    "q": "A vendor invoices for far more than the contract states. What's the appropriate action?",
+    "q": "A supplier invoice exceeds the amount you expected under the contract. What should you do next?",
     "options": [
       "Stop all payments permanently",
-      "Terminate the contract",
-      "Issue a breach-of-contract notice, then discuss",
-      "Pay it to keep the relationship"
+      "Terminate immediately without checking the contract",
+      "Verify the invoice and contract with procurement, then clarify the discrepancy with the supplier",
+      "Pay it without checking to preserve the relationship"
     ],
     "correct": 2,
-    "explain": "A T&C violation like over-invoicing warrants a breach notice, followed by discussion — not termination or stopping payment."
+    "explain": "An unexpected invoice does not by itself establish breach. Check rates, quantities, approved changes, terms, and notice requirements, then follow the agreed payment and dispute process with authorized specialists.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Procurement",
@@ -201,7 +217,8 @@
       "Proposal"
     ],
     "correct": 3,
-    "explain": "'Proposal' is used when technical capability/approach is paramount; bid/tender/quotation are price-based."
+    "explain": "'Proposal' is used when technical capability/approach is paramount; bid/tender/quotation are price-based.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Integration",
@@ -213,31 +230,34 @@
       "Return the budget to finance only"
     ],
     "correct": 1,
-    "explain": "Even terminated projects are formally closed through Close Project or Phase, including lessons learned."
+    "explain": "Even terminated projects are formally closed through Close Project or Phase, including lessons learned.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Integration",
-    "q": "Who provides the final sign-off on project closure?",
+    "q": "Who should approve completion of a project or phase?",
     "options": [
-      "The project manager",
-      "The PMO",
-      "The sponsor",
-      "The functional manager"
+      "The PM acting alone in every organization",
+      "Only the PMO in every organization",
+      "The stakeholders designated by governance and agreements",
+      "Only the functional manager in every organization"
     ],
     "correct": 2,
-    "explain": "The sponsor signs off on closure, after all work is verified, delivered, and accepted."
+    "explain": "Obtain the approvals required by governance and agreements, often including a sponsor or customer. Confirm acceptance or termination, transition readiness, and disposition of remaining obligations; a sponsor is not the universal sole signatory.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Mindset",
-    "q": "A question says a safety hazard has emerged that endangers workers right now. What do you do?",
+    "q": "An active site hazard is endangering workers now. What should the project manager do immediately?",
     "options": [
-      "Assess the impact and review the plan first",
-      "Stop work immediately and start change control",
-      "Log it as a risk for later",
-      "Ask the sponsor for guidance"
+      "Delay action to complete a routine plan review",
+      "Protect workers, stop affected unsafe work, and follow emergency procedures",
+      "Record only a future risk for the next monthly review",
+      "Wait for the next sponsor meeting"
     ],
     "correct": 1,
-    "explain": "Dire safety consequences are the exception to 'think first' — stop work and begin the change control process."
+    "explain": "Protect people and follow the applicable emergency response immediately. Afterwards assess impacts, report, investigate, and use change control for any required controlled changes. Routine change approval is not a prerequisite for immediate protection.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Team",
@@ -249,7 +269,8 @@
       "Facilitate a team discussion on honoring the review agreement they created"
     ],
     "correct": 3,
-    "explain": "The team wrote the charter, so the team should address breaches of it. A servant leader facilitates that conversation rather than enforcing it individually or imposing a new process."
+    "explain": "The team wrote the charter, so the team should address breaches of it. A servant leader facilitates that conversation rather than enforcing it individually or imposing a new process.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Quality",
@@ -261,7 +282,8 @@
       "Let each team keep its own checklist since openings succeed"
     ],
     "correct": 2,
-    "explain": "Variation shows an improvement opportunity. Standardizing best practices updates organizational assets."
+    "explain": "Variation shows an improvement opportunity. Standardizing best practices updates organizational assets.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Business",
@@ -273,7 +295,8 @@
       "Plan the members' transition with the new product team leaders"
     ],
     "correct": 3,
-    "explain": "Organizational change affects project resources. Required actions must be determined with the new structure's leaders."
+    "explain": "Organizational change affects project resources. Required actions must be determined with the new structure's leaders.",
+    "ecoTask": "BUS07"
   },
   {
     "topic": "Business",
@@ -285,7 +308,8 @@
       "Survey the app's users about their satisfaction with the recent releases"
     ],
     "correct": 0,
-    "explain": "The question is about benefits, not output. A measurement system tied to the benefit target answers it."
+    "explain": "The question is about benefits, not output. A measurement system tied to the benefit target answers it.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Team",
@@ -297,7 +321,8 @@
       "Encourage the quieter linguists to speak up more during planning"
     ],
     "correct": 2,
-    "explain": "The evidence shows written input works for these members. Supporting varied styles means adapting the process, not pushing people to change theirs."
+    "explain": "The evidence shows written input works for these members. Supporting varied styles means adapting the process, not pushing people to change theirs.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Stakeholder",
@@ -309,7 +334,8 @@
       "Examine the placement criteria in the plan with municipal partners"
     ],
     "correct": 2,
-    "explain": "Partner satisfaction matters even when the plan was followed. Reviewing the plan defends the past; engaging on what remains responds to their expectations."
+    "explain": "Partner satisfaction matters even when the plan was followed. Reviewing the plan defends the past; engaging on what remains responds to their expectations.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Integration",
@@ -321,7 +347,8 @@
       "Include a commissioning schedule buffer just in case"
     ],
     "correct": 0,
-    "explain": "Lessons learned should shape planning. A generic buffer ignores the specific causes already known."
+    "explain": "Lessons learned should shape planning. A generic buffer ignores the specific causes already known.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Business",
@@ -333,7 +360,8 @@
       "Assess the ban's impact and reprioritize the packaging work"
     ],
     "correct": 3,
-    "explain": "A known regulatory change should reshape priorities now. Finishing first creates avoidable rework."
+    "explain": "A known regulatory change should reshape priorities now. Finishing first creates avoidable rework.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "Agile",
@@ -345,7 +373,8 @@
       "Increase retrospective frequency to gather more ideas"
     ],
     "correct": 2,
-    "explain": "Continuous improvement processes also need updating. More of the same process yields more of the same results."
+    "explain": "Continuous improvement processes also need updating. More of the same process yields more of the same results.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Business",
@@ -357,7 +386,8 @@
       "Remove that export market from the product line's sales plan permanently"
     ],
     "correct": 2,
-    "explain": "Compliance needs must be addressed before entering the market. Launching first risks penalties."
+    "explain": "Compliance needs must be addressed before entering the market. Launching first risks penalties.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Comms",
@@ -369,7 +399,8 @@
       "Assess if milestone reporting meets the board's needs as it stands"
     ],
     "correct": 0,
-    "explain": "The board stated its requirement, so the project should support the governance process. Questioning whether the request is needed is not the project's call."
+    "explain": "The board stated its requirement, so the project should support the governance process. Questioning whether the request is needed is not the project's call.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Business",
@@ -381,7 +412,8 @@
       "Examine existing refrigerant regulations for use in this case"
     ],
     "correct": 2,
-    "explain": "A new substance may fall under different rules. Compliance categories must be classified, not borrowed."
+    "explain": "A new substance may fall under different rules. Compliance categories must be classified, not borrowed.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Schedule",
@@ -393,7 +425,8 @@
       "Start installations now and connect each charger as soon as its approval arrives"
     ],
     "correct": 2,
-    "explain": "External dependencies must be coordinated and shown in the schedule. Assuming standard timelines hides a key risk."
+    "explain": "External dependencies must be coordinated and shown in the schedule. Assuming standard timelines hides a key risk.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Comms",
@@ -405,7 +438,8 @@
       "Review each site's spreadsheet to map its fields to the sponsor format"
     ],
     "correct": 1,
-    "explain": "The reporting requirement is known and fixed. Standardizing inputs at the source fixes it permanently; mapping each sheet repeats the effort every month."
+    "explain": "The reporting requirement is known and fixed. Standardizing inputs at the source fixes it permanently; mapping each sheet repeats the effort every month.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Risk",
@@ -417,7 +451,8 @@
       "Review the weather risks to update their probability scores"
     ],
     "correct": 1,
-    "explain": "Every risk needs an active owner to execute responses. Rescoring does not fill that gap."
+    "explain": "Every risk needs an active owner to execute responses. Rescoring does not fill that gap.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Team",
@@ -429,7 +464,8 @@
       "Send the sister fab a written summary of the defect pattern"
     ],
     "correct": 2,
-    "explain": "The barrier is the lack of interaction, not access. Fostering an environment for ongoing exchange solves this case and future ones."
+    "explain": "The barrier is the lack of interaction, not access. Fostering an environment for ongoing exchange solves this case and future ones.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Team",
@@ -441,7 +477,8 @@
       "Pair the new member with an experienced colleague for the next few sprints"
     ],
     "correct": 1,
-    "explain": "The new member never helped shape the ground rules. Co-creating them with the whole team builds the buy-in that a private briefing cannot."
+    "explain": "The new member never helped shape the ground rules. Co-creating them with the whole team builds the buy-in that a private briefing cannot.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Integration",
@@ -453,7 +490,8 @@
       "Add remote vendor support to the maintenance contract for after commissioning"
     ],
     "correct": 2,
-    "explain": "Those who will maintain the system must learn it while the expert is present. Manuals help, but working alongside the specialist transfers the know-how."
+    "explain": "Those who will maintain the system must learn it while the expert is present. Manuals help, but working alongside the specialist transfers the know-how.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Integration",
@@ -465,7 +503,8 @@
       "Assess the deliverables again to verify scope completion"
     ],
     "correct": 0,
-    "explain": "Scope is complete; transition readiness is not. Readiness, here training, must be validated before handover."
+    "explain": "Scope is complete; transition readiness is not. Readiness, here training, must be validated before handover.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Stakeholder",
@@ -477,7 +516,8 @@
       "Review the engineering estimate to confirm a two-week stop is needed"
     ],
     "correct": 1,
-    "explain": "Two hidden, conflicting expectations exist. They must be made explicit and agreed before baselining; checking one side's estimate does not align anyone."
+    "explain": "Two hidden, conflicting expectations exist. They must be made explicit and agreed before baselining; checking one side's estimate does not align anyone.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Integration",
@@ -489,7 +529,8 @@
       "Review the procedures to find where troubleshooting steps are missing"
     ],
     "correct": 2,
-    "explain": "Judgment is tacit knowledge that documents cannot hold. Shadowing transfers it; reviewing procedures only finds what is already known to be missing."
+    "explain": "Judgment is tacit knowledge that documents cannot hold. Shadowing transfers it; reviewing procedures only finds what is already known to be missing.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Stakeholder",
@@ -501,7 +542,8 @@
       "Restrict attendance to the original kickoff participants"
     ],
     "correct": 1,
-    "explain": "Equal treatment of every request signals that stakeholders were never categorized. Grouping by influence and interest focuses effort; trimming attendance is arbitrary."
+    "explain": "The situation calls for stakeholder analysis and differentiated engagement based on influence, interest, impact, and needs. Equal urgency alone does not prove categorization never occurred; review and adapt the approach.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Agile",
@@ -513,7 +555,8 @@
       "Fix the scope for each quarter so the costs become fully predictable"
     ],
     "correct": 0,
-    "explain": "Spend tracking should span the life cycle. In agile, sprint-level burn against value gives finance timely insight; quarterly totals arrive too late."
+    "explain": "Spend tracking should span the life cycle. In agile, sprint-level burn against value gives finance timely insight; quarterly totals arrive too late.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Comms",
@@ -525,7 +568,8 @@
       "Send stakeholders a release announcement with each deployment"
     ],
     "correct": 2,
-    "explain": "The radiator exists but stakeholders cannot see it. Transparency means placing progress where they look; release notices still arrive too late."
+    "explain": "The radiator exists but stakeholders cannot see it. Transparency means placing progress where they look; release notices still arrive too late.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Change",
@@ -537,7 +581,8 @@
       "Examine the board decision to verify the change was approved"
     ],
     "correct": 1,
-    "explain": "The approval is not in doubt. Approved changes must be reflected in project documentation."
+    "explain": "The approval is not in doubt. Approved changes must be reflected in project documentation.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Schedule",
@@ -549,7 +594,8 @@
       "Analyze the weeks 8 to 10 workload to verify the peak is real"
     ],
     "correct": 1,
-    "explain": "The histogram already shows the problem, and the tasks have float. Resource smoothing within float resolves it at no cost."
+    "explain": "Resource smoothing can use available float to reduce overallocation without changing the finish date. Confirm that float and task flexibility are sufficient; otherwise consider leveling or another authorized resource decision.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Stakeholder",
@@ -561,7 +607,8 @@
       "Invite the quality lead to the final review before release"
     ],
     "correct": 2,
-    "explain": "A stakeholder who can block release must be engaged early. Late involvement invites rework, and a register entry alone is not engagement."
+    "explain": "A stakeholder who can block release must be engaged early. Late involvement invites rework, and a register entry alone is not engagement.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Team",
@@ -573,7 +620,8 @@
       "Help them reach a middle-ground order each can accept within the window"
     ],
     "correct": 3,
-    "explain": "Collaboration takes time the window does not allow. With two sound positions and a hard deadline, a compromise is the practical resolution."
+    "explain": "A time-limited compromise can fit two sound positions and a closing mobilization window. Assess whether it remains safe and feasible; the technique is chosen for this context, not a universal ranking.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Comms",
@@ -585,7 +633,8 @@
       "Issue one combined note restating the end state to every package lead"
     ],
     "correct": 1,
-    "explain": "Clarifications were acknowledged yet the problem recurs, so more messages will not help. The pattern calls for identifying the root cause of the misunderstanding."
+    "explain": "Clarifications were acknowledged yet the problem recurs, so more messages will not help. The pattern calls for identifying the root cause of the misunderstanding.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Stakeholder",
@@ -597,7 +646,8 @@
       "Select the fix proposed by the stakeholder most affected"
     ],
     "correct": 0,
-    "explain": "Issues affecting several stakeholders should be resolved collaboratively. Picking one proposal leaves the others unaligned."
+    "explain": "Issues affecting several stakeholders should be resolved collaboratively. Picking one proposal leaves the others unaligned.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Risk",
@@ -609,7 +659,8 @@
       "Record it in lessons learned for future projects"
     ],
     "correct": 2,
-    "explain": "Positive risks deserve active responses such as exploit or enhance. Passive acceptance leaves the benefit to chance."
+    "explain": "Positive risks deserve active responses such as exploit or enhance. Passive acceptance leaves the benefit to chance.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Agile",
@@ -621,7 +672,8 @@
       "Send a follow-up survey after each sprint review"
     ],
     "correct": 0,
-    "explain": "The missing piece is a feedback loop inside the review. A survey keeps feedback delayed; longer demos add more one-way content."
+    "explain": "The missing piece is a feedback loop inside the review. A survey keeps feedback delayed; longer demos add more one-way content.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Integration",
@@ -633,7 +685,8 @@
       "Have the analysts run the model with the team's support before handover"
     ],
     "correct": 3,
-    "explain": "Watching is not doing. Hands-on practice with support ensures the knowledge actually transfers."
+    "explain": "Watching is not doing. Hands-on practice with support ensures the knowledge actually transfers.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Procurement",
@@ -645,7 +698,8 @@
       "Seek a lower upfront fee while keeping the full commitment"
     ],
     "correct": 0,
-    "explain": "The operator's goal is to learn before committing. Payments tied to validation align the deal to that goal; discounts keep the full exposure."
+    "explain": "The operator's goal is to learn before committing. Payments tied to validation align the deal to that goal; discounts keep the full exposure.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Comms",
@@ -657,11 +711,12 @@
       "Invite crew representatives to attend the next steering board design review session"
     ],
     "correct": 0,
-    "explain": "The rationale is already published, so pointing to it again will not build understanding. Promoting the shared vision in the crews' own context is what closes the gap."
+    "explain": "The rationale is already published, so pointing to it again will not build understanding. Promoting the shared vision in the crews' own context is what closes the gap.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Resources",
-    "q": "A theater's ticketing modernization team lacks UX skills. A marketing designer could join part-time, or a contractor could join full-time. What should the project manager recommend?",
+    "q": "A ticketing project’s approved resource plan requires dedicated full-time UX capacity. A marketing designer is available only part-time; an equally qualified contractor is available full-time within the approved budget. Which option best fits the plan?",
     "options": [
       "Use the marketing designer part-time to keep costs low",
       "Have the developers handle the UX tasks using standard design templates",
@@ -669,7 +724,8 @@
       "Engage the part-time marketing designer for the UX tasks"
     ],
     "correct": 2,
-    "explain": "Agile teams work best with dedicated, cross-functional members. Part-time members create context switching and waiting."
+    "explain": "The stated full-time requirement, qualifications, and approved budget support the dedicated contractor. Without those facts, dedication alone would not justify hiring over a suitable part-time arrangement.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Team",
@@ -681,7 +737,8 @@
       "Define handoff responsibilities and confirmation points with both groups"
     ],
     "correct": 3,
-    "explain": "Both complaints point to an undefined handoff. Fixing only one side moves the gap, and a weekly review discusses it without solving it."
+    "explain": "Both complaints point to an undefined handoff. Fixing only one side moves the gap, and a weekly review discusses it without solving it.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Agile",
@@ -693,7 +750,8 @@
       "Record all retrospective actions in a shared improvement log"
     ],
     "correct": 2,
-    "explain": "Continuous improvement needs implementation. Putting a few actions into the backlog makes them real work; logs do not."
+    "explain": "Continuous improvement needs implementation. Putting a few actions into the backlog makes them real work; logs do not.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Integration",
@@ -705,7 +763,8 @@
       "Consolidate the usage data to inform the feature decision"
     ],
     "correct": 3,
-    "explain": "Relevant data exists but has not been analyzed together. Collecting and analyzing it supports an informed decision."
+    "explain": "Relevant data exists but has not been analyzed together. Collecting and analyzing it supports an informed decision.",
+    "ecoTask": "PRO01"
   },
   {
     "topic": "Integration",
@@ -717,7 +776,8 @@
       "Defer the decision until the next quarterly governance review meeting"
     ],
     "correct": 1,
-    "explain": "Governance escalation paths and thresholds should be defined, not inferred. Working with the sponsor establishes legitimate authority."
+    "explain": "Governance escalation paths and thresholds should be defined, not inferred. Working with the sponsor establishes legitimate authority.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Agile",
@@ -729,7 +789,8 @@
       "Distribute the impediments evenly across team members"
     ],
     "correct": 1,
-    "explain": "Spreading effort thin resolves nothing. Impediments must be prioritized and highlighted by impact."
+    "explain": "Spreading effort thin resolves nothing. Impediments must be prioritized and highlighted by impact.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Stakeholder",
@@ -741,7 +802,8 @@
       "Create distinct exhibit zones reflecting each group's needs"
     ],
     "correct": 2,
-    "explain": "Expectations are identified but conflicting. A facilitated workshop aligns them; splitting the exhibit avoids the decision."
+    "explain": "Expectations are identified but conflicting. A facilitated workshop aligns them; splitting the exhibit avoids the decision.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Scope",
@@ -753,11 +815,12 @@
       "Examine the quality records to verify all deliverables passed"
     ],
     "correct": 0,
-    "explain": "Quality control confirms correctness; validating scope requires the customer's formal acceptance. Rechecking quality records does not obtain it."
+    "explain": "Quality control confirms correctness; validating scope requires the customer's formal acceptance. Rechecking quality records does not obtain it.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Procurement",
-    "q": "An agritech firm needs a field sensor solution. Off-the-shelf sensors meet 80% of needs; custom development would take a year. Which delivery solution is most appropriate?",
+    "q": "An agritech firm needs field sensors. Off-the-shelf sensors meet every mandatory requirement and 80% of desired capabilities, providing useful value now. The optional gap can be added later; a full custom build takes a year. Which solution fits?",
     "options": [
       "Develop custom sensors that meet every need from the start",
       "Hold the decision until newer sensors appear",
@@ -765,7 +828,8 @@
       "Build a bespoke sensor solution covering all requirements"
     ],
     "correct": 2,
-    "explain": "Buying delivers most of the value now, and the remaining gap can be closed later. A year-long build delays all value."
+    "explain": "The off-the-shelf option meets mandatory needs and delivers useful value earlier, with an optional gap that can be addressed incrementally. A percentage alone would not establish adequacy if essential requirements were missing.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Integration",
@@ -777,7 +841,8 @@
       "Assess phase one's lessons to inform the phase two decision"
     ],
     "correct": 2,
-    "explain": "Each phase closes formally with acceptance. A shared sponsor does not remove that step, and lessons inform the next phase only after closure."
+    "explain": "Obtain required phase acceptance and validate transition readiness under the agreed governance. Capture and use lessons throughout delivery, including at phase transitions; they need not wait until closure to inform later work.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Scope",
@@ -789,7 +854,8 @@
       "Add the drainage work to the WBS as part of the agreed scope"
     ],
     "correct": 3,
-    "explain": "Drainage is already in the contract, so it is in scope. The WBS must capture all agreed work; no change request is needed and investigating the omission adds nothing."
+    "explain": "Drainage is already agreed scope, so capture it while developing the WBS. If an approved scope baseline were already in place, changes to that baseline would follow formal controls. No new product scope is requested here.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Quality",
@@ -801,11 +867,12 @@
       "Certify the mill's water use after the sustainability initiative is complete"
     ],
     "correct": 2,
-    "explain": "Customer-required sustainability criteria are quality requirements. Managing them inside quality controls ensures they are met and evidenced."
+    "explain": "Assess and agree the new sustainability requirement through applicable change controls, then reflect approved criteria in quality planning and verification. A separate initiative does not remove the project’s obligation to demonstrate compliance.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Cost",
-    "q": "A dairy's milking automation project has an SPI of 0.95 and a CPI of 1.10 at midpoint. The sponsor asks for the expected total cost. What should the project manager provide?",
+    "q": "At midpoint, a project has CPI 1.10 and SPI 0.95. Current cost efficiency is expected to continue. What forecast should the PM provide for total cost?",
     "options": [
       "The budget at completion as the expected total cost",
       "An estimate at completion based on current cost performance",
@@ -813,7 +880,8 @@
       "A total cost projection derived from the schedule performance index"
     ],
     "correct": 1,
-    "explain": "Total cost forecasts come from the EAC, using CPI. The BAC is the plan, not the forecast, and SPI measures schedule, not cost."
+    "explain": "Under the stated continuing-efficiency assumption, EAC = BAC/CPI is appropriate. SPI compares earned and planned work value; it is not a cost forecast. Use a different EAC model when its assumptions better fit the evidence.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Resources",
@@ -825,7 +893,8 @@
       "Review both instructions against the approved project plan"
     ],
     "correct": 0,
-    "explain": "In a weak matrix the project manager lacks authority to overrule functional managers. Analysis against the plan cannot settle it; agreement between the managers can."
+    "explain": "In a weak matrix the project manager lacks authority to overrule functional managers. Analysis against the plan cannot settle it; agreement between the managers can.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Business",
@@ -837,7 +906,8 @@
       "Define the specific value components with each key stakeholder group"
     ],
     "correct": 3,
-    "explain": "Value must be defined with key stakeholders. One party's view or a blended index hides what each group actually needs."
+    "explain": "Value must be defined with key stakeholders. One party's view or a blended index hides what each group actually needs.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Team",
@@ -849,7 +919,8 @@
       "Have both subcontractors negotiate a mutually acceptable sequence"
     ],
     "correct": 1,
-    "explain": "The conflict appeared after an undocumented change, which is the likely source. Identifying the source comes before negotiating sequences or invoking contract clauses."
+    "explain": "The conflict appeared after an undocumented change, which is the likely source. Identifying the source comes before negotiating sequences or invoking contract clauses.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Agile",
@@ -861,7 +932,8 @@
       "Have front-desk staff speak for guests during sprint reviews"
     ],
     "correct": 0,
-    "explain": "External customers are missing from the feedback loop. Their expectations must be heard directly; staff proxies have not prevented the decline."
+    "explain": "External customers are missing from the feedback loop. Their expectations must be heard directly; staff proxies have not prevented the decline.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Integration",
@@ -873,7 +945,8 @@
       "Log the timeline clash as a risk in the risk register"
     ],
     "correct": 1,
-    "explain": "The conflict is already found. Integrated planning means resolving dependencies across subsidiary plans before the baseline; re-examining either plan alone repeats the discovery."
+    "explain": "The conflict is already found. Integrated planning means resolving dependencies across subsidiary plans before the baseline; re-examining either plan alone repeats the discovery.",
+    "ecoTask": "PRO01"
   },
   {
     "topic": "Agile",
@@ -885,7 +958,8 @@
       "Deploy monitoring for the whole farm once commissioning is complete"
     ],
     "correct": 1,
-    "explain": "Incremental release delivers value early and finds issues sooner. A cost-only comparison misses the value of early monitoring."
+    "explain": "Incremental release delivers value early and finds issues sooner. A cost-only comparison misses the value of early monitoring.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Change",
@@ -897,7 +971,8 @@
       "Route all backlog changes through formal approval"
     ],
     "correct": 0,
-    "explain": "Change control can be tailored: routine backlog changes flow normally, and those above the contract threshold get formal approval."
+    "explain": "Change control can be tailored: routine backlog changes flow normally, and those above the contract threshold get formal approval.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Comms",
@@ -909,7 +984,8 @@
       "Tailor report content and depth to each audience's needs"
     ],
     "correct": 3,
-    "explain": "Different audiences need different depth. One report cannot serve both, so reports must be aligned to each stakeholder group's expectations."
+    "explain": "Different audiences need different depth. One report cannot serve both, so reports must be aligned to each stakeholder group's expectations.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Agile",
@@ -921,7 +997,8 @@
       "Absorb the executives' requests and rebalance the current sprint"
     ],
     "correct": 0,
-    "explain": "The team asked to be represented. Acting as its voice and protecting the sprint by routing work through the backlog is the servant-leader response."
+    "explain": "The team asked to be represented. Acting as its voice and protecting the sprint by routing work through the backlog is the servant-leader response.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Change",
@@ -933,7 +1010,8 @@
       "Submit the improvement for review through change control"
     ],
     "correct": 3,
-    "explain": "Unapproved changes must go through change control. Test results do not replace configuration review."
+    "explain": "Unapproved changes must go through change control. Test results do not replace configuration review.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Stakeholder",
@@ -945,7 +1023,8 @@
       "Ask the product owner to rank the requests by business value"
     ],
     "correct": 0,
-    "explain": "No one sees the conflicts, so expectations cannot align. Transparency and joint discussion align them; ranking alone leaves each manager surprised later."
+    "explain": "No one sees the conflicts, so expectations cannot align. Transparency and joint discussion align them; ranking alone leaves each manager surprised later.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Team",
@@ -957,11 +1036,12 @@
       "Coach members individually on their testing techniques before the kickoff"
     ],
     "correct": 2,
-    "explain": "Individual expertise does not make a team. In the forming stage, direction and clear expectations help the group establish how it works."
+    "explain": "Individual expertise does not make a team. In the forming stage, direction and clear expectations help the group establish how it works.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Resources",
-    "q": "Signaling and civil teams on a rail upgrade dispute who owns trackside cabling. The responsibility assignment matrix shows both teams as responsible for that work package. Which action should the project manager take?",
+    "q": "Two rail-upgrade teams dispute ownership of cabling. The responsibility matrix lists both as responsible and explicitly leaves accountability unassigned. What should the PM clarify?",
     "options": [
       "Update the matrix so that one team is accountable for the cabling package",
       "Assess the overlap in cabling scope between the two teams' packages",
@@ -969,7 +1049,8 @@
       "Review the cabling scope with both leads to see where it overlaps"
     ],
     "correct": 0,
-    "explain": "The source is already visible: the matrix lacks a single accountable owner. Reviewing or assessing the overlap restates what is known; the fix is clarifying accountability."
+    "explain": "Responsibility can be shared, but this scenario explicitly lacks an accountable owner. Agree clear responsibilities and one accountable owner with the authorized parties. Multiple responsible teams alone would not prove missing accountability.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Stakeholder",
@@ -981,7 +1062,8 @@
       "Plan two staged handovers matching each department's date"
     ],
     "correct": 1,
-    "explain": "Both dates are already defensible, so more analysis adds little. The directors' expectations must be aligned in a facilitated discussion."
+    "explain": "Both dates are already defensible, so more analysis adds little. The directors' expectations must be aligned in a facilitated discussion.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Stakeholder",
@@ -993,7 +1075,8 @@
       "Analyze the remarks to see whether a recurring theme emerges"
     ],
     "correct": 2,
-    "explain": "Informal remarks are an early satisfaction signal from the customer. Responding directly beats waiting for a pattern or reacting with more inspections."
+    "explain": "Informal remarks are an early satisfaction signal from the customer. Responding directly beats waiting for a pattern or reacting with more inspections.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Business",
@@ -1005,7 +1088,8 @@
       "Continue the project since the scope has been approved"
     ],
     "correct": 1,
-    "explain": "Market shifts can change what delivers value. The project should reassess its scope and backlog accordingly."
+    "explain": "Market shifts can change what delivers value. The project should reassess its scope and backlog accordingly.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "Agile",
@@ -1017,7 +1101,8 @@
       "Keep recording the delay as an impediment at each stand-up"
     ],
     "correct": 1,
-    "explain": "A recurring impediment needs action, not more tracking. Removing blockers outside the team's control is the servant leader's job."
+    "explain": "A recurring impediment needs action, not more tracking. Removing blockers outside the team's control is the servant leader's job.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Agile",
@@ -1029,7 +1114,8 @@
       "Reprioritize the backlog using recruiters' latest feedback and value"
     ],
     "correct": 3,
-    "explain": "Prioritizing by value and stakeholder feedback is the purpose of each demo. Ignoring it delivers less value."
+    "explain": "Prioritizing by value and stakeholder feedback is the purpose of each demo. Ignoring it delivers less value.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Quality",
@@ -1041,7 +1127,8 @@
       "Invest in prevention to stop off-spec batches earlier"
     ],
     "correct": 3,
-    "explain": "Prevention costs less than appraisal and failure. More inspection still pays for defects that should never occur."
+    "explain": "Prevention costs less than appraisal and failure. More inspection still pays for defects that should never occur.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Stakeholder",
@@ -1053,7 +1140,8 @@
       "Run a larger survey to gather input from more of the drivers"
     ],
     "correct": 2,
-    "explain": "Trust was lost because input went nowhere. Visibly acting on input rebuilds trust; collecting more repeats the original mistake."
+    "explain": "Trust was lost because input went nowhere. Visibly acting on input rebuilds trust; collecting more repeats the original mistake.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Agile",
@@ -1065,7 +1153,8 @@
       "Switch to a burndown chart so that progress looks clearer to stakeholders"
     ],
     "correct": 1,
-    "explain": "The burnup shows steady delivery with growing scope. Communicating the real cause is correct; pressuring the team misreads the data."
+    "explain": "The burnup shows steady delivery with growing scope. Communicating the real cause is correct; pressuring the team misreads the data.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "Procurement",
@@ -1077,7 +1166,8 @@
       "Examine the test data to verify the performance shortfall"
     ],
     "correct": 2,
-    "explain": "The tests already show the miss. Verifying that agreement objectives are met means acting under the contract, not retesting."
+    "explain": "The tests already show the miss. Verifying that agreement objectives are met means acting under the contract, not retesting.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Cost",
@@ -1089,7 +1179,8 @@
       "Increase the contingency reserve so it also covers unknown events"
     ],
     "correct": 0,
-    "explain": "Unforeseen events are unknown-unknowns, covered by management reserve. Contingency covers identified risks only, and reviewing the register cannot list the unknowable."
+    "explain": "Unforeseen events are unknown-unknowns, covered by management reserve. Contingency covers identified risks only, and reviewing the register cannot list the unknowable.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Mindset",
@@ -1101,7 +1192,8 @@
       "Ask the vendor to donate the tickets to a local charity on the team's behalf"
     ],
     "correct": 0,
-    "explain": "The organization's policy already governs gifts. Personal judgment of value bypasses the defined procedure."
+    "explain": "The organization's policy already governs gifts. Personal judgment of value bypasses the defined procedure.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Schedule",
@@ -1113,7 +1205,8 @@
       "The team's burndown charts shared with executives"
     ],
     "correct": 1,
-    "explain": "A hybrid schedule fits a hybrid approach: milestones executives recognize, with iterations beneath. Converting the backlog into Gantt detail adds false precision."
+    "explain": "A hybrid schedule fits a hybrid approach: milestones executives recognize, with iterations beneath. Converting the backlog into Gantt detail adds false precision.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Stakeholder",
@@ -1125,19 +1218,21 @@
       "Facilitate a discussion to align both parties on the test campaign"
     ],
     "correct": 3,
-    "explain": "Both parties signed the same document and still disagree, so the text cannot settle it. Expectations must be aligned through facilitated discussion."
+    "explain": "Both parties signed the same document and still disagree, so the text cannot settle it. Expectations must be aligned through facilitated discussion.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Quality",
-    "q": "A public library's e-services portal must meet accessibility standards. The team plans to test accessibility just before final release. What is the best way for the project manager to handle this?",
+    "q": "A library portal must meet accessibility standards, but its team plans the first accessibility checks only at final release. How should the team build compliance into delivery?",
     "options": [
-      "Include accessibility checks in each iteration's definition of done",
-      "Train the developers on accessibility standards after the portal is released",
-      "Schedule a full accessibility audit at the end",
-      "Hire an accessibility auditor to test before final release"
+      "Include accessibility checks in the Definition of Done for each Increment",
+      "Defer all accessibility work until an audit",
+      "Treat accessibility as optional unless users complain",
+      "Replace compliance testing with customer satisfaction surveys"
     ],
     "correct": 0,
-    "explain": "Compliance should be measured continuously. Testing at the end finds issues when fixes cost most."
+    "explain": "Build required accessibility checks into ongoing work and the Definition of Done so each Increment meets the applicable quality standard. Final release checks may still be required; they should not be the first compliance assessment.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Risk",
@@ -1149,7 +1244,8 @@
       "Move the occurred risks into the issue log so they can be tracked"
     ],
     "correct": 1,
-    "explain": "Artifacts must be kept current through regular updates. A one-time refresh will go stale again."
+    "explain": "Artifacts must be kept current through regular updates. A one-time refresh will go stale again.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Team",
@@ -1161,7 +1257,8 @@
       "Work with their functional managers to align objectives behind the collection"
     ],
     "correct": 3,
-    "explain": "The context, opposing incentives, drives the conflict. Mediation treats the symptom and the clash will recur unless the objectives themselves are aligned."
+    "explain": "The context, opposing incentives, drives the conflict. Mediation treats the symptom and the clash will recur unless the objectives themselves are aligned.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Resources",
@@ -1173,7 +1270,8 @@
       "Request the equipment from the contractors as the needs arise on site"
     ],
     "correct": 1,
-    "explain": "Resource planning covers physical as well as human resources. Refining labor further leaves the real gap open."
+    "explain": "Resource planning covers physical as well as human resources. Refining labor further leaves the real gap open.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Team",
@@ -1185,7 +1283,8 @@
       "Introduce an innovation sprint to restart idea generation in the team"
     ],
     "correct": 0,
-    "explain": "Steady velocity hides an engagement drop. Understanding the cause comes before choosing recognition or new formats."
+    "explain": "Steady velocity hides an engagement drop. Understanding the cause comes before choosing recognition or new formats.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Agile",
@@ -1197,7 +1296,8 @@
       "Switch the project to a predictive approach to fit the managers' expectations"
     ],
     "correct": 2,
-    "explain": "Cultural transition needs coaching and some tailoring. Fully conforming to old habits blocks the change."
+    "explain": "Cultural transition needs coaching and some tailoring. Fully conforming to old habits blocks the change.",
+    "ecoTask": "BUS07"
   },
   {
     "topic": "Agile",
@@ -1209,7 +1309,8 @@
       "Pad hour-based estimates to account for unknowns"
     ],
     "correct": 2,
-    "explain": "Relative sizing handles uncertainty better than absolute hours. Padding hides the problem, and one estimator removes team insight."
+    "explain": "Relative sizing is a useful technique to trial with the team when uncertainty makes absolute estimates unreliable. It does not remove uncertainty or guarantee accuracy, and Scrum does not mandate story points. Inspect results and consider flow-based forecasting when appropriate.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Agile",
@@ -1221,7 +1322,8 @@
       "Pause all traceability work until the labeling machine is fully reliable"
     ],
     "correct": 1,
-    "explain": "Repeated fixes have failed, so a strategy is needed. Understanding impact guides whether to work around, replace, or reprioritize."
+    "explain": "Repeated fixes have failed, so a strategy is needed. Understanding impact guides whether to work around, replace, or reprioritize.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Integration",
@@ -1233,7 +1335,8 @@
       "Produce separate reports in each body's requested format"
     ],
     "correct": 2,
-    "explain": "Reporting is part of governance and should be established deliberately. Ad hoc reports for each body multiply effort."
+    "explain": "Reporting is part of governance and should be established deliberately. Ad hoc reports for each body multiply effort.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Procurement",
@@ -1245,7 +1348,8 @@
       "Select the lower bid since the prices are close and both qualify"
     ],
     "correct": 0,
-    "explain": "Source selection must follow the published criteria, which typically weigh past performance. Price alone is not the rule."
+    "explain": "Source selection must follow the published criteria, which typically weigh past performance. Price alone is not the rule.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Business",
@@ -1257,7 +1361,8 @@
       "Stockpile the component for the rest of the project"
     ],
     "correct": 2,
-    "explain": "Geopolitical changes require proactive assessment. Waiting until deliveries stop removes options."
+    "explain": "Geopolitical changes require proactive assessment. Waiting until deliveries stop removes options.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "Business",
@@ -1269,7 +1374,8 @@
       "Revalidate the business value with the sponsor before continuing"
     ],
     "correct": 3,
-    "explain": "Good performance against a plan does not mean the plan is still worth doing. The project's continued business value must be confirmed."
+    "explain": "Good performance against a plan does not mean the plan is still worth doing. The project's continued business value must be confirmed.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Business",
@@ -1281,7 +1387,8 @@
       "Go live and make the digital workflow mandatory for staff"
     ],
     "correct": 2,
-    "explain": "The organizational culture must be addressed for adoption. Mandates breed workarounds, and feature training ignores the cultural barrier."
+    "explain": "The organizational culture must be addressed for adoption. Mandates breed workarounds, and feature training ignores the cultural barrier.",
+    "ecoTask": "BUS07"
   },
   {
     "topic": "Team",
@@ -1293,7 +1400,8 @@
       "Ask outgoing on-call members to brief incoming ones each rotation"
     ],
     "correct": 1,
-    "explain": "Knowledge is gathered but scattered. A maintained, searchable record makes it accessible to every rotation; verbal handovers repeat the loss."
+    "explain": "Knowledge is gathered but scattered. A maintained, searchable record makes it accessible to every rotation; verbal handovers repeat the loss.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Agile",
@@ -1305,7 +1413,8 @@
       "Have users review the written specs ahead of the next increment"
     ],
     "correct": 0,
-    "explain": "The spec was met, but expectations were not. Early prototypes expose mismatches; written specs already failed to do so."
+    "explain": "The spec was met, but expectations were not. Early prototypes expose mismatches; written specs already failed to do so.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Change",
@@ -1317,7 +1426,8 @@
       "Submit a new change request to adjust the layout based on picker complaints"
     ],
     "correct": 1,
-    "explain": "Implementing a change includes communicating it. Reverting before pickers understand it discards an approved decision."
+    "explain": "Implementing a change includes communicating it. Reverting before pickers understand it discards an approved decision.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Business",
@@ -1329,7 +1439,8 @@
       "Confirm the rule's requirements and prioritize them in the backlog"
     ],
     "correct": 3,
-    "explain": "Compliance requirements must be confirmed and planned. Releasing first creates rework against a known deadline."
+    "explain": "Compliance requirements must be confirmed and planned. Releasing first creates rework against a known deadline.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Scope",
@@ -1341,7 +1452,8 @@
       "Let developers propose acceptance criteria based on best practice"
     ],
     "correct": 0,
-    "explain": "Scope cannot be defined against a vague goal. Measurable outcomes agreed with stakeholders give the team a basis for criteria."
+    "explain": "Scope cannot be defined against a vague goal. Measurable outcomes agreed with stakeholders give the team a basis for criteria.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Business",
@@ -1353,7 +1465,8 @@
       "Reduce the remaining scope to lower costs in line with the new prices"
     ],
     "correct": 2,
-    "explain": "Business value must be examined throughout the project. Budget performance says nothing about whether the expected returns still hold."
+    "explain": "Business value must be examined throughout the project. Budget performance says nothing about whether the expected returns still hold.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Agile",
@@ -1365,7 +1478,8 @@
       "Fix the launch date and deliver app features in prioritized increments"
     ],
     "correct": 3,
-    "explain": "The date is fixed and app scope is uncertain, so scope should flex. Prioritized increments protect the date while learning from testing."
+    "explain": "The date is fixed and app scope is uncertain, so scope should flex. Prioritized increments protect the date while learning from testing.",
+    "ecoTask": "PRO01"
   },
   {
     "topic": "Risk",
@@ -1377,7 +1491,8 @@
       "Share the original risk analysis with the sponsor"
     ],
     "correct": 0,
-    "explain": "A response does not close a risk by itself. The status of its impact, including residual risk, should be communicated."
+    "explain": "A response does not close a risk by itself. The status of its impact, including residual risk, should be communicated.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Cost",
@@ -1389,7 +1504,8 @@
       "Slow the pace of work to bring schedule and cost performance into balance"
     ],
     "correct": 2,
-    "explain": "A CPI below 1 means overspending, which governance must see. Schedule gains do not offset cost overruns."
+    "explain": "A CPI below 1 means overspending, which governance must see. Schedule gains do not offset cost overruns.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Stakeholder",
@@ -1401,7 +1517,8 @@
       "Apply the dispute approach both parties agreed to in the engagement plan"
     ],
     "correct": 3,
-    "explain": "An agreed-on resolution strategy already exists, so the step is to implement it. Evaluating new styles reopens a decision the parties already made."
+    "explain": "An agreed-on resolution strategy already exists, so the step is to implement it. Evaluating new styles reopens a decision the parties already made.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Business",
@@ -1413,7 +1530,8 @@
       "Reduce the expansion scope now in anticipation of lower export quotas"
     ],
     "correct": 1,
-    "explain": "External changes must be surveyed and their impact assessed early. Cutting scope on speculation is premature."
+    "explain": "External changes must be surveyed and their impact assessed early. Cutting scope on speculation is premature.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "Risk",
@@ -1425,7 +1543,8 @@
       "Retain the risk because the gateway has not been breached to date"
     ],
     "correct": 0,
-    "explain": "Known security weaknesses need a response that reduces exposure. Insurance compensates but does not protect customer data."
+    "explain": "Known security weaknesses need a response that reduces exposure. Insurance compensates but does not protect customer data.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Cost",
@@ -1437,7 +1556,8 @@
       "Assess the analogous figures for continued accuracy"
     ],
     "correct": 1,
-    "explain": "Detailed design enables bottom-up estimating, the most accurate basis for a cost baseline. Rechecking the rough estimate keeps a weaker basis."
+    "explain": "Detailed design supports bottom-up component estimates as a basis for the baseline. Accuracy still depends on reliable scope, data, and assumptions; simply repeating a rough analogy misses the available detail.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Quality",
@@ -1449,7 +1569,8 @@
       "Add a dedicated testing phase before each production release"
     ],
     "correct": 0,
-    "explain": "Quality is built in through the definition of done. A late test phase adds delay and still finds defects late."
+    "explain": "Quality is built in through the definition of done. A late test phase adds delay and still finds defects late.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Integration",
@@ -1461,7 +1582,8 @@
       "Review the installation count to confirm the 80% figure is right"
     ],
     "correct": 2,
-    "explain": "The count is not in doubt; what it measures is incomplete. Progress must include whether installs actually work."
+    "explain": "The count is not in doubt; what it measures is incomplete. Progress must include whether installs actually work.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "Agile",
@@ -1473,7 +1595,8 @@
       "Add tooltips and tutorials to the existing dashboard features"
     ],
     "correct": 2,
-    "explain": "Velocity measures output, not value. Measuring usage and outcomes redirects effort toward what clients actually need."
+    "explain": "Velocity measures output, not value. Measuring usage and outcomes redirects effort toward what clients actually need.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Integration",
@@ -1485,7 +1608,8 @@
       "Establish lightweight decision rules for cross-team architecture"
     ],
     "correct": 3,
-    "explain": "Agile governance should be just enough. Lightweight rules prevent conflicts without heavy central control."
+    "explain": "Agile governance should be just enough. Lightweight rules prevent conflicts without heavy central control.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Agile",
@@ -1497,7 +1621,8 @@
       "Keep the original roadmap and park new ideas for later"
     ],
     "correct": 2,
-    "explain": "Each release produces learning, so the plan must be maintained continuously. A frozen roadmap ignores value; quarterly rebuilds are too slow and wasteful."
+    "explain": "Each release produces learning, so the plan must be maintained continuously. A frozen roadmap ignores value; quarterly rebuilds are too slow and wasteful.",
+    "ecoTask": "PRO01"
   },
   {
     "topic": "Stakeholder",
@@ -1509,7 +1634,8 @@
       "Analyze how the restructuring changes the project's priorities"
     ],
     "correct": 1,
-    "explain": "The key impact is clear: a new sponsor. Engaging them to reconfirm objectives is the required action."
+    "explain": "The key impact is clear: a new sponsor. Engaging them to reconfirm objectives is the required action.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Comms",
@@ -1521,7 +1647,8 @@
       "Send the CFO's monthly report to the board each quarter as well"
     ],
     "correct": 0,
-    "explain": "Financial reporting must be planned for each audience. Reusing one format ignores different needs."
+    "explain": "Financial reporting must be planned for each audience. Reusing one format ignores different needs.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Comms",
@@ -1533,7 +1660,8 @@
       "Revise the communication strategy to reach residents through faster channels"
     ],
     "correct": 3,
-    "explain": "Content is consistent; timing and channel are the problem. The strategy must reach residents where and when they look."
+    "explain": "Content is consistent; timing and channel are the problem. The strategy must reach residents where and when they look.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Resources",
@@ -1545,7 +1673,8 @@
       "Hire additional carpenters for the peak month on short contracts"
     ],
     "correct": 0,
-    "explain": "Shared resources call for coordination across projects. Hiring specialists short-term is costly and slow; seeking priority just moves the conflict."
+    "explain": "Shared resources call for coordination across projects. Hiring specialists short-term is costly and slow; seeking priority just moves the conflict.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Team",
@@ -1557,11 +1686,12 @@
       "Set up a mentoring arrangement between the two product owners"
     ],
     "correct": 3,
-    "explain": "An offer of help is a mentoring opportunity to act on. Letting the senior person take over builds no capability, and generic training ignores the offer."
+    "explain": "An offer of help is a mentoring opportunity to act on. Letting the senior person take over builds no capability, and generic training ignores the offer.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Quality",
-    "q": "A ceramics plant's kiln control project passed every audit. A control chart now shows seven consecutive points above the mean, all within limits. How should the project manager proceed?",
+    "q": "A kiln-control project’s quality plan uses a run rule of seven consecutive points on one side of the mean. The chart now shows seven above the mean, all within control limits. What should the PM do?",
     "options": [
       "Widen the control limits to reflect the new process level",
       "Take no action because the process stays within limits",
@@ -1569,11 +1699,12 @@
       "Investigate the cause since the pattern signals a process shift"
     ],
     "correct": 3,
-    "explain": "Seven consecutive points on one side of the mean indicate an assignable cause even within limits. It must be investigated."
+    "explain": "The pattern triggers the run rule specified in this project’s quality plan, so investigate a potential process shift. Run rules vary by method; being within control limits does not cancel the stated signal or automatically prove conforming output.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Risk",
-    "q": "A greenhouse expansion has a 30% chance of a heat event costing $200,000. The proposed response costs $40,000. What is the most appropriate course of action?",
+    "q": "A project has a 30% chance of a heat event causing a $200,000 loss. A feasible $40,000 preventive response would eliminate this exposure without secondary risk, and spending authority is confirmed. Which action is financially justified?",
     "options": [
       "Accept the risk since its probability of occurring is below 50 percent",
       "Implement the response since it costs less than the expected value",
@@ -1581,7 +1712,8 @@
       "Review the probability estimate before committing to the response"
     ],
     "correct": 1,
-    "explain": "The expected monetary value is $60,000, more than the $40,000 response. The analysis is done; acting is justified."
+    "explain": "Untreated EMV is 0.30 × $200,000 = $60,000. With the stated complete risk elimination, treated expected cost is $40,000, a $20,000 reduction. Without effectiveness evidence, compare response cost plus residual and secondary exposure before deciding.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Integration",
@@ -1593,7 +1725,8 @@
       "Archive the remaining backlog together with the closed project's records"
     ],
     "correct": 0,
-    "explain": "Funding has ended, so the project closes against agreed criteria. Remaining value moves with the product, not the project."
+    "explain": "Funding has ended, so the project closes against agreed criteria. Remaining value moves with the product, not the project.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Integration",
@@ -1605,7 +1738,8 @@
       "Capture lessons throughout the project as they emerge"
     ],
     "correct": 3,
-    "explain": "Lessons should be captured continuously while details are fresh. Notes for a single session still delay their use."
+    "explain": "Lessons should be captured continuously while details are fresh. Notes for a single session still delay their use.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Integration",
@@ -1617,7 +1751,8 @@
       "Log lessons in greater detail so the next team has more context"
     ],
     "correct": 0,
-    "explain": "Logs exist but are not used. Transfer needs accessibility and interaction; more detail in an unused log changes nothing."
+    "explain": "Logs exist but are not used. Transfer needs accessibility and interaction; more detail in an unused log changes nothing.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Cost",
@@ -1629,11 +1764,12 @@
       "Plan how funding shortfalls would affect the schedule and adjust early"
     ],
     "correct": 3,
-    "explain": "A foreseeable funding challenge should be anticipated. Waiting until money is short leaves fewer options."
+    "explain": "A foreseeable funding challenge should be anticipated. Waiting until money is short leaves fewer options.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Agile",
-    "q": "An outpatient scheduling team agreed on a product vision with clinic managers in sprint zero. Six sprints later, a new chief nursing officer has joined and begun shaping priorities. How should the project manager proceed?",
+    "q": "An outpatient scheduling team agreed on a product vision at kickoff. Six sprints later, a new chief nursing officer has joined and begun shaping priorities. How should the PM proceed?",
     "options": [
       "Revisit the product vision with the new officer and the clinic managers",
       "Ask the product owner to absorb the officer's priorities into the backlog",
@@ -1641,7 +1777,8 @@
       "Assess whether the officer's priorities fit the vision agreed in sprint zero"
     ],
     "correct": 0,
-    "explain": "A new key stakeholder can legitimately reshape the vision, so it must be revisited jointly. Reviewing or assessing against the old vision treats it as fixed, and absorbing priorities skips alignment."
+    "explain": "A new key stakeholder can legitimately reshape the vision, so it must be revisited jointly. Reviewing or assessing against the old vision treats it as fixed, and absorbing priorities skips alignment.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Stakeholder",
@@ -1653,7 +1790,8 @@
       "Weight dermatologist feedback higher given its effect on credibility"
     ],
     "correct": 1,
-    "explain": "Both groups influence success, so favoring one leaves the other unaligned. Joint reconciliation optimizes alignment among needs and objectives."
+    "explain": "Both groups influence success, so favoring one leaves the other unaligned. Joint reconciliation optimizes alignment among needs and objectives.",
+    "ecoTask": "PEO05"
   },
   {
     "topic": "Business",
@@ -1665,7 +1803,8 @@
       "Store the photos abroad and add strong encryption for their protection"
     ],
     "correct": 1,
-    "explain": "Children's data may carry strict residency rules. Consequences of noncompliance must be understood before deciding."
+    "explain": "Children's data may carry strict residency rules. Consequences of noncompliance must be understood before deciding.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Integration",
@@ -1677,7 +1816,8 @@
       "Ask each owner to send the latest documents to the auditors"
     ],
     "correct": 2,
-    "explain": "Artifacts must be accessible and controlled. Emailing files fixes one audit, not the practice."
+    "explain": "Artifacts must be accessible and controlled. Emailing files fixes one audit, not the practice.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "Change",
@@ -1689,7 +1829,8 @@
       "Install the higher-capacity pump since it costs nothing extra"
     ],
     "correct": 1,
-    "explain": "A free upgrade can still affect piping, power, or safety. Any deviation from the specified scope goes through change control."
+    "explain": "A free upgrade can still affect piping, power, or safety. Any deviation from the specified scope goes through change control.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Comms",
@@ -1701,7 +1842,8 @@
       "Keep the artifacts stakeholders actually use and retire the rest"
     ],
     "correct": 3,
-    "explain": "Artifacts should be tailored and their effectiveness assessed. Merging unused content does not make it useful."
+    "explain": "Artifacts should be tailored and their effectiveness assessed. Merging unused content does not make it useful.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "Stakeholder",
@@ -1713,7 +1855,8 @@
       "Involve senior editors in shaping how editorial control will work"
     ],
     "correct": 3,
-    "explain": "Resistance rooted in loss of control is eased by involvement. Persuasion and training do not address the fear."
+    "explain": "Resistance rooted in loss of control is eased by involvement. Persuasion and training do not address the fear.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Integration",
@@ -1725,7 +1868,8 @@
       "Review the new procedure with the team before sharing it more widely"
     ],
     "correct": 1,
-    "explain": "The procedure is proven. Organizational process assets must be updated so future work uses it."
+    "explain": "The procedure is proven. Organizational process assets must be updated so future work uses it.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Team",
@@ -1737,7 +1881,8 @@
       "Speak with each coordinator to understand the disagreement early"
     ],
     "correct": 3,
-    "explain": "Avoidance lets conflict grow even while metrics look fine. Addressing it early and privately is best; a retrospective exposes two people publicly."
+    "explain": "Avoidance lets conflict grow even while metrics look fine. Addressing it early and privately is best; a retrospective exposes two people publicly.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "Integration",
@@ -1749,7 +1894,8 @@
       "Assess acceptance documents to verify closure conditions"
     ],
     "correct": 0,
-    "explain": "Acceptance is done; financial closure is not. Financials must be concluded before closing."
+    "explain": "Acceptance is done; financial closure is not. Financials must be concluded before closing.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Stakeholder",
@@ -1761,7 +1907,8 @@
       "Send the release notes with a request to reply by a deadline"
     ],
     "correct": 2,
-    "explain": "Silence is not agreement. Communication has to be tailored to the labels' needs so real feedback flows."
+    "explain": "Silence is not agreement. Communication has to be tailored to the labels' needs so real feedback flows.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Stakeholder",
@@ -1773,7 +1920,8 @@
       "Continue the updates since overall satisfaction remains stable"
     ],
     "correct": 2,
-    "explain": "Averages can hide unhappy key customers. Disengagement is a signal to monitor and respond to directly."
+    "explain": "Averages can hide unhappy key customers. Disengagement is a signal to monitor and respond to directly.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Agile",
@@ -1785,7 +1933,8 @@
       "Hold a cross-team session to align on how the vision should feel to learners"
     ],
     "correct": 3,
-    "explain": "Traceability is intact, so scope control is not the issue. The teams lack a shared picture of the learner experience, which a joint vision session addresses."
+    "explain": "Traceability is intact, so scope control is not the issue. The teams lack a shared picture of the learner experience, which a joint vision session addresses.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Agile",
@@ -1797,7 +1946,8 @@
       "Validate a balanced design with clinicians and patients before building"
     ],
     "correct": 3,
-    "explain": "Internal and external customer expectations conflict. Validating a balanced outcome with both aligns them; favoring one group risks the other."
+    "explain": "Internal and external customer expectations conflict. Validating a balanced outcome with both aligns them; favoring one group risks the other.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Resources",
@@ -1809,7 +1959,8 @@
       "Schedule testing outside production hours when the rig is idle"
     ],
     "correct": 1,
-    "explain": "Availability of the shared resource must be managed by agreement. Off-hours testing still depends on production volume."
+    "explain": "Availability of the shared resource must be managed by agreement. Off-hours testing still depends on production volume.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Stakeholder",
@@ -1821,7 +1972,8 @@
       "Review the petition content to see what the representatives oppose"
     ],
     "correct": 1,
-    "explain": "Petitions show the classification is outdated; the union now needs close management. Analyzing the petitions keeps the old distance."
+    "explain": "Petitions show the classification is outdated; the union now needs close management. Analyzing the petitions keeps the old distance.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Agile",
@@ -1833,7 +1985,8 @@
       "Assign additional developers to the epic so it finishes next iteration"
     ],
     "correct": 0,
-    "explain": "The epic needs to be broken down into deliverable slices. Longer sprints or more people treat the symptom and still hide progress."
+    "explain": "The epic needs to be broken down into deliverable slices. Longer sprints or more people treat the symptom and still hide progress.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Change",
@@ -1845,7 +1998,8 @@
       "Add the stations as the sponsor asked"
     ],
     "correct": 1,
-    "explain": "Even the sponsor's request goes through change control. Impact analysis is part of that process, not a substitute."
+    "explain": "Even the sponsor's request goes through change control. Impact analysis is part of that process, not a substitute.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Integration",
@@ -1857,7 +2011,8 @@
       "Complete the remaining modules so the investment made is not lost"
     ],
     "correct": 2,
-    "explain": "A cancelled project still needs formal closure. Finishing it to save sunk costs ignores the decision."
+    "explain": "A cancelled project still needs formal closure. Finishing it to save sunk costs ignores the decision.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Scope",
@@ -1869,7 +2024,8 @@
       "Analyze the objectives list to see where the requirements could link"
     ],
     "correct": 0,
-    "explain": "Only stakeholders can decide whether unlinked requirements belong. Searching for objectives to attach them to risks forcing traceability that does not exist."
+    "explain": "Only stakeholders can decide whether unlinked requirements belong. Searching for objectives to attach them to risks forcing traceability that does not exist.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Business",
@@ -1881,7 +2037,8 @@
       "Evaluate the merger's impact on the project with the sponsor"
     ],
     "correct": 3,
-    "explain": "Organizational change can invalidate the project's direction. Its impact must be evaluated and actions determined."
+    "explain": "Organizational change can invalidate the project's direction. Its impact must be evaluated and actions determined.",
+    "ecoTask": "BUS07"
   },
   {
     "topic": "Agile",
@@ -1893,7 +2050,8 @@
       "Develop both hardware and software in short iterative releases"
     ],
     "correct": 0,
-    "explain": "Stable, long-lead hardware suits predictive planning, while uncertain software suits iteration. A hybrid approach fits the mixed profile better than either pure option."
+    "explain": "Stable, long-lead hardware suits predictive planning, while uncertain software suits iteration. A hybrid approach fits the mixed profile better than either pure option.",
+    "ecoTask": "PRO01"
   },
   {
     "topic": "Agile",
@@ -1905,11 +2063,12 @@
       "Reprioritize the backlog to address the new parking rules"
     ],
     "correct": 3,
-    "explain": "External changes must be reflected in backlog priority. Deferring them ignores the two-month deadline."
+    "explain": "External changes must be reflected in backlog priority. Deferring them ignores the two-month deadline.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "Risk",
-    "q": "A fisheries monitoring project had identified a risk of permit delays. The permit authority has now formally announced a two-month backlog. Which action should the project manager take?",
+    "q": "A permit-delay risk was identified for a fisheries project. The authority now confirms that this project’s permit will be two months late and scheduled work is blocked. What should the PM do?",
     "options": [
       "Add a new risk for possible further permit delays",
       "Reassess the permit risk with a higher likelihood score",
@@ -1917,7 +2076,8 @@
       "Review the permit risk and raise its probability rating accordingly"
     ],
     "correct": 2,
-    "explain": "The risk has occurred and is now an issue. Raising its probability treats a certainty as a possibility."
+    "explain": "The scenario confirms an actual project delay and current blockage, so manage the linked issue and implement the appropriate planned response. A general announcement of a backlog without confirmed impact would not alone prove the project risk had occurred.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Integration",
@@ -1929,7 +2089,8 @@
       "Make the thresholds for each status color stricter going forward"
     ],
     "correct": 0,
-    "explain": "Metrics based on activity hide whether real value is accepted. Metrics must measure meaningful progress."
+    "explain": "Metrics based on activity hide whether real value is accepted. Metrics must measure meaningful progress.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "Schedule",
@@ -1941,7 +2102,8 @@
       "Use the sister figures and refine them after the first month"
     ],
     "correct": 1,
-    "explain": "Analogous data from a different technology is not comparable. Padding a flawed basis keeps it flawed; expert judgment on the right technology fixes it."
+    "explain": "Analogous data from a different technology is not comparable. Padding a flawed basis keeps it flawed; expert judgment on the right technology fixes it.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Stakeholder",
@@ -1953,7 +2115,8 @@
       "Reassess the stakeholders' engagement levels for the new routing"
     ],
     "correct": 3,
-    "explain": "The routing change alters who is affected and how much. Stakeholders must be analyzed again before engagement continues."
+    "explain": "The routing change alters who is affected and how much. Stakeholders must be analyzed again before engagement continues.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Agile",
@@ -1965,7 +2128,8 @@
       "Hold the sprint scope and look for efficiency gains instead"
     ],
     "correct": 2,
-    "explain": "Commitments must reflect real capacity. Keeping the scope sets the team up to fail, and reassigning support work may not be the team's decision."
+    "explain": "Commitments must reflect real capacity. Keeping the scope sets the team up to fail, and reassigning support work may not be the team's decision.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Scope",
@@ -1977,7 +2141,8 @@
       "Use the scope approved by the department with the largest budget"
     ],
     "correct": 1,
-    "explain": "Separate approvals produced different understandings. Stakeholder agreement on one scope requires a joint review."
+    "explain": "Separate approvals produced different understandings. Stakeholder agreement on one scope requires a joint review.",
+    "ecoTask": "PRO02"
   },
   {
     "topic": "Risk",
@@ -1989,7 +2154,8 @@
       "Reassess reserve adequacy against remaining risks and inform governance"
     ],
     "correct": 3,
-    "explain": "Reserves are being consumed faster than progress. Governance must be informed; management reserve is not the project manager's to use alone."
+    "explain": "Reserves are being consumed faster than progress. Governance must be informed; management reserve is not the project manager's to use alone.",
+    "ecoTask": "PRO06"
   },
   {
     "topic": "Comms",
@@ -2001,7 +2167,8 @@
       "Communicate each request's status and decision to its requester"
     ],
     "correct": 3,
-    "explain": "Decisions exist but are not communicated. The status of proposed changes must be shared."
+    "explain": "Decisions exist but are not communicated. The status of proposed changes must be shared.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Procurement",
@@ -2013,7 +2180,8 @@
       "With scope fixed in detail before signing to secure price"
     ],
     "correct": 1,
-    "explain": "Evolving requirements suit an agile contract built on incremental delivery. Fixing scope early guarantees costly change orders."
+    "explain": "Incremental agreements with an explicit mechanism for scope flexibility fit the stated evolving requirements. Pricing, ceilings, acceptance, and change terms still need negotiation; fixed price is not categorically incompatible with agile delivery.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Change",
@@ -2025,7 +2193,8 @@
       "Assign the carbon reporting duty to the sustainability department"
     ],
     "correct": 0,
-    "explain": "A new critical information requirement changes the baselined plan, so it must enter through change control. Adding it to reports alone leaves the plan inconsistent."
+    "explain": "A new critical information requirement changes the baselined plan, so it must enter through change control. Adding it to reports alone leaves the plan inconsistent.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Quality",
@@ -2037,7 +2206,8 @@
       "Introduce ongoing quality reviews throughout each phase"
     ],
     "correct": 3,
-    "explain": "Defects build up between reviews, so reviews must be ongoing. Deeper end-of-phase reviews still find them late."
+    "explain": "Defects build up between reviews, so reviews must be ongoing. Deeper end-of-phase reviews still find them late.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Stakeholder",
@@ -2049,7 +2219,8 @@
       "Connect the project's purpose to outcomes the operators value in their work"
     ],
     "correct": 3,
-    "explain": "Operators see no value for themselves, and adoption depends on them. Promoting the vision in terms they care about builds commitment; repeating the mandate breeds compliance at best."
+    "explain": "Operators see no value for themselves, and adoption depends on them. Promoting the vision in terms they care about builds commitment; repeating the mandate breeds compliance at best.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Integration",
@@ -2061,7 +2232,8 @@
       "Hold weekly meetings to collect and review all the pending decisions"
     ],
     "correct": 0,
-    "explain": "Undefined decision rights cause delay. Governance must define them, not shift them by assumption."
+    "explain": "Undefined decision rights cause delay. Governance must define them, not shift them by assumption.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Stakeholder",
@@ -2073,7 +2245,8 @@
       "Assess why residents trust the owner organization less than the contractor"
     ],
     "correct": 0,
-    "explain": "The useful fact is already known: the contractor holds trust. Building on that relationship influences residents; investigating the reasons delays it."
+    "explain": "The useful fact is already known: the contractor holds trust. Building on that relationship influences residents; investigating the reasons delays it.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "Agile",
@@ -2085,7 +2258,8 @@
       "Release a minimum viable version to a customer segment for validation"
     ],
     "correct": 3,
-    "explain": "Early real-customer validation is the delivery option that best demonstrates value and reduces risk."
+    "explain": "Early real-customer validation is the delivery option that best demonstrates value and reduces risk.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Stakeholder",
@@ -2097,7 +2271,8 @@
       "Record both leaders' definitions in the charter as complementary project objectives"
     ],
     "correct": 2,
-    "explain": "The differences are already known; what is missing is a shared vision among key stakeholders. Further review or analysis delays agreement, and recording both views keeps the split alive."
+    "explain": "The differences are already known; what is missing is a shared vision among key stakeholders. Further review or analysis delays agreement, and recording both views keeps the split alive.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Comms",
@@ -2109,7 +2284,8 @@
       "Agree on a shared place where decisions are recorded and visible"
     ],
     "correct": 3,
-    "explain": "Decisions are recorded but scattered. One shared, visible record promotes transparency; more email multiplies the scattering."
+    "explain": "Decisions are recorded but scattered. One shared, visible record promotes transparency; more email multiplies the scattering.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "Procurement",
@@ -2121,7 +2297,8 @@
       "Work with the supplier on recovery while preserving contract rights"
     ],
     "correct": 3,
-    "explain": "With a sole source, the relationship matters most. Calculating damages now does not recover the schedule; a joint recovery plan does, without waiving rights."
+    "explain": "With a sole source, the relationship matters most. Calculating damages now does not recover the schedule; a joint recovery plan does, without waiving rights.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Quality",
@@ -2133,11 +2310,12 @@
       "Analyze the specifications against the rules for any gaps"
     ],
     "correct": 2,
-    "explain": "Specifications are already defined; the gap is how compliance will be demonstrated. Quality planning must define verification methods."
+    "explain": "Specifications are already defined; the gap is how compliance will be demonstrated. Quality planning must define verification methods.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "Schedule",
-    "q": "A vessel dry-docking schedule shows five days of negative variance. The planner proposes overlapping hull painting with the engine overhaul, which share no resources. What should the project manager do next?",
+    "q": "A dry-docking project is five days late. Engine overhaul is on the controlling path and has a discretionary finish-to-start dependency on hull painting. The planner proposes overlapping them; they share no resources. What should the PM do next?",
     "options": [
       "Add shifts to the painting crew to recover the five days",
       "Evaluate the rework risk of overlapping them, then fast-track if acceptable",
@@ -2145,7 +2323,8 @@
       "Increase painting crew hours to make up the delay"
     ],
     "correct": 1,
-    "explain": "With no shared resources, fast-tracking is feasible but adds rework risk to check. Rebaselining hides the variance, and painting may not be critical."
+    "explain": "Assess technical feasibility, safety, rework, resource and cost impacts, and required authorization before fast-tracking. No shared resources alone does not establish that overlap is feasible or will recover the controlling finish date.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Integration",
@@ -2157,7 +2336,8 @@
       "Compile the sprint retrospective notes as the final lessons"
     ],
     "correct": 0,
-    "explain": "Sprint retrospectives focus on team process. A final session captures project-level lessons for the organization."
+    "explain": "Use closure to consolidate project-wide lessons and transfer them to the organization, drawing on the retrospectives already held. Retrospectives can address broader effectiveness as well as team process; a final session complements ongoing learning.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Quality",
@@ -2169,7 +2349,8 @@
       "Change the production process to reproduce the samples exactly"
     ],
     "correct": 2,
-    "explain": "Units follow the drawings, yet the retailer expected the samples. The expectation gap must be reconciled with the customer before changing production or defending the drawings."
+    "explain": "Units follow the drawings, yet the retailer expected the samples. The expectation gap must be reconciled with the customer before changing production or defending the drawings.",
+    "ecoTask": "PEO06"
   },
   {
     "topic": "Procurement",
@@ -2181,7 +2362,8 @@
       "Transfer the open payment dispute to the firm's finance department"
     ],
     "correct": 1,
-    "explain": "Client acceptance is confirmed; procurement closure is not. All contracts must be closed before the project is."
+    "explain": "Resolve the open subcontract and payment dispute through the agreed contract and closure process in this scenario. Where governance permits transfer of a remaining obligation, closure requires explicit acceptance by an accountable owner; disputes must not be silently abandoned.",
+    "ecoTask": "PRO10"
   },
   {
     "topic": "Team",
@@ -2193,7 +2375,8 @@
       "Clarify reporting lines and roles for the crew and the vendor supervisor"
     ],
     "correct": 3,
-    "explain": "The cause is already known: unclear roles. Reviewing assignments or examining the flow restates the problem; clarifying reporting lines resolves it."
+    "explain": "The cause is already known: unclear roles. Reviewing assignments or examining the flow restates the problem; clarifying reporting lines resolves it.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Procurement",
@@ -2205,7 +2388,8 @@
       "Continue qualifying a second supplier as the plan requires"
     ],
     "correct": 3,
-    "explain": "The procurement plan sets a dual-source rule. Capacity checks on one supplier do not satisfy it."
+    "explain": "The procurement plan sets a dual-source rule. Capacity checks on one supplier do not satisfy it.",
+    "ecoTask": "PRO05"
   },
   {
     "topic": "Team",
@@ -2217,7 +2401,8 @@
       "Rewrite the outcome section of the charter so it cannot be misread"
     ],
     "correct": 2,
-    "explain": "Both leads quote the same charter text, so the wording is not the gap; their interpretation is. Breaking the situation down to find the root cause of the misunderstanding comes before rewriting documents or realigning work."
+    "explain": "Both leads quote the same charter text, so the wording is not the gap; their interpretation is. Breaking the situation down to find the root cause of the misunderstanding comes before rewriting documents or realigning work.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Schedule",
@@ -2229,7 +2414,8 @@
       "Fast-track the activities that have float so the project saves time"
     ],
     "correct": 1,
-    "explain": "Only critical path activities drive the finish date. Float is already known; adding resources there wastes money."
+    "explain": "Prioritize schedule recovery on the controlling path and check resource and dependency interactions. Shortening unrelated tasks with significant float does not by itself shorten the finish; noncritical work may still matter if it releases a constrained resource.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Agile",
@@ -2241,7 +2427,8 @@
       "Prioritize the executive's request given its sponsor-level support"
     ],
     "correct": 1,
-    "explain": "Value, not seniority, drives prioritization. The conversion data shows which feature delivers more value."
+    "explain": "Use the measurable customer outcome as evidence in prioritization with the Product Owner or designated decision maker. Seniority alone does not establish value; also consider mandatory needs, risk, and dependencies before final ordering.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Team",
@@ -2253,7 +2440,8 @@
       "Give the strongest members authority to assign tasks to the others"
     ],
     "correct": 0,
-    "explain": "A mature, evidence-driven team is ready for empowerment. Handing control to a few senior members simply creates a new hierarchy."
+    "explain": "A mature, evidence-driven team is ready for empowerment. Handing control to a few senior members simply creates a new hierarchy.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "Integration",
@@ -2265,7 +2453,8 @@
       "Define the success metrics after the first deliverable has been reviewed"
     ],
     "correct": 0,
-    "explain": "Success must be defined early and measurably. Time and cost alone do not show value."
+    "explain": "Success must be defined early and measurably. Time and cost alone do not show value.",
+    "ecoTask": "BUS01"
   },
   {
     "topic": "Resources",
@@ -2277,7 +2466,8 @@
       "Assess whether a current member could be trained in validation"
     ],
     "correct": 1,
-    "explain": "The resource management plan already defines the sourcing route. Evaluating internal options or recruiting directly bypasses the plan."
+    "explain": "The resource management plan already defines the sourcing route. Evaluating internal options or recruiting directly bypasses the plan.",
+    "ecoTask": "PRO04"
   },
   {
     "topic": "Integration",
@@ -2289,7 +2479,8 @@
       "Invite the phase two contractor to the phase one closing meeting"
     ],
     "correct": 0,
-    "explain": "The crew leaves next week, so the window is closing. Identifying and gathering critical knowledge from people comes first; documents can be reviewed later."
+    "explain": "The crew leaves next week, so the window is closing. Identifying and gathering critical knowledge from people comes first; documents can be reviewed later.",
+    "ecoTask": "PEO07"
   },
   {
     "topic": "Agile",
@@ -2301,7 +2492,8 @@
       "Ask each squad to restate the current vision board within its own sprint goals"
     ],
     "correct": 0,
-    "explain": "The board predates the publisher's feedback, so the vision is stale. Keeping the vision current fixes the source of drift; restating an outdated board or demoing differences does not."
+    "explain": "The board predates the publisher's feedback, so the vision is stale. Keeping the vision current fixes the source of drift; restating an outdated board or demoing differences does not.",
+    "ecoTask": "PEO01"
   },
   {
     "topic": "Agile",
@@ -2313,7 +2505,8 @@
       "Hold a cross-team retrospective on the shared deployment problem"
     ],
     "correct": 3,
-    "explain": "A shared, system-level problem needs a cross-team improvement effort. Separate retrospectives lack the full picture."
+    "explain": "A shared, system-level problem needs a cross-team improvement effort. Separate retrospectives lack the full picture.",
+    "ecoTask": "BUS06"
   },
   {
     "topic": "Risk",
@@ -2325,7 +2518,8 @@
       "Hold a separate monthly risk meeting with the product owner"
     ],
     "correct": 2,
-    "explain": "Agile teams manage risk transparently through the backlog. A monthly meeting is too slow and separate from the work."
+    "explain": "Agile teams manage risk transparently through the backlog. A monthly meeting is too slow and separate from the work.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "Schedule",
@@ -2337,7 +2531,8 @@
       "An optimistic date based on the highest velocity observed"
     ],
     "correct": 1,
-    "explain": "Velocity varies, so the forecast should be a range. A single date hides uncertainty."
+    "explain": "Velocity varies, so the forecast should be a range. A single date hides uncertainty.",
+    "ecoTask": "PRO08"
   },
   {
     "topic": "Agile",
@@ -2349,7 +2544,8 @@
       "Check with the team whether the blocker is resolved or has shifted"
     ],
     "correct": 3,
-    "explain": "Impediments need continual reassessment from the team's view. Checking the setup alone misses what the team still faces."
+    "explain": "Impediments need continual reassessment from the team's view. Checking the setup alone misses what the team still faces.",
+    "ecoTask": "BUS04"
   },
   {
     "topic": "Agile",
@@ -2361,7 +2557,8 @@
       "Replace a lower-priority sprint item with the new feature"
     ],
     "correct": 2,
-    "explain": "Value does not justify disrupting the sprint commitment. New work goes to the backlog for prioritization in a coming sprint."
+    "explain": "Record the request for Product Owner ordering rather than having the PM unilaterally change Sprint work. Developers and the PO can renegotiate Sprint scope while preserving the Sprint Goal and quality; new work is not categorically forbidden until the next Sprint.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "Change",
@@ -2373,7 +2570,8 @@
       "Assess all durations to confirm no further unit errors exist"
     ],
     "correct": 0,
-    "explain": "Any change to an approved baseline, even a correction, goes through change control. Checking other entries is sensible later but does not fix this one."
+    "explain": "Any change to an approved baseline, even a correction, goes through change control. Checking other entries is sensible later but does not fix this one.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "Procurement",
@@ -2385,7 +2583,8 @@
       "Require the contractor's plan to include infection-control measures"
     ],
     "correct": 3,
-    "explain": "The requirement is known and the gap is clear. Compliance must be built into the plan."
+    "explain": "The requirement is known and the gap is clear. Compliance must be built into the plan.",
+    "ecoTask": "BUS02"
   },
   {
     "topic": "Procurement",
@@ -2397,6 +2596,7 @@
       "A lump-sum contract priced on the draft layout"
     ],
     "correct": 1,
-    "explain": "Evolving scope rules out fixed price, and open-ended cost-plus offers no cap. Time and materials with a ceiling fits both needs."
+    "explain": "Among these options, time and materials with a negotiated not-to-exceed ceiling provides flexibility and a spending control. Define authorization, acceptance, and change terms. Evolving scope does not make every form of fixed-price or capped cost-reimbursable agreement impossible.",
+    "ecoTask": "PRO05"
   }
 ]

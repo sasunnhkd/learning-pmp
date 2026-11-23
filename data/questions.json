@@ -9,7 +9,8 @@
         "Work that requires a budget"
       ],
       "correct": 1,
-      "explain": "PMBOK 8 defines a project as temporary, set in a unique context, and undertaken to create VALUE. Ongoing, repetitive work is operations."
+      "explain": "PMBOK 8 defines a project as temporary, set in a unique context, and undertaken to create VALUE. Ongoing, repetitive work is operations.",
+      "ecoTask": null
     },
     {
       "q": "What is 'progressive elaboration' in project management?",
@@ -20,7 +21,8 @@
         "Expanding the project scope deliberately"
       ],
       "correct": 1,
-      "explain": "Progressive elaboration means details emerge and become clearer as the project progresses—not all is known upfront."
+      "explain": "Progressive elaboration means details emerge and become clearer as the project progresses—not all is known upfront.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "Which is NOT a characteristic of a project?",
@@ -31,7 +33,8 @@
         "Progressive elaboration"
       ],
       "correct": 2,
-      "explain": "Ongoing and repetitive work describes OPERATIONS, not projects. Projects are temporary by definition."
+      "explain": "Ongoing and repetitive work describes OPERATIONS, not projects. Projects are temporary by definition.",
+      "ecoTask": null
     }
   ],
   "2": [
@@ -44,7 +47,8 @@
         "There is no difference"
       ],
       "correct": 1,
-      "explain": "Programs group RELATED projects for shared benefits. Portfolios group projects/programs aligned to STRATEGY but not necessarily related."
+      "explain": "Programs group RELATED projects for shared benefits. Portfolios group projects/programs aligned to STRATEGY but not necessarily related.",
+      "ecoTask": null
     },
     {
       "q": "A company is running a digital transformation initiative containing 12 related projects. This is BEST described as a:",
@@ -55,18 +59,20 @@
         "Operation"
       ],
       "correct": 1,
-      "explain": "Related projects managed together for combined benefits = PROGRAM."
+      "explain": "Related projects managed together for combined benefits = PROGRAM.",
+      "ecoTask": null
     },
     {
-      "q": "Who typically reports to a Portfolio Manager?",
+      "q": "What determines a project manager’s reporting line and decision authority?",
       "options": [
-        "Team members",
-        "Project Managers only",
-        "Program Managers and Project Managers",
-        "Stakeholders"
+        "A mandatory portfolio-to-program-to-project chain",
+        "The organizational structure and agreed governance",
+        "The number of project deliverables",
+        "The development approach alone"
       ],
-      "correct": 2,
-      "explain": "The hierarchy is Portfolio → Programs → Projects, so Program Managers and standalone PMs report to Portfolio Managers."
+      "correct": 1,
+      "explain": "Portfolios and programs describe how work is coordinated, not a mandatory reporting chart. Projects may sit outside programs; reporting and decision authority depend on organizational structure and governance.",
+      "ecoTask": "BUS01"
     }
   ],
   "3": [
@@ -79,7 +85,8 @@
         "12"
       ],
       "correct": 1,
-      "explain": "PMBOK 8 consolidates the 7th edition's 12 principles into six."
+      "explain": "PMBOK 8 consolidates the 7th edition's 12 principles into six.",
+      "ecoTask": null
     },
     {
       "q": "Before choosing a design, a PM checks how it will affect operations, support teams, and two other projects. Which PMBOK 8 principle is this?",
@@ -90,7 +97,8 @@
         "Build an empowered culture"
       ],
       "correct": 1,
-      "explain": "Looking at the project as part of a larger system is the holistic view."
+      "explain": "Looking at the project as part of a larger system is the holistic view.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "A team reports 95% of tasks complete, but users see no benefit yet. Which principle should redirect the team?",
@@ -101,7 +109,8 @@
         "Integrate sustainability within all project areas"
       ],
       "correct": 2,
-      "explain": "Activity completed is not value delivered. Focus on outcomes stakeholders care about."
+      "explain": "Activity completed is not value delivered. Focus on outcomes stakeholders care about.",
+      "ecoTask": "PRO03"
     }
   ],
   "4": [
@@ -114,7 +123,8 @@
         "Navigate complexity"
       ],
       "correct": 1,
-      "explain": "The other three were 7th-edition principles. PMBOK 8's six include integrating sustainability."
+      "explain": "The other three were 7th-edition principles. PMBOK 8's six include integrating sustainability.",
+      "ecoTask": null
     },
     {
       "q": "Under 'Build an empowered culture', the project manager should primarily:",
@@ -125,7 +135,8 @@
         "Rotate team members often to prevent cliques"
       ],
       "correct": 1,
-      "explain": "An empowered culture rests on trust, safety, and collaboration, not control."
+      "explain": "An empowered culture rests on trust, safety, and collaboration, not control.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "A supplier's packaging process creates heavy waste that the client's community objects to. Which principle most directly applies?",
@@ -136,7 +147,8 @@
         "Embed quality into processes and deliverables"
       ],
       "correct": 2,
-      "explain": "Environmental and social impact is the sustainability principle, and it applies to suppliers too."
+      "explain": "Environmental and social impact is the sustainability principle, and it applies to suppliers too.",
+      "ecoTask": "PRO07"
     }
   ],
   "5": [
@@ -149,7 +161,8 @@
         "Risk"
       ],
       "correct": 2,
-      "explain": "Delivery was a PMBOK 7 domain. PMBOK 8's seven are Governance, Scope, Schedule, Finance, Stakeholders, Resources, and Risk."
+      "explain": "Delivery was a PMBOK 7 domain. PMBOK 8's seven are Governance, Scope, Schedule, Finance, Stakeholders, Resources, and Risk.",
+      "ecoTask": null
     },
     {
       "q": "PMBOK 8's five focus areas are:",
@@ -160,7 +173,8 @@
         "People, Process, Business Environment, Value, Governance"
       ],
       "correct": 0,
-      "explain": "The focus areas organize PMBOK 8's roughly 40 processes and mirror the familiar project stages."
+      "explain": "The focus areas organize management activities and PMBOK 8 process guidance. They overlap and recur; they are not necessarily sequential project phases.",
+      "ecoTask": null
     },
     {
       "q": "How many performance domains does PMBOK 8 define?",
@@ -171,7 +185,8 @@
         "10"
       ],
       "correct": 1,
-      "explain": "Seven: Governance, Scope, Schedule, Finance, Stakeholders, Resources, Risk. (PMBOK 7 had eight.)"
+      "explain": "Seven: Governance, Scope, Schedule, Finance, Stakeholders, Resources, Risk. (PMBOK 7 had eight.)",
+      "ecoTask": null
     }
   ],
   "6": [
@@ -184,7 +199,8 @@
         "All approaches work equally well"
       ],
       "correct": 1,
-      "explain": "Predictive works best when requirements are stable—you can plan everything upfront."
+      "explain": "Stable requirements support extensive early planning in a predictive approach. Details can still be progressively elaborated, and changes follow agreed controls.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "A project has rapidly evolving requirements and high stakeholder availability. The BEST approach is:",
@@ -195,7 +211,8 @@
         "Linear"
       ],
       "correct": 1,
-      "explain": "Adaptive (agile) thrives with evolving requirements and engaged stakeholders."
+      "explain": "Adaptive (agile) thrives with evolving requirements and engaged stakeholders.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "What characterizes a HYBRID approach?",
@@ -206,7 +223,8 @@
         "Random switching"
       ],
       "correct": 2,
-      "explain": "Hybrid intentionally blends predictive and adaptive elements to fit project context."
+      "explain": "Hybrid intentionally blends predictive and adaptive elements to fit project context.",
+      "ecoTask": "PRO01"
     }
   ],
   "7": [
@@ -219,7 +237,8 @@
         "Larger teams"
       ],
       "correct": 1,
-      "explain": "Principles are guiding behaviors—they help make decisions where rigid rules don't apply."
+      "explain": "Principles are guiding behaviors—they help make decisions where rigid rules don't apply.",
+      "ecoTask": null
     },
     {
       "q": "How many performance domains and principles are in PMBOK 8?",
@@ -230,18 +249,20 @@
         "5 and 7"
       ],
       "correct": 1,
-      "explain": "PMBOK 8 has 7 performance domains and 6 principles (PMBOK 7 had 8 and 12)."
+      "explain": "PMBOK 8 has 7 performance domains and 6 principles (PMBOK 7 had 8 and 12).",
+      "ecoTask": null
     },
     {
-      "q": "Performance Domains operate:",
+      "q": "How should performance-domain activities be applied throughout delivery?",
       "options": [
-        "Sequentially",
-        "Interactively, all at the same time",
-        "Only when needed",
-        "In random order"
+        "Sequentially as fixed phases",
+        "Interactively, with emphasis and activities tailored throughout the project",
+        "Only after the project closes",
+        "Independently with no coordination"
       ],
       "correct": 1,
-      "explain": "Performance Domains are interactive—they all run simultaneously throughout the project."
+      "explain": "Performance domains interact throughout delivery, but their activities and intensity are tailored. This does not mean every activity occurs at every moment.",
+      "ecoTask": null
     }
   ],
   "8": [
@@ -254,7 +275,8 @@
         "Only when issues arise"
       ],
       "correct": 2,
-      "explain": "Stakeholder identification is CONTINUOUS—new stakeholders emerge and existing ones change."
+      "explain": "Stakeholder identification is CONTINUOUS—new stakeholders emerge and existing ones change.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "The Stakeholder Register typically includes:",
@@ -265,7 +287,8 @@
         "Only the project sponsor"
       ],
       "correct": 1,
-      "explain": "The register is comprehensive—contact info, role, influence, interest, requirements, and engagement strategy."
+      "explain": "The register is comprehensive—contact info, role, influence, interest, requirements, and engagement strategy.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "A Power/Interest grid is used to:",
@@ -276,7 +299,8 @@
         "Replace the stakeholder register"
       ],
       "correct": 1,
-      "explain": "The Power/Interest grid plots stakeholders to determine engagement strategy."
+      "explain": "The Power/Interest grid plots stakeholders to determine engagement strategy.",
+      "ecoTask": "PEO04"
     }
   ],
   "9": [
@@ -289,7 +313,8 @@
         "Internal, external, customer, vendor, regulator"
       ],
       "correct": 1,
-      "explain": "PMBOK defines engagement levels as Unaware → Resistant → Neutral → Supportive → Leading."
+      "explain": "PMBOK defines engagement levels as Unaware → Resistant → Neutral → Supportive → Leading.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "A key stakeholder is currently RESISTANT. Your goal should be to:",
@@ -300,7 +325,8 @@
         "Report them to leadership"
       ],
       "correct": 2,
-      "explain": "Engage with resistant stakeholders to understand concerns and move them toward greater support."
+      "explain": "Engage with resistant stakeholders to understand concerns and move them toward greater support.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "What is in the Stakeholder Engagement Plan?",
@@ -311,7 +337,8 @@
         "Project budget allocations"
       ],
       "correct": 1,
-      "explain": "The plan documents current engagement, desired engagement, and strategies to move stakeholders."
+      "explain": "The plan documents current engagement, desired engagement, and strategies to move stakeholders.",
+      "ecoTask": "PEO04"
     }
   ],
   "10": [
@@ -324,7 +351,8 @@
         "Background checks"
       ],
       "correct": 1,
-      "explain": "Psychological safety is the belief you won't be punished for speaking up—critical for high-performing teams."
+      "explain": "Psychological safety is the belief you won't be punished for speaking up—critical for high-performing teams.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "In Tuckman's model, which stage involves conflict and differing opinions?",
@@ -335,7 +363,8 @@
         "Performing"
       ],
       "correct": 1,
-      "explain": "Storming is when team members express differences and conflict emerges—a normal stage."
+      "explain": "Storming is when team members express differences and conflict emerges—a normal stage.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "A servant leader primarily:",
@@ -346,7 +375,8 @@
         "Focuses on personal recognition"
       ],
       "correct": 1,
-      "explain": "Servant leadership inverts the pyramid—the leader serves the team."
+      "explain": "Servant leadership inverts the pyramid—the leader serves the team.",
+      "ecoTask": "PEO03"
     }
   ],
   "11": [
@@ -359,7 +389,8 @@
         "Bureaucratic"
       ],
       "correct": 1,
-      "explain": "Servant leadership best supports an empowered, self-organizing team, which PMI emphasizes."
+      "explain": "Servant leadership best supports an empowered, self-organizing team, which PMI emphasizes.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "Transactional leadership is BEST when:",
@@ -370,7 +401,8 @@
         "Team is in storming phase"
       ],
       "correct": 0,
-      "explain": "Transactional works for clear, structured tasks with explicit rewards/penalties."
+      "explain": "Transactional works for clear, structured tasks with explicit rewards/penalties.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "Effective project managers:",
@@ -381,12 +413,13 @@
         "Only use authoritarian style"
       ],
       "correct": 1,
-      "explain": "Situational leadership—adapting your style to the context—is the mark of an effective PM."
+      "explain": "Situational leadership—adapting your style to the context—is the mark of an effective PM.",
+      "ecoTask": "PEO03"
     }
   ],
   "12": [
     {
-      "q": "Which conflict resolution mode does PMI generally favor?",
+      "q": "When time allows a durable solution that addresses both parties’ concerns, which conflict mode is most suitable?",
       "options": [
         "Avoiding",
         "Competing",
@@ -394,7 +427,8 @@
         "Accommodating"
       ],
       "correct": 2,
-      "explain": "Collaborating (win-win) is preferred—it produces the best long-term solution."
+      "explain": "Collaborating seeks a joint solution. Choose a different mode when urgency, stakes, or willingness make it more appropriate; there is no fixed ranking for every conflict.",
+      "ecoTask": "PEO02"
     },
     {
       "q": "Compromising means:",
@@ -405,7 +439,8 @@
         "Avoiding the issue"
       ],
       "correct": 1,
-      "explain": "Compromising = partial-win for both. Useful when time is tight, but not optimal."
+      "explain": "Compromising = partial-win for both. Useful when time is tight, but not optimal.",
+      "ecoTask": "PEO02"
     },
     {
       "q": "Avoiding conflict is appropriate when:",
@@ -416,7 +451,8 @@
         "Conflict is uncomfortable"
       ],
       "correct": 1,
-      "explain": "Avoiding can be valid for trivial issues or when emotions are too high."
+      "explain": "Avoiding can be valid for trivial issues or when emotions are too high.",
+      "ecoTask": "PEO02"
     }
   ],
   "13": [
@@ -429,7 +465,8 @@
         "Less documentation"
       ],
       "correct": 1,
-      "explain": "Distance amplifies weaknesses—virtual teams need explicit norms and deliberate trust-building."
+      "explain": "Distance amplifies weaknesses—virtual teams need explicit norms and deliberate trust-building.",
+      "ecoTask": "PEO08"
     },
     {
       "q": "Which is a warning sign in a virtual team?",
@@ -440,7 +477,8 @@
         "Documented decisions"
       ],
       "correct": 1,
-      "explain": "Silence and disengagement are red flags—isolation can develop fast in virtual settings."
+      "explain": "Silence and disengagement are red flags—isolation can develop fast in virtual settings.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "What's the BEST practice for time zone management?",
@@ -451,20 +489,22 @@
         "Only meet once per quarter"
       ],
       "correct": 1,
-      "explain": "Fairness matters—rotating who has 'bad' meeting times distributes the burden equitably."
+      "explain": "Fairness matters—rotating who has 'bad' meeting times distributes the burden equitably.",
+      "ecoTask": "PEO08"
     }
   ],
   "14": [
     {
-      "q": "Why are stakeholder engagement and team management interconnected?",
+      "q": "How are stakeholder engagement and team leadership connected?",
       "options": [
-        "They aren't connected",
-        "Your team is your most critical stakeholder group",
-        "Both require budgets",
-        "Both involve meetings"
+        "They are unrelated",
+        "The team is a key stakeholder group whose engagement affects delivery",
+        "The team always outranks all other stakeholders",
+        "Both concern only budgets"
       ],
       "correct": 1,
-      "explain": "The team is the most important stakeholder group—how you engage them affects everything."
+      "explain": "The team is a key stakeholder group. Engage it while balancing other stakeholders and project objectives; no group is universally the most important.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "When applying servant leadership to stakeholders, you focus on:",
@@ -475,7 +515,8 @@
         "Reporting them"
       ],
       "correct": 1,
-      "explain": "Servant leadership extends beyond the team—understand stakeholder needs."
+      "explain": "Servant leadership extends beyond the team—understand stakeholder needs.",
+      "ecoTask": "PEO04"
     },
     {
       "q": "A team in 'Storming' phase has a stakeholder concern. The PM should:",
@@ -486,7 +527,8 @@
         "Escalate immediately"
       ],
       "correct": 1,
-      "explain": "Storming is normal—use real situations as growth opportunities."
+      "explain": "Storming is normal—use real situations as growth opportunities.",
+      "ecoTask": "PEO02"
     }
   ],
   "15": [
@@ -499,7 +541,8 @@
         "Choosing the agile framework for each team"
       ],
       "correct": 1,
-      "explain": "Governance covers the structure, rules, reporting, ethics, and policies, plus success metrics and escalation paths and thresholds."
+      "explain": "Governance covers the structure, rules, reporting, ethics, and policies, plus success metrics and escalation paths and thresholds.",
+      "ecoTask": "BUS01"
     },
     {
       "q": "Rolling-wave planning is:",
@@ -510,7 +553,8 @@
         "Stakeholder management technique"
       ],
       "correct": 1,
-      "explain": "Rolling-wave matches planning depth to certainty."
+      "explain": "Rolling-wave matches planning depth to certainty.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "Planning depth should match:",
@@ -521,7 +565,8 @@
         "Stakeholder count"
       ],
       "correct": 2,
-      "explain": "High uncertainty = less detailed long-term plans (they'll change anyway)."
+      "explain": "High uncertainty = less detailed long-term plans (they'll change anyway).",
+      "ecoTask": "PRO01"
     }
   ],
   "16": [
@@ -534,7 +579,8 @@
         "Web-Based System"
       ],
       "correct": 0,
-      "explain": "WBS is a deliverable-oriented hierarchical decomposition of the total project scope."
+      "explain": "WBS is a deliverable-oriented hierarchical decomposition of the total project scope.",
+      "ecoTask": "PRO02"
     },
     {
       "q": "Scope creep is:",
@@ -545,7 +591,8 @@
         "Stakeholder feedback"
       ],
       "correct": 1,
-      "explain": "Scope creep = uncontrolled expansion. Use formal change control to prevent it."
+      "explain": "Scope creep = uncontrolled expansion. Use formal change control to prevent it.",
+      "ecoTask": "BUS03"
     },
     {
       "q": "Gold plating refers to:",
@@ -556,7 +603,8 @@
         "Executive dashboards"
       ],
       "correct": 0,
-      "explain": "Gold plating = team adds extras the customer didn't ask for. Always avoid."
+      "explain": "Gold plating = team adds extras the customer didn't ask for. Always avoid.",
+      "ecoTask": "PRO02"
     }
   ],
   "17": [
@@ -569,7 +617,8 @@
         "The shortest path"
       ],
       "correct": 1,
-      "explain": "Critical path = longest sequence of dependent activities."
+      "explain": "Critical path = longest sequence of dependent activities.",
+      "ecoTask": "PRO08"
     },
     {
       "q": "FAST-TRACKING means:",
@@ -580,7 +629,8 @@
         "Skipping quality checks"
       ],
       "correct": 1,
-      "explain": "Fast-tracking compresses schedule by parallelizing activities—adds risk."
+      "explain": "Fast-tracking compresses schedule by parallelizing activities—adds risk.",
+      "ecoTask": "PRO08"
     },
     {
       "q": "CRASHING typically:",
@@ -591,12 +641,13 @@
         "Removes risks"
       ],
       "correct": 1,
-      "explain": "Crashing = trade cost for time. Add resources/overtime to shorten duration."
+      "explain": "Crashing = trade cost for time. Add resources/overtime to shorten duration.",
+      "ecoTask": "PRO08"
     }
   ],
   "18": [
     {
-      "q": "A ROM estimate has accuracy of approximately:",
+      "q": "Under this app’s illustrative cost-estimating convention, which range describes an early ROM estimate?",
       "options": [
         "±5%",
         "±10%",
@@ -604,7 +655,8 @@
         "±50%"
       ],
       "correct": 2,
-      "explain": "ROM (Rough Order of Magnitude) is early-stage estimating with -25% to +75% range."
+      "explain": "This app uses −25% to +75% as an illustrative ROM cost range. Actual accuracy conventions depend on the organization, industry, evidence, and assumptions.",
+      "ecoTask": "PRO06"
     },
     {
       "q": "Three-point estimating uses:",
@@ -615,7 +667,8 @@
         "Three estimators"
       ],
       "correct": 1,
-      "explain": "Three-point (often PERT) combines O+P+ML to get expected value."
+      "explain": "Three-point estimating uses optimistic, most-likely, and pessimistic estimates. Triangular: (O+M+P)/3; the common PERT weighted mean is (O+4M+P)/6.",
+      "ecoTask": "PRO06"
     },
     {
       "q": "Which reserve is meant for unknown-unknowns?",
@@ -626,7 +679,8 @@
         "Total float"
       ],
       "correct": 1,
-      "explain": "Contingency reserve covers identified (known) risks. Management reserve, usually controlled through governance, covers unforeseen events."
+      "explain": "Contingency reserve covers identified (known) risks. Management reserve, usually controlled through governance, covers unforeseen events.",
+      "ecoTask": "PRO06"
     }
   ],
   "19": [
@@ -639,7 +693,8 @@
         "Sales metrics"
       ],
       "correct": 1,
-      "explain": "QA is process-focused and preventive. QC is product-focused."
+      "explain": "QA is process-focused and preventive. QC is product-focused.",
+      "ecoTask": "PRO07"
     },
     {
       "q": "Cost of Quality (COQ) includes:",
@@ -650,7 +705,8 @@
         "PM overhead"
       ],
       "correct": 1,
-      "explain": "COQ = all costs related to quality, both conformance and non-conformance."
+      "explain": "COQ = all costs related to quality, both conformance and non-conformance.",
+      "ecoTask": "PRO07"
     },
     {
       "q": "Pareto principle in quality says:",
@@ -661,7 +717,8 @@
         "Inspect everything"
       ],
       "correct": 1,
-      "explain": "Pareto (80/20) helps prioritize quality efforts."
+      "explain": "Pareto (80/20) helps prioritize quality efforts.",
+      "ecoTask": "PRO07"
     }
   ],
   "20": [
@@ -674,7 +731,8 @@
         "Transfer"
       ],
       "correct": 2,
-      "explain": "EXPLOIT is for OPPORTUNITIES. Threat strategies: Avoid, Mitigate, Transfer, Accept, Escalate."
+      "explain": "EXPLOIT is for OPPORTUNITIES. Threat strategies: Avoid, Mitigate, Transfer, Accept, Escalate.",
+      "ecoTask": "BUS05"
     },
     {
       "q": "Buying insurance is an example of which risk response?",
@@ -685,7 +743,8 @@
         "Accept"
       ],
       "correct": 2,
-      "explain": "Insurance transfers financial risk to a third party—classic Transfer strategy."
+      "explain": "Insurance transfers financial risk to a third party—classic Transfer strategy.",
+      "ecoTask": "BUS05"
     },
     {
       "q": "Contingency reserves are for:",
@@ -696,20 +755,22 @@
         "Bonuses"
       ],
       "correct": 1,
-      "explain": "Contingency = identified (known) risks. Management reserves = unknown unknowns."
+      "explain": "Contingency = identified (known) risks. Management reserves = unknown unknowns.",
+      "ecoTask": "PRO06"
     }
   ],
   "21": [
     {
-      "q": "If a project's critical path is delayed, the project end date will:",
+      "q": "In an unconstrained network with zero total float, a critical-path activity slips by two days and no recovery occurs. What happens?",
       "options": [
-        "Stay the same",
-        "Be delayed by the same amount unless action is taken",
-        "Speed up",
-        "Move earlier"
+        "The project finish slips by two days",
+        "The project finishes two days earlier",
+        "Only noncritical tasks are affected",
+        "There is never an effect on the finish"
       ],
-      "correct": 1,
-      "explain": "Critical path = zero float. Any delay delays project end."
+      "correct": 0,
+      "explain": "Under the stated zero-float assumptions, the controlling path and finish extend by two days. Constraints and resource effects can change float, so critical does not universally mean zero float.",
+      "ecoTask": "PRO08"
     },
     {
       "q": "Scope, schedule, and cost are interconnected because:",
@@ -720,10 +781,11 @@
         "Stakeholders care about each"
       ],
       "correct": 1,
-      "explain": "Triple constraint: scope, time, cost are interdependent."
+      "explain": "Triple constraint: scope, time, cost are interdependent.",
+      "ecoTask": "PRO01"
     },
     {
-      "q": "Which estimating technique is MOST accurate but time-consuming?",
+      "q": "Which estimating technique aggregates estimates from detailed work components?",
       "options": [
         "Analogous",
         "Parametric",
@@ -731,7 +793,8 @@
         "Expert judgment"
       ],
       "correct": 2,
-      "explain": "Bottom-up estimates each work package—highest accuracy, highest effort."
+      "explain": "Bottom-up estimating aggregates lower-level component estimates. Reliable detail can improve accuracy, but no technique is automatically the most accurate with poor inputs.",
+      "ecoTask": "PRO06"
     }
   ],
   "22": [
@@ -744,18 +807,20 @@
         "Calculates budget"
       ],
       "correct": 1,
-      "explain": "RTM ensures every requirement traces from source to delivery."
+      "explain": "RTM ensures every requirement traces from source to delivery.",
+      "ecoTask": "PRO02"
     },
     {
-      "q": "In agile, 'Definition of Done' means:",
+      "q": "In Scrum, what does the Definition of Done describe for an Increment?",
       "options": [
-        "The project is complete",
-        "Shared understanding of when a work item is truly complete",
-        "Personal task list",
-        "End of contract"
+        "A shared description of the quality state required for an Increment",
+        "The date management wants the work finished",
+        "A replacement for customer acceptance",
+        "A list of optional features"
       ],
-      "correct": 1,
-      "explain": "DoD is a team agreement on completion criteria for any work item."
+      "correct": 0,
+      "explain": "In Scrum, the Definition of Done describes the state of an Increment when it meets required quality measures. It supports transparency and does not replace customer acceptance or item-specific acceptance criteria.",
+      "ecoTask": "PRO07"
     },
     {
       "q": "Which activity belongs to the 2026 outline's value-based delivery task?",
@@ -766,7 +831,8 @@
         "Collecting stakeholder feedback only at final acceptance"
       ],
       "correct": 1,
-      "explain": "Value-based delivery includes tracking benefits, prioritizing by value and feedback, and delivering incrementally."
+      "explain": "Value-based delivery includes tracking benefits, prioritizing by value and feedback, and delivering incrementally.",
+      "ecoTask": "PRO03"
     }
   ],
   "23": [
@@ -779,7 +845,8 @@
         "Not measurable"
       ],
       "correct": 1,
-      "explain": "CPI < 1 = over budget. CPI > 1 = under budget."
+      "explain": "CPI < 1 = over budget. CPI > 1 = under budget.",
+      "ecoTask": "PRO09"
     },
     {
       "q": "Schedule Variance (SV) = ?",
@@ -790,18 +857,20 @@
         "AC - EV"
       ],
       "correct": 0,
-      "explain": "SV = EV - PV. Positive = ahead, negative = behind."
+      "explain": "SV = EV - PV. Positive = ahead, negative = behind.",
+      "ecoTask": "PRO09"
     },
     {
-      "q": "If SPI = 1.10, the project is:",
+      "q": "What does a traditional EVM SPI of 1.10 establish?",
       "options": [
-        "10% behind schedule",
-        "10% ahead of schedule",
-        "On schedule",
-        "Cancelled"
+        "The project will finish 10% earlier",
+        "Earned value is 110% of planned value at the measurement date",
+        "Every critical-path task is ahead",
+        "Actual costs are 10% below budget"
       ],
       "correct": 1,
-      "explain": "SPI > 1 = ahead of schedule."
+      "explain": "SPI = EV/PV. A value of 1.10 means earned work value is 110% of planned work value. It does not prove a 10% calendar lead or an early project finish; review the critical path and forecast.",
+      "ecoTask": "PRO09"
     },
     {
       "q": "EAC = BAC / CPI calculates:",
@@ -812,7 +881,8 @@
         "Team size needed"
       ],
       "correct": 1,
-      "explain": "This common EAC formula projects total cost if current CPI trend continues."
+      "explain": "This common EAC formula projects total cost if current CPI trend continues.",
+      "ecoTask": "PRO09"
     }
   ],
   "24": [
@@ -825,7 +895,8 @@
         "50%"
       ],
       "correct": 1,
-      "explain": "People 33%, Process 41%, Business Environment 26% (up from 8% on the previous outline)."
+      "explain": "People 33%, Process 41%, Business Environment 26% (up from 8% on the previous outline).",
+      "ecoTask": null
     },
     {
       "q": "A data-privacy regulation affecting your product takes effect in six months. What should the project manager do?",
@@ -836,7 +907,8 @@
         "Leave it entirely to the legal department"
       ],
       "correct": 1,
-      "explain": "Evaluating external changes means assessing impact early and reprioritizing scope or backlog."
+      "explain": "Evaluating external changes means assessing impact early and reprioritizing scope or backlog.",
+      "ecoTask": "BUS08"
     },
     {
       "q": "Which activity is part of managing compliance in the 2026 outline?",
@@ -847,7 +919,8 @@
         "Waiting for the next external audit"
       ],
       "correct": 0,
-      "explain": "Compliance work includes confirming and classifying requirements, finding threats, and measuring the extent of compliance."
+      "explain": "Compliance work includes confirming and classifying requirements, finding threats, and measuring the extent of compliance.",
+      "ecoTask": "BUS02"
     }
   ],
   "25": [
@@ -860,18 +933,20 @@
         "Developers"
       ],
       "correct": 2,
-      "explain": "Scrum's three accountabilities are Product Owner, Scrum Master, and Developers. Project Manager is not one of them."
+      "explain": "Scrum's three accountabilities are Product Owner, Scrum Master, and Developers. Project Manager is not one of them.",
+      "ecoTask": null
     },
     {
-      "q": "The Daily Scrum is primarily for:",
+      "q": "What is the purpose of the Daily Scrum for Developers?",
       "options": [
-        "Status reporting to managers",
-        "Team to inspect progress and plan next 24 hours",
-        "Stakeholder updates",
-        "Performance reviews"
+        "Developers inspect progress toward the Sprint Goal and adapt the Sprint Backlog",
+        "The PM collects individual performance reports",
+        "The Product Owner assigns all daily tasks",
+        "The team approves baseline changes"
       ],
-      "correct": 1,
-      "explain": "Daily Scrum is the team's planning meeting—not a status report. 15 min max."
+      "correct": 0,
+      "explain": "The Daily Scrum is a 15-minute event for Developers to inspect progress toward the Sprint Goal and adapt the Sprint Backlog. It is not a status report to a manager.",
+      "ecoTask": "PEO03"
     },
     {
       "q": "Sprint Retrospective focuses on:",
@@ -882,10 +957,11 @@
         "Sprint planning"
       ],
       "correct": 1,
-      "explain": "Retro = team improvement. Review = product."
+      "explain": "The Sprint Retrospective plans ways to improve quality and effectiveness, including interactions, processes, tools, and the Definition of Done. The Sprint Review inspects the outcome and adapts future work with stakeholders.",
+      "ecoTask": "BUS06"
     },
     {
-      "q": "The Product Backlog is owned by:",
+      "q": "In Scrum, who remains accountable for Product Backlog management when the work is delegated?",
       "options": [
         "Scrum Master",
         "Developers",
@@ -893,7 +969,8 @@
         "Project Manager"
       ],
       "correct": 2,
-      "explain": "Product Owner owns and prioritizes the Product Backlog."
+      "explain": "The Product Owner may delegate backlog-management work, including ordering, while retaining accountability and decision authority.",
+      "ecoTask": "PRO03"
     }
   ],
   "26": [
@@ -906,7 +983,8 @@
         "Only when team prefers it"
       ],
       "correct": 1,
-      "explain": "Hybrid suits contexts needing both predictive and adaptive elements."
+      "explain": "Hybrid suits contexts needing both predictive and adaptive elements.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "A common hybrid pattern is:",
@@ -917,7 +995,8 @@
         "Always waterfall"
       ],
       "correct": 1,
-      "explain": "Common hybrid: lock budget/scope predictively, deliver iteratively with agile."
+      "explain": "A hybrid can retain predictive commitments or boundaries while iterating delivery and learning within them. Agreed governance controls changes to those commitments; hybrid does not require freezing every detail.",
+      "ecoTask": "PRO01"
     },
     {
       "q": "When tailoring an approach, the PRIMARY consideration is:",
@@ -928,7 +1007,8 @@
         "PMI rules"
       ],
       "correct": 1,
-      "explain": "Tailoring is context-driven."
+      "explain": "Tailoring is context-driven.",
+      "ecoTask": "PRO01"
     }
   ],
   "27": [
@@ -941,7 +1021,8 @@
         "The longest answer"
       ],
       "correct": 1,
-      "explain": "PMI favors proactive, collaborative answers."
+      "explain": "PMI favors proactive, collaborative answers.",
+      "ecoTask": null
     },
     {
       "q": "Approximate time per question on the July 2026 PMP exam:",
@@ -952,7 +1033,8 @@
         "120 seconds"
       ],
       "correct": 2,
-      "explain": "240 minutes for 180 questions is about 80 seconds each. Budget extra time for the case-study set."
+      "explain": "240 minutes for 180 questions is about 80 seconds each. Budget extra time for the case-study set.",
+      "ecoTask": null
     },
     {
       "q": "The July 2026 exam domain split is:",
@@ -963,7 +1045,8 @@
         "30% People, 30% Process, 40% Business Environment"
       ],
       "correct": 1,
-      "explain": "The July 2026 outline weights People 33%, Process 41%, and Business Environment 26%."
+      "explain": "The July 2026 outline weights People 33%, Process 41%, and Business Environment 26%.",
+      "ecoTask": null
     }
   ],
   "28": [
@@ -976,7 +1059,8 @@
         "Skip practice exams"
       ],
       "correct": 1,
-      "explain": "Full-length practice exams build stamina and reveal weak areas."
+      "explain": "Full-length practice exams build stamina and reveal weak areas.",
+      "ecoTask": null
     },
     {
       "q": "Daily practice is valuable because:",
@@ -987,7 +1071,8 @@
         "Anthropic says so"
       ],
       "correct": 1,
-      "explain": "Spaced repetition is proven for retention."
+      "explain": "Spaced repetition is proven for retention.",
+      "ecoTask": null
     },
     {
       "q": "The most important factor in PMP exam success is:",
@@ -998,7 +1083,8 @@
         "Lucky guesses"
       ],
       "correct": 2,
-      "explain": "Consistency + scenario practice + strategy = success."
+      "explain": "Consistency + scenario practice + strategy = success.",
+      "ecoTask": null
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { state, practicePool, esc, loadSavedMock, loadActivePractice } from '../state';
+import { state, practicePool, esc, loadSavedMock, loadActivePractice, hasOutdatedMock } from '../state';
 import {
   TOPICS, DOMAIN_LABEL, SESSION_SIZE, WEAK_ACCURACY, MIN_ATTEMPTS, BAND_LABEL, BAND_FLOORS,
   READINESS_MIN_SEEN, computeStats, computeReadiness, countByDomain, selectSession, splitMix,
@@ -8,6 +8,8 @@ import { MOCK_LENGTHS, formatClock, remainingMs } from '../mock';
 import type { MockLength } from '../types';
 
 const DOMAINS = Object.keys(DOMAIN_LABEL) as Domain[];
+const TOPIC_GROUPS = [...DOMAINS, null];
+const groupLabel = (domain: Domain | null) => domain ? DOMAIN_LABEL[domain] : 'Across domains & study support';
 const pct = (x: number | null) => (x === null ? '—' : `${Math.round(x * 100)}%`);
 
 function dot(status: TopicStat['status']): string {
@@ -26,7 +28,9 @@ function modeOption(mode: 'mix' | 'mistakes' | 'topics' | 'mock', title: string,
 
 function renderResumeCard(): string {
   const saved = loadSavedMock();
-  if (!saved) return '';
+  if (!saved) return hasOutdatedMock()
+    ? '<p class="small">Your unfinished mock uses an earlier content version and cannot be resumed. Start a new mock; completed study progress is retained.</p>'
+    : '';
   const len = MOCK_LENGTHS[saved.run.length];
   return `<div class="card card-accent">
     <div class="eyebrow-accent">Unfinished mock</div>
@@ -74,9 +78,10 @@ function renderMockSetup(): string {
     <div class="card">
       <div class="eyebrow">This mock</div>
       <div class="mock-meta">
-        ${(Object.keys(real) as Domain[]).map(d => `<div><b>${real[d]}</b><span>${d === 'Business' ? 'Business' : DOMAIN_LABEL[d]}</span></div>`).join('')}
+        ${(Object.keys(real) as Domain[]).map(d => `<div><b>${real[d]}</b> <span>${d === 'Business' ? 'Business' : DOMAIN_LABEL[d]}</span></div>`).join('')}
       </div>
-      <p class="small" style="margin:8px 0 0">Split follows the exam outline: 33% People / 41% Process / 26% Business Environment. Includes choose-2 and ordering questions.</p>
+      <p class="small" style="margin:8px 0 0">Targets the July 2026 domain weights: 33% People / 41% Process / 26% Business Environment. Counts above show the actual mix. Includes choose-2 and ordering questions.</p>
+      <p class="small">Practice simulation: the 40% predictive / 60% agile-and-hybrid balance, case-study sections and scheduled exam breaks are not simulated.</p>
       ${short.length ? `<p class="warn-line">Not enough ${short.map(d => DOMAIN_LABEL[d]).join(' and ')} questions yet (${short.map(d => `${real[d]} of ${want[d]}`).join(', ')}), so the rest come from other domains.</p>` : ''}
     </div>
     <ul class="small mock-rules">
@@ -110,15 +115,16 @@ export function renderPracticePicker(): string {
     ${renderResumeCard()}
 
     <div role="radiogroup" aria-label="Practice type">
-      ${modeOption('mix', 'Exam mix (no idea? pick this)', `${SESSION_SIZE} random questions weighted like the PMP exam: 3 People · 4 Process · 3 Business Environment. Unseen and missed questions come first.`)}
+      ${modeOption('mix', 'Exam mix (no idea? pick this)', `${SESSION_SIZE} questions targeting 3 People · 4 Process · 3 Business Environment, using each question’s ECO task. Study-only questions are excluded. Unseen and missed questions come first.`)}
       ${modeOption('mistakes', 'Retry my mistakes', mistakes ? `Up to ${SESSION_SIZE} questions you last answered wrong · ${mistakes} waiting` : 'No missed questions yet', mistakes === 0)}
       ${modeOption('topics', 'Choose topics', 'Pick one or more below')}
-      ${modeOption('mock', 'Mock exam (timed)', 'Exam conditions: a clock, no answers shown until the end. Mini or full length.')}
+      ${modeOption('mock', 'Mock exam (timed)', 'Pausable practice simulation with answers at the end. Mini or full length.')}
     </div>
 
     ${pick.mode === 'mock' ? renderMockSetup() : `
-    ${DOMAINS.map(domain => `
-      <div class="eyebrow group-label">${DOMAIN_LABEL[domain]}</div>
+    <p class="small">Topics are study filters; exam domains follow each question’s task. Mixed topics can span domains. Study support does not count toward domain readiness.</p>
+    ${TOPIC_GROUPS.map(domain => `
+      <div class="eyebrow group-label">${groupLabel(domain)}</div>
       <div class="topic-grid">
         ${TOPICS.filter(t => t.domain === domain).map(t => {
           const on = pick.mode === 'topics' && pick.topics.includes(t.id);
@@ -157,7 +163,7 @@ function renderReadiness(): string {
       ? `<div class="band-row"><span class="band-name">${DOMAIN_LABEL[r.domain]}</span><span class="band band-${r.band}">${BAND_LABEL[r.band]}</span><span class="band-sub">${pct(r.share)} of your latest answers right · ${r.seen} questions seen</span></div>`
       : `<div class="band-row"><span class="band-name">${DOMAIN_LABEL[r.domain]}</span><span class="band band-none">Not enough data</span><span class="band-sub">${r.seen} of ${READINESS_MIN_SEEN} questions needed</span></div>`).join('')}
     <div class="readiness-scale" aria-label="Readiness thresholds" role="group"><div>Needs improvement<br>&lt;${floors[2]}%</div><div>Below<br>${floors[2]}–${floors[1]! - 1}%</div><div>Target<br>${floors[1]}–${floors[0]! - 1}%</div><div>Above<br>≥${floors[0]}%</div></div>
-    <p class="small" style="margin:10px 0 0">PMI reports these four bands but doesn't publish the cut-offs, so ours are a guide, not a prediction.</p>
+    <p class="small" style="margin:10px 0 0">PMI reports these four bands but doesn't publish the cut-offs, so ours are a guide, not a prediction. Domains use question-level ECO tasks; supplemental study is excluded. Earlier completed mock summaries retain their original classifications.</p>
   </div>`;
 }
 
@@ -193,9 +199,10 @@ export function renderPracticeStats(): string {
 
     <div class="card">
       <div class="eyebrow">Accuracy by topic · line = ${Math.round(WEAK_ACCURACY * 100)}% target</div>
-      ${DOMAINS.map(domain => {
-        const d = s.domains.find(x => x.domain === domain)!;
-        return `<div class="domain-head"><span class="eyebrow">${DOMAIN_LABEL[domain]}</span><span class="small">${d.attempts ? pct(d.correct / d.attempts) : '—'}</span></div>
+      <p class="small">Domain accuracy uses each question’s ECO task. Topic bars include all study questions and may span domains.</p>
+      ${TOPIC_GROUPS.map(domain => {
+        const d = s.domains.find(x => x.domain === domain);
+        return `<div class="domain-head"><span class="eyebrow">${groupLabel(domain)}</span><span class="small">${d?.attempts ? pct(d.correct / d.attempts) : '—'}</span></div>
           ${s.topics.filter(t => t.domain === domain).map(topicBar).join('')}`;
       }).join('')}
     </div>

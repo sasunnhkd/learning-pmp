@@ -25,7 +25,7 @@ function renderPracticeCard(): string {
           ? `<div class="studied-badge">${icons.checkCircle} ${last.score}/${last.total} today</div>`
           : '<span class="badge badge-new">Not done today</span>'}
       </div>
-      <p class="lesson-preview" style="margin-bottom:12px">Pick a topic or let the app mix questions like the real exam.${chips.length ? (weak.length ? ' Your weakest topics:' : ' Not covered yet:') : ''}</p>
+      <p class="lesson-preview" style="margin-bottom:12px">Pick a study topic or practise a mix targeting the July 2026 exam domain weights.${chips.length ? (weak.length ? ' Your weakest topics:' : ' Not covered yet:') : ''}</p>
       ${chips.length ? `<div class="chips">${chips.join('')}</div>` : ''}
       <div class="btn-group">
         <button class="btn btn-accent" onclick="navigate('practice')">${icons.target} ${doneToday ? 'Practise again' : "Start today's practice"}</button>
@@ -135,7 +135,7 @@ export function renderDashboard(): string {
       ${icons.sparkle}
       <div class="quote-eyebrow">The Daily Practice</div>
       <p class="quote-text">"Small habits, repeated, become extraordinary results."</p>
-      <div class="quote-sub">Each day: 10 minutes lesson + 5 minutes quiz, then a 10-question Daily Practice. That's it. Your streak is the best predictor of your success—keep it alive.</div>
+      <div class="quote-sub">Suggested daily routine: 10 minutes of lesson review, a short quiz, then Daily Practice. Use your results to guide further study and scenario practice; a streak alone does not establish exam readiness.</div>
     </div>
 
     <button class="nav-btn" onclick="navigate('all')">

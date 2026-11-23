@@ -20,6 +20,8 @@ export type QuizQuestion = {
   correct: number | number[];
   explain: string;
   type?: ItemType;
+  // Required in authored banks; null marks supplemental study outside weighted exam drills.
+  ecoTask?: import('./eco').EcoTaskId | null;
 };
 
 export type QuestionBank = Record<string, QuizQuestion[]>;

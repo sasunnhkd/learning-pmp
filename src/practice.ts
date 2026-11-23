@@ -8,8 +8,9 @@ import type {
   PracticeData, PracticeMode, PracticeSession, QuestionBank, QuizQuestion,
 } from './types';
 import { validateQuestion } from './items.ts';
+import { domainOf, isEcoTask, type Domain, type EcoTaskId } from './eco.ts';
+export { domainOf, type Domain } from './eco.ts';
 
-export type Domain = 'People' | 'Process' | 'Business';
 
 export const DOMAIN_LABEL: Record<Domain, string> = {
   People: 'People',
@@ -23,18 +24,20 @@ export const TOPICS = [
   { id: 'team', label: 'Team & Leadership', domain: 'People' },
   { id: 'stakeholders', label: 'Stakeholders', domain: 'People' },
   { id: 'comms', label: 'Communications', domain: 'People' },
-  { id: 'foundations', label: 'Foundations', domain: 'Process' },
-  { id: 'integration', label: 'Integration & Change', domain: 'Process' },
+  { id: 'foundations', label: 'Foundations', domain: null },
+  { id: 'integration', label: 'Integration', domain: null },
+  { id: 'change', label: 'Change Control', domain: 'Business' },
+  { id: 'resources', label: 'Resource Management', domain: 'Process' },
   { id: 'scope', label: 'Scope', domain: 'Process' },
   { id: 'schedule', label: 'Schedule', domain: 'Process' },
   { id: 'cost', label: 'Cost & Finance', domain: 'Process' },
   { id: 'quality', label: 'Quality', domain: 'Process' },
-  { id: 'risk', label: 'Risk', domain: 'Process' },
+  { id: 'risk', label: 'Risk', domain: 'Business' },
   { id: 'procurement', label: 'Procurement', domain: 'Process' },
-  { id: 'agile', label: 'Agile & Hybrid', domain: 'Process' },
+  { id: 'agile', label: 'Agile & Hybrid', domain: null },
   { id: 'business', label: 'Business Environment', domain: 'Business' },
-  { id: 'mindset', label: 'Exam Mindset', domain: 'Business' },
-] as const satisfies readonly { id: string; label: string; domain: Domain }[];
+  { id: 'mindset', label: 'Exam Mindset', domain: null },
+] as const satisfies readonly { id: string; label: string; domain: Domain | null }[];
 
 export type TopicId = typeof TOPICS[number]['id'];
 export const TOPIC_BY_ID = new Map<string, typeof TOPICS[number]>(TOPICS.map(t => [t.id, t]));
@@ -42,10 +45,10 @@ export const TOPIC_BY_ID = new Map<string, typeof TOPICS[number]>(TOPICS.map(t =
 // Trainer QUIZ labels (data/practice-bank.json "topic") → practice topic. Tiny labels are folded
 // into a bigger topic. A Trainer label missing here makes buildPool() throw (caught by the tests).
 export const TRAINER_TOPIC: Record<string, TopicId> = {
-  Team: 'team', Resources: 'team', Role: 'team',
+  Team: 'team', Resources: 'resources', Role: 'team',
   Stakeholder: 'stakeholders',
   Comms: 'comms',
-  Integration: 'integration', Change: 'integration',
+  Integration: 'integration', Change: 'change',
   Scope: 'scope',
   Schedule: 'schedule',
   Cost: 'cost',
@@ -74,13 +77,13 @@ export const SESSION_SIZE = 10;
 export const EXAM_WEIGHTS: Record<Domain, number> = { People: 0.33, Process: 0.41, Business: 0.26 };
 
 // Questions per domain for a session of `size`, by largest remainder so the parts always sum
-// to `size`: 10 → 3/4/3, 60 → 20/25/15, 180 → 59/74/47.
+// to `size`: 10 → 3/4/3, 180 → 59/74/47. Ties follow domain order.
 export function splitMix(size: number): Record<Domain, number> {
   const domains = Object.keys(EXAM_WEIGHTS) as Domain[];
   const raw = domains.map(d => ({ d, x: EXAM_WEIGHTS[d] * size }));
   const out = Object.fromEntries(raw.map(r => [r.d, Math.floor(r.x)])) as Record<Domain, number>;
   let left = size - domains.reduce((n, d) => n + out[d], 0);
-  for (const r of [...raw].sort((a, b) => (b.x % 1) - (a.x % 1))) {
+  for (const r of [...raw].sort((a, b) => Math.round(((b.x % 1) - (a.x % 1)) * 1e10))) {
     if (left-- <= 0) break;
     out[r.d]++;
   }
@@ -93,10 +96,11 @@ export const MIN_ATTEMPTS = 3;
 // Saved session history is capped so localStorage stays small.
 export const MAX_SESSIONS = 100;
 
-export type PracticeQuestion = QuizQuestion & { id: string; topic: TopicId };
-export type TrainerRow = QuizQuestion & { topic: string };
+export type BankQuestion = QuizQuestion & { ecoTask: EcoTaskId | null };
+export type PracticeQuestion = BankQuestion & { id: string; topic: TopicId };
+export type TrainerRow = BankQuestion & { topic: string };
 // data/item-bank.json: multi-select and ordering items, tagged directly with a practice topic id.
-export type ItemRow = QuizQuestion & { topic: string };
+export type ItemRow = BankQuestion & { topic: string };
 
 // Stable id from the question stem (FNV-1a 32-bit), so reordering a bank keeps saved stats.
 // Editing a stem gives it a new id: its old stats stay in storage but stop counting.
@@ -112,7 +116,7 @@ export function questionId(stem: string): string {
 // Saved selections are option indices. Verify that they still refer to the same
 // choices and grading rules even when the stem (and therefore ID) is unchanged.
 export function practiceItemSignature(question: QuizQuestion): string {
-  return JSON.stringify([question.type ?? 'single', question.options, question.correct]);
+  return JSON.stringify([question.type ?? 'single', question.options, question.correct, question.ecoTask]);
 }
 
 // Throws on an unknown topic or a malformed question, so a bad bank fails the tests and the
@@ -124,11 +128,13 @@ export function buildPool(dayBank: QuestionBank, trainer: TrainerRow[], items: I
     if (!topic) throw new Error(`No practice topic for ${where}`);
     const errs = validateQuestion(q);
     if (errs.length) throw new Error(`${where}: ${errs.join('; ')}`);
+    const ecoTask = q.ecoTask;
+    if (ecoTask !== null && !isEcoTask(ecoTask)) throw new Error(`${where}: invalid or missing ecoTask`);
     const id = questionId(q.q);
     if (seen.has(id)) return; // same stem in two banks: keep the first copy
     seen.add(id);
     // Copy field by field (no spread) so bank-only fields like `topic` labels don't leak in.
-    const copy: PracticeQuestion = { q: q.q, options: q.options, correct: q.correct, explain: q.explain, id, topic };
+    const copy: PracticeQuestion = { q: q.q, options: q.options, correct: q.correct, explain: q.explain, ecoTask, id, topic };
     if (q.type) copy.type = q.type;
     pool.push(copy);
   };
@@ -195,24 +201,26 @@ export function selectSession(
   }
   // Exam mix: fill each domain's quota, then top up from whatever is left if a domain ran short.
   const quota = splitMix(size);
+  const examPool = pool.filter(q => domainOf(q) !== null);
   const picked: PracticeQuestion[] = [];
   for (const domain of Object.keys(quota) as Domain[]) {
-    const inDomain = pool.filter(q => TOPIC_BY_ID.get(q.topic)!.domain === domain);
+    const inDomain = examPool.filter(q => domainOf(q) === domain);
     picked.push(...pickFrom(inDomain, quota[domain], stats, rng));
   }
   if (picked.length < size) {
     const taken = new Set(picked.map(q => q.id));
-    picked.push(...pickFrom(pool.filter(q => !taken.has(q.id)), size - picked.length, stats, rng));
+    picked.push(...pickFrom(examPool.filter(q => !taken.has(q.id)), size - picked.length, stats, rng));
   }
   return shuffle(picked, rng);
 }
 
-export const domainOf = (topic: string): Domain => TOPIC_BY_ID.get(topic)?.domain ?? 'Process';
-
 // Questions per domain in a picked list (the mock setup card shows the real split).
-export function countByDomain(qs: { topic: string }[]): Record<Domain, number> {
+export function countByDomain(qs: QuizQuestion[]): Record<Domain, number> {
   const out: Record<Domain, number> = { People: 0, Process: 0, Business: 0 };
-  for (const q of qs) out[domainOf(q.topic)]++;
+  for (const q of qs) {
+    const domain = domainOf(q);
+    if (domain) out[domain]++;
+  }
   return out;
 }
 
@@ -243,7 +251,9 @@ export function computeReadiness(pool: PracticeQuestion[], practice: PracticeDat
   for (const q of pool) {
     const s = practice.questions[q.id];
     if (!s) continue;
-    const a = acc[domainOf(q.topic)];
+    const domain = domainOf(q);
+    if (!domain) continue;
+    const a = acc[domain];
     a.seen++;
     if (s.lastCorrect) a.right++;
   }
@@ -278,7 +288,7 @@ export type TopicStatus = 'new' | 'weak' | 'ok';
 export type TopicStat = {
   id: TopicId;
   label: string;
-  domain: Domain;
+  domain: Domain | null;
   poolSize: number;
   seenUnique: number;
   attempts: number;
@@ -328,8 +338,13 @@ export function computeStats(pool: PracticeQuestion[], practice: PracticeData): 
     t.status = topicStatus(t.attempts, t.correct);
   }
   const domains = (Object.keys(DOMAIN_LABEL) as Domain[]).map(domain => {
-    const ts = topics.filter(t => t.domain === domain);
-    return { domain, attempts: ts.reduce((n, t) => n + t.attempts, 0), correct: ts.reduce((n, t) => n + t.correct, 0) };
+    let attempts = 0;
+    let correct = 0;
+    for (const q of pool) {
+      const s = practice.questions[q.id];
+      if (s && domainOf(q) === domain) { attempts += s.seen; correct += s.correct; }
+    }
+    return { domain, attempts, correct };
   });
   const sum = (k: 'seenUnique' | 'attempts' | 'correct') => topics.reduce((n, t) => n + t[k], 0);
   return {
