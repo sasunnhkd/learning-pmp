@@ -207,7 +207,7 @@ function tick(): void {
 
 function saveMockProgress(q: QuizState): void {
   if (!q.mock || q.finished) return;
-  storeSavedMock({ v: 1, ids: q.ids, idx: q.idx, answers: q.answers, run: pauseRun(q.mock, Date.now()) });
+  storeSavedMock({ v: 2, ids: q.ids, itemSignatures: q.questions.map(practiceItemSignature), idx: q.idx, answers: q.answers, run: pauseRun(q.mock, Date.now()) });
 }
 
 export function startMock(): void {
@@ -257,7 +257,9 @@ function finishMock(timedOut: boolean): void {
   while (q.answers.length < q.questions.length) q.answers.push({ selected: [], correct: false });
   const byDomain: Record<string, { right: number; total: number }> = {};
   q.answers.forEach((a, i) => {
-    const r = (byDomain[domainOf(q.topics[i] ?? '')] ??= { right: 0, total: 0 });
+    const domain = domainOf(q.questions[i]!);
+    if (!domain) return;
+    const r = (byDomain[domain] ??= { right: 0, total: 0 });
     r.total++;
     if (a.correct) r.right++;
   });

@@ -10,8 +10,12 @@
       "Report each member's missed handoffs to their functional manager",
       "Add a daily written status report from each group"
     ],
-    "correct": [0, 2],
-    "explain": "The team owns how it works together, so the project manager facilitates: agree working rules (team charter) and let the team inspect and adapt (retrospective). Replacing people or reporting them to managers skips coaching and damages trust. More status reports add overhead without fixing the handoff."
+    "correct": [
+      0,
+      2
+    ],
+    "explain": "The team owns how it works together, so the project manager facilitates: agree working rules (team charter) and let the team inspect and adapt (retrospective). Replacing people or reporting them to managers skips coaching and damages trust. More status reports add overhead without fixing the handoff.",
+    "ecoTask": "PEO03"
   },
   {
     "topic": "team",
@@ -23,8 +27,14 @@
       "Talk with each person privately to understand their position",
       "Help them agree on an approach they can both support"
     ],
-    "correct": [2, 0, 3, 1],
-    "explain": "Understand first (private conversations), then collaborate on the facts and shared goal, reach a solution both support, and confirm it holds. Jumping straight to a joint meeting, or deciding for them, tends to harden positions instead of solving the problem."
+    "correct": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "explain": "Understand first (private conversations), then collaborate on the facts and shared goal, reach a solution both support, and confirm it holds. Jumping straight to a joint meeting, or deciding for them, tends to harden positions instead of solving the problem.",
+    "ecoTask": "PEO02"
   },
   {
     "topic": "stakeholders",
@@ -37,8 +47,12 @@
       "Meet the stakeholder to understand their concerns and agree how they will be engaged",
       "Stop all work until the stakeholder approves every deliverable"
     ],
-    "correct": [1, 3],
-    "explain": "A missed stakeholder is identified late, not ignored: record and analyse them, then engage them directly to understand concerns. Ignoring or blocking an influential stakeholder raises risk; halting all work is an overreaction before you know what the concerns are."
+    "correct": [
+      1,
+      3
+    ],
+    "explain": "A missed stakeholder is identified late, not ignored: record and analyse them, then engage them directly to understand concerns. Ignoring or blocking an influential stakeholder raises risk; halting all work is an overreaction before you know what the concerns are.",
+    "ecoTask": "PEO04"
   },
   {
     "topic": "comms",
@@ -51,8 +65,12 @@
       "Record decisions in a shared written log that everyone can read and comment on",
       "Send more emails so nothing is missed"
     ],
-    "correct": [1, 3],
-    "explain": "Fix the communication approach for a distributed team: adjust the plan so the burden is shared, and make decisions visible asynchronously. Forcing one person to bear the cost or excluding them hurts engagement; more email adds volume, not clarity."
+    "correct": [
+      1,
+      3
+    ],
+    "explain": "Fix the communication approach for a distributed team: adjust the plan so the burden is shared, and make decisions visible asynchronously. Forcing one person to bear the cost or excluding them hurts engagement; more email adds volume, not clarity.",
+    "ecoTask": "PEO08"
   },
   {
     "topic": "integration",
@@ -64,8 +82,14 @@
       "Update the plans and tell stakeholders the decision",
       "Analyse the impact on scope, schedule, cost and risk"
     ],
-    "correct": [1, 3, 0, 2],
-    "explain": "Integrated change control: record the request, assess its impact, get a decision from whoever has authority (often a change control board), then update the baselines and plans and communicate. Analysing before logging, or updating plans before approval, bypasses control."
+    "correct": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "explain": "Integrated change control: record the request, assess its impact, get a decision from whoever has authority (often a change control board), then update the baselines and plans and communicate. Analysing before logging, or updating plans before approval, bypasses control.",
+    "ecoTask": "BUS03"
   },
   {
     "topic": "risk",
@@ -78,8 +102,12 @@
       "Wait until the delay is confirmed before doing anything",
       "Tell the team to start working overtime now"
     ],
-    "correct": [0, 2],
-    "explain": "The delay is still uncertain, so treat it as a risk: record and analyse it, then plan a response with the supplier. Cancelling the contract is drastic and may breach it; waiting loses response time; overtime now spends money on a delay that may not happen."
+    "correct": [
+      0,
+      2
+    ],
+    "explain": "The delay is still uncertain, so treat it as a risk: record and analyse it, then plan a response with the supplier. Cancelling the contract is drastic and may breach it; waiting loses response time; overtime now spends money on a delay that may not happen.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "risk",
@@ -92,8 +120,15 @@
       "Analyse and prioritise the risks",
       "Implement the agreed responses when needed"
     ],
-    "correct": [1, 3, 0, 4, 2],
-    "explain": "Risks are identified, then analysed and prioritised so effort goes to the important ones, then responses are planned, implemented when triggered, and monitored. In practice the cycle repeats throughout the project."
+    "correct": [
+      1,
+      3,
+      0,
+      4,
+      2
+    ],
+    "explain": "Identify and analyze risks, plan responses, implement them at the appropriate time, and monitor effectiveness. Some responses act before an event occurs; contingent responses follow agreed triggers. The cycle repeats throughout delivery.",
+    "ecoTask": "BUS05"
   },
   {
     "topic": "agile",
@@ -106,8 +141,12 @@
       "If it cannot wait, the product owner and team agree to swap it for not-yet-started work of similar size, keeping the sprint goal",
       "Extend the sprint by a week to make room"
     ],
-    "correct": [0, 3],
-    "explain": "New work normally goes to the product backlog, ordered by the product owner. If it truly cannot wait, scope inside the sprint can be renegotiated between the product owner and team as long as the sprint goal holds. Sprints are fixed timeboxes, so extending one is wrong; overtime and silent additions break sustainable pace and transparency."
+    "correct": [
+      0,
+      3
+    ],
+    "explain": "New work normally goes to the product backlog, ordered by the product owner. If it truly cannot wait, scope inside the sprint can be renegotiated between the product owner and team as long as the sprint goal holds. Sprints are fixed timeboxes, so extending one is wrong; overtime and silent additions break sustainable pace and transparency.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "agile",
@@ -119,8 +158,14 @@
       "Sprint retrospective",
       "Sprint planning"
     ],
-    "correct": [3, 1, 0, 2],
-    "explain": "A sprint starts with planning, runs daily scrums while the work is done, shows the increment to stakeholders at the review, and ends with the retrospective, where the team improves how it works."
+    "correct": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "explain": "Within the containing Sprint event, Sprint Planning initiates the Sprint; Daily Scrums help Developers inspect and adapt during the work; Sprint Review inspects the outcome with stakeholders; Sprint Retrospective concludes the Sprint.",
+    "ecoTask": null
   },
   {
     "topic": "quality",
@@ -133,22 +178,30 @@
       "Add one more inspection only at final delivery",
       "Ask the customer to accept the defects to protect the schedule"
     ],
-    "correct": [0, 2],
-    "explain": "Find out why the defects escaped and improve the process: prevention over inspection. Defending the old test result or pressing the customer to accept defects ignores quality; a single extra inspection at the end catches problems late, when they cost most to fix."
+    "correct": [
+      0,
+      2
+    ],
+    "explain": "Find out why the defects escaped and improve the process: prevention over inspection. Defending the old test result or pressing the customer to accept defects ignores quality; a single extra inspection at the end catches problems late, when they cost most to fix.",
+    "ecoTask": "PRO07"
   },
   {
     "topic": "cost",
     "type": "multi",
-    "q": "Halfway through a project, the cost performance index (CPI) is 0.85 and the schedule performance index (SPI) is 1.05. Which two statements are true?",
+    "q": "At midpoint, CPI is 0.85 and SPI is 1.05. Which two interpretations of these EVM ratios are correct?",
     "options": [
       "The project is over budget for the work completed",
       "The project is behind schedule",
-      "The project is ahead of schedule",
+      "Earned work value exceeds planned work value at this date",
       "The project is under budget",
       "Both cost and schedule are exactly on plan"
     ],
-    "correct": [0, 2],
-    "explain": "CPI = EV / AC: below 1 means each unit of money spent earned less than planned, so the project is over budget. SPI = EV / PV: above 1 means more work is done than planned at this point, so it is ahead of schedule."
+    "correct": [
+      0,
+      2
+    ],
+    "explain": "CPI below 1 indicates unfavorable cost efficiency for work completed. SPI above 1 means EV exceeds PV at this date; it does not establish that the critical path is ahead or that the project will finish early.",
+    "ecoTask": "PRO09"
   },
   {
     "topic": "business",
@@ -161,8 +214,12 @@
       "Raise a change request for the changes needed to comply",
       "Leave compliance to the vendor that builds the product"
     ],
-    "correct": [1, 3],
-    "explain": "External regulatory change is part of the business environment the project manager must watch. Assess the impact with the right experts, then manage the needed changes through change control. Ignoring it, waiting for an audit, or handing accountability to a vendor leaves the organisation exposed."
+    "correct": [
+      1,
+      3
+    ],
+    "explain": "External regulatory change is part of the business environment the project manager must watch. Assess the impact with the right experts, then manage the needed changes through change control. Ignoring it, waiting for an audit, or handing accountability to a vendor leaves the organisation exposed.",
+    "ecoTask": "BUS08"
   },
   {
     "topic": "business",
@@ -175,8 +232,12 @@
       "The expected benefits are now lower than the cost to finish",
       "A non-critical task slipped by two days"
     ],
-    "correct": [0, 3],
-    "explain": "The business case justifies the project by its value. If the need is gone or remaining cost now exceeds the benefits, the sponsor must decide whether to continue, change or stop. Staffing changes, minor defects and small slips are normal project issues, managed inside the project."
+    "correct": [
+      0,
+      3
+    ],
+    "explain": "The business case justifies the project by its value. If the need is gone or remaining cost now exceeds the benefits, the sponsor must decide whether to continue, change or stop. Staffing changes, minor defects and small slips are normal project issues, managed inside the project.",
+    "ecoTask": "PRO03"
   },
   {
     "topic": "mindset",
@@ -189,7 +250,11 @@
       "Address the issue directly with the people involved before escalating",
       "Make a quick decision alone to avoid delay"
     ],
-    "correct": [1, 3],
-    "explain": "The exam favours a project manager who understands the situation first, then works with the people involved and escalates only when it is beyond their authority. Escalating at once, rigidly following an outdated plan, or deciding alone usually signal a wrong answer."
+    "correct": [
+      1,
+      3
+    ],
+    "explain": "The exam favours a project manager who understands the situation first, then works with the people involved and escalates only when it is beyond their authority. Escalating at once, rigidly following an outdated plan, or deciding alone usually signal a wrong answer.",
+    "ecoTask": null
   }
 ]

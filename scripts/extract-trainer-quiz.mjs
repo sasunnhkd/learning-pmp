@@ -16,7 +16,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const TRAINER_PATH = join(root, 'public', 'PMP_Mindset_Trainer.html');
 export const BANK_PATH = join(root, 'data', 'practice-bank.json');
 
-// Returns [{topic, q, options, correct, explain}] in Trainer order.
+// Sixth tuple field is the reviewed July 2026 ECO task, or null for study support.
 export function extractTrainerQuiz(html) {
   const start = html.indexOf('const QUIZ = [');
   if (start < 0) throw new Error('const QUIZ = [ not found in Trainer page');
@@ -25,12 +25,13 @@ export function extractTrainerQuiz(html) {
   const literal = html.slice(start + 'const QUIZ = '.length, end + 2);
   const rows = vm.runInNewContext(`(${literal})`, Object.create(null), { timeout: 1000 });
   return rows.map((r, i) => {
-    const [topic, q, options, correct, explain] = r;
+    const [topic, q, options, correct, explain, ecoTask] = r;
     if (typeof topic !== 'string' || typeof q !== 'string' || !Array.isArray(options) || options.length !== 4
-      || !Number.isInteger(correct) || correct < 0 || correct > 3 || typeof explain !== 'string') {
+      || !Number.isInteger(correct) || correct < 0 || correct > 3 || typeof explain !== 'string'
+      || !(ecoTask === null || /^(PEO0[1-8]|PRO(0[1-9]|10)|BUS0[1-8])$/.test(ecoTask))) {
       throw new Error(`QUIZ entry ${i + 1} has the wrong shape`);
     }
-    return { topic, q, options: [...options], correct, explain };
+    return { topic, q, options: [...options], correct, explain, ecoTask };
   });
 }
 

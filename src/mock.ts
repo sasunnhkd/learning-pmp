@@ -2,8 +2,10 @@
 // Pure functions only (no DOM, no storage) so tests/mock.test.ts runs them under plain Node.
 // The UI side (ticking, saving, resuming) is in src/actions.ts.
 import type { MockLength, MockRun } from './types';
+import { domainOf } from './eco.ts';
+import { practiceItemSignature, type PracticeQuestion } from './practice.ts';
 
-// Full = the real exam (PMP ECO July 2026: 180 questions, 240 minutes).
+// Full uses the July 2026 exam's question count and time budget, as a pausable simulation.
 // Mini = a third of it at the same pace (80 s per question).
 export const MOCK_LENGTHS: Record<MockLength, { size: number; minutes: number; label: string }> = {
   mini: { size: 60, minutes: 80, label: 'Mini mock' },
@@ -46,11 +48,12 @@ export function formatClock(ms: number): string {
 
 // What localStorage keeps for an unfinished mock. Question ids, not questions, so a bank edit
 // can't resurrect stale text. If any id is no longer in the pool (a stem was edited since), the
-// saved mock can't be resumed and is discarded (resumeSavedMock() in src/actions.ts).
+// saved mock can't be resumed; the picker explains that a new mock is needed.
 // answers.length === idx: one answer per question already passed.
 export type SavedMock = {
-  v: 1;
+  v: 2;
   ids: string[];
+  itemSignatures: string[];
   idx: number;
   answers: { selected: number[]; correct: boolean }[];
   run: MockRun; // always saved paused (runningSince null)
@@ -58,8 +61,18 @@ export type SavedMock = {
 
 export function isSavedMock(x: unknown): x is SavedMock {
   const s = x as SavedMock | null;
-  return !!s && s.v === 1 && Array.isArray(s.ids) && s.ids.length > 0 && Number.isInteger(s.idx)
+  return !!s && s.v === 2 && Array.isArray(s.ids) && s.ids.length > 0
+    && s.ids.every(id => typeof id === 'string')
+    && Array.isArray(s.itemSignatures) && s.itemSignatures.length === s.ids.length
+    && s.itemSignatures.every(sig => typeof sig === 'string') && Number.isInteger(s.idx)
     && s.idx >= 0 && s.idx < s.ids.length && Array.isArray(s.answers) && s.answers.length === s.idx && !!s.run
     && (s.run.length === 'mini' || s.run.length === 'full') && typeof s.run.elapsedMs === 'number'
     && typeof s.run.limitMs === 'number';
+}
+
+// Reject legacy or revised content instead of resuming with stale grading or supplemental items.
+export function mockMatchesQuestions(saved: SavedMock, questions: (PracticeQuestion | undefined)[]): boolean {
+  return questions.length === saved.ids.length && questions.every((q, i) => q
+    && q.id === saved.ids[i] && domainOf(q) !== null
+    && practiceItemSignature(q) === saved.itemSignatures[i]);
 }

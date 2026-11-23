@@ -18,7 +18,7 @@
     "week": 1,
     "title": "Project, Program, Portfolio",
     "domain": "Foundations",
-    "lesson": "- **Project**: single temporary effort with specific output.\n- **Program**: group of related projects managed together for benefits not available individually (e.g., a company's digital transformation program containing multiple projects).\n- **Portfolio**: collection of projects, programs, and operations grouped to achieve strategic objectives. They don't need to be related.\n\n**Hierarchy**: Portfolio → Programs → Projects. PMs report into Program Managers, who report into Portfolio Managers.",
+    "lesson": "- **Project**: single temporary effort with specific output.\n- **Program**: group of related projects managed together for benefits not available individually (e.g., a company's digital transformation program containing multiple projects).\n- **Portfolio**: collection of projects, programs, and operations grouped to achieve strategic objectives. They don't need to be related.\n\n**Relationships**: portfolios align investments with strategy; programs coordinate related work for benefits. Projects may sit inside or outside programs. These relationships do not prescribe reporting lines: authority follows the organizational structure and governance.",
     "keyTerms": [
       "Program",
       "Portfolio",
@@ -57,7 +57,7 @@
     "week": 1,
     "title": "7 Performance Domains & 5 Focus Areas",
     "domain": "Foundations",
-    "lesson": "PMBOK 8 organizes practice into **seven** performance domains: **Governance**, **Scope**, **Schedule**, **Finance**, **Stakeholders**, **Resources**, and **Risk**.\n\nIt also brings back process guidance: about 40 non-prescriptive processes arranged in **five focus areas**:\n1. Initiating\n2. Planning\n3. Executing\n4. Monitoring and Controlling\n5. Closing\n\nDomains interact; you work in several at once.\n\n> Compared with PMBOK 7's eight domains, Planning, Project Work, Delivery, Measurement, Team, and Development Approach are no longer separate domains; their ideas are spread across the new seven, and uncertainty is handled within Risk.",
+    "lesson": "PMBOK 8 organizes practice into **seven** performance domains: **Governance**, **Scope**, **Schedule**, **Finance**, **Stakeholders**, **Resources**, and **Risk**.\n\nIt also brings back process guidance: about 40 non-prescriptive processes arranged in **five focus areas** (overlapping areas of management activity, not sequential project phases):\n1. Initiating\n2. Planning\n3. Executing\n4. Monitoring and Controlling\n5. Closing\n\nDomains interact; you work in several at once.\n\n> Compared with PMBOK 7's eight domains, Planning, Project Work, Delivery, Measurement, Team, and Development Approach are no longer separate domains; their ideas are spread across the new seven, and uncertainty is handled within Risk.",
     "keyTerms": [
       "Governance",
       "Finance",
@@ -71,7 +71,7 @@
     "week": 1,
     "title": "Development Approaches",
     "domain": "Foundations",
-    "lesson": "Three main approaches:\n- **Predictive** (waterfall): plan everything upfront, best for stable requirements.\n- **Adaptive** (agile): iterative, embraces change, best for evolving requirements.\n- **Hybrid**: combination, e.g., predictive scope with agile delivery.\n\n**Choice depends on**: requirements clarity, change frequency, risk level, stakeholder availability, and delivery cadence needs.\n\n> The 2026 exam expects you to **recommend** an approach after assessing the project's needs, complexity, and size. About 40% of exam items are predictive and about 60% agile or hybrid.",
+    "lesson": "Three main approaches:\n- **Predictive** (waterfall): plan scope, schedule, and cost extensively early when requirements are stable; refine details and manage changes as evidence develops.\n- **Adaptive** (agile): iterative and incremental, using feedback to adapt to evolving requirements.\n- **Hybrid**: combination, e.g., predictive scope with agile delivery.\n\n**Choice depends on**: requirements clarity, change frequency, risk level, stakeholder availability, and delivery cadence needs.\n\n> The 2026 exam expects you to **recommend** an approach after assessing the project's needs, complexity, and size. About 40% of exam items are predictive and about 60% agile or hybrid.",
     "keyTerms": [
       "Predictive",
       "Adaptive",
@@ -137,7 +137,7 @@
     "week": 2,
     "title": "Leadership Styles",
     "domain": "Team",
-    "lesson": "Match style to situation:\n- **Servant**: empower team (preferred in agile).\n- **Transformational**: inspire vision.\n- **Transactional**: clear rewards/consequences.\n- **Laissez-faire**: hands-off (works for senior teams).\n- **Charismatic**: rally energy.\n- **Interactional**: blend styles.\n\nEffective PMs flex between styles.\n\n> Exam tip: the 2026 outline asks you to **determine** an appropriate leadership style. Servant and collaborative answers are the usual default, but adapt to the team's maturity and the situation.",
+    "lesson": "Match style to situation:\n- **Servant**: empower team (preferred in agile).\n- **Transformational**: inspire vision.\n- **Transactional**: clear rewards/consequences.\n- **Laissez-faire**: hands-off (works for senior teams).\n- **Charismatic**: rally energy.\n- **Interactional**: blend styles.\n\nEffective PMs flex between styles.\n\n> Exam tip: the 2026 outline asks you to **determine** an appropriate leadership style. Choose from the evidence, team maturity, urgency, and decision authority; no leadership style is the correct answer in every scenario.",
     "keyTerms": [
       "Servant",
       "Transformational",
@@ -150,7 +150,7 @@
     "week": 2,
     "title": "Conflict Management",
     "domain": "Team",
-    "lesson": "Conflict is inevitable, and often healthy.\n\n## Thomas-Kilmann modes\n- **Collaborating** (win-win, preferred): solve together.\n- **Compromising**: both give a little.\n- **Accommodating**: you yield.\n- **Competing**: assert position.\n- **Avoiding**: sidestep.\n\nPMI generally favors **collaborating** (problem solving) for most situations. The 2026 outline also expects you to set ground rules with the team and address violations of them.\n\n> Use **competing** only when urgent/non-negotiable.",
+    "lesson": "Conflict is inevitable, and often healthy.\n\n## Thomas-Kilmann modes\n- **Collaborating** (win-win, preferred): solve together.\n- **Compromising**: both give a little.\n- **Accommodating**: you yield.\n- **Competing**: assert position.\n- **Avoiding**: sidestep.\n\nPMI generally favors **collaborating** (problem solving) for most situations. The 2026 outline also expects you to set ground rules with the team and address violations of them.\n\n> Select the mode to fit urgency, stakes, relationships, and authority. Collaboration is valuable when time and willingness allow a durable joint solution.",
     "keyTerms": [
       "Collaborating",
       "Compromising",
@@ -176,7 +176,7 @@
     "week": 2,
     "title": "Week 2 Review",
     "domain": "Team",
-    "lesson": "**Review day.** Stakeholder engagement and team dynamics are deeply connected: your team is your most important stakeholder group.\n\n## Reflect\n- How does servant leadership change how you manage stakeholders?\n- How does conflict management apply to stakeholders, not just team?\n\n> Don't move on until you understand **why** each correct answer is correct.",
+    "lesson": "**Review day.** Stakeholder engagement and team dynamics are deeply connected: the team is a key stakeholder group, alongside customers, sponsors, affected communities, and others. Their relative needs and influence depend on context.\n\n## Reflect\n- How does servant leadership change how you manage stakeholders?\n- How does conflict management apply to stakeholders, not just team?\n\n> Don't move on until you understand **why** each correct answer is correct.",
     "keyTerms": [
       "Integration",
       "Stakeholder-team overlap",
@@ -216,7 +216,7 @@
     "week": 3,
     "title": "Schedule Management",
     "domain": "Planning",
-    "lesson": "Schedule shows **when** work happens.\n\n## Process\n1. Define activities\n2. Sequence them\n3. Estimate durations\n4. Develop schedule\n\n## Key concepts\n- **Critical path**: longest path, determines minimum duration.\n- **Float/slack**: how much you can delay without impacting end date.\n- **Milestones**\n\n## Compression\n- **Crashing**: add resources, costs more.\n- **Fast-tracking**: parallelize, adds risk.\n\nIn adaptive work, estimate with story points and velocity. Always coordinate your schedule with other projects and operations.",
+    "lesson": "Schedule shows **when** work happens.\n\n## Process\n1. Define activities\n2. Sequence them\n3. Estimate durations\n4. Develop schedule\n\n## Key concepts\n- **Critical path**: longest path, determines minimum duration.\n- **Total float**: delay allowed without violating the project finish or a schedule constraint. **Free float**: delay allowed without delaying a successor’s early start.\n- **Milestones**\n\n## Compression\n- **Crashing**: add resources, costs more.\n- **Fast-tracking**: parallelize, adds risk.\n\nAdaptive teams may forecast using relative size and historical velocity, or flow measures such as throughput and cycle time. Story points and velocity are optional, not Scrum requirements. Coordinate relevant dependencies with other projects and operations.",
     "keyTerms": [
       "Critical path",
       "Float",
@@ -230,7 +230,7 @@
     "week": 3,
     "title": "Finance Management",
     "domain": "Finance",
-    "lesson": "PMBOK 8 widens Cost into a **Finance** domain, and the 2026 outline's finance task covers:\n- Analyzing financial needs\n- Quantifying risk and contingency allocations\n- Planning spend tracking and financial reporting\n- Anticipating funding challenges\n- Monitoring variances through governance\n- Managing reserves\n\n## Estimate types\n- **ROM**: -25% to +75%\n- **Budgetary**: -10% to +25%\n- **Definitive**: -5% to +10%\n\n## Techniques\n- **Analogous**: top-down, fast.\n- **Parametric**: statistical model.\n- **Bottom-up**: most accurate.\n- **Three-point/PERT**\n\nThe **cost baseline** is the approved, time-phased budget. **Contingency** reserve covers known risks; **management** reserve covers unknown-unknowns.",
+    "lesson": "PMBOK 8 widens Cost into a **Finance** domain, and the 2026 outline's finance task covers:\n- Analyzing financial needs\n- Quantifying risk and contingency allocations\n- Planning spend tracking and financial reporting\n- Anticipating funding challenges\n- Monitoring variances through governance\n- Managing reserves\n\n## Illustrative cost-estimate ranges\nThese are study conventions, not universal accuracy guarantees. Use organizational guidance and evidence; do not apply them automatically to activity durations.\n- **ROM**: -25% to +75%\n- **Budgetary**: -10% to +25%\n- **Definitive**: -5% to +10%\n\n## Techniques\n- **Analogous**: top-down, fast.\n- **Parametric**: statistical model.\n- **Bottom-up**: aggregate detailed component estimates; accuracy depends on reliable scope, data, and assumptions.\n- **Three-point/PERT**\n\nThe **cost baseline** is the approved, time-phased budget. **Contingency** reserve covers known risks; **management** reserve covers unknown-unknowns.",
     "keyTerms": [
       "Finance domain",
       "ROM estimate",
@@ -257,7 +257,7 @@
     "week": 3,
     "title": "Risk Management",
     "domain": "Planning",
-    "lesson": "Risk = uncertain event with positive (opportunity) or negative (threat) impact.\n\n## Process\n1. Identify\n2. Analyze\n3. Plan responses\n4. Implement\n5. Monitor\n\n- **Threat responses**: avoid, mitigate, transfer, accept, escalate.\n- **Opportunity responses**: exploit, enhance, share, accept, escalate.\n\n**Reserves**: contingency (known risks) vs management (unknown unknowns). In PMBOK 8 the **Risk** domain also covers broader uncertainty.\n\n> The 2026 outline calls out security and sustainability risks, and expects you to recognize when a **risk becomes an issue**.",
+    "lesson": "Risk = uncertain event with positive (opportunity) or negative (threat) impact.\n\n## Process\n1. Agree the risk management approach, roles, thresholds, and review cadence\n2. Identify\n3. Analyze\n4. Plan responses\n5. Implement\n6. Monitor\n\n- **Threat responses**: avoid, mitigate, transfer, accept, escalate.\n- **Opportunity responses**: exploit, enhance, share, accept, escalate.\n\n**Reserves**: contingency (known risks) vs management (unknown unknowns). In PMBOK 8 the **Risk** domain also covers broader uncertainty.\n\n> The 2026 outline calls out security and sustainability risks, and expects you to recognize when a **risk becomes an issue**.\n\nA **secondary risk** is caused by a risk response; an unrelated newly discovered risk is not automatically secondary. Compare response cost with expected risk reduction, residual exposure, and any secondary risks before seeking authorization.",
     "keyTerms": [
       "Risk register",
       "Avoid/Mitigate/Transfer",
@@ -297,7 +297,7 @@
     "week": 4,
     "title": "Project Status, Metrics & EVM",
     "domain": "Process",
-    "lesson": "Evaluating status is a 2026 exam task:\n- Develop metrics.\n- Tailor the artifacts you need (and retire unused ones).\n- Keep them accessible and current.\n- Communicate status.\n\n**Earned value management** integrates scope, schedule, and cost: PV (Planned Value), EV (Earned Value), AC (Actual Cost).\n- `CV = EV - AC`, `SV = EV - PV`\n- `CPI = EV/AC`, `SPI = EV/PV`: above 1 is good, below 1 is bad.\n- `EAC = BAC/CPI` is the most common forecast.\n\n> Measure **outcomes**, not just activity: a green status on work nobody has accepted is misleading.",
+    "lesson": "Evaluating status is a 2026 exam task:\n- Develop metrics.\n- Tailor the artifacts you need (and retire unused ones).\n- Keep them accessible and current.\n- Communicate status.\n\n**Earned value management** integrates scope, schedule, and cost: PV (Planned Value), EV (Earned Value), AC (Actual Cost).\n- `CV = EV - AC`, `SV = EV - PV`\n- `CPI = EV/AC` measures cost efficiency. `SPI = EV/PV` compares earned and planned work value: 1.10 means EV is 110% of PV, not a 10% calendar lead. Check the critical path and finish forecast.\n- `EAC = BAC/CPI` forecasts total cost when current cost efficiency is expected to continue. Choose another forecast model if that assumption does not hold.\n\n> Measure **outcomes**, not just activity: a green status on work nobody has accepted is misleading.",
     "keyTerms": [
       "EVM",
       "CPI",
@@ -325,12 +325,12 @@
     "week": 4,
     "title": "Agile Mindset & Frameworks",
     "domain": "Agile",
-    "lesson": "Agile = mindset based on the Agile Manifesto's 4 values and 12 principles.\n\n## Frameworks\n- **Scrum** (most tested). Accountabilities: Product Owner, Scrum Master, Developers. Events: Sprint Planning, Daily, Review, Retro. Artifacts: Product Backlog, Sprint Backlog, Increment.\n- **Kanban**: continuous flow, WIP limits.\n- **XP**: engineering practices.\n\n> Exam blends agile with predictive: about 60% of questions are agile or hybrid.",
+    "lesson": "Agile = mindset based on the Agile Manifesto's 4 values and 12 principles.\n\n## Frameworks\n- **Scrum**. Accountabilities: Product Owner, Scrum Master, Developers. Five events: the Sprint contains Sprint Planning, Daily Scrum, Sprint Review, and Sprint Retrospective. Artifacts: Product Backlog, Sprint Backlog, Increment; their commitments are Product Goal, Sprint Goal, and Definition of Done.\n- The Product Owner is accountable for backlog ordering and may delegate the work. Developers and the PO may renegotiate Sprint scope while protecting the Sprint Goal and quality.\n- **Kanban**: continuous flow, WIP limits.\n- **XP**: engineering practices.\n\n> Exam blends agile with predictive: about 60% of questions are agile or hybrid.",
     "keyTerms": [
       "Scrum",
       "Sprint",
       "Product backlog",
-      "Daily standup",
+      "Daily Scrum",
       "Retrospective"
     ]
   },

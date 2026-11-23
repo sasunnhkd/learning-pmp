@@ -7,6 +7,10 @@ import { MOCK_LENGTHS, MOCK_WARN_MS, formatClock, remainingMs, usedMs } from '..
 import type { QuizQuestion, QuizState } from '../types';
 
 const topicLabel = (id: string | undefined) => (id && TOPIC_BY_ID.get(id)?.label) || 'Mixed';
+const questionDomainLabel = (question: QuizQuestion) => {
+  const domain = domainOf(question);
+  return domain ? DOMAIN_LABEL[domain] : 'Study support';
+};
 
 // Practice result: correct / answered per topic, in first-seen order.
 function renderTopicBreakdown(q: QuizState): string {
@@ -36,7 +40,9 @@ function renderDomainBreakdown(q: QuizState): string {
     People: { right: 0, total: 0 }, Process: { right: 0, total: 0 }, Business: { right: 0, total: 0 },
   };
   q.answers.forEach((a, i) => {
-    const r = rows[domainOf(q.topics[i] ?? '')];
+    const domain = domainOf(q.questions[i]!);
+    if (!domain) return;
+    const r = rows[domain];
     r.total++;
     if (a.correct) r.right++;
   });
@@ -183,7 +189,7 @@ export function renderQuiz(): string {
       </div>
       <div class="quiz-progress-top"><div class="quiz-progress-bar" style="width:${progress}%"></div></div>
       <div class="quiz-card">
-        <div class="quiz-eyebrow quiz-eyebrow-split"><span>${MOCK_LENGTHS[q.mock.length].label}</span><span>${esc(DOMAIN_LABEL[domainOf(q.topics[q.idx] ?? '')])}</span></div>
+        <div class="quiz-eyebrow quiz-eyebrow-split"><span>${MOCK_LENGTHS[q.mock.length].label}</span><span>${esc(questionDomainLabel(current))}</span></div>
         ${itemHint(current)}
         <h2 class="question">${esc(current.q)}</h2>
         <div class="options">${renderOptions(current, q, false)}</div>
@@ -204,7 +210,7 @@ export function renderQuiz(): string {
 
     <div class="quiz-card">
       ${q.kind === 'practice'
-        ? `<div class="quiz-eyebrow quiz-eyebrow-split"><span>Daily Practice · ${esc(topicLabel(q.topics[q.idx]))}</span><span>${esc(DOMAIN_LABEL[domainOf(q.topics[q.idx] ?? '')])}</span></div>`
+        ? `<div class="quiz-eyebrow quiz-eyebrow-split"><span>Daily Practice · ${esc(topicLabel(q.topics[q.idx]))}</span><span>${esc(questionDomainLabel(current))}</span></div>`
         : `<div class="quiz-eyebrow">Day ${q.day} · Practice</div>`}
       ${itemHint(current)}
       <h2 class="question">${esc(current.q)}</h2>

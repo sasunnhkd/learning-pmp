@@ -4,7 +4,7 @@ import practiceBankData from '../data/practice-bank.json';
 import itemBankData from '../data/item-bank.json';
 import { buildPool, defaultPractice, practiceItemSignature, SESSION_SIZE, type ItemRow, type TrainerRow } from './practice';
 import { requiredPicks } from './items';
-import { isSavedMock, type SavedMock } from './mock';
+import { isSavedMock, mockMatchesQuestions, type SavedMock } from './mock';
 import type { AppData, AppState, Lesson, QuestionBank, QuizQuestion, QuizState } from './types';
 
 export const curriculum = curriculumData as Lesson[];
@@ -23,8 +23,12 @@ export function loadSavedMock(): SavedMock | null {
   try {
     const raw = localStorage.getItem(MOCK_KEY);
     const x = raw ? JSON.parse(raw) as unknown : null;
-    return isSavedMock(x) ? x : null;
+    return isSavedMock(x) && mockMatchesQuestions(x, x.ids.map(id => poolById.get(id))) ? x : null;
   } catch { return null; }
+}
+
+export function hasOutdatedMock(): boolean {
+  try { return !!localStorage.getItem(MOCK_KEY) && !loadSavedMock(); } catch { return false; }
 }
 
 export function storeSavedMock(m: SavedMock | null): void {

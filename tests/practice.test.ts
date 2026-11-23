@@ -5,8 +5,9 @@ import { readFileSync } from 'node:fs';
 import {
   buildPool, computeStats, defaultPractice, finishSession, practiceItemSignature, questionId, recordAnswer,
   selectSession, topicStatus, DAY_TOPIC, EXAM_MIX, MAX_SESSIONS, SESSION_SIZE, TOPICS, TOPIC_BY_ID,
-  type PracticeQuestion, type TrainerRow,
+  domainOf, computeReadiness, countByDomain, splitMix, type TrainerRow,
 } from '../src/practice.ts';
+import { ECO_TASKS } from '../src/eco.ts';
 import type { PracticeData, QuestionBank } from '../src/types.ts';
 // @ts-expect-error plain .mjs build script, no type declarations
 import { extractTrainerQuiz, renderBank, TRAINER_PATH, BANK_PATH } from '../scripts/extract-trainer-quiz.mjs';
@@ -16,7 +17,7 @@ const trainer = JSON.parse(readFileSync(new URL('../data/practice-bank.json', im
 const pool = buildPool(dayBank, trainer);
 
 test('saved practice detects changed answer order and grading under the same question ID', () => {
-  const question = { q: 'Which?', options: ['First', 'Second'], correct: 0, explain: '' };
+  const question = { q: 'Which?', options: ['First', 'Second'], correct: 0, explain: 'Scenario rationale.' };
   const signature = practiceItemSignature(question);
   assert.equal(signature, practiceItemSignature({ ...question, explain: 'Updated wording' }));
   assert.notEqual(signature, practiceItemSignature({ ...question, options: ['Second', 'First'], correct: 1 }));
@@ -32,8 +33,6 @@ function rng(seed: number): () => number {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-const domainOf = (q: PracticeQuestion) => TOPIC_BY_ID.get(q.topic)!.domain;
-
 test('data/practice-bank.json matches the Trainer QUIZ (re-run scripts/extract-trainer-quiz.mjs)', () => {
   const fresh = renderBank(extractTrainerQuiz(readFileSync(TRAINER_PATH, 'utf8')));
   assert.equal(readFileSync(BANK_PATH, 'utf8'), fresh);
@@ -49,7 +48,68 @@ test('pool holds every day and Trainer question, each with a known topic and uni
 });
 
 test('buildPool throws on an unmapped Trainer label instead of dropping it', () => {
-  assert.throws(() => buildPool({}, [{ topic: 'Nope', q: 'x', options: ['a', 'b', 'c', 'd'], correct: 0, explain: '' }]), /Nope/);
+  assert.throws(() => buildPool({}, [{ topic: 'Nope', q: 'x', options: ['a', 'b', 'c', 'd'], correct: 0, explain: 'Scenario rationale.', ecoTask: null }]), /Nope/);
+});
+
+test('bank metadata is explicit, valid, and checked even on duplicate stems', () => {
+  const item = { topic: 'Risk', q: 'same', options: ['a', 'b', 'c', 'd'], correct: 0, explain: 'Scenario rationale.', ecoTask: 'BUS05' as const };
+  for (const invalid of [undefined, 'BUS09', 'PRO11', 'PEO00', '', '__proto__']) {
+    assert.throws(() => buildPool({}, [item, { ...item, ecoTask: invalid } as TrainerRow]), /ecoTask/);
+  }
+  assert.throws(() => extractTrainerQuiz('const QUIZ = [\n["Risk","x",["a","b","c","d"],0,"explanation"]\n];'), /wrong shape/);
+});
+
+test('practice and Quest catalogs agree on all 26 ECO task domains', () => {
+  const catalog = JSON.parse(readFileSync(new URL('../data/quest/catalog.json', import.meta.url), 'utf8'));
+  const domains: Record<string, string> = { People: 'People', Process: 'Process', 'Business Environment': 'Business' };
+  assert.equal(catalog.tasks.length, 26);
+  for (const task of catalog.tasks) {
+    assert.equal(ECO_TASKS[task.eco_task_id as keyof typeof ECO_TASKS], domains[task.official_domain], task.eco_task_id);
+  }
+});
+
+test('question-level tasks override mixed study topics and exclude study support from domains', () => {
+  const mixed: TrainerRow[] = [
+    { topic: 'Integration', q: 'Plan', options: ['a','b','c','d'], correct: 0, explain: 'Scenario rationale.', ecoTask: 'PRO01' },
+    { topic: 'Integration', q: 'Transfer knowledge', options: ['a','b','c','d'], correct: 0, explain: 'Scenario rationale.', ecoTask: 'PEO07' },
+    { topic: 'Integration', q: 'Governance', options: ['a','b','c','d'], correct: 0, explain: 'Scenario rationale.', ecoTask: 'BUS01' },
+    { topic: 'Integration', q: 'Exam fact', options: ['a','b','c','d'], correct: 0, explain: 'Scenario rationale.', ecoTask: null },
+  ];
+  const p = buildPool({}, mixed);
+  assert.deepEqual(countByDomain(p), { People: 1, Process: 1, Business: 1 });
+  for (const mode of ['mix', 'mock'] as const) {
+    const picked = selectSession(p, defaultPractice(), mode, [], rng(5), 10);
+    assert.equal(picked.length, 3);
+    assert.ok(picked.every(q => domainOf(q) !== null));
+  }
+  assert.equal(selectSession(p, defaultPractice(), 'topics', ['integration']).length, 4);
+  let progress = defaultPractice();
+  for (const q of p) progress = recordAnswer(progress, q.id, true, 1);
+  const stats = computeStats(p, progress);
+  assert.equal(stats.attempts, 4);
+  assert.ok(stats.domains.every(d => d.attempts === 1 && d.correct === 1));
+  assert.ok(computeReadiness(p, progress).every(d => d.seen === 1 && d.right === 1));
+});
+
+test('real banks support both mock sizes with actual ECO quotas and no supplemental padding', () => {
+  const items = JSON.parse(readFileSync(new URL('../data/item-bank.json', import.meta.url), 'utf8'));
+  const all = buildPool(dayBank, trainer, items);
+  const capacities = countByDomain(all);
+  for (const size of [10, 60, 180]) {
+    const quota = splitMix(size);
+    for (const d of Object.keys(quota) as (keyof typeof quota)[]) assert.ok(capacities[d] >= quota[d], d);
+    const picked = selectSession(all, defaultPractice(), 'mock', [], rng(size), size);
+    assert.equal(picked.length, size);
+    assert.equal(new Set(picked.map(q => q.id)).size, size);
+    assert.deepEqual(countByDomain(picked), quota);
+    assert.ok(picked.every(q => q.ecoTask !== null));
+  }
+  const find = (stem: string) => all.find(q => q.q.includes(stem))!;
+  assert.equal(domainOf(find('approved scope baseline')), 'Business');
+  assert.equal(domainOf(find('PMO pool')), 'Process');
+  assert.equal(domainOf(find('fish-farm sensor')), 'People');
+  assert.equal(all.some(q => q.q.includes('greenhouse')), false); // original flawed stem was retired
+  assert.equal(domainOf(find('heat event causing')), 'Business');
 });
 
 test('questionId is stable and stem-based', () => {

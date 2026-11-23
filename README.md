@@ -20,11 +20,11 @@ Source files live in `data/quest/source/`. Run `npm run quest:import` after chan
 | Content | File | Shape |
 |---|---|---|
 | Daily lessons | `data/curriculum.json` | 28 entries `{day, week, title, domain, lesson, keyTerms}`. Keep days 1–28 and weeks 1–4: `src/views/all.ts` and `getCurrentDay()` in `src/state.ts` depend on them. `lesson` uses the light markup in [Lesson markup](#lesson-markup) below; it is parsed by `formatLesson()` in `src/lessonFormat.ts` and rendered by `renderLesson()` in `src/views/lesson.ts`. |
-| Daily quizzes | `data/questions.json` | Keys `"1"`–`"28"`, each an array of `{q, options[4], correct (0–3), explain}`. The `as QuestionBank` cast means `tsc` does **not** check this shape. |
+| Daily quizzes | `data/questions.json` | Keys `"1"`–`"28"`, each an array of `{q, options[4], correct (0–3), explain, ecoTask}`. The `as QuestionBank` cast means `tsc` does **not** check this shape. |
 | Trainer study notes | `STUDY` in the Trainer page | Section `id`s are keys in each user's saved "read" progress (`state.studyRead`), so never rename an existing id. Add new sections with new ids. |
 | Trainer flashcards | `FLASH` | `[topic, front, back]` |
-| Trainer scenario quiz | `QUIZ` | `[topic, stem, [4 options], correctIndex, explanation]`. The topic dropdown is built from the distinct topics, so reuse existing topic labels exactly as spelled. Entries 21–200 come from a third-party PMP exam question deck; their topic tags were assigned by hand. **Daily Practice also uses these:** after editing `QUIZ`, run `node scripts/extract-trainer-quiz.mjs` to refresh `data/practice-bank.json`, and map any new topic label in `TRAINER_TOPIC` (`src/practice.ts`). `npm test` fails until both are done. |
-| Daily Practice bank | `data/practice-bank.json` | Generated copy of the Trainer `QUIZ` as `[{topic, q, options[4], correct, explain}]`. Never edit by hand. |
+| Trainer scenario quiz | `QUIZ` | `[topic, stem, [4 options], correctIndex, explanation, ecoTask]`. The topic dropdown is built from the distinct topics, so reuse existing topic labels exactly as spelled. Entries 21–200 come from a third-party PMP exam question deck; their topic tags were assigned by hand. **Daily Practice also uses these:** after editing `QUIZ`, run `node scripts/extract-trainer-quiz.mjs` to refresh `data/practice-bank.json`, and map any new topic label in `TRAINER_TOPIC` (`src/practice.ts`). `npm test` fails until both are done. |
+| Daily Practice bank | `data/practice-bank.json` | Generated copy of the Trainer `QUIZ` as `[{topic, q, options[4], correct, explain, ecoTask}]`. Never edit by hand. |
 | Trainer cheat sheet | `CHEAT` | `{t, items[]}` |
 
 ## Lesson markup
@@ -58,10 +58,10 @@ The 28 days are a suggested pace, not a gate. Learners can open any lesson and q
 
 A 10-question session the learner can run every day, separate from the 28 day quizzes. The dashboard card (`renderPracticeCard()` in `src/views/dashboard.ts`) opens the picker (`view: 'practice'`, `renderPracticePicker()` in `src/views/practice.ts`). The stats screen is `view: 'stats'` (`renderPracticeStats()`, same file). Sessions run through the same quiz screen as day quizzes, with `QuizState.kind === 'practice'`.
 
-- **Pool:** `practicePool` in `src/state.ts` = every day-quiz question (`data/questions.json`) + every Trainer `QUIZ` question (`data/practice-bank.json`), built by `buildPool()` in `src/practice.ts`. Duplicate stems are kept once.
-- **Topics:** one table, `TOPICS` in `src/practice.ts` (id, label, exam domain). Day questions get their topic from `DAY_TOPIC` (per day, not per curriculum domain, because "Planning" spans four topics). Trainer questions get theirs from `TRAINER_TOPIC`; tiny labels are folded in (Role and Resources into Team, Change into Integration). Topic ids are stored in saved sessions, so never rename an id; labels are free to change. Foundations counts as Process and Exam Mindset as Business Environment; neither is an official ECO domain.
+- **Pool:** `practicePool` in `src/state.ts` = day quizzes (`data/questions.json`) + Trainer `QUIZ` (`data/practice-bank.json`) + multi-select/ordering items (`data/item-bank.json`), built by `buildPool()` in `src/practice.ts`. Duplicate stems are kept once.
+- **Topics:** one table, `TOPICS` in `src/practice.ts` (id, label, exam domain). Day questions get their study topic from `DAY_TOPIC`; Trainer questions use `TRAINER_TOPIC`. Role is folded into Team; Resources and Change have their own topics. Existing topic IDs remain stable. Topic grouping is navigation only: Integration, Agile, Foundations, and Mindset can span domains or contain supplemental study. Question-level `ecoTask` determines exam domain independently of topic (see below).
 - **Modes** (`selectSession()`): 
-  - *Exam mix* picks `EXAM_MIX` = 3 People / 4 Process / 3 Business (the ECO 33/41/26 weights over 10). If a domain runs short it tops up from the others. The 40/60 predictive/agile split is **not** applied: questions are not tagged by approach.
+  - *Exam mix* picks `EXAM_MIX` = 3 People / 4 Process / 3 Business (the ECO 33/41/26 weights over 10), using each question’s task. Explicitly supplemental (`ecoTask: null`) items are excluded. If a domain runs short it tops up from other task-mapped items; mock setup reports actual counts and any shortage. The 40/60 predictive/agile split is **not** applied: questions are not tagged by approach.
   - *Choose topics*: any set of topics. If they hold fewer than 10 questions the session is shorter, and the start button shows the real count.
   - *Retry my mistakes*: up to 10 questions whose **last** answer was wrong, most recent first.
   - Inside each pool the order is: never seen, then last answered wrong, then longest ago, with random ties. Question order is shuffled; options are not (`correct` is an index).
@@ -111,8 +111,28 @@ GitHub Actions in `.github/workflows/deploy.yml` are pinned to full commit SHAs,
 
 The deploy job does not cache npm dependencies (`package-manager-cache: false`), and checkout does not keep the token (`persist-credentials: false`).
 
-## Content sources (as of October 2026)
+## Content accuracy and July 2026 alignment (reviewed 22 November 2026)
+
+All 300 main-app bank items have an explicit editorial `ecoTask`: `PEO01`–`PEO08`, `PRO01`–`PRO10`, or `BUS01`–`BUS08`. `null` means supplemental study (for example exam-format or PMBOK recall), available in day quizzes, topic practice, and retries but excluded from weighted mixes and domain readiness. Omitted/invalid tags fail `buildPool`, including on duplicate stems. `src/eco.ts` defines the domains; a test checks agreement with all 26 Quest catalog tasks. These editorial mappings are not PMI-approved item classifications.
+
+The current pool contains 96 People, 119 Process, and 63 Business Environment task-mapped items plus 22 supplemental items. It supports a 180-item mock with 59/74/47 by domain without padding. Domain statistics and question badges use item tasks, not topic labels; topic accuracy includes supplemental study. Historical completed mock summaries retain their original domain classifications.
+
+Trainer `QUIZ` is the source of truth for its generated practice copy. Run `node scripts/extract-trainer-quiz.mjs` after edits. When materially changing a stem, options, answer, or the assumptions needed to grade it, revise the stem so previous mastery does not carry onto a different item. Active practice and v2 unfinished mocks validate content signatures including task metadata. Legacy or changed unfinished mocks cannot resume; the picker explains why, without clearing completed study progress.
+
+Mocks are pausable practice simulations. Domain weights and time budgets follow the July 2026 outline; approach balance (40% predictive / 60% agile-and-hybrid), case-study sets, section boundaries, and scheduled breaks are not simulated. Neither percentages nor the app’s readiness bands predict the PMI result.
+
+The corrections cover secondary-risk causation and response economics; SPI versus calendar progress and EAC assumptions; governance and staffing authority; Product Owner delegation, Sprint scope, and all five Scrum events; QA/QC, acceptance, and control-chart variation; WBS/RACI distinctions; float conventions; predictive planning; estimate-range assumptions; closure and transfer of obligations; and context-based scenario judgment. Study section IDs and group positions remain stable for saved read progress.
+
+## Content sources
 
 - **PMI primary source:** *PMP Examination Content Outline – July 2026*. Used for the domain weights (People 33 / Process 41 / Business Environment 26), the 26 tasks, the 40% predictive / 60% agile-and-hybrid split, the exam format (180 questions, 170 scored, 240 minutes, case-study section, item types) and the PMBOK definition of a project.
-- **PMI page plus third-party summaries that agree:** PMBOK Guide 8th Edition (November 2025). Used for the 6 principles, the 7 performance domains, the 5 focus areas and the ~40 processes.
+- **PMI primary sources:** [PMBOK Guide overview](https://www.pmi.org/standards/pmbok) and [PMI’s Eighth Edition release announcement](https://www.projectmanagement.com/articles/1134510/pmi-launches-the-pmbok--guide---eighth-edition). Used for the six principles, seven domains, five focus areas and 40 evolved processes. PMBOK domains and focus areas are not the exam’s three ECO domains or mandatory lifecycle phases.
 - **Deliberately not taught:** PMBOK 8 process-level details (which processes were merged or removed, procurement appendix, where EVM sits). Only single third-party sources reported these, so verify them against the Guide before adding them.
+
+- [July 2026 PMP Examination Content Outline](https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/new-pmp-examination-content-outline-2026.pdf): governing exam blueprint and task/domain mappings.
+- [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html): accountabilities, delegation, events, artifacts, commitments, and Sprint scope adaptation. Story points and velocity are optional practices.
+- [PMI Lexicon, version 4.0 (PMI chapter-hosted copy)](https://pmipprc.org/images/meeting/102525/pmi_lexicon_pm_terms.pdf): stable terminology including secondary risks, change control, baselines, and SPI. The PMBOK 8 project definition is taken from the newer ECO, rather than this older lexicon.
+- [PMI critical-path calculations](https://www.pmi.org/learning/library/2019/04/07/15/39/critical-path-method-calculations-scheduling-8040) and [inclusive-calendar example](https://www.pmi.org/learning/library/scheduling-resource-leveling-project-progression-8006): free-float calculation conventions.
+- [ASQ QA versus QC](https://asq.org/quality-resources/quality-assurance-vs-control) and [process variation](https://asq.org/quality-resources/variation): assurance/control and special-cause distinctions.
+
+Cost-estimate ranges are explicitly illustrative conventions (ROM −25%/+75%, budgetary −10%/+25%, definitive −5%/+10%), not requirements imposed by the July 2026 ECO or universal duration tolerances. Older named processes are retained as explanatory vocabulary; the exam is organized by ECO tasks and does not mandate one process sequence for every context.
