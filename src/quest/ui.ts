@@ -20,6 +20,7 @@ let loadError = '';
 let error = '';
 let screen: 'map' | 'mission' | 'notebook' | 'outline' = 'map';
 let outlineId = '';
+let mapChapterId = 'CH01';
 let selectedChoice = '';
 let pendingAnswer = -1;
 let questionIndex: number | null = null;
@@ -36,7 +37,6 @@ function load(): void {
 }
 const action = (name: string, label: string, attrs = '', style = 'btn btn-dark'): string =>
   `<button type="button" class="${style}" data-quest-action="${name}" ${attrs}>${label}</button>`;
-const status = (text: string): string => `<span class="quest-status">${esc(text)}</span>`;
 const titleFor = (id: string): string => catalog.missions.find(m => m.mission_id === id)?.mission_title ?? id;
 const prerequisite = (m: Mission): string => {
   if (m.chapter_id === 'CH02' && m.mission_sequence === 1 && isComplete(progress, 'CH01-M14')) return 'The Phoenix chapter checkpoint must be submitted before the next chapter. Its assessment is still in development.';
@@ -48,38 +48,51 @@ const missionState = (m: Mission): string => isComplete(progress, m.mission_id) 
   : prerequisite(m) ? 'Locked'
   : getMission(m.mission_id) ? 'Ready to preview' : 'In development';
 
-function hero(): string {
-  return `<section class="quest-hero quest-illustrated">${chapterIllustration('CH01')}<div class="quest-banner-copy"><div class="eyebrow">Your next chapter</div>
-    <h1 class="h1" id="quest-heading" tabindex="-1">Learn by leading.</h1>
-    <p>Step into the project. Read the evidence.<br>Make a decision you can explain.</p>
-    <div class="quest-hero-foot"><span>12 chapters · 168 planned missions</span>${status('Development preview')}</div>
-    </div></section>`;
-}
-
 function mapView(): string {
   const next = nextMission(progress);
-  const suggestedId = next?.id ?? 'CH01-M14';
-  const a = latestAttempt(progress, suggestedId);
   const count = completionCount(progress);
-  return `${hero()}<aside class="quest-notice">Play all 14 Phoenix missions as a development preview. Written notes are optional. Content and feedback await subject-matter review; later chapters and assessments remain in development.</aside>
-    <section class="card quest-next"><div class="eyebrow-accent">Chapter 01 · Project Phoenix</div><h2 class="h2">Rescue the launch.</h2>
-      <p class="body">Six weeks. A demanding customer. A team that needs a plan. Your first decision sets the direction.</p>
-      <div class="quest-meta">14 playable missions · 84 practice questions · 1 checkpoint planned</div>
-      ${action('open', a && !a.completedAt ? 'Continue your mission →' : next ? 'Begin next mission →' : 'Review Phoenix finale →', `data-id="${suggestedId}"`)}
-      <p class="small">${next ? esc(next.title) : 'All 14 story missions complete · chapter checkpoint pending'}</p>
-      <p class="small">${count} of 14 Phoenix missions completed · save after each activity</p></section>
-    <div class="quest-section-heading"><h2 class="h2">The journey</h2><span class="small">${count} / 168 preview completions</span></div>
-    ${catalog.chapters.map(ch => {
-      const missions = catalog.missions.filter(m => m.chapter_id === ch.chapter_id);
-      return `<details class="quest-chapter" ${ch.sequence === 1 ? 'open' : ''}><summary>
-        ${chapterIllustration(ch.chapter_id, true)}<span class="quest-chapter-number">${String(ch.sequence).padStart(2, '0')}</span><span class="quest-chapter-copy"><span class="quest-chapter-title">${esc(ch.chapter_title.replace(/^.*? — /, ''))}</span><span class="quest-chapter-world">${esc(ch.project_world)} · ${ch.planned_missions} missions</span></span><span class="quest-disclosure" aria-hidden="true">+</span>
-        </summary><div class="quest-chapter-body"><p class="body">${esc(ch.story_arc)}</p>
-        <ol class="quest-missions">${missions.map(m => `<li><button type="button" data-quest-action="outline" data-id="${esc(m.mission_id)}" class="quest-mission-row">
-          <span class="quest-node ${getMission(m.mission_id) && canBegin(progress, m.mission_id) ? 'quest-node-active' : ''}">${isComplete(progress, m.mission_id) ? '✓' : m.mission_sequence}</span>
-          <span><strong>${esc(m.mission_title)}</strong><span class="quest-mission-sub">${esc(m.eco_domain)} · ${esc(m.delivery_approach)}</span></span>${status(missionState(m))}</button></li>`).join('')}</ol>
-        <div class="quest-checkpoint"><strong>Chapter checkpoint</strong><span>15 questions · 20 minutes · awaiting authored content</span></div></div></details>`;
-    }).join('')}
-    <section class="card"><div class="eyebrow">Assessments · planned</div><h2 class="h2">Know where to focus.</h2><p class="body">A 40-question diagnostic, 12 chapter checkpoints and two 180-question mocks are planned. Their question sets have not been authored or approved.</p><p class="small">Quest assessment results will be separate from the app’s existing practice quizzes.</p></section>`;
+  const chapter = catalog.chapters.find(ch => ch.chapter_id === mapChapterId) ?? catalog.chapters[0]!;
+  const missions = catalog.missions.filter(m => m.chapter_id === chapter.chapter_id);
+  const chapterCount = missions.filter(m => isComplete(progress, m.mission_id)).length;
+  // Equal-height grid rows keep this continuous curve centered under every marker.
+  const road = missions.map((_, i) => {
+    const x = i % 2 === 0 ? 150 : 450;
+    const y = i * 160 + 80;
+    return i === 0 ? `M${x} ${y}` : `C${i % 2 === 0 ? 450 : 150} ${y - 80} ${x} ${y - 80} ${x} ${y}`;
+  }).join(' ');
+  return `<section class="quest-world-picker" aria-labelledby="quest-heading"><div class="quest-section-heading"><h1 class="h3" id="quest-heading" tabindex="-1">Your adventure map</h1><span class="small">12 chapters · 1 playable</span></div>
+      <div class="quest-worlds" role="group" aria-label="Explore chapters">${catalog.chapters.map(ch => action('chapter', `<span>${String(ch.sequence).padStart(2, '0')}</span>${ch.sequence === 1 ? '<i aria-hidden="true"></i>' : ''}`, `data-id="${ch.chapter_id}" aria-label="Chapter ${ch.sequence}: ${esc(ch.chapter_title)}. ${ch.sequence === 1 ? 'Playable preview' : 'In development'}" aria-pressed="${ch.chapter_id === chapter.chapter_id}"`, 'quest-world')).join('')}</div>
+    </section>
+    <section class="quest-landscape" aria-labelledby="quest-trail-heading">
+      <header class="quest-trail-header"><div class="eyebrow">Chapter ${String(chapter.sequence).padStart(2, '0')} <span>· ${chapter.sequence === 1 ? 'Playable preview' : 'In development'}</span></div>
+        <h2 class="h2" id="quest-trail-heading" tabindex="-1">${esc(chapter.chapter_title.replace(/^.*? — /, ''))}</h2><p>${esc(chapter.project_world)}</p>
+        <div class="quest-trail-progress"><span>${chapter.sequence === 1 ? `${chapterCount} of ${missions.length} missions complete` : `${missions.length} planned mission outlines`}</span><span>${chapter.sequence === 1 ? `${Math.round(chapterCount / missions.length * 100)}%` : 'Coming later'}</span></div>
+        ${chapter.sequence === 1 ? `<progress max="${missions.length}" value="${chapterCount}" aria-label="Phoenix mission completion">${chapterCount} / ${missions.length}</progress>` : '<p class="quest-planned-note">Explore the stops below. These missions aren’t playable yet.</p>'}</header>
+      <div class="quest-trail-map"><svg class="quest-road" viewBox="0 0 600 ${missions.length * 160}" preserveAspectRatio="none" aria-hidden="true"><path d="${road}"/><path d="${road}"/><path d="${road}"/></svg>
+      <ol class="quest-trail" aria-label="${esc(chapter.chapter_title)} mission roadmap">${missions.map(m => {
+        const done = isComplete(progress, m.mission_id);
+        const current = next?.id === m.mission_id;
+        const available = !!getMission(m.mission_id);
+        const active = latestAttempt(progress, m.mission_id);
+        const label = done ? active && !active.completedAt ? 'Complete · resume replay' : 'Complete · review' : current ? active && !active.completedAt ? 'In progress · view mission' : 'Next up · view mission' : available ? 'Locked · view mission' : 'Planned · view outline';
+        // Domain hues are decorative groupings, not official PMI color assignments.
+        const domain = m.eco_domain === 'People' ? 'people' : m.eco_domain === 'Process' ? 'process' : 'business';
+        const scenery = m.mission_sequence % 3 === 0
+          ? '<ellipse class="quest-ground" cx="60" cy="86" rx="48" ry="9"/><path class="quest-rock" d="m14 78 10-30 25-13 26 12 12 31-38 9Z"/><path class="quest-rock-light" d="m24 48 25-13 9 28-44 15Z"/><path class="quest-rock-shade" d="m58 63 17-16 12 31-38 9Z"/><path class="quest-rock" d="m83 78 5-18 18 3 10 19-23 6Z"/><path class="quest-rock-light" d="m88 60 18 3-12 11-11 4Z"/><path class="quest-grass" d="m8 84-3-10m7 10 2-12m92 16 4-9"/><path class="quest-mushroom-stem" d="M74 80h7v13h-7Z"/><path class="quest-mushroom-cap" d="M65 81c0-19 26-19 26 0Z"/><circle class="quest-mushroom-dot" cx="74" cy="75" r="3"/><circle class="quest-mushroom-dot" cx="83" cy="78" r="2"/>'
+          : m.mission_sequence % 3 === 1
+            ? '<ellipse class="quest-ground" cx="61" cy="88" rx="49" ry="9"/><path class="quest-trunk" d="M25 59h8v29h-8Zm43 4h9v28h-9Z"/><path class="quest-tree-light" d="M29 17 11 48h9L7 72h44L38 48h9Z"/><path class="quest-tree" d="M72 4 49 42h12L42 77h61L83 42h12Z"/><path class="quest-tree-shade" d="M72 4v73h31L83 42h12Z"/><path class="quest-grass" d="m9 87-3-8m9 9 1-11m88 11 5-8"/><path class="quest-rock" d="m91 84 6-10 12 2 5 10-15 4Z"/>'
+            : '<ellipse class="quest-ground" cx="60" cy="88" rx="45" ry="9"/><path class="quest-trunk" d="M52 45h10v44H52Z"/><path class="quest-branch" d="m57 65-17-17m17 25 19-22"/><circle class="quest-tree-shade" cx="38" cy="39" r="23"/><circle class="quest-tree-light" cx="58" cy="22" r="23"/><circle class="quest-tree" cx="77" cy="39" r="25"/><circle class="quest-tree" cx="53" cy="49" r="23"/><circle class="quest-fruit" cx="35" cy="36" r="4"/><circle class="quest-fruit" cx="72" cy="31" r="4"/><circle class="quest-fruit" cx="56" cy="55" r="4"/><path class="quest-rock" d="m19 86 5-12 13-2 9 13-16 5Z"/><path class="quest-rock-light" d="m24 74 13-2-7 11-11 3Z"/>';
+        return `<li class="quest-stop quest-stop-${domain} ${done ? 'quest-stop-done' : current ? 'quest-stop-current' : ''}">
+          <svg class="quest-scenery" viewBox="0 0 120 100" aria-hidden="true">${scenery}</svg>
+          <button type="button" class="quest-stop-button" data-quest-action="outline" data-id="${esc(m.mission_id)}" ${current ? 'aria-current="step"' : ''}>
+            <span class="quest-stop-marker" aria-hidden="true">${done ? '✓' : m.mission_sequence}${current ? '<span class="quest-you-are-here">YOU ARE HERE</span>' : !done ? '<svg class="quest-stop-lock" viewBox="0 0 20 20" fill="none"><rect x="5" y="9" width="10" height="8" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3"/></svg>' : ''}</span>
+            <span class="quest-stop-copy"><span class="quest-stop-label">Mission ${String(m.mission_sequence).padStart(2, '0')}</span><strong>${esc(m.mission_title)}</strong><span class="quest-stop-domain">${esc(m.eco_domain)}</span><span class="quest-stop-state">${esc(label)}</span></span>
+          </button></li>`;
+      }).join('')}</ol></div>
+      <div class="quest-destination"><span class="quest-destination-flag" aria-hidden="true">⚑</span><div><span class="eyebrow">The chapter summit</span><h3 class="h3">${chapter.sequence === 1 && count === 14 ? 'Story complete. Checkpoint ahead.' : 'One chapter. A stronger you.'}</h3><p>Chapter checkpoint · 15 questions · 20 minutes<br>In development · not yet available</p></div></div>
+    </section>
+    <aside class="quest-preview-note"><strong>A little heads-up, adventurer.</strong> All 14 Phoenix missions are playable, with 84 practice questions. Content and feedback await subject-matter review. Later chapters and assessments are in development. Written notes are optional; committed activities save in this browser.</aside>
+    <details class="quest-assessments"><summary>Further along the trail <span>Planned assessments +</span></summary><p class="body">A 40-question diagnostic, 12 chapter checkpoints and two 180-question mocks are planned. Their question sets have not been authored or approved. Quest assessment results will be separate from the app’s existing practice quizzes.</p></details>`;
 }
 
 function outlineView(): string {
@@ -241,6 +254,7 @@ export function initQuest(): void {
       if (loadError && !['reload', 'export', 'reset', 'home'].includes(name ?? '')) throw new Error(loadError);
       if (name === 'home') { window.navigate('dashboard'); return; }
       else if (name === 'map') screen = 'map';
+      else if (name === 'chapter') { mapChapterId = catalog.chapters.find(ch => ch.chapter_id === element.dataset.id)?.chapter_id ?? 'CH01'; screen = 'map'; }
       else if (name === 'notebook') screen = 'notebook';
       else if (name === 'outline') { outlineId = element.dataset.id ?? ''; screen = 'outline'; }
       else if (name === 'open' || name === 'begin' || name === 'replay' || name === 'start-case' || name === 'review') {
@@ -275,7 +289,9 @@ export function initQuest(): void {
       if (reason !== undefined && name !== 'decide') {
         const textarea = document.querySelector<HTMLTextAreaElement>('#quest-reason'); if (textarea) textarea.value = reason;
       }
-      if (!['choose', 'select-answer', 'inspect'].includes(name ?? '')) {
+      if (name === 'chapter') {
+        document.getElementById('quest-trail-heading')?.focus();
+      } else if (!['choose', 'select-answer', 'inspect'].includes(name ?? '')) {
         window.scrollTo(0, 0); document.getElementById('quest-heading')?.focus({preventScroll: true});
       } else {
         // Rendering replaces the clicked control; restore focus for keyboard/assistive input.

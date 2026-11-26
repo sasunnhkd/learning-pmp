@@ -104,3 +104,168 @@
 .quest-chapter > summary .quest-disclosure { position: absolute; top: 12px; right: 12px; margin: 0; }
 
 .quest-debrief-actions { display: grid; gap: 12px; }
+
+/* Adventure map: HTML stops follow the same two-column geometry as the SVG road. */
+.quest-nav > div { flex-wrap: wrap; max-width: 100%; }
+.quest {
+  /* Shared app colors carry actions and state; PMI-inspired hues add scenery and domain groupings. */
+  --map-bg: var(--surface);
+  --map-ink: var(--text);
+  --map-soft: var(--text-soft);
+  --map-green: var(--success);
+  --map-halo: var(--accent-bg);
+  --map-road: #fff1d5;
+  --map-road-edge: #edcf9a;
+  --map-road-dash: #c39244;
+  --map-gold: #ffd166;
+  --map-gold-edge: #b77928;
+  --map-gold-ink: #573511;
+  --map-on-success: var(--surface);
+  --map-aqua: #96e1ee;
+  --map-aqua-edge: #549eaf;
+  --map-aqua-ink: #16475a;
+  --map-aqua-bg: #e2f6fb;
+  --map-coral: #ffc29d;
+  --map-coral-edge: #cd8256;
+  --map-coral-ink: #713b22;
+  --map-coral-bg: #fff0e5;
+  --map-violet: #d1b9f8;
+  --map-violet-edge: #9b7ac8;
+  --map-violet-ink: #52377d;
+  --map-violet-bg: #f1eafd;
+  --map-tree: #589b81;
+  --map-tree-light: #91bd94;
+  --map-tree-shade: #3e796e;
+  --map-ground: #dde9ce;
+  --map-trunk: #987450;
+  --map-rock: #a39bb8;
+  --map-rock-light: #cbc2db;
+  --map-rock-shade: #7b718f;
+  --map-mushroom: #ed997a;
+  --map-mushroom-dot: #fff8e7;
+}
+.quest-world-picker { margin: 0 0 20px; }
+.quest-world-picker .quest-section-heading { margin: 0 0 14px; }
+.quest-world-picker .small { font-size: .75rem; }
+.quest-worlds { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px; }
+.quest-world { position: relative; display: grid; place-items: center; min-height: 44px; border: 1px solid var(--border-strong); border-radius: 10px; color: var(--text-mute); font-size: .8rem; transition: background .15s, transform .15s; }
+.quest-world:hover { background: var(--surface); transform: translateY(-2px); }
+.quest-world[aria-pressed="true"] { color: var(--on-primary); background: var(--primary); border-color: var(--primary); box-shadow: 0 3px 0 var(--primary-hover); }
+.quest-world:nth-child(3n + 1) { border-bottom: 3px solid var(--map-coral-edge); }
+.quest-world:nth-child(3n + 2) { border-bottom: 3px solid var(--map-aqua-edge); }
+.quest-world:nth-child(3n) { border-bottom: 3px solid var(--map-violet-edge); }
+.quest-world[aria-pressed="true"] { border-bottom-color: var(--primary-hover); }
+.quest-world i { position: absolute; bottom: 5px; width: 3px; height: 3px; border-radius: 50%; background: currentColor; }
+.quest-landscape { overflow: hidden; position: relative; isolation: isolate; background: radial-gradient(ellipse at 0 0, var(--map-aqua-bg), transparent 420px), radial-gradient(ellipse at 100% 75%, var(--map-violet-bg), transparent 480px), var(--map-bg); color: var(--map-ink); border: 1px solid var(--border-strong); border-radius: 24px; }
+.quest-trail-header { position: relative; z-index: 1; padding: 28px 30px 14px; }
+.quest-trail-header .eyebrow { color: var(--accent); letter-spacing: .08em; }
+.quest-trail-header .eyebrow > span { letter-spacing: 0; font-weight: 400; text-transform: none; }
+.quest-trail-header .h2 { margin: 8px 0; font-size: clamp(1.7rem, 5vw, 2rem); }
+.quest-trail-header > p { font-size: .875rem; color: var(--map-soft); margin: 0 0 20px; }
+.quest-trail-progress { display: flex; justify-content: space-between; gap: 12px; font-size: .75rem; color: var(--map-soft); margin: 18px 0 8px; }
+.quest-trail-header progress { display: block; appearance: none; border: 0; width: 100%; height: 7px; border-radius: 8px; overflow: hidden; background: var(--border-strong); color: var(--map-green); }
+.quest-trail-header progress::-webkit-progress-bar { background: var(--border-strong); border-radius: 8px; }
+.quest-trail-header progress::-webkit-progress-value { background: var(--map-green); border-radius: 8px; }
+.quest-trail-header progress::-moz-progress-bar { background: var(--map-green); border-radius: 8px; }
+.quest-trail-header .quest-planned-note { margin: 12px 0 0; font-size: .8rem; }
+.quest-trail-map { position: relative; isolation: isolate; }
+.quest-trail { display: grid; grid-auto-rows: 1fr; list-style: none; padding: 0; margin: 0; }
+.quest-stop { --stop-bg: var(--map-aqua); --stop-edge: var(--map-aqua-edge); --stop-ink: var(--map-aqua-ink); --stop-badge: var(--map-aqua-bg); --stop-badge-ink: var(--map-aqua-ink); position: relative; min-height: 216px; display: grid; align-items: center; }
+.quest-stop-people { --stop-bg: var(--map-coral); --stop-edge: var(--map-coral-edge); --stop-ink: var(--map-coral-ink); --stop-badge: var(--map-coral-bg); --stop-badge-ink: var(--map-coral-ink); }
+.quest-stop-business { --stop-bg: var(--map-violet); --stop-edge: var(--map-violet-edge); --stop-ink: var(--map-violet-ink); --stop-badge: var(--map-violet-bg); --stop-badge-ink: var(--map-violet-ink); }
+.quest-road { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: -1; }
+.quest-road path { fill: none; stroke: var(--map-road); stroke-width: 52; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.quest-road path:first-child { stroke: var(--map-road-edge); stroke-width: 56; }
+.quest-road path:last-child { stroke: var(--map-road-dash); stroke-width: 2; stroke-dasharray: 3 9; stroke-linecap: round; }
+.quest-stop-button { position: relative; width: 100%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 40px 0; text-align: left; min-height: 216px; height: 100%; z-index: 1; }
+.quest-stop-marker { justify-self: center; position: relative; display: grid; place-items: center; width: 68px; height: 64px; background: var(--stop-bg); color: var(--stop-ink); border: 3px solid var(--surface); border-radius: 24px; box-shadow: 0 6px 0 var(--stop-edge), 0 9px 0 var(--map-road-edge); font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; transition: transform .18s; }
+.quest-stop-copy { display: grid; gap: 4px; padding: 12px 26px 12px 8px; overflow-wrap: anywhere; }
+.quest-stop-label { color: var(--map-soft); font-size: .75rem; }
+.quest-stop-copy strong { font-weight: 500; font-size: 1rem; line-height: 1.35; }
+.quest-stop-domain { justify-self: start; width: fit-content; max-width: 100%; padding: 3px 8px; border-radius: 8px; background: var(--stop-badge); color: var(--stop-badge-ink); font-size: .75rem; line-height: 1.5; margin: 3px 0; }
+.quest-stop:nth-child(even) .quest-stop-domain { justify-self: end; }
+.quest-stop-lock { position: absolute; bottom: -7px; right: -7px; width: 24px; height: 24px; padding: 2px; border: 2px solid var(--surface); border-radius: 8px; background: var(--stop-bg); stroke: var(--stop-ink); stroke-width: 1.7; }
+.quest-stop-state { font-size: .75rem; color: var(--map-soft); }
+.quest-stop:nth-child(even) .quest-stop-marker { grid-column: 2; grid-row: 1; }
+.quest-stop:nth-child(even) .quest-stop-copy { grid-column: 1; grid-row: 1; text-align: right; padding: 12px 8px 12px 26px; }
+.quest-stop-button:hover .quest-stop-marker { transform: translateY(-4px) rotate(-4deg); }
+.quest-stop-button:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+.quest-stop-button:focus-visible { outline: 3px solid var(--primary); outline-offset: -5px; border-radius: 18px; }
+.quest-stop-current .quest-stop-marker { background: var(--map-gold); color: var(--map-gold-ink); box-shadow: 0 6px 0 var(--map-gold-edge), 0 0 0 10px var(--map-halo); border-color: var(--surface); }
+.quest-stop-current .quest-stop-copy strong { font-weight: 600; }
+.quest-stop-current .quest-stop-state { color: var(--accent); font-weight: 600; }
+.quest-you-are-here { position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); width: max-content; max-width: 120px; text-align: center; background: var(--primary); color: var(--on-primary); padding: 5px 10px; border-radius: 7px; font: 500 .75rem var(--font-body); letter-spacing: .03em; }
+.quest-you-are-here::after { content: ''; position: absolute; left: calc(50% - 4px); bottom: -4px; width: 8px; height: 8px; background: inherit; transform: rotate(45deg); }
+.quest-stop-done .quest-stop-marker { background: var(--success); color: var(--map-on-success); box-shadow: 0 6px 0 var(--success-border), 0 9px 0 var(--map-road-edge); }
+.quest-scenery { position: absolute; left: max(6px, calc(25% - 64px)); bottom: 3px; width: 76px; height: 60px; overflow: visible; pointer-events: none; }
+.quest-stop:nth-child(even) .quest-scenery { left: auto; right: max(6px, calc(25% - 64px)); }
+.quest-tree { fill: var(--map-tree); }
+.quest-tree-light { fill: var(--map-tree-light); }
+.quest-tree-shade { fill: var(--map-tree-shade); }
+.quest-ground { fill: var(--map-ground); }
+.quest-trunk, .quest-mushroom-stem { fill: var(--map-trunk); }
+.quest-branch { fill: none; stroke: var(--map-trunk); stroke-width: 6; stroke-linecap: round; }
+.quest-rock { fill: var(--map-rock); }
+.quest-rock-light { fill: var(--map-rock-light); }
+.quest-rock-shade { fill: var(--map-rock-shade); }
+.quest-grass { fill: none; stroke: var(--map-tree-light); stroke-width: 3; stroke-linecap: round; }
+.quest-fruit { fill: var(--map-gold); }
+.quest-mushroom-cap { fill: var(--map-mushroom); }
+.quest-mushroom-dot { fill: var(--map-mushroom-dot); }
+.quest-destination { display: flex; align-items: center; gap: 18px; margin: 20px; padding: 24px 20px; border: 1px dashed var(--map-road-dash); border-radius: 18px; background: var(--map-road); }
+.quest-destination-flag { font-size: 3rem; color: var(--accent); line-height: 1; }
+.quest-destination .eyebrow { color: var(--map-soft); }
+.quest-destination .h3 { margin-top: 4px; font-size: 1.25rem; }
+.quest-destination p { color: var(--map-soft); font-size: .75rem; margin: 8px 0 0; line-height: 1.7; }
+.quest-preview-note { margin: 24px 4px; font-size: .8rem; color: var(--text-soft); line-height: 1.8; }
+.quest-preview-note strong { display: block; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+.quest-assessments { padding: 18px 4px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.quest-assessments summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 16px; min-height: 44px; font-size: .9rem; }
+.quest-assessments summary > span { color: var(--text-mute); font-size: .75rem; text-align: right; }
+.quest-assessments .body { font-size: .875rem; }
+@media (max-width: 640px) {
+  .quest-worlds { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+  .quest-road path { stroke-width: 36; }
+  .quest-road path:first-child { stroke-width: 40; }
+  .quest-road path:last-child { stroke-width: 1.5; }
+}
+@media (max-width: 380px) {
+  .quest-trail-header { padding: 24px 20px 14px; }
+  .quest-stop-marker { width: 58px; height: 56px; border-radius: 20px; font-size: 1.5rem; }
+  .quest-stop-copy { padding-right: 14px; }
+  .quest-stop:nth-child(even) .quest-stop-copy { padding-left: 14px; }
+  .quest-stop-copy strong { font-size: .925rem; }
+  .quest-destination { padding: 20px 16px; margin: 14px; gap: 12px; }
+}
+@media (prefers-color-scheme: dark) {
+  .quest {
+    --map-tree: #73ad92;
+    --map-tree-light: #a1c89d;
+    --map-tree-shade: #437c72;
+    --map-ground: #263e37;
+    --map-trunk: #b18b64;
+    --map-rock: #a39ab8;
+    --map-rock-light: #c8bed9;
+    --map-rock-shade: #746786;
+    --map-road: #3c342d;
+    --map-road-edge: #765836;
+    --map-road-dash: #c39a64;
+    --map-aqua: #70d8ec;
+    --map-aqua-edge: #347a91;
+    --map-aqua-ink: #143f52;
+    --map-aqua-bg: #153542;
+    --map-coral: #ffb786;
+    --map-coral-edge: #a95e3c;
+    --map-coral-ink: #69341d;
+    --map-coral-bg: #3b2a25;
+    --map-violet: #c6a9f7;
+    --map-violet-edge: #7856a5;
+    --map-violet-ink: #492967;
+    --map-violet-bg: #2e2643;
+  }
+  .quest-stop { --stop-badge-ink: var(--map-aqua); }
+  .quest-stop-people { --stop-badge-ink: var(--map-coral); }
+  .quest-stop-business { --stop-badge-ink: var(--map-violet); }
+}
+
+@media (prefers-reduced-motion: reduce) { .quest-world, .quest-stop-marker { transition: none; } }
